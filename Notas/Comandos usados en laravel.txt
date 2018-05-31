@@ -1,0 +1,12 @@
+Comando para descargar e instalar laravel: composer create-project --prefer-dist laravel/laravel blog
+Comando para cambiar el nombre de nuestro proyecto: php artisan app:name sisVentas
+Comando para crear el modelo: php artisan make:model Categoria
+Comando para ejecutar servidor: php artisan serve
+Comando para crear un controlador que tendra: php artisan make:controller CategoriaController
+Comando para crear un archivo de validacion de formularios request: php artisan make:request CategoriaFormRequest
+Comando para crear login y registro: php artisan make:auth
+
+
+el controlador es el paso mas importante pues aqui estan las funciones de crear, eliminar, actualizar. etc...
+
+el comando request se usa para poner limitaciones a la hora de introducir datos en el formulario

@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::resource('almacen/categoria','CategoriaController'); // lo primero es el enlace que se usara para acceder que esta en view lo segundo es el controlador que usara esta ruta hay que hace uno para cada ruta
 
 Route::resource('almacen/articulo','ArticuloController');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
