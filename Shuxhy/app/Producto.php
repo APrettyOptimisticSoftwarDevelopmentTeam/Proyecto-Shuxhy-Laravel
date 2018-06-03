@@ -20,7 +20,8 @@ class Producto extends Model
         'Precioporunidad',
     	'Unidad_entero',
     	'Unidad_medida',
-    	'Unidad_Onzas'
+    	'Unidad_Onzas',
+        'condicion'
     	
     ];
 

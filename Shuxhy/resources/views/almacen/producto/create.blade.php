@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Articulo</h3>
+			<h3>Nuevo Producto</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -13,22 +13,47 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'almacen/categoria','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'almacen/producto','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
             <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
-            </div>
-            <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" placeholder="Descripción...">
+            	<label for="Nombre">Nombre</label>
+            	<input type="text" name="Nombre" class="form-control" placeholder="Nombre...">
             </div>
 
+
             <div class="form-group">
-            	<label for="precio">Precio</label>
-            	<input type="number" name="precio" class="form-control" placeholder="Precio...">
+                  <label for="Cantidad">Cantidad</label>
+                  <input type="text" name="Cantidad" class="form-control" placeholder="Cantidad...">
+            </div>       
+
+            <div class="form-group">
+            	<label for="Descripción">Descripción</label>
+            	<input type="text" name="Descripcion" class="form-control" placeholder="Descripción...">
             </div>
 
+
+            <div class="form-group">
+                  <label for="Precioporunidad">Precio por unidad</label>
+                  <input type="text" name="Precioporunidad" class="form-control" placeholder="Precio por unidad...">
+            </div>
+
+
+            <div class="form-group">
+                  <label for="Unidad_entera">Unidad entera</label>
+                  <input type="text" name="Unidad_entera" class="form-control" placeholder="Unidad entera...">
+            </div>
+            
+
+            <div class="form-group">
+                  <label for="Unidad_medida">Unidad de medida</label>
+                  <input type="text" name="Unidad_medida" class="form-control" placeholder="Unidad en medida...">
+            </div>
+
+
+            <div class="form-group">
+                  <label for="Unidad_Onzas">Unidad en onzas</label>
+                  <input type="text" name="Unidad_Onzas" class="form-control" placeholder="Unidad en onzas...">
+            </div>
 
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>

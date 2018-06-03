@@ -2,8 +2,8 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de Articulos <a href="categoria/create"><button class="btn btn-success">Nuevo </button></a></h3>
-		@include('almacen.categoria.search')
+		<h3>Listado de Productos <a href="producto/create"><button class="btn btn-success">Nuevo </button></a></h3>
+		@include('almacen.producto.search')
 	</div>
 </div>
 
@@ -14,26 +14,34 @@
 				<thead>
 					<th>Id</th>
 					<th>Nombre</th>
+					<th>Cantidad</th>
 					<th>Descripción</th>
-					<th>Precio</th>
+					<th>Precio por unidad</th>
+					<th>Unidad entera</th>
+					<th>Unidad medida</th>
+					<th>Unidad en onzas</th>
 					<th>Opciones</th>
 				</thead>
-               @foreach ($categorias as $cat)
+               @foreach ($productos as $prod)
 				<tr>
-					<td>{{ $cat->idcategoria}}</td>
-					<td>{{ $cat->nombre}}</td>
-					<td>{{ $cat->descripcion}}</td>
-					<td>{{ $cat->precio}}</td>
+					<td>{{ $prod->idProducto}}</td>   <!-- Aqui se establecen los datos  -->
+					<td>{{ $prod->Nombre}}</td>		<!-- que se mostraran estos deben  -->
+					<td>{{ $prod->Cantidad}}</td>		<!-- de coincidir con el orden de arriba  -->
+					<td>{{ $prod->Descripcion}}</td>
+					<td>{{ $prod->Precioporunidad}}</td>
+					<td>{{ $prod->Unidad_entero}}</td>
+					<td>{{ $prod->Unidad_medida}}</td>
+					<td>{{ $prod->Unidad_Onzas}}</td>
 					<td>
-						<a href="{{URL::action('CategoriaController@edit',$cat->idcategoria)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$cat->idcategoria}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('ProductoController@edit',$prod->idProducto)}}"><button class="btn btn-info">Editar</button></a>
+                         <a href="" data-target="#modal-delete-{{$prod->idProducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
-				@include('almacen.categoria.modal')
+				@include('almacen.producto.modal')
 				@endforeach
 			</table>
 		</div>
-		{{$categorias->render()}}
+		{{$productos->render()}}
 	</div>
 </div>
 

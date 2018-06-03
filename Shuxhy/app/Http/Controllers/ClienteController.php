@@ -32,7 +32,7 @@ class ClienteController extends Controller
     {
         return view("almacen.cliente.create");
     }
-    public function store (ClienteFormRequest $request)
+    public function store (ClienteFormRequest $request)  // Funcion para crear 
     {
         $cliente=new Cliente;
         $cliente->nombre=$request->get('Nombre');
@@ -55,7 +55,7 @@ class ClienteController extends Controller
     {
         return view("almacen.cliente.edit",["cliente"=>Cliente::findOrFail($id)]);
     }
-    public function update(ClienteFormRequest $request,$id)
+    public function update(ClienteFormRequest $request,$id)  // funcion para editar
     {
         $cliente=Cliente::findOrFail($id);
         $cliente->nombre=$request->get('Nombre');
@@ -68,7 +68,7 @@ class ClienteController extends Controller
         $cliente->update();
         return Redirect::to('almacen/cliente');
     }
-    public function destroy($id)
+    public function destroy($id)  // funcion para borrar
     {
         $cliente=Cliente::findOrFail($id);
         $cliente->condicion='0';

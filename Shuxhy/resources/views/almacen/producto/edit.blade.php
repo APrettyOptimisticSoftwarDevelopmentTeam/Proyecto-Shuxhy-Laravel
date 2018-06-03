@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Editar Articulo: {{ $categoria->nombre}}</h3>
+			<h3>Editar Productos: {{ $producto->Nombre}}</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -13,20 +13,46 @@
 			</div>
 			@endif
 
-			{!!Form::model($categoria,['method'=>'PATCH','route'=>['almacen.categoria.update',$categoria->idcategoria]])!!}
+			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->idProducto]])!!}
             {{Form::token()}}
             <div class="form-group">
-            	<label for="nombre">Nombre</label>
-            	<input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre...">
-            </div>
-            <div class="form-group">
-            	<label for="descripcion">Descripción</label>
-            	<input type="text" name="descripcion" class="form-control" value="{{$categoria->descripcion}}" placeholder="Descripción...">
+            	<label for="Nombre">Nombre</label>
+            	<input type="text" name="Nombre" class="form-control" value="{{$producto->Nombre}}" placeholder="Nombre...">
             </div>
 
             <div class="form-group">
-            	<label for="precio">Precio</label>
-            	<input type="number" name="precio" class="form-control" value="{{$categoria->precio}}" placeholder="Precio...">
+                  <label for="Cantidad">Cantidad</label>
+                  <input type="text" name="Cantidad" class="form-control" value="{{$producto->Cantidad}}" placeholder="Cantidad...">
+            </div>
+
+
+            <div class="form-group">
+            	<label for="Descripcion">Descripción</label>
+            	<input type="text" name="Descripcion" class="form-control" value="{{$producto->Descripcion}}" placeholder="Descripción...">
+            </div>
+
+            
+
+            <div class="form-group">
+                  <label for="Precioporunidad">Precio por unidad</label>
+                  <input type="text" name="Precioporunidad" class="form-control" value="{{$producto->Precioporunidad}}" placeholder="Precio por unidad...">
+            </div>
+
+
+            <div class="form-group">
+                  <label for="Unidad_entera">Unidad entera</label>
+                  <input type="text" name="Unidad_entera" class="form-control" value="{{$producto->Unidad_entera}}" placeholder="Unidad entera...">
+            </div>
+
+            <div class="form-group">
+                  <label for="Unidad_medida">Unidad de medida</label>
+                  <input type="text" name="Unidad_medida" class="form-control" value="{{$producto->Unidad_medida}}" placeholder="Unidad de medida...">
+            </div>
+
+
+            <div class="form-group">
+                  <label for="Unidad_Onzas">Unidad en onzas</label>
+                  <input type="text" name="Unidad_Onzas" class="form-control" value="{{$producto->Unidad_Onzas}}" placeholder="Unidad en onzas...">
             </div>
 
             <div class="form-group">
