@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Shuxhy\Http\Requests;
 use Shuxhy\Articulo; // Aqui siempre debo especificar el modelo que se usara
 use Illuminate\Support\Facades\Redirect; // tambien hacer referencia a esta clase es la que se encarga de la redireccion de datos 
-use Shuxhy\Http\Requests\CategoriaFormRequest; // agregamos esto para poder validar datos
+use Shuxhy\Http\Requests\ArticuloFormRequest; // agregamos esto para poder validar datos
 use DB; // con esto podemos trabajar con la clase db de laravel que nos permitira hacer operaciones de base de datos
 
 class ArticuloController extends Controller
