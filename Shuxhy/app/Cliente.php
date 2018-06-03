@@ -20,7 +20,9 @@ class Cliente extends Model
         'Direccion',
     	'Telefono',
         'FechaIngreso',
-    	'Usuario'
+    	'Usuario',
+        'condicion'
+
     ];
 
     protected $guarded =[
