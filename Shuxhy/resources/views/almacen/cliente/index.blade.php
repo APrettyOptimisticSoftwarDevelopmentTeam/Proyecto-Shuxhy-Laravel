@@ -14,16 +14,24 @@
 				<thead>
 					<th>Id</th>
 					<th>Nombre</th>
-					<th>Descripción</th>
 					<th>Apellido</th>
+					<th>Descripción</th>
+					<th>Direccion</th>
+					<th>Telefono</th>
+					<th>Fecha de ingreso</th>
+					<th>Usuario de Instagram</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($clientes as $clien)
 				<tr>
-					<td>{{ $clien->Idcliente}}</td>
-					<td>{{ $clien->Nombre}}</td>
+					<td>{{ $clien->IdCliente}}</td>   <!-- Aqui se establecen los datos  -->
+					<td>{{ $clien->Nombre}}</td>		<!-- que se mostraran estos deben  -->
+					<td>{{ $clien->Apellido}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $clien->Descripcion}}</td>
-					<td>{{ $clien->Apellido}}</td>
+					<td>{{ $clien->Direccion}}</td>
+					<td>{{ $clien->Telefono}}</td>
+					<td>{{ $clien->FechaIngreso}}</td>
+					<td>{{ $clien->Usuario}}</td>
 					<td>
 						<a href="{{URL::action('ClienteController@edit',$clien->IdCliente)}}"><button class="btn btn-info">Editar</button></a>
                          <a href="" data-target="#modal-delete-{{$clien->IdCliente}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>

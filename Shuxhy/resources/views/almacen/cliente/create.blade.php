@@ -19,16 +19,41 @@
             	<label for="Nombre">Nombre</label>
             	<input type="text" name="Nombre" class="form-control" placeholder="Nombre...">
             </div>
+
+
+            <div class="form-group">
+                  <label for="Apellido">Apellido</label>
+                  <input type="text" name="Apellido" class="form-control" placeholder="Apellido...">
+            </div>       
+
             <div class="form-group">
             	<label for="Descripción">Descripción</label>
             	<input type="text" name="Descripcion" class="form-control" placeholder="Descripción...">
             </div>
 
+
             <div class="form-group">
-            	<label for="Apellido">Apellido</label>
-            	<input type="text" name="Apellido" class="form-control" placeholder="Apellido...">
+                  <label for="Direccion">Direccion</label>
+                  <input type="text" name="Direccion" class="form-control" placeholder="Direccion...">
             </div>
 
+
+            <div class="form-group">
+                  <label for="Telefono">Telefono</label>
+                  <input type="text" name="Telefono" class="form-control" placeholder="Telefono...">
+            </div>
+            
+
+            <div class="form-group">
+                  <label for="FechaIngreso">FechaIngreso</label>
+                  <input type="text" name="FechaIngreso" class="form-control" placeholder="Fecha de ingreso...">
+            </div>
+
+
+            <div class="form-group">
+                  <label for="Usuario">Usuario</label>
+                  <input type="text" name="Usuario" class="form-control" placeholder="Usuario de Instagram...">
+            </div>
 
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Guardar</button>
