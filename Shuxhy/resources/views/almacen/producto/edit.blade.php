@@ -40,8 +40,8 @@
 
 
             <div class="form-group">
-                  <label for="Unidad_entera">Unidad entera</label>
-                  <input type="text" name="Unidad_entera" class="form-control" value="{{$producto->Unidad_entera}}" placeholder="Unidad entera...">
+                  <label for="Unidad_entero">Unidad entero</label>
+                  <input type="text" name="Unidad_entero" class="form-control" value="{{$producto->Unidad_entero}}" placeholder="Unidad entero...">
             </div>
 
             <div class="form-group">

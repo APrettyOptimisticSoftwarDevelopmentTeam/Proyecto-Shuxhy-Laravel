@@ -39,8 +39,8 @@
 
 
             <div class="form-group">
-                  <label for="Unidad_entera">Unidad entera</label>
-                  <input type="text" name="Unidad_entera" class="form-control" placeholder="Unidad entera...">
+                  <label for="Unidad_entero">Unidad entera</label>
+                  <input type="text" name="Unidad_entero" class="form-control" placeholder="Unidad entero...">
             </div>
             
 

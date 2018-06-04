@@ -35,13 +35,13 @@ class ProductoController extends Controller
     public function store (ProductoFormRequest $request)  // Funcion para crear 
     {
         $producto=new Producto;
-        $producto->nombre=$request->get('Nombre');
-        $producto->cantidad=$request->get('Cantidad');
-        $producto->descripcion=$request->get('Descripcion');
-        $producto->precioporunidad=$request->get('Precioporunidad');
-        $producto->unidad_entero=$request->get('Unidad_entero');
-        $producto->unidad_medida=$request->get('Unidad_medida');
-        $producto->unidad_onzas=$request->get('Unidad_Onzas');
+        $producto->Nombre=$request->get('Nombre');
+        $producto->Cantidad=$request->get('Cantidad');
+        $producto->Descripcion=$request->get('Descripcion');
+        $producto->Precioporunidad=$request->get('Precioporunidad');
+        $producto->Unidad_entero=$request->get('Unidad_entero');
+        $producto->Unidad_medida=$request->get('Unidad_medida');
+        $producto->Unidad_onzas=$request->get('Unidad_Onzas');
         $producto->condicion='1';
         $producto->save();
         return Redirect::to('almacen/producto');
@@ -58,13 +58,13 @@ class ProductoController extends Controller
     public function update(ProductoFormRequest $request,$id)  // funcion para editar
     {
         $producto=Producto::findOrFail($id);
-        $producto->nombre=$request->get('Nombre');
-        $producto->cantidad=$request->get('Cantidad');
-        $producto->descripcion=$request->get('Descripcion');
-        $producto->precioporunidad=$request->get('Precioporunidad');
-        $producto->unidad_entero=$request->get('Unidad_entero');
-        $producto->unidad_medida=$request->get('Unidad_medida');
-        $producto->unidad_onzas=$request->get('Unidad_Onzas');
+        $producto->Nombre=$request->get('Nombre');
+        $producto->Cantidad=$request->get('Cantidad');
+        $producto->Descripcion=$request->get('Descripcion');
+        $producto->Precioporunidad=$request->get('Precioporunidad');
+        $producto->Unidad_entero=$request->get('Unidad_entero');
+        $producto->Unidad_medida=$request->get('Unidad_medida');
+        $producto->Unidad_Onzas=$request->get('Unidad_Onzas');
         $producto->update();
         return Redirect::to('almacen/producto');
     }

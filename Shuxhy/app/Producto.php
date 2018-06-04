@@ -8,7 +8,7 @@ class Producto extends Model
 {
     protected $table='producto';
 
-    protected $primaryKey='IdProducto';
+    protected $primaryKey='idProducto';
 
     public $timestamps=false;
 
