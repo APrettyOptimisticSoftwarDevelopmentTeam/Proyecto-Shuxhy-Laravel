@@ -25,7 +25,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="cliente" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>Shuxhy</b>V</span>
           <!-- logo for regular state and mobile devices -->
@@ -92,7 +92,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="producto"><i class="fa fa-circle-o"></i>Productos</a></li>
-                <li><a href="categoria"><i class="fa fa-circle-o"></i>Categorías</a></li>
+                <li><a href="categoria"><i class="fa fa-circle-o"></i>Materiales</a></li>
               </ul>
             </li>
             
@@ -103,19 +103,19 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i>Ingresos</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i> Suplidores</a></li>
+                <li><a href="pedido"><i class="fa fa-circle-o"></i>Pedidos</a></li>
+                <li><a href="cliente"><i class="fa fa-circle-o"></i>Clientes</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-shopping-cart"></i>
-                <span>Ventas</span>
+                <span>Facturacion</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> </a></li>
+                <li><a href="cliente"><i class="fa fa-circle-o"></i> </a></li>
               </ul>
             </li>
                        
@@ -126,7 +126,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i>Administrador</a>
-                  <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i>Cajero</a>
+                  <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i>Asistente</a>
 
                 </li>
                 
@@ -153,7 +153,7 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Punto de venta</h3>
+                  
                   <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     
