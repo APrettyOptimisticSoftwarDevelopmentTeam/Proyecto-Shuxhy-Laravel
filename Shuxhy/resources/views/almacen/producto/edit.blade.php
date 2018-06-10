@@ -16,7 +16,7 @@
             </div>
       </div>
 
-			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->idProducto]])!!}
+			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->idProducto],'files'=>'true'])!!}
             {{Form::token()}}
 
             <div class="row"> 
