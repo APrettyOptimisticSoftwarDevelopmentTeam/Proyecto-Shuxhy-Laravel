@@ -21,6 +21,7 @@ class Producto extends Model
     	'Unidad_entero',
     	'Unidad_medida',
     	'Unidad_Onzas',
+        'Imagen',
         'condicion'
     	
     ];

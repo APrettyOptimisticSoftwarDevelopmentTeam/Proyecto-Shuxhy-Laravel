@@ -12,7 +12,6 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Id</th>
 					<th>Nombre</th>
 					<th>Cantidad</th>
 					<th>Descripción</th>
@@ -20,11 +19,11 @@
 					<th>Unidad entera</th>
 					<th>Unidad medida</th>
 					<th>Unidad en onzas</th>
+					<th>Imagen</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($productos as $prod)
-				<tr>
-					<td>{{ $prod->idProducto}}</td>   <!-- Aqui se establecen los datos  -->
+				<tr>  <!-- Aqui se establecen los datos  -->
 					<td>{{ $prod->Nombre}}</td>		<!-- que se mostraran estos deben  -->
 					<td>{{ $prod->Cantidad}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Descripcion}}</td>
@@ -32,6 +31,9 @@
 					<td>{{ $prod->Unidad_entero}}</td>
 					<td>{{ $prod->Unidad_medida}}</td>
 					<td>{{ $prod->Unidad_Onzas}}</td>
+					<td>
+						<img src="{{asset('imagenes/productos/'.$prod->Imagen)}}" alt="{{ $prod->Nombre}}" height="100px" width="100px" class="img-thubnail">
+					</td>
 					<td>
 						<a href="{{URL::action('ProductoController@edit',$prod->idProducto)}}"><button class="btn btn-info">Editar</button></a>
                          <a href="" data-target="#modal-delete-{{$prod->idProducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>

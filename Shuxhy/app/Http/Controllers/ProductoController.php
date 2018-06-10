@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Shuxhy\Http\Requests;
 use Shuxhy\Producto;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\ProductoFormRequest;
 use DB;
 
@@ -42,6 +43,15 @@ class ProductoController extends Controller
         $producto->Unidad_entero=$request->get('Unidad_entero');
         $producto->Unidad_medida=$request->get('Unidad_medida');
         $producto->Unidad_onzas=$request->get('Unidad_Onzas');
+
+        if (Input::hasFile('Imagen')) 
+        {
+            $file=Input::file('Imagen');
+            $file->move(public_path(). 'imagenes/productos/', $file->getClientOriginalName());
+            $producto->Imagen=$file->getClientOriginalName();
+        }
+
+
         $producto->condicion='1';
         $producto->save();
         return Redirect::to('almacen/producto');
@@ -65,6 +75,14 @@ class ProductoController extends Controller
         $producto->Unidad_entero=$request->get('Unidad_entero');
         $producto->Unidad_medida=$request->get('Unidad_medida');
         $producto->Unidad_Onzas=$request->get('Unidad_Onzas');
+
+        if (Input::hasFile('Imagen')) 
+        {
+            $file=Input::file('Imagen');
+            $file->move(public_path(). 'imagenes/productos/', $file->getClientOriginalName());
+            $producto->Imagen=$file->getClientOriginalName();
+        }
+        
         $producto->update();
         return Redirect::to('almacen/producto');
     }

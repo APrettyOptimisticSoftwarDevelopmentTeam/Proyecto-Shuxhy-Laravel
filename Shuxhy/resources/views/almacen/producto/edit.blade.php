@@ -13,55 +13,118 @@
 			</div>
 			@endif
 
+            </div>
+      </div>
+
 			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->idProducto]])!!}
             {{Form::token()}}
-            <div class="form-group">
-            	<label for="Nombre">Nombre</label>
-            	<input type="text" name="Nombre" class="form-control" value="{{$producto->Nombre}}" placeholder="Nombre...">
-            </div>
 
+            <div class="row"> 
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Nombre">Nombre</label>
+                  <input type="text" name="Nombre" class="form-control" value="{{$producto->Nombre}}" placeholder="Nombre...">
+            </div>
+                  </div>
+
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
             <div class="form-group">
                   <label for="Cantidad">Cantidad</label>
                   <input type="text" name="Cantidad" class="form-control" value="{{$producto->Cantidad}}" placeholder="Cantidad...">
             </div>
+                  </div>
 
 
-            <div class="form-group">
-            	<label for="Descripcion">Descripción</label>
-            	<input type="text" name="Descripcion" class="form-control" value="{{$producto->Descripcion}}" placeholder="Descripción...">
-            </div>
 
-            
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+                       <div class="form-group">
+                  <label for="Descripcion">Descripción</label>
+                  <input type="text" name="Descripcion" class="form-control" value="{{$producto->Descripcion}}" placeholder="Descripción...">
+            </div> 
+                  </div>
 
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
             <div class="form-group">
                   <label for="Precioporunidad">Precio por unidad</label>
                   <input type="text" name="Precioporunidad" class="form-control" value="{{$producto->Precioporunidad}}" placeholder="Precio por unidad...">
             </div>
 
+                  </div>
 
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
             <div class="form-group">
                   <label for="Unidad_entero">Unidad entero</label>
                   <input type="text" name="Unidad_entero" class="form-control" value="{{$producto->Unidad_entero}}" placeholder="Unidad entero...">
-            </div>
+            </div>  
 
+                  </div>
+
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                     
             <div class="form-group">
                   <label for="Unidad_medida">Unidad de medida</label>
                   <input type="text" name="Unidad_medida" class="form-control" value="{{$producto->Unidad_medida}}" placeholder="Unidad de medida...">
-            </div>
+            </div>   
+                        
+                  </div>
 
 
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
             <div class="form-group">
                   <label for="Unidad_Onzas">Unidad en onzas</label>
                   <input type="text" name="Unidad_Onzas" class="form-control" value="{{$producto->Unidad_Onzas}}" placeholder="Unidad en onzas...">
             </div>
 
+
+                  </div>
+
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
             <div class="form-group">
-            	<button class="btn btn-primary" type="submit">Guardar</button>
-            	<button class="btn btn-danger" type="reset">Cancelar</button>
+                  <label for="Imagen">Imagen</label>
+                  <input type="file" name="Imagen" class="form-control">
+                  @if (($producto->Imagen)!="")
+                  <img src="{{asset('imagenes/productos/'.$producto->Imagen)}}" height="250px" width="400px">
+                  @endif
             </div>
+
+                  </div>
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Guardar</button>
+                  <button class="btn btn-danger" type="reset">Cancelar</button>
+            </div>
+                        
+                  </div>
+
+
+
+            </div>
+
+
 
 			{!!Form::close()!!}		
             
-		</div>
-	</div>
+		
 @endsection
