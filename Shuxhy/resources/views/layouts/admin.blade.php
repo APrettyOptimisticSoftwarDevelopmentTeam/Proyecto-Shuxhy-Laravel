@@ -27,7 +27,7 @@
         <!-- Logo -->
         <a href="cliente" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>Shuxhy</b>V</span>
+          <span class="logo-mini"><b>Shu</b>V</span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Shuxhy</b></span>
         </a>
@@ -180,13 +180,7 @@
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <!--Fin-Contenido-->
-      <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-          <b>Version</b> 2.0
-        </div>
-        <strong>Copyright &copy; 2018-2020 <a href="www.Shuxhy.com">Shuxhy</a>.</strong> 
-      </footer>
-
+      
       
     <!-- jQuery 2.1.4 -->
     <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
