@@ -37,11 +37,10 @@ class ClienteController extends Controller
         $cliente=new Cliente;
         $cliente->nombre=$request->get('Nombre');
         $cliente->apellido=$request->get('Apellido');
-        $cliente->descripcion=$request->get('Descripcion');
+        $cliente->comentario=$request->get('Comentario');
         $cliente->direccion=$request->get('Direccion');
         $cliente->telefono=$request->get('Telefono');
-        $cliente->fechaingreso=$request->get('FechaIngreso');
-        $cliente->usuario=$request->get('Usuario');
+        $cliente->usuarioig=$request->get('UsuarioIG');
         $cliente->condicion='1';
         $cliente->save();
         return Redirect::to('almacen/cliente');
@@ -60,11 +59,10 @@ class ClienteController extends Controller
         $cliente=Cliente::findOrFail($id);
         $cliente->nombre=$request->get('Nombre');
         $cliente->apellido=$request->get('Apellido');
-        $cliente->descripcion=$request->get('Descripcion');
+        $cliente->comentario=$request->get('Comentario');
         $cliente->direccion=$request->get('Direccion');
         $cliente->telefono=$request->get('Telefono');
-        $cliente->fechaingreso=$request->get('FechaIngreso');
-        $cliente->usuario=$request->get('Usuario');
+        $cliente->usuarioig=$request->get('UsuarioIG');
         $cliente->update();
         return Redirect::to('almacen/cliente');
     }

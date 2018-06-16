@@ -27,8 +27,8 @@
             </div>       
 
             <div class="form-group">
-            	<label for="Descripción">Descripción</label>
-            	<input type="text" name="Descripcion" class="form-control" placeholder="Descripción...">
+            	<label for="Comentario">Comentario</label>
+            	<input type="text" name="Comentario" class="form-control" placeholder="Comentario...">
             </div>
 
 
@@ -42,17 +42,11 @@
                   <label for="Telefono">Telefono</label>
                   <input type="text" name="Telefono" class="form-control" placeholder="Telefono...">
             </div>
-            
-
-            <div class="form-group">
-                  <label for="FechaIngreso">FechaIngreso</label>
-                  <input type="text" name="FechaIngreso" class="form-control" placeholder="Fecha de ingreso...">
-            </div>
 
 
             <div class="form-group">
-                  <label for="Usuario">Usuario</label>
-                  <input type="text" name="Usuario" class="form-control" placeholder="Usuario de Instagram...">
+                  <label for="UsuarioIG">UsuarioIG</label>
+                  <input type="text" name="UsuarioIG" class="form-control" placeholder="Usuario de Instagram...">
             </div>
 
             <div class="form-group">

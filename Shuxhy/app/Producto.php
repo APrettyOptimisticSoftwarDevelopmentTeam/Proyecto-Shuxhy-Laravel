@@ -8,21 +8,24 @@ class Producto extends Model
 {
     protected $table='producto';
 
-    protected $primaryKey='idProducto';
+    protected $primaryKey='IdProducto';
 
     public $timestamps=false;
 
 
     protected $fillable =[
     	'Nombre',
-    	'Cantidad',
+        'CostoProduccion',
     	'Descripcion',
-        'Precioporunidad',
-    	'Unidad_entero',
-    	'Unidad_medida',
-    	'Unidad_Onzas',
+        'Precio',
+    	'Peso',
+        'Unidad',
         'Imagen',
-        'condicion'
+        'IdForma',
+        'IdRelleno',
+        'IdSabor',
+        'IdTopping',
+        'Condicion'
     	
     ];
 

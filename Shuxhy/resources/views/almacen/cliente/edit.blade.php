@@ -27,8 +27,8 @@
 
 
             <div class="form-group">
-            	<label for="Descripcion">Descripción</label>
-            	<input type="text" name="Descripcion" class="form-control" value="{{$cliente->Descripcion}}" placeholder="Descripción...">
+            	<label for="Comentario">Descripción</label>
+            	<input type="text" name="Comentario" class="form-control" value="{{$cliente->Comentario}}" placeholder="Comentario...">
             </div>
 
             
@@ -44,15 +44,10 @@
                   <input type="text" name="Telefono" class="form-control" value="{{$cliente->Telefono}}" placeholder="Telefono...">
             </div>
 
-            <div class="form-group">
-                  <label for="FechaIngreso">Fecha de ingreso</label>
-                  <input type="text" name="FechaIngreso" class="form-control" value="{{$cliente->FechaIngreso}}" placeholder="FechaIngreso...">
-            </div>
-
 
             <div class="form-group">
-                  <label for="Usuario">Usuario de Instagram</label>
-                  <input type="text" name="Usuario" class="form-control" value="{{$cliente->Usuario}}" placeholder="Usuario...">
+                  <label for="UsuarioIG">Usuario de Instagram</label>
+                  <input type="text" name="UsuarioIG" class="form-control" value="{{$cliente->UsuarioIG}}" placeholder="Usuario...">
             </div>
 
             <div class="form-group">

@@ -23,8 +23,8 @@ class ProductoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $productos=DB::table('producto')->where('nombre','LIKE','%'.$query.'%')
-            ->where ('condicion','=','1')
-            ->orderBy('idProducto','desc')
+            ->where ('Condicion','=','1')
+            ->orderBy('IdProducto','desc')
             ->paginate(7);
             return view('almacen.producto.index',["productos"=>$productos,"searchText"=>$query]);
         }
@@ -37,12 +37,15 @@ class ProductoController extends Controller
     {
         $producto=new Producto;
         $producto->Nombre=$request->get('Nombre');
-        $producto->Cantidad=$request->get('Cantidad');
         $producto->Descripcion=$request->get('Descripcion');
-        $producto->Precioporunidad=$request->get('Precioporunidad');
-        $producto->Unidad_entero=$request->get('Unidad_entero');
-        $producto->Unidad_medida=$request->get('Unidad_medida');
-        $producto->Unidad_onzas=$request->get('Unidad_Onzas');
+        $producto->Precio=$request->get('Precio');
+        $producto->Unidad=$request->get('Unidad');
+        $producto->CostoProduccion=$request->get('CostoProduccion');
+        $producto->Peso=$request->get('Peso');
+        $producto->IdForma=$request->get('IdForma');
+        $producto->IdRelleno=$request->get('IdRelleno');
+        $producto->IdSabor=$request->get('IdSabor');
+        $producto->IdTopping=$request->get('IdTopping');
 
         if (Input::hasFile('Imagen')) 
         {
@@ -69,12 +72,15 @@ class ProductoController extends Controller
     {
         $producto=Producto::findOrFail($id);
         $producto->Nombre=$request->get('Nombre');
-        $producto->Cantidad=$request->get('Cantidad');
         $producto->Descripcion=$request->get('Descripcion');
-        $producto->Precioporunidad=$request->get('Precioporunidad');
-        $producto->Unidad_entero=$request->get('Unidad_entero');
-        $producto->Unidad_medida=$request->get('Unidad_medida');
-        $producto->Unidad_Onzas=$request->get('Unidad_Onzas');
+        $producto->Precio=$request->get('Precio');
+        $producto->Unidad=$request->get('Unidad');
+        $producto->CostoProduccion=$request->get('CostoProduccion');
+        $producto->Peso=$request->get('Peso');
+        $producto->IdForma=$request->get('IdForma');
+        $producto->IdRelleno=$request->get('IdRelleno');
+        $producto->IdSabor=$request->get('IdSabor');
+        $producto->IdTopping=$request->get('IdTopping');
 
         if (Input::hasFile('Imagen')) 
         {
