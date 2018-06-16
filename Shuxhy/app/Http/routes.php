@@ -25,7 +25,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/index', function () {
+	return view ('index');
+});
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
+
+

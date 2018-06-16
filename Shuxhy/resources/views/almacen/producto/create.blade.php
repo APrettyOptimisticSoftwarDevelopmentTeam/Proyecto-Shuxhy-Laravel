@@ -31,8 +31,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Cantidad">Cantidad</label>
-                  <input type="text" name="Cantidad" class="form-control" placeholder="Cantidad...">
+                  <label for="CostoProduccion">Costo de produccion</label>
+                  <input type="text" name="CostoProduccion" class="form-control" placeholder="Costo de produccion...">
             </div>      
 
 
@@ -52,8 +52,8 @@
                         
 
             <div class="form-group">
-                  <label for="Precioporunidad">Precio por unidad</label>
-                  <input type="text" name="Precioporunidad" class="form-control" placeholder="Precio por unidad...">
+                  <label for="Precio">Precio</label>
+                  <input type="text" name="Precio" class="form-control" placeholder="Precio...">
             </div>
 
                   </div>
@@ -61,8 +61,12 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad_entero">Unidad entera</label>
-                  <input type="text" name="Unidad_entero" class="form-control" placeholder="Unidad entero...">
+                  <label>Forma</label>
+                  <select name ="IdForma" class="form-control">
+                        @foreach ($formaspostres as $formas)
+                        <option value ="{{$postre->IdForma}}">{{$formas->Nombre}}</option>
+                        @endforeach
+                  </select>
             </div>
 
                   </div>
@@ -70,21 +74,36 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                        
             <div class="form-group">
-                  <label for="Unidad_medida">Unidad de medida</label>
-                  <input type="text" name="Unidad_medida" class="form-control" placeholder="Unidad en medida...">
+                  <label>Relleno</label>
+                  <select name ="IdRelleno" class="form-control">
+                        @foreach ($rellenopostre as $relleno)
+                        <option value ="{{$rellenos->IdRelleno}}">{{$relleno->Nombre}}</option>
+                        @endforeach
+                  </select>
             </div>
 
+</div>
+                  
 
-                  </div>
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
             <div class="form-group">
-                  <label for="Unidad_Onzas">Unidad en onzas</label>
-                  <input type="text" name="Unidad_Onzas" class="form-control" placeholder="Unidad en onzas...">
+                  <label>Sabor</label>
+                  <select name ="IdSabor" class="form-control">
+                        @foreach ($SaborPostre as $sabor)
+                        <option value ="{{$postre->IdPostre}}">{{$sabor->Nombre}}</option>
+                        @endforeach
+                  </select>
             </div>
 
-                  </div>
+
+<div class="form-group">
+                  <label>Topping</label>
+                  <select name ="IdTopping" class="form-control">
+                        @foreach ($ToppingPostre as $topping)
+                        <option value ="{{$topping->Idtopping}}">{{$topping->Nombre}}</option>
+                        @endforeach
+                  </select>
+            </div>
+
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                        

@@ -13,30 +13,32 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Nombre</th>
-					<th>Cantidad</th>
+					<th>Costo de produccion</th>
 					<th>Descripción</th>
-					<th>Precio por unidad</th>
-					<th>Unidad entera</th>
-					<th>Unidad medida</th>
-					<th>Unidad en onzas</th>
+					<th>Precio</th>
+					<th>Peso</th>
+					<th>Unidad</th>
+					<th>Forma</th>
+					<th>Sabor</th>
+					<th>Relleno</th>
+					<th>Topping</th>
 					<th>Imagen</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($productos as $prod)
 				<tr>  <!-- Aqui se establecen los datos  -->
 					<td>{{ $prod->Nombre}}</td>		<!-- que se mostraran estos deben  -->
-					<td>{{ $prod->Cantidad}}</td>		<!-- de coincidir con el orden de arriba  -->
+					<td>{{ $prod->CostoProduccion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Descripcion}}</td>
-					<td>{{ $prod->Precioporunidad}}</td>
-					<td>{{ $prod->Unidad_entero}}</td>
-					<td>{{ $prod->Unidad_medida}}</td>
-					<td>{{ $prod->Unidad_Onzas}}</td>
+					<td>{{ $prod->Precio}}</td>
+					<td>{{ $prod->Unidad}}</td>
+					
 					<td>
 						<img src="{{asset('imagenes/productos/'.$prod->Imagen)}}" alt="{{ $prod->Nombre}}" height="100px" width="100px" class="img-thubnail">
 					</td>
 					<td>
-						<a href="{{URL::action('ProductoController@edit',$prod->idProducto)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$prod->idProducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('ProductoController@edit',$prod->IdProducto)}}"><button class="btn btn-info">Editar</button></a>
+                         <a href="" data-target="#modal-delete-{{$prod->IdProducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
 				@include('almacen.producto.modal')

@@ -25,7 +25,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="cliente" class="logo">
+        <a href="/index" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>Shu</b>V</span>
           <!-- logo for regular state and mobile devices -->
@@ -43,12 +43,22 @@
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               
-              <!-- User Account: style can be found in dropdown.less -->
-              <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <small class="bg-red">Online</small>
-                  <span class="hidden-xs">Shuxhy</span>
-                </a>
+            <!-- Right Side Of Navbar -->
+          <div align="Right">
+            <ul class="nav navbar-nav navbar-right">
+
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+            </ul>
+          </div>
+
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">

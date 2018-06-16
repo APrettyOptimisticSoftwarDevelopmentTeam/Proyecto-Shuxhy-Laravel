@@ -16,7 +16,7 @@
             </div>
       </div>
 
-			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->idProducto],'files'=>'true'])!!}
+			{!!Form::model($producto,['method'=>'PATCH','route'=>['almacen.producto.update',$producto->IdProducto],'files'=>'true'])!!}
             {{Form::token()}}
 
             <div class="row"> 
@@ -34,8 +34,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Cantidad">Cantidad</label>
-                  <input type="text" name="Cantidad" class="form-control" value="{{$producto->Cantidad}}" placeholder="Cantidad...">
+                  <label for="CostoProduccion">Costo de produccion</label>
+                  <input type="text" name="CostoProduccion" class="form-control" value="{{$producto->CostoProduccion}}" placeholder="Costo de produccion...">
             </div>
                   </div>
 
@@ -54,8 +54,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Precioporunidad">Precio por unidad</label>
-                  <input type="text" name="Precioporunidad" class="form-control" value="{{$producto->Precioporunidad}}" placeholder="Precio por unidad...">
+                  <label for="Precio">Precio</label>
+                  <input type="text" name="Precio" class="form-control" value="{{$producto->Precio}}" placeholder="Precio...">
             </div>
 
                   </div>
@@ -65,20 +65,25 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad_entero">Unidad entero</label>
-                  <input type="text" name="Unidad_entero" class="form-control" value="{{$producto->Unidad_entero}}" placeholder="Unidad entero...">
+                  <label for="Unidad">Unidad</label>
+                  <input type="text" name="Unidad" class="form-control" value="{{$producto->Unidad}}" placeholder="Unidad...">
             </div>  
 
                   </div>
 
 
 
+
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                      
             <div class="form-group">
-                  <label for="Unidad_medida">Unidad de medida</label>
-                  <input type="text" name="Unidad_medida" class="form-control" value="{{$producto->Unidad_medida}}" placeholder="Unidad de medida...">
-            </div>   
+                  <label>Relleno</label>
+                  <select name ="IdRelleno" class="form-control">
+                        @foreach ($rellenopostre as $relleno)
+                        <option value ="{{$rellenos->IdRelleno}}">{{$relleno->Nombre}}</option>
+                        @endforeach
+                  </select>
+            </div>
                         
                   </div>
 
