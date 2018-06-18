@@ -93,6 +93,8 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
+
+            
             
             <li class="treeview">
               <a href="#">
@@ -103,6 +105,8 @@
               <ul class="treeview-menu">
                 <li><a href="producto"><i class="fa fa-circle-o"></i>Productos</a></li>
                 <li><a href="categoria"><i class="fa fa-circle-o"></i>Materiales</a></li>
+                <li><a href="combos"><i class="fa fa-circle-o"></i>Combos</a></li>
+                <li><a href="inventario"><i class="fa fa-circle-o"></i>Inventario</a></li>
               </ul>
             </li>
             
@@ -114,30 +118,52 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="pedido"><i class="fa fa-circle-o"></i>Pedidos</a></li>
-                <li><a href="cliente"><i class="fa fa-circle-o"></i>Clientes</a></li>
               </ul>
             </li>
-            <li class="treeview">
+
+             <li class="treeview">
               <a href="#">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Facturacion</span>
+                <i class="fa fa-th"></i>
+                <span>Clientes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> </a></li>
-                <li><a href="cliente"><i class="fa fa-circle-o"></i> </a></li>
+                <li><a href="cliente"><i class="fa fa-circle-o"></i>Clientes</a></li>
+              </ul>
+            </li>
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Ventas</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="Facturacion"><i class="fa fa-circle-o"></i>Facturacion</a></li>
               </ul>
             </li>
                        
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Acceso</span>
+                <i class="fa fa-folder"></i> <span>Usuarios</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i>Administrador</a>
-                  <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i>Asistente</a>
+                <li><a href="registro"><i class="fa fa-circle-o"></i>Registrar</a></li>
+                </li>
+                
+              </ul>
+            </li>
 
+
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-folder"></i> <span>Reportes</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href=""><i class="fa fa-circle-o"></i>Ventas Diarias</a>
+                <li><a href=""><i class="fa fa-circle-o"></i>Ganancias</a>
                 </li>
                 
               </ul>

@@ -91,7 +91,7 @@
               <span class="section-heading-upper">Shuxhy</span>
               <span class="section-heading-lower">Brownies</span>
             </h2>
-            <p class="mb-3">Nuestro brownies son los mas solicitados en santiago una vez los pruebes no podras olvidarlos, pues le brindaran sabor a tu dia, animate y ordena tus brownies hoy
+            <p class="mb-3">Somos especialistas en la creacion de deliciosos brownies, una vez los pruebes no podras olvidarlos, pues le brindaran sabor a tu dia. Animate y ordena tus brownies hoy, pregunta tambien por nuestros combos y desayunos!
             </p>
             <div class="intro-button mx-auto">
               <a class="btn btn-primary btn-xl" href="#">Haz tu pedido aqui</a>
@@ -110,7 +110,7 @@
                 <span class="section-heading-upper"></span>
                 <span class="section-heading-lower">Desayunos Y Combos</span>
               </h2>
-              <p class="mb-0">Ademas de la ventas de postres nos especializamos en todo tipos de desayunos y combos</p>
+              <p class="mb-0">Ademas de la venta de postres nos especializamos en la preparacion de desayunos personalizados. Hacemos enterga a domicilio!</p>
             </div>
           </div>
         </div>
