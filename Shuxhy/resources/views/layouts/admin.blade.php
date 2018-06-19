@@ -94,11 +94,22 @@
           <ul class="sidebar-menu">
             <li class="header"></li>
 
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-spinner"></i>
+                <span>Produccion</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href=""><i class="fa fa-circle-o"></i>Recetas</a></li>
+                <li><a href=""><i class="fa fa-circle-o"></i>Nueva produccion</a></li>
+                </ul>
+            </li>
             
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-laptop"></i>
+                <i class="fa fa-archive"></i>
                 <span>Almacén</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -112,7 +123,7 @@
             
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
+                <i class="fa fa-truck"></i>
                 <span>Pedidos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -123,7 +134,7 @@
 
              <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
+                <i class="fa fa-users"></i>
                 <span>Clientes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -145,7 +156,7 @@
                        
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-folder"></i> <span>Usuarios</span>
+                <i class="fa fa-user"></i> <span>Usuarios</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
@@ -162,8 +173,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i>Ventas Diarias</a>
+                <li><a href=""><i class="fa fa-circle-o"></i>Ventas</a>
                 <li><a href=""><i class="fa fa-circle-o"></i>Ganancias</a>
+                <li><a href=""><i class="fa fa-circle-o"></i>Produccion</a>
                 </li>
                 
               </ul>
