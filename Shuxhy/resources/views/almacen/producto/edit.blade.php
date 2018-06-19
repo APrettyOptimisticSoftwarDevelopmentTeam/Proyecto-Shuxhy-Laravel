@@ -85,11 +85,16 @@
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Forma">Forma</label>
-                  <input type="text" name="Forma" class="form-control" value="{{$producto->Forma}}" placeholder="Forma...">
+                  <label>Forma</label>
+                  <select name="Forma" class="form-control">
+                        <option>Circulo</option>
+                        <option>Cuadrado</option>
+                        <option>Triangulo</option>
+                        <option>Estrella</option>
+                  </select>
             </div>
 
 
@@ -100,8 +105,13 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Relleno">Relleno</label>
-                  <input type="text" name="Relleno" class="form-control" value="{{$producto->Relleno}}" placeholder="Relleno...">
+                  <label>Relleno</label>
+                  <select name="Relleno" class="form-control">
+                        <option>Chocolate</option>
+                        <option>Dulce de leche</option>
+                        <option>Caramelo</option>
+                        <option>Fresa</option>
+                  </select>
             </div>
 
 
@@ -112,8 +122,13 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Sabor">Sabor</label>
-                  <input type="text" name="Sabor" class="form-control" value="{{$producto->Sabor}}" placeholder="Sabor...">
+                   <label>Sabor</label>
+                  <select name="Sabor" class="form-control">
+                        <option>Chocolate</option>
+                        <option>Limon</option>
+                        <option>Caramelo</option>
+                        <option>Fresa</option>
+                  </select>
             </div>
 
 
@@ -123,8 +138,13 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Topping">Topping</label>
-                  <input type="text" name="Topping" class="form-control" value="{{$producto->Topping}}" placeholder="Topping...">
+                  <label>Topping</label>
+                  <select name="Topping" class="form-control">
+                        <option>M6M</option>
+                        <option>Oreo</option>
+                        <option>Fresas</option>
+                        <option>Hershey's</option>
+                  </select>
             </div>
 
 
