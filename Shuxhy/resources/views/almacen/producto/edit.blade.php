@@ -75,16 +75,13 @@
 
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                     
-            <div class="form-group">
-                  <label>Relleno</label>
-                  <select name ="IdRelleno" class="form-control">
-                        @foreach ($rellenopostre as $relleno)
-                        <option value ="{{$rellenos->IdRelleno}}">{{$relleno->Nombre}}</option>
-                        @endforeach
-                  </select>
-            </div>
                         
+            <div class="form-group">
+                  <label for="Forma">Forma</label>
+                  <input type="text" name="Forma" class="form-control" value="{{$producto->Forma}}" placeholder="Forma...">
+            </div>
+
+
                   </div>
 
 
@@ -92,8 +89,31 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad_Onzas">Unidad en onzas</label>
-                  <input type="text" name="Unidad_Onzas" class="form-control" value="{{$producto->Unidad_Onzas}}" placeholder="Unidad en onzas...">
+                  <label for="Relleno">Relleno</label>
+                  <input type="text" name="Relleno" class="form-control" value="{{$producto->Relleno}}" placeholder="Relleno...">
+            </div>
+
+
+                  </div>
+
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Sabor">Sabor</label>
+                  <input type="text" name="Sabor" class="form-control" value="{{$producto->Sabor}}" placeholder="Sabor...">
+            </div>
+
+
+                  </div>
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Topping">Topping</label>
+                  <input type="text" name="Topping" class="form-control" value="{{$producto->Topping}}" placeholder="Topping...">
             </div>
 
 

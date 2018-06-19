@@ -21,10 +21,10 @@ class Producto extends Model
     	'Peso',
         'Unidad',
         'Imagen',
-        'IdForma',
-        'IdRelleno',
-        'IdSabor',
-        'IdTopping',
+        'Forma',
+        'Relleno',
+        'Sabor',
+        'Topping',
         'Condicion'
     	
     ];

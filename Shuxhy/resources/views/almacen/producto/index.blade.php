@@ -31,7 +31,12 @@
 					<td>{{ $prod->CostoProduccion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Descripcion}}</td>
 					<td>{{ $prod->Precio}}</td>
+					<td>{{ $prod->Peso}}</td>
 					<td>{{ $prod->Unidad}}</td>
+					<td>{{ $prod->Forma}}</td>
+					<td>{{ $prod->Sabor}}</td>
+					<td>{{ $prod->Relleno}}</td>
+					<td>{{ $prod->Topping}}</td>
 					
 					<td>
 						<img src="{{asset('imagenes/productos/'.$prod->Imagen)}}" alt="{{ $prod->Nombre}}" height="100px" width="100px" class="img-thubnail">
