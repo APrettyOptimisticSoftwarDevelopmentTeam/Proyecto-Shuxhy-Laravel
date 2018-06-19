@@ -42,10 +42,10 @@ class ProductoController extends Controller
         $producto->Unidad=$request->get('Unidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
         $producto->Peso=$request->get('Peso');
-        $producto->IdForma=$request->get('IdForma');
-        $producto->IdRelleno=$request->get('IdRelleno');
-        $producto->IdSabor=$request->get('IdSabor');
-        $producto->IdTopping=$request->get('IdTopping');
+        $producto->Forma=$request->get('Forma');
+        $producto->Relleno=$request->get('Relleno');
+        $producto->Sabor=$request->get('Sabor');
+        $producto->Topping=$request->get('Topping');
 
         if (Input::hasFile('Imagen')) 
         {
@@ -77,10 +77,10 @@ class ProductoController extends Controller
         $producto->Unidad=$request->get('Unidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
         $producto->Peso=$request->get('Peso');
-        $producto->IdForma=$request->get('IdForma');
-        $producto->IdRelleno=$request->get('IdRelleno');
-        $producto->IdSabor=$request->get('IdSabor');
-        $producto->IdTopping=$request->get('IdTopping');
+        $producto->Forma=$request->get('Forma');
+        $producto->Relleno=$request->get('Relleno');
+        $producto->Sabor=$request->get('Sabor');
+        $producto->Topping=$request->get('Topping');
 
         if (Input::hasFile('Imagen')) 
         {

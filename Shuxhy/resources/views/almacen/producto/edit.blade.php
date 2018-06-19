@@ -72,19 +72,32 @@
                   </div>
 
 
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                     
+                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
             <div class="form-group">
-                  <label>Relleno</label>
-                  <select name ="IdRelleno" class="form-control">
-                        @foreach ($rellenopostre as $relleno)
-                        <option value ="{{$rellenos->IdRelleno}}">{{$relleno->Nombre}}</option>
-                        @endforeach
+                  <label for="Peso">Peso</label>
+                  <input type="text" name="Peso" class="form-control" value="{{$producto->Peso}}" placeholder="Peso...">
+            </div>  
+
+                  </div>
+
+
+
+
+
+                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label>Forma</label>
+                  <select name="Forma" class="form-control">
+                        <option>Circulo</option>
+                        <option>Cuadrado</option>
+                        <option>Triangulo</option>
+                        <option>Estrella</option>
                   </select>
             </div>
-                        
+
+
                   </div>
 
 
@@ -92,8 +105,46 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad_Onzas">Unidad en onzas</label>
-                  <input type="text" name="Unidad_Onzas" class="form-control" value="{{$producto->Unidad_Onzas}}" placeholder="Unidad en onzas...">
+                  <label>Relleno</label>
+                  <select name="Relleno" class="form-control">
+                        <option>Chocolate</option>
+                        <option>Dulce de leche</option>
+                        <option>Caramelo</option>
+                        <option>Fresa</option>
+                  </select>
+            </div>
+
+
+                  </div>
+
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                   <label>Sabor</label>
+                  <select name="Sabor" class="form-control">
+                        <option>Chocolate</option>
+                        <option>Limon</option>
+                        <option>Caramelo</option>
+                        <option>Fresa</option>
+                  </select>
+            </div>
+
+
+                  </div>
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label>Topping</label>
+                  <select name="Topping" class="form-control">
+                        <option>M6M</option>
+                        <option>Oreo</option>
+                        <option>Fresas</option>
+                        <option>Hershey's</option>
+                  </select>
             </div>
 
 
