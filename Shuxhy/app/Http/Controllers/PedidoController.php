@@ -5,10 +5,10 @@ namespace Shuxhy\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
+use Shuxhy\Pedido;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\PedidoFormRequest;
-use Shuxhy\Pedido;
 use Shuxhy\DetallePedido;
 use DB;
 
@@ -36,7 +36,7 @@ class PedidoController extends Controller
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'c.Nombre')
             ->paginate(7);
-            return view('pedido.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
+            return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
 
         }
     }
@@ -50,7 +50,7 @@ class PedidoController extends Controller
     	->where('prod.Condicion','=','1')
     	->get();
 
-        return view('pedido.pedido.create',["clientes"=>$clientes,"productos"=>$productos]);
+        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos]);
     }
 
     public function store (PedidoFormRequest $request)  // Funcion para crear 
@@ -105,7 +105,7 @@ class PedidoController extends Controller
 
 
         
-        return Redirect::to('pedido/pedido');
+        return Redirect::to('almacen/pedido');
 
     }
 
@@ -126,7 +126,7 @@ class PedidoController extends Controller
             ->where('dp.IdDetallePedido', '=', $id)
             ->get();
 
-        return view("pedido.pedido.show",["pedido"=>$pedido,"DetallePedido"=>$DetallePedido);
+        return view("almacen.pedido.show",["pedido"=>$pedido,"DetallePedido"=>$DetallePedido);
     }
 
 
@@ -135,7 +135,7 @@ class PedidoController extends Controller
         $pedido=Pedido::findOrFail($id);
         $pedido->condicion='0';
         $pedido->update();
-        return Redirect::to('pedido/pedido');
+        return Redirect::to('almacen/pedido');
     }
 
 

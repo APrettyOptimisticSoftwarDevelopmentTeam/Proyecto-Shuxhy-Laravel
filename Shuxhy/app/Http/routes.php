@@ -21,7 +21,7 @@ Route::resource('almacen/cliente','ClienteController');
 
 Route::resource('almacen/producto','ProductoController');
 
-Route::resource('pedido/pedido','PedidoController');
+Route::resource('almacen/pedido','PedidoController');
 
 Route::auth();
 
