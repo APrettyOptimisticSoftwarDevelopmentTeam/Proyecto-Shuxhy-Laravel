@@ -28,9 +28,9 @@ class PedidoController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $pedido=DB::table('pedido as p')
+            $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
-            ->join('detellepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
+            ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
             ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.cantidad*PrecioPorUnidad) as total'))
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->orderBy('p.IdPedido', 'desc')
