@@ -23,6 +23,8 @@ Route::resource('almacen/producto','ProductoController');
 
 Route::resource('almacen/pedido','PedidoController');
 
+Route::resource('almacen/material','MaterialController');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

@@ -107,7 +107,7 @@
                 <span class="section-heading-upper"></span>
                 <span class="section-heading-lower">Desayunos Y Combos</span>
               </h2>
-              <p class="mb-0">Ademas de la venta de postres nos especializamos en la preparacion de desayunos personalizados. Hacemos enterga a domicilio!</p>
+              <p class="mb-0">Ademas de la venta de postres nos especializamos en la preparacion de desayunos personalizados. Hacemos entrega a domicilio!</p>
             </div>
           </div>
         </div>
