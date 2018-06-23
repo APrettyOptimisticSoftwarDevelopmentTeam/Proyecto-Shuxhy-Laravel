@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
 
-class Receta extends Controller
+class ComboController extends Controller
 {
     //
 }

@@ -4,7 +4,7 @@ namespace Shuxhy\Http\Requests;
 
 use Shuxhy\Http\Requests\Request;
 
-class Factura extends Request
+class ComboFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.

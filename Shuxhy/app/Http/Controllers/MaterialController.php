@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
 
-class Factura extends Controller
+class MaterialController extends Controller
 {
     //
 }

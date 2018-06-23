@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
 
-class Reporte extends Controller
+class ProduccionController extends Controller
 {
     //
 }
