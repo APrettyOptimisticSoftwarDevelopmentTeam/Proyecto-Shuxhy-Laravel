@@ -31,12 +31,13 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.cantidad*PrecioPorUnidad) as total'))
+            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'c.Nombre')
             ->paginate(7);
-            return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
+            return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]
+            );
 
         }
     }
@@ -73,9 +74,9 @@ class PedidoController extends Controller
         $pedido->condicion='1';
         $pedido->save();
 
-        $IdProducto=$request->get('IdProducto')
-        $cantidad=$request->get('Cantidad')
-        $PrecioPorUnidad=$request->get('PrecioPorUnidad')
+        //$IdProducto=$request->get('DetallePedido')
+        //$Cantidad=$request->get('Cantidad')
+        //$PrecioPorUnidad=$request->get('PrecioPorUnidad')
 
         $cont=0;
 
@@ -116,7 +117,7 @@ class PedidoController extends Controller
     	$pedido=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detellepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.cantidad*PrecioPorUnidad) as total'))
+            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.IdPedido', '=', $id)
             ->first();
 
@@ -126,7 +127,8 @@ class PedidoController extends Controller
             ->where('dp.IdDetallePedido', '=', $id)
             ->get();
 
-        return view("almacen.pedido.show",["pedido"=>$pedido,"DetallePedido"=>$DetallePedido);
+        return view("almacen.pedido.show",["pedido"=>$pedido,"DetallePedido"=>$DetallePedido]
+        );
     }
 
 
