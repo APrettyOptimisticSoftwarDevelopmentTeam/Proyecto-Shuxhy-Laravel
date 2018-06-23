@@ -66,7 +66,7 @@
               <a class="nav-link text-uppercase text-expanded" href="almacen/cliente">Clientes</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Pedidos</a>
+              <a class="nav-link text-uppercase text-expanded" href="almacen/producto">Productos</a>
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>
