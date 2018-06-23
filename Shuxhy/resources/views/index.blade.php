@@ -72,9 +72,6 @@
               <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Usuarios</a>
-            </li>
-            <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="">Reportes</a>
             </li>
           </ul>
