@@ -115,7 +115,7 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="producto"><i class="fa fa-circle-o"></i>Productos</a></li>
-                <li><a href="categoria"><i class="fa fa-circle-o"></i>Materiales</a></li>
+                <li><a href="material"><i class="fa fa-circle-o"></i>Materiales</a></li>
                 <li><a href="combos"><i class="fa fa-circle-o"></i>Combos</a></li>
                 <li><a href="inventario"><i class="fa fa-circle-o"></i>Inventario</a></li>
               </ul>

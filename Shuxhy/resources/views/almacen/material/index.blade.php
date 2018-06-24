@@ -18,7 +18,7 @@
 					<th>PesoBase</th>
 					<th>Unidad</th>
 				</thead>
-               @foreach ($materiales as $prod)
+               @foreach ($materiales as $mat)
 				<tr>  <!-- Aqui se establecen los datos  -->
 					<td>{{ $mat->Nombre}}</td>		<!-- que se mostraran estos deben  -->
 					<th>{{ $mat->Descripción}}</th>			<!-- de coincidir con el orden de arriba  -->
