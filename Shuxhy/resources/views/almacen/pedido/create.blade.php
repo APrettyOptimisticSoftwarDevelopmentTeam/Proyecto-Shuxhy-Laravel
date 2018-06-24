@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nuevo Producto</h3>
+			<h3>Nuevo Pedido</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -15,16 +15,22 @@
             </div>
       </div>
 
-			{!!Form::open(array('url'=>'almacen/producto','method'=>'POST','autocomplete'=>'off', 'files'=>'true'))!!}
+			{!!Form::open(array('url'=>'almacen/pedido','method'=>'POST','autocomplete'=>'off', 'files'=>'true'))!!}
             {{Form::token()}}
 
             <div class="row"> 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Nombre">Nombre</label>
-                  <input type="text" name="Nombre" class="form-control" placeholder="Nombre...">
+                  <label for="Nombre">Cliente</label>
+                  <select name="IdCliente" id="IdCliente" class="form-control">
+                        @foreach($clientes as $clientes)
+                        <option value="{{$clientes->IdCliente}}">{{$cliente->Nombre}}</option>
+                        @enforeach
+  
+                  </select>
+                  
             </div>
                   </div>
 
@@ -33,8 +39,13 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="CostoProduccion">Costo de produccion</label>
-                  <input type="text" name="CostoProduccion" class="form-control" placeholder="Costo de produccion...">
+                   <label>Entrega del pedido</label>
+                  <select name="Forma" class="form-control">
+                        <option>En proceso</option>
+                        <option>Solicitado</option>
+                        <option>Triangulo</option>
+                        <option>Estrella</option>
+                  </select>
             </div>
                   </div>
 
@@ -53,8 +64,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Precio">Precio</label>
-                  <input type="text" name="Precio" class="form-control"  placeholder="Precio...">
+                  <label for="DireccionEntrega">Direccion de entrega</label>
+                  <input type="text" name="DireccionEntrega" class="form-control"  placeholder="Direccion de entrega...">
             </div>
 
                   </div>
@@ -64,8 +75,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad">Unidad</label>
-                  <input type="text" name="Unidad" class="form-control" placeholder="Unidad...">
+                  <label for="FechaRealizado">Fecha realizado</label>
+                  <input type="text" name="FechaRealizado" class="form-control" placeholder="Fecha Realizado...">
             </div>  
 
                   </div>
@@ -74,8 +85,8 @@
                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Peso">Peso</label>
-                  <input type="text" name="Peso" class="form-control" placeholder="Peso...">
+                  <label for="FechaEntregado">Fecha entregado</label>
+                  <input type="text" name="FechaEntregado" class="form-control" placeholder="Fecha de entrega...">
             </div>  
 
                   </div>
@@ -83,78 +94,23 @@
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label>Forma</label>
-                  <select name="Forma" class="form-control">
-                        <option>Circulo</option>
-                        <option>Cuadrado</option>
-                        <option>Triangulo</option>
-                        <option>Estrella</option>
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label>Relleno</label>
-                  <select name="Relleno" class="form-control">
-                        <option>Chocolate</option>
-                        <option>Dulce de leche</option>
-                        <option>Caramelo</option>
-                        <option>Fresa</option>
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Sabor</label>
-                  <select name="Sabor" class="form-control">
-                        <option>Chocolate</option>
-                        <option>Limon</option>
-                        <option>Caramelo</option>
-                        <option>Fresa</option>
-                  </select>
 </div>
 
-                  </div>
+<div class="row">
 
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Topping</label>
-                  <select name="Topping" class="form-control">
-                        <option>M6M</option>
-                        <option>Oreo</option>
-                        <option>Fresas</option>
-                        <option>Hershey's</option>
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="Imagen">Imagen</label>
-                  <input type="file" name="Imagen" class="form-control">
-            </div>
+                  <div class="panel panel-primary">
+                        <div class="panel-body">
+                              
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+                                    <div class="form-group">
+                                          <label>Cliente</label>
+                                          <select name="IdCliente" class="form-control" id="IdCliente">
+                                                @foreach($clientes as $cliente)
+                                                <option value="{{$cliente->IdCliente}}">{{$cliente->Cliente}}</option>
+                                          </select>
+                                    </div>
+                              </div>
+                        </div>
 
                   </div>
 

@@ -87,11 +87,12 @@
                         
             <div class="form-group">
                   <label>Forma</label>
-                  <select name="Forma" class="form-control">
-                        <option>Circulo</option>
-                        <option>Cuadrado</option>
-                        <option>Triangulo</option>
-                        <option>Estrella</option>
+                  <select name="Forma" class="form-control selectpicker" id="Forma" data-live-search="true">
+                        <option value="No aplica">No aplica</option>
+                        <option value="Circulo">Circulo</option>
+                        <option value="Cuadrado">Cuadrado</option>
+                        <option value="Triangulo">Triangulo</option>
+                        <option value="Estrella">Estrella</option>
                   </select>
             </div>
 
@@ -104,7 +105,8 @@
                         
             <div class="form-group">
                   <label>Relleno</label>
-                  <select name="Relleno" class="form-control">
+                  <select name="Relleno" class="form-control selectpicker" id="Relleno" data-live-search="true">
+                        <option>No aplica</option>
                         <option>Chocolate</option>
                         <option>Dulce de leche</option>
                         <option>Caramelo</option>
@@ -121,7 +123,8 @@
                         
             <div class="form-group">
                    <label>Sabor</label>
-                  <select name="Sabor" class="form-control">
+                  <select name="Sabor" class="form-control selectpicker" id="Sabor" data-live-search="true">
+                        <option>No aplica</option>
                         <option>Chocolate</option>
                         <option>Limon</option>
                         <option>Caramelo</option>
@@ -136,7 +139,8 @@
                         
             <div class="form-group">
                    <label>Topping</label>
-                  <select name="Topping" class="form-control">
+                  <select name="Topping" class="form-control selectpicker" id="Topping" data-live-search="true">
+                        <option>No aplica</option>
                         <option>M6M</option>
                         <option>Oreo</option>
                         <option>Fresas</option>

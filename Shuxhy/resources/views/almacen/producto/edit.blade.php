@@ -89,7 +89,7 @@
                         
             <div class="form-group">
                   <label>Forma</label>
-                  <select name="Forma" class="form-control">
+                  <select name="Forma" class="form-control selectpicker" id="Forma" data-live-search="true">
                         <option>Circulo</option>
                         <option>Cuadrado</option>
                         <option>Triangulo</option>
@@ -106,7 +106,7 @@
                         
             <div class="form-group">
                   <label>Relleno</label>
-                  <select name="Relleno" class="form-control">
+                  <select name="Relleno" class="form-control selectpicker" id="Relleno" data-live-search="true">
                         <option>Chocolate</option>
                         <option>Dulce de leche</option>
                         <option>Caramelo</option>
@@ -123,7 +123,7 @@
                         
             <div class="form-group">
                    <label>Sabor</label>
-                  <select name="Sabor" class="form-control">
+                  <select name="Sabor" class="form-control selectpicker" id="Sabor" data-live-search="true">
                         <option>Chocolate</option>
                         <option>Limon</option>
                         <option>Caramelo</option>
@@ -139,7 +139,7 @@
                         
             <div class="form-group">
                   <label>Topping</label>
-                  <select name="Topping" class="form-control">
+                  <select name="Topping" class="form-control selectpicker" id="Topping" data-live-search="true">
                         <option>M6M</option>
                         <option>Oreo</option>
                         <option>Fresas</option>

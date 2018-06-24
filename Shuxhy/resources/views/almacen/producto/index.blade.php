@@ -13,7 +13,7 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Nombre</th>
-					<th>Costo de produccion</th>
+					<th>Costo produccion</th>
 					<th>Descripción</th>
 					<th>Precio</th>
 					<th>Peso</th>
