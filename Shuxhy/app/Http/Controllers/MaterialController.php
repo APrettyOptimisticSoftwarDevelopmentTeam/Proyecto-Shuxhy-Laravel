@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Shuxhy\Http\Requests;
 use Shuxhy\Material;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 use Shuxhy\Http\Requests\MaterialFormRequest;
 use DB;
 
@@ -42,6 +43,16 @@ class MaterialController extends Controller
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
         $material->PesoBase=$request->get('PesoBase');
+
+
+        if (Input::hasFile('Imagen')) 
+        {
+            $file=Input::file('Imagen');
+            $file->move(public_path(). 'imagenes/materiales/', $file->getClientOriginalName());
+            $material->Imagen=$file->getClientOriginalName();
+        }
+
+
         $material->Condicion='1';
         $material->save();
         return Redirect::to('almacen/material');
@@ -64,7 +75,16 @@ class MaterialController extends Controller
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
         $material->PesoBase=$request->get('PesoBase');
-        $material->Condicion='1';
+
+
+         if (Input::hasFile('Imagen')) 
+        {
+            $file=Input::file('Imagen');
+            $file->move(public_path(). 'imagenes/materiales/', $file->getClientOriginalName());
+            $material->Imagen=$file->getClientOriginalName();
+        }
+
+
         $material->update();
         return Redirect::to('almacen/material');
     }

@@ -26,6 +26,11 @@
 					<td>{{ $mat->Costo}}</td>		
 					<td>{{ $mat->PesoBase}}</td>
 					<td>{{ $mat->Unidad}}</td>
+
+					<td>
+						<img src="{{asset('imagenes/materiales/'.$mat->Imagen)}}" alt="{{ $mat->Nombre}}" height="100px" width="100px" class="img-thubnail">
+					</td>
+
 					<td>
 						<a href="{{URL::action('MaterialController@edit',$mat->IdMaterial)}}"><button class="btn btn-info">Editar</button></a>
                          <a href="" data-target="#modal-delete-{{$mat->IdMaterial}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>

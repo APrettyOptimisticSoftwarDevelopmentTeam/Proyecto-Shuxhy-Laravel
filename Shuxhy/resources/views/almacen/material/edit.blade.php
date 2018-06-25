@@ -16,7 +16,7 @@
             </div>
       </div>
 
-			{!!Form::model($material,['method'=>'PATCH','route'=>['almacen.material.update',$material->IdMaterial]])!!}
+			{!!Form::model($material,['method'=>'PATCH','route'=>['almacen.material.update',$material->IdMaterial],'files'=>'true'])!!}
             {{Form::token()}}
 
             <div class="row"> 
@@ -67,6 +67,19 @@
                   <label for="PesoBase">Peso</label>
                   <input type="text" name="PesoBase" class="form-control" value="{{$material->PesoBase}}" placeholder="Peso...">
             </div>  
+
+                  </div>
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Imagen">Imagen</label>
+                  <input type="file" name="Imagen" class="form-control">
+                  @if (($material->Imagen)!="")
+                  <img src="{{asset('imagenes/materiales/'.$material->Imagen)}}" height="250px" width="400px">
+                  @endif
+            </div>
 
                   </div>
 

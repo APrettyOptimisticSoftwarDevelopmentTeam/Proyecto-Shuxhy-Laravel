@@ -15,7 +15,7 @@
             </div>
       </div>
 
-			{!!Form::open(array('url'=>'almacen/material','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'almacen/material','method'=>'POST','autocomplete'=>'off', 'files'=>'true'))!!}
             {{Form::token()}}
 
             <div class="row"> 
@@ -67,6 +67,16 @@
                   <label for="Unidad">Unidad</label>
                   <input type="text" name="Unidad" class="form-control" placeholder="Unidad...">
             </div>  
+
+                  </div>
+
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Imagen">Imagen</label>
+                  <input type="file" name="Imagen" class="form-control">
+            </div>
 
                   </div>
 

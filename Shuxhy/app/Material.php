@@ -19,6 +19,7 @@ class Material extends Model
         'Costo',
     	'PesoBase',
         'Unidad',
+        'Imagen',
         'Condicion'
     	
     ];
