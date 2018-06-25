@@ -58,13 +58,13 @@ class MaterialController extends Controller
     public function update(MaterialFormRequest $request,$id)  // funcion para editar
     {
         
-        $material=new Material;
+        $material=Material::findOrFail($id);
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
         $material->PesoBase=$request->get('PesoBase');
-        $material->condicion='1';
+        $material->Condicion='1';
         $material->update();
         return Redirect::to('almacen/material');
     }

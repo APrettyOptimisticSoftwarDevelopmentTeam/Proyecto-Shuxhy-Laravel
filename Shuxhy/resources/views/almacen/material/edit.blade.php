@@ -16,7 +16,7 @@
             </div>
       </div>
 
-			{!!Form::model($material,['method'=>'PATCH','route'=>['almacen.material.update',$material->IdMaterial],'files'=>'true'])!!}
+			{!!Form::model($material,['method'=>'PATCH','route'=>['almacen.material.update',$material->IdMaterial]])!!}
             {{Form::token()}}
 
             <div class="row"> 
