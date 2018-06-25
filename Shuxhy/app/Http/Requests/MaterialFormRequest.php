@@ -24,7 +24,12 @@ class MaterialFormRequest extends Request
     public function rules()
     {
         return [
-            
+            'Nombre'=>'required|max:15',
+            'Costo'=>'required|numeric',
+            'PesoBase'=>'required|numeric',
+            'Unidad'=>'required|numeric',
+            'Descripcion'=>'max:150',
+
         ];
     }
 }
