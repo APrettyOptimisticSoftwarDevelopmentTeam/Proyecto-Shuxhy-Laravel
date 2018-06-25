@@ -19,6 +19,7 @@ class Combo extends Model
         'Subtotal',
     	'Descuento',
         'Total',
+        'Imagen',
         'Condicion'
     	
     ];
