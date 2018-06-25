@@ -66,7 +66,7 @@
               <a class="nav-link text-uppercase text-expanded" href="almacen/cliente">Clientes</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="almacen/pedido">Pedidos</a>
+              <a class="nav-link text-uppercase text-expanded" href="almacen/producto">Productos</a>
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>
@@ -91,7 +91,7 @@
             <p class="mb-3">Somos especialistas en la creacion de deliciosos brownies, una vez los pruebes no podras olvidarlos, pues le brindaran sabor a tu dia. Animate y ordena tus brownies hoy, pregunta tambien por nuestros combos y desayunos!
             </p>
             <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="#">Haz tu pedido aqui</a>
+              <a class="btn btn-primary btn-xl" href="almacen/pedido">Haz tu pedido aqui</a>
             </div>
           </div>
         </div>
