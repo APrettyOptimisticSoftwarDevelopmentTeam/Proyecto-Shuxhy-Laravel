@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Combo` (
   `Subtotal` FLOAT NOT NULL,
   `Descuento` FLOAT NULL DEFAULT NULL,
   `Total` FLOAT NULL DEFAULT NULL,
+  `Imagen` VARCHAR(50) NULL DEFAULT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdCombo`))
 ENGINE = InnoDB;
@@ -237,6 +238,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Material` (
   `Unidad`  VARCHAR(45) NULL,
   `PesoBase` FLOAT NULL,
   `Costo` FLOAT NOT NULL,
+  `Imagen` VARCHAR(50) NULL DEFAULT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdMaterial`)
   
