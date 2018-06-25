@@ -1,5 +1,7 @@
 .skin-blue .main-header .navbar{
-    background-color:#3c8dbc
+    background-color:pink
+	background-image: url("../img/bg12.jpg");
+	
 }
 .skin-blue .main-header .navbar .nav>li>a{
     color:#fff
@@ -19,7 +21,7 @@
     color:#fff
 }
 .skin-blue .main-header .navbar .sidebar-toggle:hover{
-    background-color:#367fa9
+    background-color:pink
 }
 @media (max-width:767px){
     .skin-blue .main-header .navbar .dropdown-menu li.divider{
@@ -32,36 +34,38 @@
         background:#367fa9
     }
 }
-.skin-blue .main-header .logo{
-    background-color:#367fa9;
+.skin-blue .main-header .logo{ /* Aqui cambie el color de la barra de arriba cercana al logo por rosado */
+    background-color:pink;
+	background-image: url("../img/bg12.jpg");
     color:#fff;
     border-bottom:0 solid transparent
 }
-.skin-blue .main-header .logo:hover{
-    background-color:#357ca5
+.skin-blue .main-header .logo:hover{   /* Aqui cambie el color de la barra de arriba cercana al logo por rosado */
+    background-color:pink
 }
 .skin-blue .main-header li.user-header{
-    background-color:#3c8dbc
+    background-color:#3c8dbc				
 }
 .skin-blue .content-header{
     background:transparent
 }
 .skin-blue .wrapper,.skin-blue .main-sidebar,.skin-blue .left-side{
-    background-color:#222d32
+    background-image: url("../img/bg12.jpg"); 										/* Aqui se puede cambiar el color de la barra que tiene almacen, cliente,etc.. */
 }
 .skin-blue .user-panel>.info,.skin-blue .user-panel>.info>a{
     color:#fff
 }
 .skin-blue .sidebar-menu>li.header{
     color:#4b646f;
-    background:#1a2226
+    background:pink
+	background-image: url("../img/bg12.jpg");
 }
 .skin-blue .sidebar-menu>li>a{
     border-left:3px solid transparent
 }
 .skin-blue .sidebar-menu>li:hover>a,.skin-blue .sidebar-menu>li.active>a{
     color:#fff;
-    background:#1e282c;
+    background:#F08080;
     border-left-color:#3c8dbc
 }
 .skin-blue .sidebar-menu>li>.treeview-menu{
@@ -69,7 +73,7 @@
     background:#2c3b41
 }
 .skin-blue .sidebar a{
-    color:#b8c7ce
+    color:black
 }
 .skin-blue .sidebar a:hover{
     text-decoration:none
