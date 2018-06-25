@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Shuxhy\Http\Requests;
 use Shuxhy\Material;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\MaterialFormRequest;
 use DB;
 
@@ -22,7 +21,7 @@ class MaterialController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $materiales=DB::table('material')->where('nombre','LIKE','%'.$query.'%')
+            $materiales=DB::table('material')->where('Nombre','LIKE','%'.$query.'%')
             ->where ('Condicion','=','1')
             ->orderBy('IdMaterial','desc')
             ->paginate(7);
@@ -43,9 +42,7 @@ class MaterialController extends Controller
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
         $material->PesoBase=$request->get('PesoBase');
-       
-       
-        $material->condicion='1';
+        $material->Condicion='1';
         $material->save();
         return Redirect::to('almacen/material');
 
@@ -67,16 +64,14 @@ class MaterialController extends Controller
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
         $material->PesoBase=$request->get('PesoBase');
-       
-       
         $material->condicion='1';
-        $material->save();
+        $material->update();
         return Redirect::to('almacen/material');
     }
     public function destroy($id)  // funcion para borrar
     {
         $material=Material::findOrFail($id);
-        $material->condicion='0';
+        $material->Condicion='0';
         $material->update();
         return Redirect::to('almacen/material');
     }

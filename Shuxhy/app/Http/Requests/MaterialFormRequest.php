@@ -24,8 +24,7 @@ class MaterialFormRequest extends Request
     public function rules()
     {
         return [
-            'Nombre'=>'max:50',
-            'Descripcion'=>'max:256',
+            
         ];
     }
 }

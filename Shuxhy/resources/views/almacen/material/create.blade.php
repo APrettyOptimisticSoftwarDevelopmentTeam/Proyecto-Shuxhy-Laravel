@@ -15,7 +15,7 @@
             </div>
       </div>
 
-			{!!Form::open(array('url'=>'almacen/material','method'=>'POST','autocomplete'=>'off', 'files'=>'true'))!!}
+			{!!Form::open(array('url'=>'almacen/material','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
 
             <div class="row"> 
@@ -53,8 +53,8 @@
                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="PesoBase">PesoBase</label>
-                  <input type="text" name="PesoBase" class="form-control"  placeholder="PesoBase...">
+                  <label for="PesoBase">Peso base</label>
+                  <input type="text" name="PesoBase" class="form-control"  placeholder="Peso base...">
             </div>
      
                   </div>
