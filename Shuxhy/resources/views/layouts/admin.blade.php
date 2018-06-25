@@ -31,7 +31,7 @@
         <!-- Logo -->
         <a href="/index" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>Shu</b>V</span>
+          <span class="logo-mini"><b>Shu</b></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Shuxhy</b></span>
         </a>
@@ -120,31 +120,26 @@
               <ul class="treeview-menu">
                 <li><a href="producto"><i class="fa fa-circle-o"></i>Productos</a></li>
                 <li><a href="material"><i class="fa fa-circle-o"></i>Materiales</a></li>
-                <li><a href="combos"><i class="fa fa-circle-o"></i>Combos</a></li>
+                <li><a href="combo"><i class="fa fa-circle-o"></i>Combos</a></li>
                 <li><a href="inventario"><i class="fa fa-circle-o"></i>Inventario</a></li>
               </ul>
             </li>
             
             <li class="treeview">
-              <a href="#">
+              <a href="pedido">
                 <i class="fa fa-truck"></i>
                 <span>Pedidos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="pedido"><i class="fa fa-circle-o"></i>Pedidos</a></li>
-              </ul>
             </li>
 
              <li class="treeview">
-              <a href="#">
+              <a href="cliente">
                 <i class="fa fa-users"></i>
                 <span>Clientes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="cliente"><i class="fa fa-circle-o"></i>Clientes</a></li>
-              </ul>
+             
             </li>
 
             <li class="treeview">

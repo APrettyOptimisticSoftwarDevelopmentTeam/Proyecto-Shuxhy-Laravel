@@ -25,6 +25,8 @@ Route::resource('almacen/pedido','PedidoController');
 
 Route::resource('almacen/material','MaterialController');
 
+Route::resource('almacen/combo','ComboController');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

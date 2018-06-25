@@ -9,7 +9,7 @@ use Shuxhy\Combo;
 use Shuxhy\DetalleCombo;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
-use Shuxhy\Http\Requests\ProductoFormRequest;
+use Shuxhy\Http\Requests\ComboFormRequest;
 use DB;
 
 class ComboController extends Controller
@@ -92,4 +92,4 @@ class ComboController extends Controller
     }
 }
 
-}
+
