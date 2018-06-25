@@ -24,8 +24,10 @@ class ClienteFormRequest extends Request
     public function rules()
     {
         return [
-            'Nombre'=>'max:50',
-            'Descripcion'=>'max:256',
+            'Nombre'=>'required|max:15',
+            'Telefono'=>'required|numeric',
+            'Direccion'=>'max:10',
+            'Comentario'=>'max:10',
             
         ];
     }
