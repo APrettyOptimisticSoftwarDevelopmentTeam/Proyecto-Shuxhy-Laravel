@@ -33,6 +33,10 @@ Route::get('/index', function () {
 	return view ('index');
 });
 
+Route::get('/menu', function () {
+	return view ('menu');
+});
+
 
 
 
