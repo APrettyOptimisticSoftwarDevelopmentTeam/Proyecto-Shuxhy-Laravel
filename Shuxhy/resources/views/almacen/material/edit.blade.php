@@ -44,7 +44,7 @@
                         
             <div class="form-group">
                   <label for="Costo">Costo</label>
-                  <input type="text" name="Precio" class="form-control" value="{{$material->Costo}}" placeholder="Costo...">
+                  <input type="text" name="Costo" class="form-control" value="{{$material->Costo}}" placeholder="Costo...">
             </div>
 
                   </div>
@@ -65,7 +65,7 @@
                         
             <div class="form-group">
                   <label for="PesoBase">Peso</label>
-                  <input type="text" name="Peso" class="form-control" value="{{$material->PesoBase}}" placeholder="Peso...">
+                  <input type="text" name="PesoBase" class="form-control" value="{{$material->PesoBase}}" placeholder="Peso...">
             </div>  
 
                   </div>
