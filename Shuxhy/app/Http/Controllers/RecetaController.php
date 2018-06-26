@@ -72,4 +72,4 @@ class RecetaController extends Controller
     }
 
 }
-}
+

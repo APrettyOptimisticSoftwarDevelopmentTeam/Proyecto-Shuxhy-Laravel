@@ -24,7 +24,10 @@ class RecetaFormRequest extends Request
     public function rules()
     {
         return [
-            //
+            'NombreReceta'=>'required|max:25',
+            'Descripcion'=>'max:150',
+            'Equpos'=>'max:100',
+            'TiempoPreparacion'=>'max:50',
         ];
     }
 }
