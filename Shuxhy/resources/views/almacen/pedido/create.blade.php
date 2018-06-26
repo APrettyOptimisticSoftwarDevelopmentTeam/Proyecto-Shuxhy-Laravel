@@ -15,7 +15,7 @@
             </div>
       </div>
 
-			{!!Form::open(array('url'=>'almacen/pedido','method'=>'POST','autocomplete'=>'off', 'files'=>'true'))!!}
+			{!!Form::open(array('url'=>'almacen/pedido','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
 
             <div class="row"> 

@@ -28,7 +28,7 @@
 					<td>{{ $ped->FechaRealizado}}</td>
 					<td>{{ $ped->FechaEntrega}}</td>
 					<td>{{ $ped->Descripcion}}</td>
-					<td>{{ $ped->total}}</td>
+					<td>{{ $ped->Total}}</td>
 					<td>
 						<a href="{{URL::action('PedidoController@show',$ped->IdPedido)}}"><button class="btn btn-info">Detalles</button></a>
                          <a href="" data-target="#modal-delete-{{$ped->IdPedido}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>

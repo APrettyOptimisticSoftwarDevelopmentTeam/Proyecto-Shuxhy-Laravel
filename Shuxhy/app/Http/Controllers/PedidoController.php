@@ -31,7 +31,7 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
+            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as Total'))
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'c.Nombre')
@@ -117,7 +117,7 @@ class PedidoController extends Controller
     	$pedido=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detellepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
+            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as Total'))
             ->where('p.IdPedido', '=', $id)
             ->first();
 
