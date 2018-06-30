@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
  // lo primero es el enlace que se usara para acceder que esta en view lo segundo es el controlador que usara esta ruta hay que hace uno para cada ruta
@@ -28,6 +28,8 @@ Route::resource('almacen/material','MaterialController');
 Route::resource('almacen/combo','ComboController');
 
 Route::resource('almacen/receta','RecetaController');
+
+Route::resource('autenticacion/usuario','UsuarioController');
 
 Route::auth();
 

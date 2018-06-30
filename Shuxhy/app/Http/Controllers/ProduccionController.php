@@ -8,5 +8,8 @@ use Shuxhy\Http\Requests;
 
 class ProduccionController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }

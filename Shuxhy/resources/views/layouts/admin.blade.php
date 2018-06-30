@@ -57,7 +57,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
                             </ul>
                         </li>
             </ul>
@@ -149,18 +149,15 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               </li>
-                       
-            <li class="treeview">
-              <a href="{{ url('almacen/usuario')}}">
-                <i class="fa fa-user"></i> <span>Usuarios</span>
-                <i class="fa fa-angle-left pull-right"></i>
+             
+              <li class="treeview">
+              <a href="{{ url('autenticacion/usuario')}}">
+                <i class="fa fa-user"></i>
+                <span>Usuarios</span>
+                 <i class="fa fa-angle-left pull-right"></i>
               </a>
-              <ul class="treeview-menu">
-                <li><a href="{{ url('/register') }}"><i class="fa fa-circle-o"></i>Registrar</a></li>
-                </li>
-                
-              </ul>
-            </li>
+              </li>          
+            
 
 
             <li class="treeview">
