@@ -19,7 +19,7 @@ class Pedido extends Model
     	'DireccionEntrega',
         'FechaRealizado',
     	'FechaEntrega',
-    	'Descripcion',
+    	'Comentario',
         'Condicion'
 
     ];

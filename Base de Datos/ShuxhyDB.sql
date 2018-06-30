@@ -35,20 +35,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ShuxhyDB`.`Unidad`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Unidad` (
-  `IdUnidad` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NOT NULL,
-  `Unidad` VARCHAR(20) NOT NULL,
-  `Cantidad` INT NOT NULL DEFAULT 0,
-  `Peso` FLOAT NULL DEFAULT NULL,
-  PRIMARY KEY (`IdUnidad`),
-  UNIQUE INDEX `Unidad_UNIQUE` (`Unidad` ASC))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `ShuxhyDB`.`Producto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Producto` (
@@ -93,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleCombo` (
   `IdDetalleCombo` INT NOT NULL AUTO_INCREMENT,
   `IdCombo` INT NOT NULL,
   `Nombre` VARCHAR(10) NOT NULL,
-  `Descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `Cantidad` INT NULL,
   `IdProducto` INT NOT NULL,
   `Subtotal` FLOAT NOT NULL,
   PRIMARY KEY (`IdDetalleCombo`),
@@ -122,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Pedido` (
   `DireccionEntrega` VARCHAR(45) NULL DEFAULT NULL,
   `FechaRealizado` DATETIME NOT NULL,
   `FechaEntrega` DATETIME NOT NULL,
-  `Descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `Comentario` VARCHAR(45) NULL DEFAULT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdPedido`),
   INDEX `fk_IdCliente_Pedido_idx` (`IdCliente` ASC),
@@ -197,8 +183,13 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Receta` (
   `IdReceta` INT NOT NULL,
   `NombreReceta` VARCHAR(45) NULL,
   `Descripcion` VARCHAR(45) NULL,
-  `Equipos` VARCHAR(45) NULL,
+  `Equipo` VARCHAR(45) NULL,
+  `SubTotal` FLOAT NULL,
+  `CostoIndirecto` FLOAT NULL,
+  `CostoManoDeObra` FLOAT NULL,
+  `CostoDeReposicion` FLOAT NULL,
   `TiempoPreparacion` VARCHAR(45) NULL,
+  `Porcion` VARCHAR(45) NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdReceta`)
   )
@@ -236,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Material` (
   `Nombre` VARCHAR(45) NOT NULL,
   `Descripcion` VARCHAR(250) NULL,
   `Unidad`  VARCHAR(45) NULL,
-  `PesoBase` FLOAT NULL,
+  `Peso` FLOAT NULL,
   `Costo` FLOAT NOT NULL,
   `Imagen` VARCHAR(50) NULL DEFAULT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
@@ -247,33 +238,27 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ShuxhyDB`.`Almacen`
+-- Table `ShuxhyDB`.`Invetario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Almacen` (
-  `IdAlmacen` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Inventario` (
+  `IdInventario` INT NOT NULL AUTO_INCREMENT,
   `IdProducto` INT NULL DEFAULT NULL,
   `IdMaterial` INT NULL,
   `Cantidad` FLOAT NOT NULL,
-  `IdUnidad` INT NOT NULL,
+  `Unidad` VARCHAR (20) NULL,
   `PesoPorUnidad` FLOAT NOT NULL DEFAULT 0,
   `PesoTotal` FLOAT NULL,
-  PRIMARY KEY (`IdAlmacen`),
+  PRIMARY KEY (`IdInventario`),
   INDEX `fk_producto_idx` (`IdProducto` ASC),
-  INDEX `fk_material_almacen_idx` (`IdMaterial` ASC),
-  INDEX `fk_unidad_almacen_idx` (`IdUnidad` ASC),
+  INDEX `fk_material_inventario_idx` (`IdMaterial` ASC),
   CONSTRAINT `fk_producto`
     FOREIGN KEY (`IdProducto`)
     REFERENCES `ShuxhyDB`.`Producto` (`IdProducto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_material_almacen`
+  CONSTRAINT `fk_material_inventario`
     FOREIGN KEY (`IdMaterial`)
     REFERENCES `ShuxhyDB`.`Material` (`IdMaterial`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_unidad_almacen`
-    FOREIGN KEY (`IdUnidad`)
-    REFERENCES `ShuxhyDB`.`Unidad` (`IdUnidad`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -287,8 +272,8 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleReceta` (
   `IdReceta` INT NULL,
   `IdMaterial` INT NOT NULL,
   `Cantidad` FLOAT NOT NULL,
-  `Unidad` VARCHAR(20) NOT NULL,
-  `Costo` FLOAT NOT NULL,
+  `Unidad` VARCHAR(20) NULL,
+  `CostoPorMaterial` FLOAT NOT NULL,
   PRIMARY KEY (`IdDetalleReceta`),
   INDEX `fk_material_detallereceta_idx` (`IdMaterial` ASC),
   INDEX `fk_receta_detallereceta_idx` (`IdReceta` ASC),

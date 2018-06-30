@@ -61,12 +61,25 @@
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad">Unidad</label>
-                  <input type="text" name="Unidad" class="form-control" placeholder="Unidad...">
-            </div>  
+                  <label>Unidad</label>
+                  <select name="Unidad" class="form-control selectpicker" id="Unidad" data-live-search="true">
+                        <option value="Unidad">Unidad</option>
+                        <option value="Docena">Docena</option>
+                        <option value="Botella">Botella</option>
+                        <option value="Libra">Libra</option>
+                        <option value="Onza">Onza</option>
+                        <option value="Costal">Costal</option>
+                        <option value="Taza">Taza</option>
+                        <option value="Cucharada">Cucharada</option>
+                        <option value="Cucharadita">Cucharadita</option>
+                        <option value="Tarro">Tarro</option>
+                        <option value="Lata">Lata</option>
+                  </select>
+            </div>
+
 
                   </div>
 
@@ -93,6 +106,7 @@
                         <option value="Cuadrado">Cuadrado</option>
                         <option value="Triangulo">Triangulo</option>
                         <option value="Estrella">Estrella</option>
+                        <option value="Letra">Letra</option>
                   </select>
             </div>
 
@@ -111,6 +125,7 @@
                         <option>Dulce de leche</option>
                         <option>Caramelo</option>
                         <option>Fresa</option>
+                        <option>Hershey's</option>
                   </select>
             </div>
 
@@ -129,6 +144,7 @@
                         <option>Limon</option>
                         <option>Caramelo</option>
                         <option>Fresa</option>
+                        <option>Chinola</option>
                   </select>
 </div>
 
@@ -141,10 +157,12 @@
                    <label>Topping</label>
                   <select name="Topping" class="form-control selectpicker" id="Topping" data-live-search="true">
                         <option>No aplica</option>
-                        <option>M6M</option>
+                        <option>M&M</option>
                         <option>Oreo</option>
                         <option>Fresas</option>
                         <option>Hershey's</option>
+                        <option>Nutella</option>
+                        <option>Chocolate</option>
                   </select>
             </div>
 

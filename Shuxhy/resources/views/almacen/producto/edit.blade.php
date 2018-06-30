@@ -65,9 +65,22 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad">Unidad</label>
-                  <input type="text" name="Unidad" class="form-control" value="{{$producto->Unidad}}" placeholder="Unidad...">
-            </div>  
+                  <label>Unidad</label>
+                  <select name="Unidad" class="form-control selectpicker" id="Unidad" data-live-search="true">
+                        <option value="Unidad">Unidad</option>
+                        <option value="Docena">Docena</option>
+                        <option value="Botella">Botella</option>
+                        <option value="Libra">Libra</option>
+                        <option value="Onza">Onza</option>
+                        <option value="Costal">Costal</option>
+                        <option value="Taza">Taza</option>
+                        <option value="Cucharada">Cucharada</option>
+                        <option value="Cucharadita">Cucharadita</option>
+                        <option value="Tarro">Tarro</option>
+                        <option value="Lata">Lata</option>
+                  </select>
+            </div>
+
 
                   </div>
 
@@ -85,15 +98,17 @@
 
 
 
-                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
                   <label>Forma</label>
                   <select name="Forma" class="form-control selectpicker" id="Forma" data-live-search="true">
-                        <option>Circulo</option>
-                        <option>Cuadrado</option>
-                        <option>Triangulo</option>
-                        <option>Estrella</option>
+                        <option value="No aplica">No aplica</option>
+                        <option value="Circulo">Circulo</option>
+                        <option value="Cuadrado">Cuadrado</option>
+                        <option value="Triangulo">Triangulo</option>
+                        <option value="Estrella">Estrella</option>
+                        <option value="Letra">Letra</option>
                   </select>
             </div>
 
@@ -107,10 +122,12 @@
             <div class="form-group">
                   <label>Relleno</label>
                   <select name="Relleno" class="form-control selectpicker" id="Relleno" data-live-search="true">
+                        <option>No aplica</option>
                         <option>Chocolate</option>
                         <option>Dulce de leche</option>
                         <option>Caramelo</option>
                         <option>Fresa</option>
+                        <option>Hershey's</option>
                   </select>
             </div>
 
@@ -124,13 +141,14 @@
             <div class="form-group">
                    <label>Sabor</label>
                   <select name="Sabor" class="form-control selectpicker" id="Sabor" data-live-search="true">
+                        <option>No aplica</option>
                         <option>Chocolate</option>
                         <option>Limon</option>
                         <option>Caramelo</option>
                         <option>Fresa</option>
+                        <option>Chinola</option>
                   </select>
-            </div>
-
+</div>
 
                   </div>
 
@@ -138,18 +156,20 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label>Topping</label>
+                   <label>Topping</label>
                   <select name="Topping" class="form-control selectpicker" id="Topping" data-live-search="true">
-                        <option>M6M</option>
+                        <option>No aplica</option>
+                        <option>M&M</option>
                         <option>Oreo</option>
                         <option>Fresas</option>
                         <option>Hershey's</option>
+                        <option>Nutella</option>
+                        <option>Chocolate</option>
                   </select>
             </div>
 
 
                   </div>
-
 
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">

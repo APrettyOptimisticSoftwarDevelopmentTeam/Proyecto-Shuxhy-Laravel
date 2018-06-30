@@ -17,7 +17,7 @@
 					<th>Direccion de entrega</th>
 					<th>Fecha realizado</th>
 					<th>Fecha de entregado</th>
-					<th>Descripcion</th>
+					<th>Comentario</th>
 					<th>Total</th>
 					<th>Opciones</th>
 				</thead>
@@ -27,7 +27,7 @@
 					<td>{{ $ped->EntregaPedido}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $ped->FechaRealizado}}</td>
 					<td>{{ $ped->FechaEntrega}}</td>
-					<td>{{ $ped->Descripcion}}</td>
+					<td>{{ $ped->Comentario}}</td>
 					<td>{{ $ped->Total}}</td>
 					<td>
 						<a href="{{URL::action('PedidoController@show',$ped->IdPedido)}}"><button class="btn btn-info">Detalles</button></a>

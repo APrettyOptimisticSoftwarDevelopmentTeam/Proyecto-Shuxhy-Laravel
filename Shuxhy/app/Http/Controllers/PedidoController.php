@@ -70,7 +70,7 @@ class PedidoController extends Controller
         $mytime = Carbon::now('America/Lima');
         $pedido->FechaRealizado=$mytime->toDateTimeString();
         $pedido->FechaEntrega=$mytime->toDateTimeString();
-        $pedido->Descripcion=$request->get('Descripcion');
+        $pedido->Comentario=$request->get('Coementario');
         $pedido->condicion='1';
         $pedido->save();
 

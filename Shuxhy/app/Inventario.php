@@ -4,11 +4,11 @@ namespace Shuxhy;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Almacen extends Model
+class Inventario extends Model
 {
-     protected $table='almacen';
+    protected $table='inventario';
 
-    protected $primaryKey='IdAlmacen';
+    protected $primaryKey='IdInventario';
 
     public $timestamps=false;
 

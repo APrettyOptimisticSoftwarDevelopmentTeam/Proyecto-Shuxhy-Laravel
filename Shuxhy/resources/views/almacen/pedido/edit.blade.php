@@ -44,8 +44,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
                        <div class="form-group">
-                  <label for="Descripcion">Descripción</label>
-                  <input type="text" name="Descripcion" class="form-control" value="{{$producto->Descripcion}}" placeholder="Descripción...">
+                  <label for="Comentario">Comentario</label>
+                  <input type="text" name="Comentario" class="form-control" value="{{$producto->Comentario}}" placeholder="Comentario...">
             </div> 
                   </div>
 
@@ -99,71 +99,6 @@
 
 
                   </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label>Relleno</label>
-                  <select name="Relleno" class="form-control">
-                        <option>Chocolate</option>
-                        <option>Dulce de leche</option>
-                        <option>Caramelo</option>
-                        <option>Fresa</option>
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Sabor</label>
-                  <select name="Sabor" class="form-control">
-                        <option>Chocolate</option>
-                        <option>Limon</option>
-                        <option>Caramelo</option>
-                        <option>Fresa</option>
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label>Topping</label>
-                  <select name="Topping" class="form-control">
-                        <option>M6M</option>
-                        <option>Oreo</option>
-                        <option>Fresas</option>
-                        <option>Hershey's</option>
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="Imagen">Imagen</label>
-                  <input type="file" name="Imagen" class="form-control">
-                  @if (($producto->Imagen)!="")
-                  <img src="{{asset('imagenes/productos/'.$producto->Imagen)}}" height="250px" width="400px">
-                  @endif
-            </div>
-
-                  </div>
-
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         

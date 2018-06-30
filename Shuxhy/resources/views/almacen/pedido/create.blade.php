@@ -43,8 +43,6 @@
                   <select name="Forma" class="form-control">
                         <option>En proceso</option>
                         <option>Solicitado</option>
-                        <option>Triangulo</option>
-                        <option>Estrella</option>
                   </select>
             </div>
                   </div>
@@ -54,8 +52,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
                        <div class="form-group">
-                  <label for="Descripcion">Descripción</label>
-                  <input type="text" name="Descripcion" class="form-control" placeholder="Descripción...">
+                  <label for="Comentario">Comentario</label>
+                  <input type="text" name="Comentario" class="form-control" placeholder="Comentario...">
             </div> 
                   </div>
 

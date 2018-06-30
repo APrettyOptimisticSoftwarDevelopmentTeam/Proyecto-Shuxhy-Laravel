@@ -27,9 +27,7 @@ class ProductoFormRequest extends Request
             'Nombre'=>'required|max:15',
             'Precio'=>'required|numeric',
             'CostoProduccion'=>'required|numeric',
-            'Peso'=>'required|numeric',
-            'Descripcion'=>'max:256',
-            'Unidad'=>'required|numeric'
+            'Descripcion'=>'max:256'
         ];
     }
 }

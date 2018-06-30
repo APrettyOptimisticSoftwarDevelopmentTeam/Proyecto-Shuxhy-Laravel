@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
 
-class AlmacenController extends Controller
+class InventarioController extends Controller
 {
     //
 }

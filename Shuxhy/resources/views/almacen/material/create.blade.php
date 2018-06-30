@@ -53,8 +53,8 @@
                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="PesoBase">Peso base</label>
-                  <input type="text" name="PesoBase" class="form-control"  placeholder="Peso base...">
+                  <label for="Peso">Peso</label>
+                  <input type="text" name="Peso" class="form-control"  placeholder="Peso...">
             </div>
      
                   </div>
@@ -64,9 +64,22 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Unidad">Unidad</label>
-                  <input type="text" name="Unidad" class="form-control" placeholder="Unidad...">
-            </div>  
+                  <label>Unidad</label>
+                  <select name="Unidad" class="form-control selectpicker" id="Unidad" data-live-search="true">
+                        <option value="Unidad">Unidad</option>
+                        <option value="Docena">Docena</option>
+                        <option value="Botella">Botella</option>
+                        <option value="Libra">Libra</option>
+                        <option value="Onza">Onza</option>
+                        <option value="Costal">Costal</option>
+                        <option value="Taza">Taza</option>
+                        <option value="Cucharada">Cucharada</option>
+                        <option value="Cucharadita">Cucharadita</option>
+                        <option value="Tarro">Tarro</option>
+                        <option value="Lata">Lata</option>
+                  </select>
+            </div>
+
 
                   </div>
 
