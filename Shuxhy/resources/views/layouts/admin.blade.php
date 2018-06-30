@@ -105,8 +105,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="receta"><i class="fa fa-circle-o"></i>Recetas</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i>Nueva produccion</a></li>
+                <li><a href="{{ url('almacen/receta') }}"><i class="fa fa-circle-o"></i>Recetas</a></li>
+                <li><a href="{{ url('almacen/produccion')}}"><i class="fa fa-circle-o"></i>Nueva produccion</a></li>
                 </ul>
             </li>
             
@@ -118,15 +118,15 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="producto"><i class="fa fa-circle-o"></i>Productos</a></li>
-                <li><a href="material"><i class="fa fa-circle-o"></i>Materiales</a></li>
-                <li><a href="combo"><i class="fa fa-circle-o"></i>Combos</a></li>
-                <li><a href="inventario"><i class="fa fa-circle-o"></i>Inventario</a></li>
+                <li><a href="{{ url('almacen/producto')}}"><i class="fa fa-circle-o"></i>Productos</a></li>
+                <li><a href="{{ url('almacen/material')}}"><i class="fa fa-circle-o"></i>Materiales</a></li>
+                <li><a href="{{ url('almacen/combo')}}"><i class="fa fa-circle-o"></i>Combos</a></li>
+                <li><a href="{{ url('almacen/inventario')}}"><i class="fa fa-circle-o"></i>Inventario</a></li>
               </ul>
             </li>
             
             <li class="treeview">
-              <a href="pedido">
+              <a href="{{ url('almacen/pedido')}}">
                 <i class="fa fa-truck"></i>
                 <span>Pedidos</span>
                  <i class="fa fa-angle-left pull-right"></i>
@@ -134,7 +134,7 @@
             </li>
 
              <li class="treeview">
-              <a href="cliente">
+              <a href="{{ url('almacen/cliente')}}">
                 <i class="fa fa-users"></i>
                 <span>Clientes</span>
                  <i class="fa fa-angle-left pull-right"></i>
@@ -143,7 +143,7 @@
             </li>
 
             <li class="treeview">
-              <a href="#">
+              <a href="{{ url('almacen/facturacion')}}">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Facturación</span>
                  <i class="fa fa-angle-left pull-right"></i>
@@ -151,7 +151,7 @@
               </li>
                        
             <li class="treeview">
-              <a href="#">
+              <a href="{{ url('almacen/usuario')}}">
                 <i class="fa fa-user"></i> <span>Usuarios</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
