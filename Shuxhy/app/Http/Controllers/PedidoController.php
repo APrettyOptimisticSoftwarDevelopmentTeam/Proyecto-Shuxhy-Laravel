@@ -19,7 +19,7 @@ use Illuminate\Support\Collection;
 
 class PedidoController extends Controller
 {
-    public function __construct()
+   public function __construct()
     {
 
     }
@@ -31,10 +31,10 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as Total'))
+            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as Total'))
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->orderBy('p.IdPedido', 'desc')
-            ->groupBy('p.IdPedido', 'c.Nombre')
+            ->groupBy('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
             ->paginate(7);
             return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]
             );
@@ -47,7 +47,7 @@ class PedidoController extends Controller
     {
     	$clientes=DB::table('cliente')->get();
     	$productos=DB::table('producto as prod')
-    	->select(DB::raw('CONCAT(pro.Relleno, " ", prod.Nombre)AS producto'),'prod.IdProducto')
+    	->select(DB::raw('CONCAT(prod.Relleno, " ", prod.Nombre)AS producto'),'prod.IdProducto')
     	->where('prod.Condicion','=','1')
     	->get();
 
