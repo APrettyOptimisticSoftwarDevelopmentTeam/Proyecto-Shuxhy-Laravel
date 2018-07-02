@@ -45,8 +45,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Equipos">Equipos utilizados</label>
-                  <input type="text" name="Equipos" class="form-control" value="{{$receta->Equipos}}" placeholder="Equipos utilizados...">
+                  <label for="Equipo">Equipos utilizados</label>
+                  <input type="text" name="Equipo" class="form-control" value="{{$receta->Equipo}}" placeholder="Equipos utilizados...">
             </div>
 
                   </div>

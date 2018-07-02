@@ -38,7 +38,7 @@ class RecetaController extends Controller
         $receta=new Receta;
         $receta->NombreReceta=$request->get('NombreReceta');
         $receta->Descripcion=$request->get('Descripcion');
-        $receta->Equipos=$request->get('Equipos');
+        $receta->Equipo=$request->get('Equipo');
         $receta->TiempoPreparacion=$request->get('TiempoPreparacion');
         $receta->condicion='1';
         $receta->save();
@@ -58,7 +58,7 @@ class RecetaController extends Controller
         $receta=Receta::findOrFail($id);
         $receta->NombreReceta=$request->get('NombreReceta');
         $receta->Descripcion=$request->get('Descripcion');
-        $receta->Equipos=$request->get('Equipos');
+        $receta->Equipo=$request->get('Equipo');
         $receta->TiempoPreparacion=$request->get('TiempoPreparacion');
         $receta->update();
         return Redirect::to('almacen/receta');

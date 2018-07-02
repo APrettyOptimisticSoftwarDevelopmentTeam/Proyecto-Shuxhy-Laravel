@@ -23,7 +23,7 @@
 					<td>{{ $rece->NombreReceta}}</td>		<!-- que se mostraran estos deben  -->
 							<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $rece->Descripcion}}</td>
-					<td>{{ $rece->Equipos}}</td>
+					<td>{{ $rece->Equipo}}</td>
 					<td>{{ $rece->TiempoPreparacion}}</td>
 					
 					<td>

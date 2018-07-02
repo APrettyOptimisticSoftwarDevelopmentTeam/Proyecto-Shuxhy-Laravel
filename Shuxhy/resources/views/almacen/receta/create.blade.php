@@ -43,8 +43,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Equipos">Equipos usados</label>
-                  <input type="text" name="Equipos" class="form-control"  placeholder="Equipos utilizados...">
+                  <label for="Equipo">Equipos usados</label>
+                  <input type="text" name="Equipo" class="form-control"  placeholder="Equipos utilizados...">
             </div>
 
                   </div>
