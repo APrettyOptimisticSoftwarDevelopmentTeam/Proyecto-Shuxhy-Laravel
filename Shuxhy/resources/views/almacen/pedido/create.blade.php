@@ -20,19 +20,7 @@
 
             <div class="row"> 
 
-                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="Nombre">Cliente</label>
-                  <select name="IdCliente" id="IdCliente" class="form-control">
-                        @foreach($clientes as $clientes)
-                        <option value="{{$clientes->IdCliente}}">{{$cliente->Nombre}}</option>
-                        @enforeach
-  
-                  </select>
                   
-            </div>
-                  </div>
 
 
 
@@ -40,7 +28,7 @@
                         
             <div class="form-group">
                    <label>Entrega del pedido</label>
-                  <select name="Forma" class="form-control">
+                  <select name="EntregaPedido" class="form-control">
                         <option>En proceso</option>
                         <option>Solicitado</option>
                   </select>
@@ -83,8 +71,8 @@
                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FechaEntregado">Fecha entregado</label>
-                  <input type="text" name="FechaEntregado" class="form-control" placeholder="Fecha de entrega...">
+                  <label for="FechaEntrega">Fecha entregado</label>
+                  <input type="text" name="FechaEntrega" class="form-control" placeholder="Fecha de entrega...">
             </div>  
 
                   </div>
@@ -99,15 +87,7 @@
                   <div class="panel panel-primary">
                         <div class="panel-body">
                               
-                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
-                                    <div class="form-group">
-                                          <label>Cliente</label>
-                                          <select name="IdCliente" class="form-control" id="IdCliente">
-                                                @foreach($clientes as $cliente)
-                                                <option value="{{$cliente->IdCliente}}">{{$cliente->Cliente}}</option>
-                                          </select>
-                                    </div>
-                              </div>
+                              
                         </div>
 
                   </div>

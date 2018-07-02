@@ -12,7 +12,6 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Cliente</th>
 					<th>Entrega pedido</th>
 					<th>Direccion de entrega</th>
 					<th>Fecha realizado</th>
@@ -22,8 +21,7 @@
 					<th>Opciones</th>
 				</thead>
                @foreach ($pedidos as $ped)
-				<tr>  <!-- Aqui se establecen los datos  -->
-					<td>{{ $ped->Nombre}}</td>		<!-- que se mostraran estos deben  -->
+				<tr>  <!-- Aqui se establecen los datos  -->	<!-- que se mostraran estos deben  -->
 					<td>{{ $ped->EntregaPedido}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $ped->FechaRealizado}}</td>
 					<td>{{ $ped->FechaEntrega}}</td>
