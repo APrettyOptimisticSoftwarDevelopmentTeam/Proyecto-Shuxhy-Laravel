@@ -31,23 +31,22 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as Total'))
-            ->where('c.Nombre','LIKE','%'.$query.'%')
+            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
+            ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
             ->paginate(7);
-            return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]
-            );
+            return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
 
         }
     }
 
 
-     public function create()
+     public function create() // Aqui debe estar el posible error de la vista create con cliente
     {
-    	$clientes=DB::table('cliente')->get();
+    	$clientes=DB::table('cliente')->where('Condicion','=','1')->get();
     	$productos=DB::table('producto as prod')
-    	->select(DB::raw('CONCAT(prod.Relleno, " ", prod.Nombre)AS producto'),'prod.IdProducto')
+    	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion) AS producto'),'prod.IdProducto')
     	->where('prod.Condicion','=','1')
     	->get();
 
@@ -60,30 +59,28 @@ class PedidoController extends Controller
     	try
     	{
 
-    		DB::beginTransaction();
-
+    	DB::beginTransaction();
     	$pedido=new Pedido;
-        $pedido->nombre=$request->get('Nombre');
         $pedido->IdCliente=$request->get('IdCliente');
         $pedido->EntregaPedido=$request->get('EntregaPedido');
         $pedido->DireccionEntrega=$request->get('DireccionEntrega');
         $mytime = Carbon::now('America/Lima');
         $pedido->FechaRealizado=$mytime->toDateTimeString();
         $pedido->FechaEntrega=$mytime->toDateTimeString();
-        $pedido->Comentario=$request->get('Coementario');
-        $pedido->condicion='1';
+        $pedido->Comentario=$request->get('Comentario');
+        $pedido->Condicion='1';
         $pedido->save();
 
-        //$IdProducto=$request->get('DetallePedido')
-        //$Cantidad=$request->get('Cantidad')
-        //$PrecioPorUnidad=$request->get('PrecioPorUnidad')
+        $IdProducto = $request->get('IdProducto');
+        $Cantidad = $request->get('Cantidad');
+        $PrecioPorUnidad = $request->get('PrecioPorUnidad');
 
         $cont=0;
 
         while ($cont < (count($IdProducto))) 
         {
-        	$DetallePedido=new DetallePedido();
-        	$DetallePedido->IdPedido=$IdPedido[$cont];
+        	$DetallePedido = new DetallePedido();
+        	$DetallePedido->IdPedido=$pedido->IdPedido;
         	$DetallePedido->IdProducto=$IdProducto[$cont];
         	$DetallePedido->Cantidad=$Cantidad[$cont];
         	$DetallePedido->PrecioPorUnidad=$PrecioPorUnidad[$cont];
@@ -117,13 +114,13 @@ class PedidoController extends Controller
     	$pedido=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
             ->join('detellepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as Total'))
+            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.IdPedido', '=', $id)
             ->first();
 
             $DetallePedido=DB::table('DetallePedido as dp')
-            ->join('producto as pr', 'pr.IdProducto','=','dp.IdProducto')
-            ->select('pr.Nombre as producto', 'dp.Cantidad', 'dp.PrecioPorUnidad')
+            ->join('producto as prod', 'dp.IdProducto','=','prod.IdProducto')
+            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioPorUnidad')
             ->where('dp.IdDetallePedido', '=', $id)
             ->get();
 
@@ -135,7 +132,7 @@ class PedidoController extends Controller
     public function destroy($id)  // funcion para borrar
     {
         $pedido=Pedido::findOrFail($id);
-        $pedido->condicion='0';
+        $pedido->Condicion='0';
         $pedido->update();
         return Redirect::to('almacen/pedido');
     }
