@@ -20,6 +20,19 @@
 
             <div class="row">
 
+
+                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                        
+            <div class="form-group">
+                   <label for="Cliente">Cliente</label>
+                  <select name="pidcliente" class="form-control selectpicker" id="pidcliente" data-live-search="true">
+                        @foreach ($clientes as $cliente)
+                        <option value="{{$cliente->IdCliente}}">{{$cliente->cliente}}</option>
+                        @endforeach
+                  </select>
+            </div>
+       </div>        
+
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
@@ -82,7 +95,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
+                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
                                     <div class="form-group">
                                           <label>Producto</label>
@@ -107,8 +120,8 @@
                               <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 
                                     <div class="form-group">
-                                          <label for="PrecioPorUnidad">Precio de unidad</label>
-                                          <input type="number" name="pprecioporunidad" id="ppprecioporunidad" class="form-control" placeholder="Precio de unidad">
+                                          <label for="PrecioPorUnidad">Precio por unidad</label>
+                                          <input type="number" name="pprecioporunidad" id="ppprecioporunidad" class="form-control" placeholder="Precio por unidad">
                                           
                                     </div>
 
@@ -131,7 +144,7 @@
                                                 <th>Opciones</th>
                                                 <th>Producto</th>
                                                 <th>Cantidad</th>
-                                                <th>Precio de unidad</th>
+                                                <th>Precio por unidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -141,7 +154,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">s/.00 </h4></th>
+                                                <th><h4 id="total">S/ . 00</h4></th>
                                                 
                                           </tfoot>
 
@@ -163,7 +176,7 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12" id="guardar">
                         
             <div class="form-group">
-                  <input  name="_token" value="{{csrf_token()}}"  type="hidden"></input>
+                  <input  name="_token" value="{{ csrf_token() }}"  type="hidden"></input>
                   <button class="btn btn-primary" type="submit">Guardar</button>
                   <button class="btn btn-danger"><a href="{{url('almacen/pedido')}}">Cancelar</a></button>
             </div>

@@ -32,6 +32,7 @@ class PedidoController extends Controller
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
             ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre',DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
+           // ->where ('p.Condicion','=','1') Quiero ver si esto no me da error mas adelante
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
             ->paginate(7);
@@ -41,9 +42,13 @@ class PedidoController extends Controller
     }
 
 
-     public function create() // Aqui debe estar el posible error de la vista create con cliente
+     public function create() // Lo que me falla debe de ser el script
     {
-    	$clientes=DB::table('cliente')->where('Condicion','=','1')->get();
+    	$clientes=DB::table('cliente as client' )
+        ->select(DB::raw('CONCAT(client.Nombre, " ", client.Apellido) AS cliente'),'client.IdCliente')
+        ->where('client.Condicion','=','1')
+        ->get();
+
     	$productos=DB::table('producto as prod')
     	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion) AS producto'),'prod.IdProducto')
     	->where('prod.Condicion','=','1')
