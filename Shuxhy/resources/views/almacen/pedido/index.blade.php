@@ -21,7 +21,7 @@
 					<th>Total</th>
 					<th>Opciones</th>
 				</thead>
-               @foreach ($pedidos as $ped)
+               @foreach($pedidos as $ped)
 				<tr>  <!-- Aqui se establecen los datos  -->	<!-- que se mostraran estos deben  -->
 					
 					<td>{{ $ped->EntregaPedido}}</td>		<!-- de coincidir con el orden de arriba  -->

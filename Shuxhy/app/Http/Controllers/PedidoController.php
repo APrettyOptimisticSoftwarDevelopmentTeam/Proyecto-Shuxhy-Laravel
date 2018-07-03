@@ -5,15 +5,14 @@ namespace Shuxhy\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
-use Shuxhy\Pedido;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\PedidoFormRequest;
+use Shuxhy\Pedido;
 use Shuxhy\DetallePedido;
 use DB;
 
-use Carbon\Carbon;
-use Response;
+use Response; 
 use Illuminate\Support\Collection;
 
 
@@ -29,9 +28,9 @@ class PedidoController extends Controller
         {
             $query=trim($request->get('searchText'));
             $pedidos=DB::table('pedido as p')
-            ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
-            ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
-            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
+            ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
+            ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
+            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre',DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
@@ -64,9 +63,8 @@ class PedidoController extends Controller
         $pedido->IdCliente=$request->get('IdCliente');
         $pedido->EntregaPedido=$request->get('EntregaPedido');
         $pedido->DireccionEntrega=$request->get('DireccionEntrega');
-        $mytime = Carbon::now('America/Lima');
-        $pedido->FechaRealizado=$mytime->toDateTimeString();
-        $pedido->FechaEntrega=$mytime->toDateTimeString();
+        $pedido->FechaRealizado=$request->get('FechaRealizado');
+        $pedido->FechaEntrega=$request->get('FechaEntrega');
         $pedido->Comentario=$request->get('Comentario');
         $pedido->Condicion='1';
         $pedido->save();

@@ -20,8 +20,7 @@ class DetallePedido extends Model
         'Cantidad',
     	'Subtotal',
     	'PrecioPorUnidad',
-    	'Comentario',
-        'Condicion'
+    	'Comentario'
 
     ];
 
