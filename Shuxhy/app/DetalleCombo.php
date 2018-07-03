@@ -17,8 +17,10 @@ class DetalleCombo extends Model
     	'IdCombo',
         'Nombre',
     	'IdProducto',
-    	'Subtotal',
-        'Condicion'
+        'Cantidad',
+        'Precio',
+    	'Subtotal'
+        
     	
     ];
 

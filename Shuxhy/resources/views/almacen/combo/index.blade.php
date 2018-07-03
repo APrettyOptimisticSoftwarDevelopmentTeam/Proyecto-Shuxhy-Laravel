@@ -26,7 +26,7 @@
 					<td>{{ $combo->Descripcion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $combo->Subtotal}}</td>
 					<td>{{ $combo->Descuento}}</td>
-					<td>{{ $combo->Total}}</td>
+					<td>{{ $combo->total}}</td>
 					
 					<td>
 						<img src="{{asset('imagenes/combos/'.$combo->Imagen)}}" alt="{{$combo->Nombre}}" height="100px" width="100px" class="img-thubnail">

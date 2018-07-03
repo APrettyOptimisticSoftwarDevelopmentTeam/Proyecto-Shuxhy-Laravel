@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\ComboFormRequest;
 use DB;
 
+use Response; 
+use Illuminate\Support\Collection;
+
 class ComboController extends Controller
 {
      public function __construct()
@@ -23,19 +26,35 @@ class ComboController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $combos=DB::table('combo')->where('Nombre','LIKE','%'.$query.'%')
-            ->where ('Condicion','=','1')
-            ->orderBy('IdCombo','desc')
+             $combos=DB::table('combo as c')
+            ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Total','c.Descuento', 'c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->where('c.Nombre','LIKE','%'.$query.'%')
+            ->where ('c.Condicion','=','1') 
+            ->orderBy('c.IdCombo', 'desc')
+            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Condicion')
             ->paginate(7);
             return view('almacen.combo.index',["combos"=>$combos,"searchText"=>$query]);
         }
     }
     public function create()
     {
-        return view("almacen.combo.create");
+        $productos=DB::table('producto as prod')
+        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion, ", Topping: ", prod.Topping ) AS producto'),'prod.IdProducto')
+        ->where('prod.Condicion','=','1')
+        ->get();
+
+        return view('almacen.combo.create',["productos"=>$productos]);
     }
     public function store (ComboFormRequest $request)  // Funcion para crear 
     {
+
+
+
+        try
+        {
+
+        DB::beginTransaction();
         $combo=new Combo;
         $combo->Nombre=$request->get('Nombre');
         $combo->Descripcion=$request->get('Descripcion');
@@ -50,20 +69,70 @@ class ComboController extends Controller
             $combo->Imagen=$file->getClientOriginalName();
         }
 
-
         $combo->Condicion='1';
         $combo->save();
+
+        $IdProducto = $request->get('IdProducto');
+        $Cantidad = $request->get('Cantidad');
+        $Precio = $request->get('Precio');
+
+        $cont=0;
+
+        while ($cont < (count($IdProducto))) 
+        {
+            $DetalleCombo = new DetalleCombo();
+            $DetalleCombo->IdCombo=$combo->IdCombo;
+            $DetalleCombo->IdProducto=$IdProducto[$cont];
+            $DetalleCombo->Cantidad=$Cantidad[$cont];
+            $DetalleCombo->Precio=$Precio[$cont];
+            $DetalleCombo->save();
+            $cont=$cont+1;
+
+
+
+        }
+
+
+            DB::commit();
+
+        }catch(\Exception $e)
+        {
+
+            DB::rollback();
+
+        }
+
+
+        
         return Redirect::to('almacen/combo');
 
     }
     public function show($id)
     {
-        return view("almacen.combo.show",["combo"=>Combo::findOrFail($id)]);
+        $pedidos=DB::table('combo as c')
+            ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
+            ->join('producto as prod', 'dc.IdProducto','=','prod.IdProducto')
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'prod.Nombre', 'c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->where('c.IdCombo', '=', $id)
+            ->first();
+
+            $DetalleCombo=DB::table('DetalleCombo as dc')
+            ->join('producto as prod', 'dc.IdProducto','=','prod.IdProducto')
+            ->select('prod.Nombre as producto', 'dc.Subtotal', 'dc.Descuento')
+            ->where('dc.IdCombo', '=', $id)
+            ->get();
+
+        return view("almacen.pedido.show",["combo"=>$combo,"DetalleCombo"=>$DetalleCombo]
+        );
+
     }
-    public function edit($id)
+
+
+   /* public function edit($id) 
     {
         return view("almacen.combo.edit",["combo"=>Combo::findOrFail($id)]);
     }
+
     public function update(ComboFormRequest $request,$id)  // funcion para editar
     {
         $combo=Combo::findOrFail($id);
@@ -82,7 +151,7 @@ class ComboController extends Controller
 
         $combo->update();
         return Redirect::to('almacen/combo');
-    }
+    }*/
     public function destroy($id)  // funcion para borrar
     {
         $combo=Combo::findOrFail($id);

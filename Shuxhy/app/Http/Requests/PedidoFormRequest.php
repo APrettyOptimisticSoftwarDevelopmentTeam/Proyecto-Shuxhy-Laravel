@@ -24,7 +24,9 @@ class PedidoFormRequest extends Request
     public function rules()
     {
         return [
-            //
+            'FechaRealizado'=>'required|max:25',
+            'FechaEntrega'=>'required|max:25',
+            'Comentario'=>'max:256'
         ];
     }
 }

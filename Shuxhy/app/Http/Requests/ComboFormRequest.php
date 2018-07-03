@@ -24,10 +24,7 @@ class ComboFormRequest extends Request
     public function rules()
     {
         return [
-            'Nombre'=>'required|max:15',
-            'Subtotal'=>'required|numeric',
-            'Total'=>'required|numeric',
-            'Descuento'=>'required|numeric',
+            
             
 
         ];

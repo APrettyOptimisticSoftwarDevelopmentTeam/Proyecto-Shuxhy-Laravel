@@ -45,12 +45,12 @@ class PedidoController extends Controller
      public function create() // Lo que me falla debe de ser el script
     {
     	$clientes=DB::table('cliente as client' )
-        ->select(DB::raw('CONCAT(client.Nombre, " ", client.Apellido) AS cliente'),'client.IdCliente')
+        ->select(DB::raw('CONCAT(client.Nombre, " ", client.Apellido, " Tel: ", client.Telefono) AS cliente'),'client.IdCliente')
         ->where('client.Condicion','=','1')
         ->get();
 
     	$productos=DB::table('producto as prod')
-    	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion) AS producto'),'prod.IdProducto')
+    	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion, ", Topping: ", prod.Topping ) AS producto'),'prod.IdProducto')
     	->where('prod.Condicion','=','1')
     	->get();
 
