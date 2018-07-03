@@ -115,8 +115,8 @@ class PedidoController extends Controller
     {
 
     	$pedido=DB::table('pedido as p')
-            ->join('cliente as c', 'p.IdPedido','=','c.IdCliente')
-            ->join('detellepedido as dp', 'p.IdPedido','=','dp.IdDetallePedido')
+            ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
+            ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
             ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.IdPedido', '=', $id)
             ->first();
@@ -124,7 +124,7 @@ class PedidoController extends Controller
             $DetallePedido=DB::table('DetallePedido as dp')
             ->join('producto as prod', 'dp.IdProducto','=','prod.IdProducto')
             ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioPorUnidad')
-            ->where('dp.IdDetallePedido', '=', $id)
+            ->where('dp.IdPedido', '=', $id)
             ->get();
 
         return view("almacen.pedido.show",["pedido"=>$pedido,"DetallePedido"=>$DetallePedido]

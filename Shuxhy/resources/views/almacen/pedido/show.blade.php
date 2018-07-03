@@ -19,9 +19,10 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
                        <div class="form-group">
-                  <label for="Comentario">Comentario</label>
-                  <input type="text" name="Comentario" class="form-control" placeholder="Comentario...">
-            </div> 
+                   <label for="Comentario">Comentario</label>
+                   <p>{{$pedido->Comentario}}</p>
+            
+            </div>
                   </div>
 
 
@@ -30,28 +31,28 @@
                         
             <div class="form-group">
                   <label for="DireccionEntrega">Direccion de entrega</label>
-                  <input type="text" name="DireccionEntrega" class="form-control"  placeholder="Direccion de entrega...">
+                  <p>{{$pedido->DireccionEntrega}}</p>
             </div>
 
                   </div>
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
                   <label for="FechaRealizado">Fecha realizado</label>
-                  <input type="text" name="FechaRealizado" class="form-control" placeholder="Fecha Realizado...">
+                  <p>{{$pedido->FechaRealizado}}</p>
             </div>  
 
                   </div>
 
 
-                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
                   <label for="FechaEntrega">Fecha entregado</label>
-                  <input type="text" name="FechaEntrega" class="form-control" placeholder="Fecha de entrega...">
+                  <p>{{$pedido->FechaEntrega}}</p>
             </div>  
 
                   </div>
@@ -65,47 +66,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
-
-                                    <div class="form-group">
-                                          <label>Producto</label>
-                                          <select name="pidproducto" class="form-control selectpicker" id="pidproducto" data-live-search="true">
-                                                @foreach ($productos as $producto)
-                                                <option value="{{$producto->IdProducto}}">{{$producto->producto}}</option>
-                                                @endforeach
-
-                                          </select>
-                                    </div>
-
-                                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                    <div class="form-group">
-                                          <label for="Cantidad">Cantidad</label>
-                                          <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
-                                          
-                                    </div>
-
-                              </div>
-
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                    <div class="form-group">
-                                          <label for="PrecioPorUnidad">Precio de unidad</label>
-                                          <input type="number" name="pprecioporunidad" id="ppprecioporunidad" class="form-control" placeholder="Precio de unidad">
-                                          
-                                    </div>
-
-                              </div>
-
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                    <div class="form-group">
-                                          <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
-                                          
-                                    </div>
-
-                              </div>
-
+                              
                               <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 
                                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
@@ -129,9 +90,9 @@
                                           </tfoot>
 
                                           <tbody>
-                                                @foreach ($detalles as $det)
+                                                @foreach ($DetallePedido as $det)
                                                 <tr>
-                                                    <td>{{$det->Producto}}</td>
+                                                    <td>{{$det->producto}}</td>
                                                     <td>{{$det->Cantidad}}</td>
                                                     <td>{{$det->PrecioPorUnidad}}</td>  
                                                     <td>{{$det->Cantidad*$det->PrecioPorUnidad}}</td>
@@ -154,7 +115,7 @@
 
 
 
-            </div>
+            
 
 
             
