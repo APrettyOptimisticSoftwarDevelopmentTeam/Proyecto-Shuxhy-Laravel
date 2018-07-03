@@ -12,24 +12,23 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
+					<th>Nombre del cliente</th>
 					<th>Entrega pedido</th>
 					<th>Direccion de entrega</th>
 					<th>Fecha realizado</th>
 					<th>Fecha de entregado</th>
 					<th>Comentario</th>
-					<th>Nombre del cliente</th>
 					<th>Total</th>
 					<th>Opciones</th>
 				</thead>
                @foreach($pedidos as $ped)
 				<tr>  <!-- Aqui se establecen los datos  -->	<!-- que se mostraran estos deben  -->
-					
+					<td>{{ $ped->Nombre}}</td>
 					<td>{{ $ped->EntregaPedido}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $ped->DireccionEntrega}}</td>
 					<td>{{ $ped->FechaRealizado}}</td>
 					<td>{{ $ped->FechaEntrega}}</td>
 					<td>{{ $ped->Comentario}}</td>
-					<td>{{ $ped->Nombre}}</td>
 					<td>{{ $ped->total}}</td>
 					<td>
 						<a href="{{URL::action('PedidoController@show',$ped->IdPedido)}}"><button class="btn btn-info">Detalles</button></a>

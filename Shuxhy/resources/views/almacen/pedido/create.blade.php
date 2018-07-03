@@ -25,7 +25,7 @@
                         
             <div class="form-group">
                    <label for="Cliente">Cliente</label>
-                  <select name="pidcliente" class="form-control selectpicker" id="pidcliente" data-live-search="true">
+                  <select name="IdCliente" class="form-control selectpicker" id="IdCliente" data-live-search="true">
                         @foreach ($clientes as $cliente)
                         <option value="{{$cliente->IdCliente}}">{{$cliente->cliente}}</option>
                         @endforeach
@@ -121,7 +121,7 @@
 
                                     <div class="form-group">
                                           <label for="PrecioPorUnidad">Precio por unidad</label>
-                                          <input type="number" name="pprecioporunidad" id="ppprecioporunidad" class="form-control" placeholder="Precio por unidad">
+                                          <input type="number" name="pprecioporunidad" id="pprecioporunidad" class="form-control" placeholder="Precio por unidad">
                                           
                                     </div>
 
@@ -193,9 +193,9 @@
 
 			{!!Form::close()!!}	
 
-                  @push('scripts')	
+                  @push ('scripts')	
                   <script>
-                        $(document).ready(function(){
+                        $(document).ready(function(){ // funciona correctamente
                               $('#bt_add').click(function(){
 
                                     agregar();
@@ -208,7 +208,7 @@
                         subtotal=[];
                         $("#guardar").hide();
 
-                        function agregar(argument) 
+                        function agregar(argument) // funciona correctamente
                         {
                               IdProducto=$("#pidproducto").val();
                               Producto=$("#pidproducto option:selected").text();
@@ -218,9 +218,9 @@
                               if (IdProducto!="" && Cantidad!="" && Cantidad>0 && PrecioPorUnidad!="") 
                               {
                                     subtotal[cont]=(Cantidad*PrecioPorUnidad);
-                                    total=total+subtotal[cont];
+                                    total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="number" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="hidden" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="hidden" name="PrecioPorUnidad[]" value="'+PrecioPorUnidad+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioPorUnidad[]" value="'+PrecioPorUnidad+'"></td><td></td>'+subtotal[cont]+'</tr>';
                                     cont++;
 
                                     limpiar();
@@ -240,13 +240,13 @@
                         }
                         
 
-                        function limpiar()
+                        function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
                               $("#pprecioporunidad").val("");
                         }
 
-                        function evaluar() 
+                        function evaluar() // funciona correctamente
                         {
                               if (total>0) 
                               {
@@ -258,7 +258,7 @@
                               }
                         }
 
-                        function eliminar(index) 
+                        function eliminar(index) //funciona correctamente
                         {
                               total=total-subtotal[index];
                               $("#total").html("S/. " +total);

@@ -32,7 +32,7 @@ class PedidoController extends Controller
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
             ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre',DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
-           // ->where ('p.Condicion','=','1') Quiero ver si esto no me da error mas adelante
+            ->where ('p.Condicion','=','1') 
             ->orderBy('p.IdPedido', 'desc')
             ->groupBy('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
             ->paginate(7);
