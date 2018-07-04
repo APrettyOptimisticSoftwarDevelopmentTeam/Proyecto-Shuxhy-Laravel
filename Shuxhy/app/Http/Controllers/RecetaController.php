@@ -98,7 +98,7 @@ class RecetaController extends Controller
         }catch(\Exception $e)
         {
 
-         /  DB::rollback();
+           DB::rollback();
 
         }
 
