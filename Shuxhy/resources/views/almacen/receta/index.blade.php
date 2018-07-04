@@ -16,6 +16,11 @@
 					<th>Descripción</th>
 					<th>Equipos utilizados</th>
 					<th>Tiempo de preparacion</th>
+					<th>Porcion</th>
+					<th>CostoDeReposicion</th>
+					<th>CostoIndirecto</th>
+					<th>CostoManoDeObra</th>
+					<th>SubTotal</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($recetas as $rece)
@@ -25,10 +30,15 @@
 					<td>{{ $rece->Descripcion}}</td>
 					<td>{{ $rece->Equipo}}</td>
 					<td>{{ $rece->TiempoPreparacion}}</td>
+					<td>{{ $rece->Porcion}}</td>
+					<td>{{ $rece->CostoDeReposicion}}</td>
+					<td>{{ $rece->CostoIndirecto}}</td>
+					<td>{{ $rece->CostoManoDeObra}}</td>
+					<td>{{ $rece->SubTota}}</td>
 					
 					<td>
-						<a href="{{URL::action('RecetaController@edit',$rece->IdReceta)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$rece->IdReceta}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('PedidoController@show',$ped->IdPedido)}}"><button class="btn btn-info">Detalles</button></a>
+                         <a href="" data-target="#modal-delete-{{$ped->IdPedido}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
 					</td>
 				</tr>
 				@include('almacen.receta.modal')
