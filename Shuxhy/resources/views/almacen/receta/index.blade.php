@@ -34,11 +34,11 @@
 					<td>{{ $rece->CostoDeReposicion}}</td>
 					<td>{{ $rece->CostoIndirecto}}</td>
 					<td>{{ $rece->CostoManoDeObra}}</td>
-					<td>{{ $rece->SubTota}}</td>
+					<td>{{ $rece->SubTotal}}</td>
 					
 					<td>
-						<a href="{{URL::action('PedidoController@show',$ped->IdPedido)}}"><button class="btn btn-info">Detalles</button></a>
-                         <a href="" data-target="#modal-delete-{{$ped->IdPedido}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
+						<a href="{{URL::action('RecetaController@show',$rece->IdReceta)}}"><button class="btn btn-info">Detalles</button></a>
+                         <a href="" data-target="#modal-delete-{{$rece->IdReceta}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
 					</td>
 				</tr>
 				@include('almacen.receta.modal')

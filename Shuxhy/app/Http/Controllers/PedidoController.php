@@ -97,7 +97,8 @@ class PedidoController extends Controller
 
     		DB::commit();
 
-    	}catch(\Exception $e)
+    	}
+        catch(\Exception $e)
     	{
 
     		DB::rollback();

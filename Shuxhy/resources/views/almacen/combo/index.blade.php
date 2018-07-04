@@ -32,8 +32,8 @@
 						<img src="{{asset('imagenes/combos/'.$combo->Imagen)}}" alt="{{$combo->Nombre}}" height="100px" width="100px" class="img-thubnail">
 					</td>
 					<td>
-						<a href="{{URL::action('ComboController@edit',$combo->IdCombo)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$combo->IdCombo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('ComboController@show',$combo->IdCombo)}}"><button class="btn btn-info">Detalles</button></a>
+                         <a href="" data-target="#modal-delete-{{$combo->IdCombo}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
 					</td>
 				</tr>
 				@include('almacen.combo.modal')

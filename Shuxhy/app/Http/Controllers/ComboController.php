@@ -32,12 +32,12 @@ class ComboController extends Controller
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->where ('c.Condicion','=','1') 
             ->orderBy('c.IdCombo', 'desc')
-            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Condicion')
+            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal','c.Total','c.Descuento', 'c.Condicion')
             ->paginate(7);
             return view('almacen.combo.index',["combos"=>$combos,"searchText"=>$query]);
         }
     }
-    public function create()
+    public function create() // No  creo que haya problemas en esta parte
     {
         $productos=DB::table('producto as prod')
         ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion, ", Topping: ", prod.Topping ) AS producto'),'prod.IdProducto')
@@ -46,11 +46,8 @@ class ComboController extends Controller
 
         return view('almacen.combo.create',["productos"=>$productos]);
     }
-    public function store (ComboFormRequest $request)  // Funcion para crear 
+    public function store (ComboFormRequest $request)  // Es muy probable que el problema este aqui, pues no encuentro ningun error en la vista create
     {
-
-
-
         try
         {
 
@@ -92,10 +89,10 @@ class ComboController extends Controller
 
         }
 
-
             DB::commit();
 
-        }catch(\Exception $e)
+        }
+        catch(\Exception $e)
         {
 
             DB::rollback();
@@ -109,20 +106,19 @@ class ComboController extends Controller
     }
     public function show($id)
     {
-        $pedidos=DB::table('combo as c')
+        $combo=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-            ->join('producto as prod', 'dc.IdProducto','=','prod.IdProducto')
-            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'prod.Nombre', 'c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Total','c.Descuento', 'c.Condicion', DB::raw('sum(dc.Precio*Cantidad) as total'))
             ->where('c.IdCombo', '=', $id)
             ->first();
 
             $DetalleCombo=DB::table('DetalleCombo as dc')
             ->join('producto as prod', 'dc.IdProducto','=','prod.IdProducto')
-            ->select('prod.Nombre as producto', 'dc.Subtotal', 'dc.Descuento')
+            ->select('prod.Nombre as producto', 'dc.Cantidad', 'dc.Precio')
             ->where('dc.IdCombo', '=', $id)
             ->get();
 
-        return view("almacen.pedido.show",["combo"=>$combo,"DetalleCombo"=>$DetalleCombo]
+        return view("almacen.combo.show",["combo"=>$combo,"DetalleCombo"=>$DetalleCombo]
         );
 
     }
@@ -159,6 +155,8 @@ class ComboController extends Controller
         $combo->update();
         return Redirect::to('almacen/combo');
     }
+
+
 }
 
 
