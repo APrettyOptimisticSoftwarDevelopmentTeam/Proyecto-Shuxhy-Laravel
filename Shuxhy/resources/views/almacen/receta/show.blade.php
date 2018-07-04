@@ -103,7 +103,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">{{$receta->subtotal}}</h4></th>
+                                                <th><h4 id="total">{{$receta->total}}</h4></th>
                                                 
                                           </tfoot>
 
@@ -112,8 +112,8 @@
                                                 <tr>
                                                     <td>{{$det->material}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->PrecioPorMaterial}}</td>  
-                                                    <td>{{$det->Cantidad*$det->PrecioPorMaterial}}</td>
+                                                    <td>{{$det->CostoPorMaterial}}</td>  
+                                                    <td>{{$det->Cantidad*$det->CostoPorMaterial}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

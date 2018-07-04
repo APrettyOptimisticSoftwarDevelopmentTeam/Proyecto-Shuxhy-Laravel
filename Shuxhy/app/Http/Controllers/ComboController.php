@@ -148,6 +148,7 @@ class ComboController extends Controller
         $combo->update();
         return Redirect::to('almacen/combo');
     }*/
+    
     public function destroy($id)  // funcion para borrar
     {
         $combo=Combo::findOrFail($id);

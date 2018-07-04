@@ -20,7 +20,7 @@
 					<th>CostoDeReposicion</th>
 					<th>CostoIndirecto</th>
 					<th>CostoManoDeObra</th>
-					<th>SubTotal</th>
+					<th>Total</th>
 					<th>Opciones</th>
 				</thead>
                @foreach ($recetas as $rece)
@@ -34,7 +34,7 @@
 					<td>{{ $rece->CostoDeReposicion}}</td>
 					<td>{{ $rece->CostoIndirecto}}</td>
 					<td>{{ $rece->CostoManoDeObra}}</td>
-					<td>{{ $rece->SubTotal}}</td>
+					<td>{{ $rece->total}}</td>
 					
 					<td>
 						<a href="{{URL::action('RecetaController@show',$rece->IdReceta)}}"><button class="btn btn-info">Detalles</button></a>

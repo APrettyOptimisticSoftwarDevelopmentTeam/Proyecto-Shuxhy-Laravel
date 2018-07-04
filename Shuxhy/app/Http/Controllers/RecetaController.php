@@ -74,7 +74,7 @@ class RecetaController extends Controller
 
         $IdMaterial = $request->get('IdMaterial');
         $Cantidad = $request->get('Cantidad');
-        $PrecioPorMaterial = $request->get('PrecioPorMaterial');
+        $CostoPorMaterial = $request->get('CostoPorMaterial');
 
         $cont=0;
 
@@ -84,7 +84,7 @@ class RecetaController extends Controller
             $DetalleReceta->IdReceta=$receta->IdReceta;
             $DetalleReceta->IdMaterial=$IdMaterial[$cont];
             $DetalleReceta->Cantidad=$Cantidad[$cont];
-            $DetalleReceta->PrecioPorMaterial=$PrecioPorMaterial[$cont];
+            $DetalleReceta->CostoPorMaterial=$CostoPorMaterial[$cont];
             $DetalleReceta->save();
             $cont=$cont+1;
 
@@ -109,7 +109,7 @@ class RecetaController extends Controller
     }
 
 
-    public function show($id)
+    public function show($id) 
     {
 
         $receta=DB::table('receta as r')
@@ -120,7 +120,7 @@ class RecetaController extends Controller
 
             $DetalleReceta=DB::table('DetalleReceta as dr')
             ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
-            ->select('mat.Nombre as material', 'dr.Cantidad', 'dr.PrecioPorMaterial')
+            ->select('mat.Nombre as material', 'dr.Cantidad', 'dr.CostoPorMaterial')
             ->where('dr.IdReceta', '=', $id)
             ->get();
 
