@@ -60,7 +60,7 @@
                                           </tfoot>
 
                                           <tbody>
-                                                @foreach ($DetalleCombo as $det)
+                                                @foreach ($detallecombo as $det)
                                                 <tr>
                                                     <td>{{$det->producto}}</td>
                                                     <td>{{$det->Cantidad}}</td>

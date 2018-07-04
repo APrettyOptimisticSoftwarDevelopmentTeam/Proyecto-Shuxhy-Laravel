@@ -26,7 +26,7 @@ class RecetaFormRequest extends Request
         return [
             'NombreReceta'=>'required|max:25',
             'Descripcion'=>'max:150',
-            'Equpos'=>'max:100',
+            'Equipo'=>'max:100',
             'TiempoPreparacion'=>'max:50',
         ];
     }

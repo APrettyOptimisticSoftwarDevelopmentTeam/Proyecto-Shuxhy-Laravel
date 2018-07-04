@@ -28,11 +28,11 @@ class ComboController extends Controller
             $query=trim($request->get('searchText'));
              $combos=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Total','c.Descuento', 'c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Descuento', 'c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->where ('c.Condicion','=','1') 
             ->orderBy('c.IdCombo', 'desc')
-            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal','c.Total','c.Descuento', 'c.Condicion')
+            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal','c.Descuento', 'c.Condicion')
             ->paginate(7);
             return view('almacen.combo.index',["combos"=>$combos,"searchText"=>$query]);
         }
@@ -55,9 +55,9 @@ class ComboController extends Controller
         $combo=new Combo;
         $combo->Nombre=$request->get('Nombre');
         $combo->Descripcion=$request->get('Descripcion');
-        $combo->Subtotal=$request->get('Subtotal');
+        //$combo->Subtotal=$request->get('Subtotal');
         $combo->Descuento=$request->get('Descuento');
-        $combo->Total=$request->get('Total');
+       // $combo->Total=$request->get('Total');
         
         if (Input::hasFile('Imagen')) 
         {
@@ -65,7 +65,6 @@ class ComboController extends Controller
             $file->move(public_path(). 'imagenes/combos/', $file->getClientOriginalName());
             $combo->Imagen=$file->getClientOriginalName();
         }
-
         $combo->Condicion='1';
         $combo->save();
 
@@ -108,46 +107,20 @@ class ComboController extends Controller
     {
         $combo=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Total','c.Descuento', 'c.Condicion', DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Descuento', 'c.Condicion', DB::raw('sum(dc.Precio*Cantidad) as total'))
             ->where('c.IdCombo', '=', $id)
             ->first();
 
-            $DetalleCombo=DB::table('DetalleCombo as dc')
+            $detallecombo=DB::table('detallecombo as dc')
             ->join('producto as prod', 'dc.IdProducto','=','prod.IdProducto')
             ->select('prod.Nombre as producto', 'dc.Cantidad', 'dc.Precio')
             ->where('dc.IdCombo', '=', $id)
             ->get();
 
-        return view("almacen.combo.show",["combo"=>$combo,"DetalleCombo"=>$DetalleCombo]
+        return view("almacen.combo.show",["combo"=>$combo,"detallecombo"=>$detallecombo]
         );
 
     }
-
-
-   /* public function edit($id) 
-    {
-        return view("almacen.combo.edit",["combo"=>Combo::findOrFail($id)]);
-    }
-
-    public function update(ComboFormRequest $request,$id)  // funcion para editar
-    {
-        $combo=Combo::findOrFail($id);
-        $combo->Nombre=$request->get('Nombre');
-        $combo->Descripcion=$request->get('Descripcion');
-        $combo->Subtotal=$request->get('Subtotal');
-        $combo->Descuento=$request->get('Descuento');
-        $combo->Total=$request->get('Total');
-        
-        if (Input::hasFile('Imagen')) 
-        {
-            $file=Input::file('Imagen');
-            $file->move(public_path(). 'imagenes/combos/', $file->getClientOriginalName());
-            $combo->Imagen=$file->getClientOriginalName();
-        }
-
-        $combo->update();
-        return Redirect::to('almacen/combo');
-    }*/
     
     public function destroy($id)  // funcion para borrar
     {

@@ -15,7 +15,7 @@
             </div>
       </div>
 
-                  {!!Form::open(array('url'=>'almacen/combo','method'=>'POST','autocomplete'=>'off'))!!}
+                  {!!Form::open(array('url'=>'almacen/combo','method'=>'POST','autocomplete'=>'off', 'files'=>'true'))!!}
             {{Form::token()}}
 
       <div class="row">
@@ -36,11 +36,20 @@
                   <input type="text" name="Descripcion" class="form-control" placeholder="Descripcion...">
             </div> 
        </div>        
+
+
+       <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+           <div class="form-group">
+                  <label for="Descuento">Descuento</label>
+                  <input type="number" name="Descuento" class="form-control" placeholder="Descuento...">
+            </div> 
+       </div>        
                   
 
 
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
                        <div class="form-group">
                   <label for="Imagen">Imagen</label>

@@ -98,7 +98,7 @@ class RecetaController extends Controller
         }catch(\Exception $e)
         {
 
-            DB::rollback();
+         /  DB::rollback();
 
         }
 
@@ -118,7 +118,7 @@ class RecetaController extends Controller
             ->where('r.IdReceta', '=', $id)
             ->first();
 
-            $DetalleReceta=DB::table('DetalleReceta as dr')
+            $DetalleReceta=DB::table('detallereceta as dr')
             ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
             ->select('mat.Nombre as material', 'dr.Cantidad', 'dr.CostoPorMaterial')
             ->where('dr.IdReceta', '=', $id)

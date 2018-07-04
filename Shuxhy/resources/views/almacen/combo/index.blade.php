@@ -14,7 +14,6 @@
 				<thead>
 					<th>Nombre</th>
 					<th>Descripción</th>
-					<th>Subtotal</th>
 					<th>Descuento</th>
 					<th>Total</th>
 					<th>Imagen</th>
@@ -24,7 +23,6 @@
 				<tr>  <!-- Aqui se establecen los datos  -->
 					<td>{{ $combo->Nombre}}</td>		<!-- que se mostraran estos deben  -->
 					<td>{{ $combo->Descripcion}}</td>		<!-- de coincidir con el orden de arriba  -->
-					<td>{{ $combo->Subtotal}}</td>
 					<td>{{ $combo->Descuento}}</td>
 					<td>{{ $combo->total}}</td>
 					
