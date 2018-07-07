@@ -21,7 +21,7 @@
             <div class="row">
 
 
-                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                    <label for="Cliente">Cliente</label>
@@ -33,7 +33,7 @@
             </div>
        </div>        
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                    <label>Estado del pedido</label>
@@ -47,7 +47,7 @@
 
 
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
                        <div class="form-group">
                   <label for="Comentario">Comentario</label>
@@ -57,7 +57,7 @@
 
 
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                   <label for="DireccionEntrega">Direccion de entrega</label>
@@ -68,7 +68,7 @@
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                   <label for="FechaRealizado">Fecha Pedido</label>
@@ -78,7 +78,7 @@
                   </div>
 
 
-                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                   <label for="FechaEntrega">Fecha de Entrega</label>
@@ -96,7 +96,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label>Producto</label>
@@ -107,16 +107,8 @@
 
                                           </select>
                                     </div>
-
-                                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                    <div class="form-group">
-                                          <label for="Cantidad">Cantidad</label>
-                                          <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
-                                          
-                                    </div>
-
                               </div>
+
 
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
@@ -132,7 +124,19 @@
 
                               </div>
 
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                                    <div class="col-lg-3 col-sm- col-md-6 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label for="Cantidad">Cantidad</label>
+                                          <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
+                                          
+                                    </div>
+
+                              </div>
+
+                              
+
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
