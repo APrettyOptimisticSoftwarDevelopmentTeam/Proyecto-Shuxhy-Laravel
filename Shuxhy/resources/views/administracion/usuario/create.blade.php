@@ -13,7 +13,7 @@
 			</div>
 			@endif
 
-			{!!Form::open(array('url'=>'autenticacion/usuario','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'administracion/usuario','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
             
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -73,7 +73,7 @@
                         </div>
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Registrar</button>
-            	<button class="btn btn-danger"><a href="{{url('autenticacion/usuario')}}">Cancelar</a></button>
+            	<button class="btn btn-danger"><a href="{{url('administracion/usuario')}}">Cancelar</a></button>
             </div>
 
 			{!!Form::close()!!}		

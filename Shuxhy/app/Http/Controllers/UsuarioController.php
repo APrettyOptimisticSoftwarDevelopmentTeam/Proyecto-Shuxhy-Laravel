@@ -26,13 +26,13 @@ class UsuarioController extends Controller
             $usuarios=DB::table('users')->where('name','LIKE','%'.$query.'%')
             ->orderBy('id','desc')
             ->paginate(7);
-            return view('autenticacion.usuario.index',["usuarios"=>$usuarios,"searchText"=>$query]);
+            return view('administracion.usuario.index',["usuarios"=>$usuarios,"searchText"=>$query]);
         }
     }
 
     public function create()
     {
-        return view("autenticacion.usuario.create");
+        return view("administracion.usuario.create");
     }
 
 
@@ -43,13 +43,13 @@ class UsuarioController extends Controller
         $usuario->email=$request->get('email');
         $usuario->password=bcrypt($request->get('password'));
         $usuario->save();
-        return Redirect::to('autenticacion/usuario');
+        return Redirect::to('administracion/usuario');
 
     }
 
     public function edit($id)
     {
-        return view("autenticacion.usuario.edit",["usuario"=>User::findOrFail($id)]);
+        return view("administracion.usuario.edit",["usuario"=>User::findOrFail($id)]);
     }
 
     public function update(UsuarioFormRequest $request,$id)  // funcion para editar
@@ -59,14 +59,14 @@ class UsuarioController extends Controller
         $usuario->email=$request->get('email');
         $usuario->password=bcrypt($request->get('password'));
         $usuario->update();
-        return Redirect::to('autenticacion/usuario');
+        return Redirect::to('administracion/usuario');
         
     }
 
     public function destroy($id)  // funcion para borrar
     {
         $usuario = DB::table('users')->where('id', '=', $id)->delete();
-        return Redirect::to('autenticacion/usuario');
+        return Redirect::to('administracion/usuario');
 
     }
 

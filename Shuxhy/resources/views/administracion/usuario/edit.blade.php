@@ -13,7 +13,7 @@
 			</div>
 			@endif
 
-			{!!Form::model($usuario,['method'=>'PATCH','route'=>['autenticacion.usuario.update',$usuario->id]])!!}
+			{!!Form::model($usuario,['method'=>'PATCH','route'=>['administracion.usuario.update',$usuario->id]])!!}
             {{Form::token()}}
            
            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -73,7 +73,7 @@
                         </div>
             <div class="form-group">
             	<button class="btn btn-primary" type="submit">Actualizar</button>
-            	<button class="btn btn-danger"><a href="{{url('autenticacion/usuario')}}">Cancelar</a></button>
+            	<button class="btn btn-danger"><a href="{{url('administracion/usuario')}}">Cancelar</a></button>
             </div>
 
 			{!!Form::close()!!}		

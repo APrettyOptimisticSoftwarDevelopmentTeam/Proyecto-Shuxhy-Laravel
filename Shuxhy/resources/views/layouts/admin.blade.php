@@ -149,15 +149,23 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               </li>
-             
+
+
               <li class="treeview">
-              <a href="{{ url('autenticacion/usuario')}}">
-                <i class="fa fa-user"></i>
-                <span>Usuarios</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+              <a href="#">
+                <i class="fa fa-archive"></i>
+                <span>Administración</span>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
-              </li>          
-            
+              <ul class="treeview-menu">
+                <li><a href="{{ url('administracion/usuario')}}"><i class="fa fa-circle-o"></i>Usuarios</a></li>
+                <li><a href="{{ url('administracion/unidad')}}"><i class="fa fa-circle-o"></i>Unidades</a></li>
+                <li><a href="{{ url('administracion/forma')}}"><i class="fa fa-circle-o"></i>Formas</a></li>
+                <li><a href="{{ url('administracion/relleno')}}"><i class="fa fa-circle-o"></i>Rellenos</a></li>
+                <li><a href="{{ url('administracion/topping')}}"><i class="fa fa-circle-o"></i>Toppings</a></li>
+                <li><a href="{{ url('administracion/sabor')}}"><i class="fa fa-circle-o"></i>Sabores</a></li>
+              </ul>
+            </li>         
 
 
             <li class="treeview">

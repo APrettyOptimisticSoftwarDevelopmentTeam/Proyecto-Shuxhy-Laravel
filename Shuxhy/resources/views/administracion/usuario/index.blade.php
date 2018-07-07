@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 		<h3>Listado de Usuarios <a href="usuario/create"><button class="btn btn-success">Nuevo </button></a></h3>
-		@include('autenticacion.usuario.search')
+		@include('administracion.usuario.search')
 	</div>
 </div>
 
@@ -28,7 +28,7 @@
                          <a href="" data-target="#modal-delete-{{$usu->id}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
 					</td>
 				</tr>
-				@include('autenticacion.usuario.modal')
+				@include('administracion.usuario.modal')
 				@endforeach
 			</table>
 		</div>

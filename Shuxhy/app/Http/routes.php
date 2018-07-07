@@ -29,7 +29,17 @@ Route::resource('almacen/combo','ComboController');
 
 Route::resource('almacen/receta','RecetaController');
 
-Route::resource('autenticacion/usuario','UsuarioController');
+Route::resource('administracion/usuario','UsuarioController');
+
+Route::resource('administracion/forma','FormaController');
+
+Route::resource('administracion/unidad','UnidadController');
+
+Route::resource('administracion/relleno','RellenoController');
+
+Route::resource('administracion/topping','ToppingController');
+
+Route::resource('administracion/sabor','SaborController');
 
 Route::auth();
 
