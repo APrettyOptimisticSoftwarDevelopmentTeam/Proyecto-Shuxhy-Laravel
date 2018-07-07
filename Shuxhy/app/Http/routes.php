@@ -29,6 +29,16 @@ Route::resource('almacen/combo','ComboController');
 
 Route::resource('almacen/receta','RecetaController');
 
+Route::resource('almacen/forma','FormaController');
+
+Route::resource('almacen/topping','ToppingController');
+
+Route::resource('almacen/unidad','UnidadController');
+
+Route::resource('almacen/relleno','RellenoController');
+
+Route::resource('almacen/sabor','SaborController');
+
 Route::resource('autenticacion/usuario','UsuarioController');
 
 Route::auth();
