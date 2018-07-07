@@ -36,8 +36,8 @@
                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
-                   <label>Entrega del pedido</label>
-                  <select name="EntregaPedido" class="form-control">
+                   <label>Estatus del pedido</label>
+                  <select name="Estatus" class="form-control">
                         <option>En proceso</option>
                         <option>Solicitado</option>
                   </select>
@@ -114,7 +114,7 @@
 
                                     <div class="form-group">
                                           <label>Precio</label>
-                                          <select name="pprecioporunidad" class="form-control selectpicker" id="pprecioporunidad" data-live-search="true">
+                                          <select name="pprecioproducto" class="form-control selectpicker" id="pprecioproducto" data-live-search="true">
                                                 @foreach ($precios as $precio)
                                                 <option value="{{$precio->precio}}">{{$precio->precio}}</option>
                                                 @endforeach
@@ -222,14 +222,14 @@
                               IdProducto=$("#pidproducto").val();
                               Producto=$("#pidproducto option:selected").text();
                               Cantidad=$("#pcantidad").val();
-                              PrecioPorUnidad=$("#pprecioporunidad").val();
+                              PrecioProducto=$("#pprecioproducto").val();
 
-                              if (IdProducto!="" && Cantidad!="" && Cantidad>0 && PrecioPorUnidad!="") 
+                              if (IdProducto!="" && Cantidad!="" && Cantidad>0 && PrecioProducto!="") 
                               {
-                                    subtotal[cont]=(Cantidad*PrecioPorUnidad);
+                                    subtotal[cont]=(Cantidad*PrecioProducto);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioPorUnidad[]" value="'+PrecioPorUnidad+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioProducto[]" value="'+PrecioProducto+'"></td><td></td>'+subtotal[cont]+'</tr>';
                                     cont++;
 
                                     limpiar();
@@ -252,7 +252,7 @@
                         function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
-                              $("#pprecioporunidad").val("");
+                              $("#pprecioproducto").val("");
                         }
 
                         function evaluar() // funciona correctamente

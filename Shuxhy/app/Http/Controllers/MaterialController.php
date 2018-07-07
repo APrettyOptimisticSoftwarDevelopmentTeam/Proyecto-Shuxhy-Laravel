@@ -42,7 +42,6 @@ class MaterialController extends Controller
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
-        $material->Peso=$request->get('Peso');
 
 
         if (Input::hasFile('Imagen')) 
@@ -74,7 +73,7 @@ class MaterialController extends Controller
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
         $material->Unidad=$request->get('Unidad');
-        $material->Peso=$request->get('Peso');
+       
 
 
          if (Input::hasFile('Imagen')) 

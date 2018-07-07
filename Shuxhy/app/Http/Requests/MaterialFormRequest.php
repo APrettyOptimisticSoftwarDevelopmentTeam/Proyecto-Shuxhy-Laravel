@@ -26,7 +26,6 @@ class MaterialFormRequest extends Request
         return [
             'Nombre'=>'required|max:15',
             'Costo'=>'required|numeric',
-            'Peso'=>'required|numeric',
             'Descripcion'=>'max:150',
 
         ];
