@@ -24,7 +24,7 @@ class ProductoFormRequest extends Request
     public function rules()
     {
         return [
-            'Nombre'=>'required|max:15',
+            'Nombre'=>'required|max:50',
             'Precio'=>'required|numeric',
             'CostoProduccion'=>'required|numeric',
             'Descripcion'=>'max:256'

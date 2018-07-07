@@ -36,9 +36,10 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                   <label>Entrega del pedido</label>
+                   <label>Estado del pedido</label>
                   <select name="EntregaPedido" class="form-control">
                         <option>En proceso</option>
+                        <option>Entregado</option>
                         <option>Solicitado</option>
                   </select>
             </div>
@@ -70,7 +71,7 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FechaRealizado">Fecha realizado</label>
+                  <label for="FechaRealizado">Fecha Pedido</label>
                   <input type="text" name="FechaRealizado" class="form-control" placeholder="Fecha Realizado...">
             </div>  
 
@@ -80,7 +81,7 @@
                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FechaEntrega">Fecha entregado</label>
+                  <label for="FechaEntrega">Fecha de Entrega</label>
                   <input type="text" name="FechaEntrega" class="form-control" placeholder="Fecha de entrega...">
             </div>  
 

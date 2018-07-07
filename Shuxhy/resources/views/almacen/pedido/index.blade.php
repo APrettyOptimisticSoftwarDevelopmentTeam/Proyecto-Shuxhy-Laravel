@@ -15,8 +15,8 @@
 					<th>Nombre del cliente</th>
 					<th>Entrega pedido</th>
 					<th>Direccion de entrega</th>
-					<th>Fecha realizado</th>
-					<th>Fecha de entregado</th>
+					<th>Fecha</th>
+					<th>Fecha de Entrega</th>
 					<th>Comentario</th>
 					<th>Total</th>
 					<th>Opciones</th>

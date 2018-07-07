@@ -41,7 +41,7 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FechaRealizado">Fecha realizado</label>
+                  <label for="FechaRealizado">Fecha Pedido</label>
                   <p>{{$pedido->FechaRealizado}}</p>
             </div>  
 
@@ -51,7 +51,7 @@
                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FechaEntrega">Fecha entregado</label>
+                  <label for="FechaEntrega">Fecha de Entrega</label>
                   <p>{{$pedido->FechaEntrega}}</p>
             </div>  
 
