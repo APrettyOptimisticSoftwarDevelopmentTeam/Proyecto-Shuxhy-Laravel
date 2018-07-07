@@ -25,7 +25,7 @@
 				</thead>
                @foreach ($recetas as $rece)
 				<tr>  <!-- Aqui se establecen los datos  -->
-					<td>{{ $rece->NombreReceta}}</td>		<!-- que se mostraran estos deben  -->
+					<td>{{ $rece->Nombre}}</td>		<!-- que se mostraran estos deben  -->
 							<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $rece->Descripcion}}</td>
 					<td>{{ $rece->Equipo}}</td>

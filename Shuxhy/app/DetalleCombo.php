@@ -15,11 +15,9 @@ class DetalleCombo extends Model
 
     protected $fillable =[
     	'IdCombo',
-        'Nombre',
     	'IdProducto',
         'Cantidad',
-        'Precio',
-    	'Subtotal'
+        'Precio'
         
     	
     ];

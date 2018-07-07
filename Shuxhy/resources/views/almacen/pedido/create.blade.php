@@ -21,7 +21,7 @@
             <div class="row">
 
 
-                  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                    <label for="Cliente">Cliente</label>
@@ -33,11 +33,16 @@
             </div>
        </div>        
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
+<<<<<<< HEAD
                    <label>Estado del pedido</label>
                   <select name="EntregaPedido" class="form-control">
+=======
+                   <label>Estatus del pedido</label>
+                  <select name="Estatus" class="form-control">
+>>>>>>> 173bb7ffc094f04cc27d35538d39f23540eae0b1
                         <option>En proceso</option>
                         <option>Entregado</option>
                         <option>Solicitado</option>
@@ -47,7 +52,7 @@
 
 
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
                        <div class="form-group">
                   <label for="Comentario">Comentario</label>
@@ -57,7 +62,7 @@
 
 
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                   <label for="DireccionEntrega">Direccion de entrega</label>
@@ -68,7 +73,7 @@
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                   <label for="FechaRealizado">Fecha Pedido</label>
@@ -78,7 +83,7 @@
                   </div>
 
 
-                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
                   <label for="FechaEntrega">Fecha de Entrega</label>
@@ -96,7 +101,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label>Producto</label>
@@ -108,7 +113,24 @@
                                           </select>
                                     </div>
 
-                                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              </div>
+
+
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label>Precio</label>
+                                          <select name="pprecioproducto" class="form-control selectpicker" id="pprecioproducto" data-live-search="true">
+                                                @foreach ($precios as $precio)
+                                                <option value="{{$precio->precio}}">{{$precio->precio}}</option>
+                                                @endforeach
+
+                                          </select>
+                                    </div>
+
+                              </div>
+
+                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label for="Cantidad">Cantidad</label>
@@ -118,17 +140,9 @@
 
                               </div>
 
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              
 
-                                    <div class="form-group">
-                                          <label for="PrecioPorUnidad">Precio por unidad</label>
-                                          <input type="number" name="pprecioporunidad" id="pprecioporunidad" class="form-control" placeholder="Precio por unidad">
-                                          
-                                    </div>
-
-                              </div>
-
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
@@ -144,8 +158,8 @@
                                           <thead style="background-color:pink">
                                                 <th>Opciones</th>
                                                 <th>Producto</th>
-                                                <th>Cantidad</th>
                                                 <th>Precio por unidad</th>
+                                                <th>Cantidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -214,14 +228,14 @@
                               IdProducto=$("#pidproducto").val();
                               Producto=$("#pidproducto option:selected").text();
                               Cantidad=$("#pcantidad").val();
-                              PrecioPorUnidad=$("#pprecioporunidad").val();
+                              PrecioProducto=$("#pprecioproducto").val();
 
-                              if (IdProducto!="" && Cantidad!="" && Cantidad>0 && PrecioPorUnidad!="") 
+                              if (IdProducto!="" && Cantidad!="" && Cantidad>0 && PrecioProducto!="") 
                               {
-                                    subtotal[cont]=(Cantidad*PrecioPorUnidad);
+                                    subtotal[cont]=(Cantidad*PrecioProducto);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioPorUnidad[]" value="'+PrecioPorUnidad+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioProducto[]" value="'+PrecioProducto+'"></td><td></td>'+subtotal[cont]+'</tr>';
                                     cont++;
 
                                     limpiar();
@@ -244,7 +258,7 @@
                         function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
-                              $("#pprecioporunidad").val("");
+                              $("#pprecioproducto").val("");
                         }
 
                         function evaluar() // funciona correctamente

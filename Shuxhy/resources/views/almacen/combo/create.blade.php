@@ -66,7 +66,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label>Producto</label>
@@ -78,7 +78,25 @@
                                           </select>
                                     </div>
 
-                                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              </div>
+
+
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label>Precio</label>
+                                          <select name="pprecio" class="form-control selectpicker" id="pprecio" data-live-search="true">
+                                                @foreach ($precios as $precio)
+                                                <option value="{{$precio->precio}}">{{$precio->precio}}</option>
+                                                @endforeach
+
+                                          </select>
+                                    </div>
+
+
+                              </div>
+
+                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label for="Cantidad">Cantidad</label>
@@ -88,17 +106,9 @@
 
                               </div>
 
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              
 
-                                    <div class="form-group">
-                                          <label for="Precio">Precio</label>
-                                          <input type="number" name="pprecio" id="pprecio" class="form-control" placeholder="Precio">
-                                          
-                                    </div>
-
-                              </div>
-
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
