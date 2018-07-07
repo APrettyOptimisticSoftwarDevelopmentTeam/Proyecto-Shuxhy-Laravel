@@ -23,8 +23,8 @@ class FormaFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre' => 'required|max:255|unique:forma',
-                'abreviatura' => 'required|max:5|unique:forma',
+        return ['Nombre'=>'required|max:15',
+                
                ];
     }
 }

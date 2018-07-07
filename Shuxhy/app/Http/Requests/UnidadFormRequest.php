@@ -23,8 +23,7 @@ class UnidadFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre' => 'required|max:255|unique:unidad',
-                'abreviatura' => 'required|max:5|unique:unidad',
+        return ['Nombre'=>'required|max:15',
                ];
     }
 }

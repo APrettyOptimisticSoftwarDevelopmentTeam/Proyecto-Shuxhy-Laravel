@@ -23,8 +23,7 @@ class RellenoFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre' => 'required|max:255|unique:relleno',
-                'abreviatura' => 'required|max:5|unique:relleno',
+        return ['Nombre'=>'required|max:15',
                ];
     }
 }

@@ -23,8 +23,7 @@ class ToppingFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre' => 'required|max:255|unique:topping',
-                'abreviatura' => 'required|max:5|unique:topping',
-               ];
+        return ['Nombre'=>'required|max:15',
+    ];
     }
 }

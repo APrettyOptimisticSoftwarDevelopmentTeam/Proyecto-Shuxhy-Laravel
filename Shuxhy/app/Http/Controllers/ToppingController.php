@@ -34,7 +34,7 @@ class ToppingController extends Controller
     }
     public function store (ToppingFormRequest $request)  // Funcion para crear 
     {
-        $topping=new Forma;
+        $topping=new Topping;
         $topping->nombre=$request->get('Nombre');
         $topping->abreviatura=$request->get('Abreviatura');
         $topping->condicion='1';
@@ -60,7 +60,7 @@ class ToppingController extends Controller
     }
     public function destroy($id)  // funcion para borrar
     {
-        $topping=Forma::findOrFail($id);
+        $topping=Topping::findOrFail($id);
         $topping->condicion='0';
         $topping->update();
         return Redirect::to('administracion/topping');

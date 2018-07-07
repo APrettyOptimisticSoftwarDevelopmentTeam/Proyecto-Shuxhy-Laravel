@@ -23,8 +23,7 @@ class SaborFormRequest extends Request
      */
     public function rules()
     {
-        return ['nombre' => 'required|max:255|unique:sabor',
-                'abreviatura' => 'required|max:5|unique:sabor',
+        return ['Nombre'=>'required|max:15',
                ];
     }
 }

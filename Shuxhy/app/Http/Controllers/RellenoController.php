@@ -30,7 +30,7 @@ class RellenoController extends Controller
     }
     public function create()
     {
-        return view("administracion.rellenos.create");
+        return view("administracion.relleno.create");
     }
     public function store (RellenoFormRequest $request)  // Funcion para crear 
     {
