@@ -54,7 +54,13 @@ class PedidoController extends Controller
     	->where('prod.Condicion','=','1')
     	->get();
 
-        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos]);
+        $precios=DB::table('producto as prod')
+        ->select('prod.Precio AS precio')
+        ->where('prod.Condicion','=','1')
+        ->get();
+
+        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos,"precios"=>$precios]);
+
     }
 
     public function store (PedidoFormRequest $request)  // Funcion para crear 

@@ -55,10 +55,10 @@
  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                   <label for="Unidad">Unidad</label>
+                   <label>Unidad</label>
                   <select name="IdUnidad" class="form-control selectpicker" id="IdUnidad" data-live-search="true">
                         @foreach ($unidades as $unidad)
-                        <option value="{{$unidad->IdUnidad}}">{{$unidad->unidad}}</option>
+                        <option value="{{$unidad->IdUnidad}}">{{$unidad->Abreviatura}}</option>
                         @endforeach
                   </select>
             </div>

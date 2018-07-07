@@ -27,7 +27,7 @@ class MaterialController extends Controller
             $query=trim($request->get('searchText'));
             $materiales=DB::table('material as m')
             ->join('unidad as u', 'm.IdUnidad','=','u.IdUnidad')
-            ->select('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion', 'u.Abreviatura')
+            ->select('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion', 'u.Abreviatura', 'u.Nombre as NombreUnidad')
             ->where('m.Nombre','LIKE','%'.$query.'%')
             ->where ('m.Condicion','=','1') 
             ->orderBy('m.IdMaterial', 'desc')
@@ -40,9 +40,8 @@ class MaterialController extends Controller
     public function create()
     {
 
-        $unidades=DB::table('unidad as u' )
-        ->select(DB::raw('CONCAT(u.Nombre, " ", u.Abreviatura) AS unidad'),'u.IdUnidad')
-        ->where('u.Condicion','=','1')
+        $unidades=DB::table('unidad')
+        ->where('Condicion','=','1')
         ->get();
 
         return view('almacen.material.create',["unidades"=>$unidades]);
@@ -53,6 +52,7 @@ class MaterialController extends Controller
         
 
         $material=new Material;
+        $material->IdUnidad=$request->get('IdUnidad');
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
@@ -78,12 +78,15 @@ class MaterialController extends Controller
     }
     public function edit($id)
     {
-        return view("almacen.material.edit",["material"=>Material::findOrFail($id)]);
+         $unidad=DB::table('unidad')->where('Condicion','=','1')->get();
+        $material=Material::findOrFail($id);
+        return view("almacen.material.edit",["material"=>$material,"unidad"=>$unidad]);
     }
     public function update(MaterialFormRequest $request,$id)  // funcion para editar
     {
         
         $material=Material::findOrFail($id);
+        $material->IdUnidad=$request->get('IdUnidad');
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
