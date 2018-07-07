@@ -14,15 +14,16 @@ class Receta extends Model
 
 
     protected $fillable =[
-    	'NombreReceta',
+    	'Nombre',
         'Descripcion',
     	'Equipo',
         'TiempoPreparacion',
-        'Subtotal',
+        'SubTotal',
         'CostoIndirecto',
         'CostoManoDeObra',
         'CostoDeReposicion',
         'Porcion',
+        'Total',
         'Condicion'
     	
     	

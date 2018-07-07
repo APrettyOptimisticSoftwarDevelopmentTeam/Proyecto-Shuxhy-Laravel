@@ -15,9 +15,11 @@ class Factura extends Model
 
     protected $fillable =[
     	'IdPedido',
+        'IdProducto',
+        'IdCombo',
         'Fecha',
     	'TotalFacturado',
-        'MetodoPago',
+        'FormaPago',
     	'Condicion'
         
         

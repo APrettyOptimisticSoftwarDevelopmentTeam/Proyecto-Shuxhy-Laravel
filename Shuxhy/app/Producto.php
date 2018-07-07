@@ -18,13 +18,12 @@ class Producto extends Model
         'CostoProduccion',
     	'Descripcion',
         'Precio',
-    	'Peso',
-        'Unidad',
+        'IdUnidad',
         'Imagen',
-        'Forma',
-        'Relleno',
-        'Sabor',
-        'Topping',
+        'IdForma',
+        'IdRelleno',
+        'IdSabor',
+        'IdTopping',
         'Condicion'
     	
     ];
