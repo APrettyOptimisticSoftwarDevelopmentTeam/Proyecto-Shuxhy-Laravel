@@ -31,7 +31,7 @@
 			</table>
 		</div>
 		{{$unidades->render()}}
-	</div>
+	</div> 
 </div>
 
 @endsection
