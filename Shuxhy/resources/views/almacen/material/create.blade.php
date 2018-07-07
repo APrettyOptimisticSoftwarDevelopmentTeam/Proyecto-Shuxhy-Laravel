@@ -50,38 +50,19 @@
 
 
 
-                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+
+ <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Peso">Peso</label>
-                  <input type="text" name="Peso" class="form-control"  placeholder="Peso...">
-            </div>
-     
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label>Unidad</label>
-                  <select name="Unidad" class="form-control selectpicker" id="Unidad" data-live-search="true">
-                        <option value="Unidad">Unidad</option>
-                        <option value="Docena">Docena</option>
-                        <option value="Botella">Botella</option>
-                        <option value="Libra">Libra</option>
-                        <option value="Onza">Onza</option>
-                        <option value="Costal">Costal</option>
-                        <option value="Taza">Taza</option>
-                        <option value="Cucharada">Cucharada</option>
-                        <option value="Cucharadita">Cucharadita</option>
-                        <option value="Tarro">Tarro</option>
-                        <option value="Lata">Lata</option>
+                   <label for="Unidad">Unidad</label>
+                  <select name="IdUnidad" class="form-control selectpicker" id="IdUnidad" data-live-search="true">
+                        @foreach ($unidades as $unidad)
+                        <option value="{{$unidad->IdUnidad}}">{{$unidad->unidad}}</option>
+                        @endforeach
                   </select>
             </div>
-
-
-                  </div>
+       </div>        
 
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">

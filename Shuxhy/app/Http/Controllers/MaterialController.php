@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Input;
 use Shuxhy\Http\Requests\MaterialFormRequest;
 use DB;
 
+use Response; 
+use Illuminate\Support\Collection;
+
 class MaterialController extends Controller
 {
     public function __construct()
@@ -22,16 +25,28 @@ class MaterialController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $materiales=DB::table('material')->where('Nombre','LIKE','%'.$query.'%')
-            ->where ('Condicion','=','1')
-            ->orderBy('IdMaterial','desc')
+            $materiales=DB::table('material as m')
+            ->join('unidad as u', 'm.IdUnidad','=','u.IdUnidad')
+            ->select('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion', 'u.Abreviatura')
+            ->where('m.Nombre','LIKE','%'.$query.'%')
+            ->where ('m.Condicion','=','1') 
+            ->orderBy('m.IdMaterial', 'desc')
+            ->groupBy('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion',  'u.Abreviatura')
             ->paginate(7);
             return view('almacen.material.index',["materiales"=>$materiales,"searchText"=>$query]);
+
         }
     }
     public function create()
     {
-        return view("almacen.material.create");
+
+        $unidades=DB::table('unidad as u' )
+        ->select(DB::raw('CONCAT(u.Nombre, " ", u.Abreviatura) AS unidad'),'u.IdUnidad')
+        ->where('u.Condicion','=','1')
+        ->get();
+
+        return view('almacen.material.create',["unidades"=>$unidades]);
+
     }
     public function store (MaterialFormRequest $request)  // Funcion para crear 
     {
@@ -41,8 +56,7 @@ class MaterialController extends Controller
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
-        $material->Unidad=$request->get('Unidad');
-        $material->Peso=$request->get('Peso');
+     
 
 
         if (Input::hasFile('Imagen')) 
@@ -73,8 +87,6 @@ class MaterialController extends Controller
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Costo=$request->get('Costo');
-        $material->Unidad=$request->get('Unidad');
-        $material->Peso=$request->get('Peso');
 
 
          if (Input::hasFile('Imagen')) 

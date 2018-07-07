@@ -13,10 +13,9 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Nombre</th>
-					<th>Costo produccion</th>
+					<th>Costo de produccion</th>
 					<th>Descripción</th>
 					<th>Precio</th>
-					<th>Peso</th>
 					<th>Unidad</th>
 					<th>Forma</th>
 					<th>Sabor</th>
@@ -31,7 +30,6 @@
 					<td>{{ $prod->CostoProduccion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Descripcion}}</td>
 					<td>{{ $prod->Precio}}</td>
-					<td>{{ $prod->Peso}}</td>
 					<td>{{ $prod->Unidad}}</td>
 					<td>{{ $prod->Forma}}</td>
 					<td>{{ $prod->Sabor}}</td>

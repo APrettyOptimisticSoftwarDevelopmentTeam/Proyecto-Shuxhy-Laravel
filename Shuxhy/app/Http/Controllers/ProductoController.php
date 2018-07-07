@@ -41,7 +41,6 @@ class ProductoController extends Controller
         $producto->Precio=$request->get('Precio');
         $producto->Unidad=$request->get('Unidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
-        $producto->Peso=$request->get('Peso');
         $producto->Forma=$request->get('Forma');
         $producto->Relleno=$request->get('Relleno');
         $producto->Sabor=$request->get('Sabor');
@@ -76,7 +75,6 @@ class ProductoController extends Controller
         $producto->Precio=$request->get('Precio');
         $producto->Unidad=$request->get('Unidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
-        $producto->Peso=$request->get('Peso');
         $producto->Forma=$request->get('Forma');
         $producto->Relleno=$request->get('Relleno');
         $producto->Sabor=$request->get('Sabor');
