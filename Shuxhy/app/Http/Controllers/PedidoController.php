@@ -30,11 +30,11 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
-            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre',DB::raw('sum(dp.Cantidad*PrecioProducto) as total'))
+            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre',DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
             ->where ('p.Condicion','=','1') 
             ->orderBy('p.IdPedido', 'desc')
-            ->groupBy('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
+            ->groupBy('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
             ->paginate(7);
             return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
 
@@ -54,12 +54,7 @@ class PedidoController extends Controller
     	->where('prod.Condicion','=','1')
     	->get();
 
-        $precios=DB::table('producto as prod')
-        ->select('prod.Precio AS precio')
-        ->where('prod.Condicion','=','1')
-        ->get();
-
-        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos,"precios"=>$precios]);
+        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos]);
     }
 
     public function store (PedidoFormRequest $request)  // Funcion para crear 
@@ -71,7 +66,7 @@ class PedidoController extends Controller
     	DB::beginTransaction();
     	$pedido=new Pedido;
         $pedido->IdCliente=$request->get('IdCliente');
-        $pedido->Estatus=$request->get('Estatus');
+        $pedido->EntregaPedido=$request->get('EntregaPedido');
         $pedido->DireccionEntrega=$request->get('DireccionEntrega');
         $pedido->FechaRealizado=$request->get('FechaRealizado');
         $pedido->FechaEntrega=$request->get('FechaEntrega');
@@ -81,7 +76,7 @@ class PedidoController extends Controller
 
         $IdProducto = $request->get('IdProducto');
         $Cantidad = $request->get('Cantidad');
-        $PrecioProducto = $request->get('PrecioProducto');
+        $PrecioPorUnidad = $request->get('PrecioPorUnidad');
 
         $cont=0;
 
@@ -91,7 +86,7 @@ class PedidoController extends Controller
         	$DetallePedido->IdPedido=$pedido->IdPedido;
         	$DetallePedido->IdProducto=$IdProducto[$cont];
         	$DetallePedido->Cantidad=$Cantidad[$cont];
-        	$DetallePedido->PrecioProducto=$PrecioProducto[$cont];
+        	$DetallePedido->PrecioPorUnidad=$PrecioPorUnidad[$cont];
         	$DetallePedido->save();
         	$cont=$cont+1;
 
@@ -123,13 +118,13 @@ class PedidoController extends Controller
     	$pedido=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
-            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioProducto) as total'))
+            ->select('p.IdPedido', 'p.EntregaPedido', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioPorUnidad) as total'))
             ->where('p.IdPedido', '=', $id)
             ->first();
 
             $DetallePedido=DB::table('DetallePedido as dp')
             ->join('producto as prod', 'dp.IdProducto','=','prod.IdProducto')
-            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioProducto')
+            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioPorUnidad')
             ->where('dp.IdPedido', '=', $id)
             ->get();
 

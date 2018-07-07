@@ -29,7 +29,6 @@ Route::resource('almacen/combo','ComboController');
 
 Route::resource('almacen/receta','RecetaController');
 
-<<<<<<< HEAD
 Route::resource('administracion/usuario','UsuarioController');
 
 Route::resource('administracion/forma','FormaController');
@@ -41,19 +40,6 @@ Route::resource('administracion/relleno','RellenoController');
 Route::resource('administracion/topping','ToppingController');
 
 Route::resource('administracion/sabor','SaborController');
-=======
-Route::resource('almacen/forma','FormaController');
-
-Route::resource('almacen/topping','ToppingController');
-
-Route::resource('almacen/unidad','UnidadController');
-
-Route::resource('almacen/relleno','RellenoController');
-
-Route::resource('almacen/sabor','SaborController');
-
-Route::resource('autenticacion/usuario','UsuarioController');
->>>>>>> 173bb7ffc094f04cc27d35538d39f23540eae0b1
 
 Route::auth();
 

@@ -15,6 +15,7 @@
 					<th>Nombre</th>
 					<th>Descripcion</th>
 					<th>Costo</th>
+					<th>Peso</th>
 					<th>Unidad</th>
 					<th>Opciones</th>
 				</thead>
@@ -23,6 +24,7 @@
 					<td>{{ $mat->Nombre}}</td>		<!-- que se mostraran estos deben  -->
 					<th>{{ $mat->Descripcion}}</th>			<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $mat->Costo}}</td>		
+					<td>{{ $mat->Peso}}</td>
 					<td>{{ $mat->Unidad}}</td>
 
 					<td>

@@ -44,12 +44,7 @@ class ComboController extends Controller
         ->where('prod.Condicion','=','1')
         ->get();
 
-        $precios=DB::table('producto as prod')
-        ->select('prod.Precio AS precio')
-        ->where('prod.Condicion','=','1')
-        ->get();
-
-        return view('almacen.combo.create',["productos"=>$productos, "precios"=>$precios]);
+        return view('almacen.combo.create',["productos"=>$productos]);
     }
     public function store (ComboFormRequest $request)  // Es muy probable que el problema este aqui, pues no encuentro ningun error en la vista create
     {

@@ -9,7 +9,7 @@
                         
             <div class="form-group">
                    <label for="NombreReceta">Nombre</label>
-                   <p>{{$receta->Nombre}}</p>
+                   <p>{{$receta->NombreReceta}}</p>
             
             </div>
                   </div>
@@ -112,8 +112,8 @@
                                                 <tr>
                                                     <td>{{$det->material}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->CostoMaterial}}</td>  
-                                                    <td>{{$det->Cantidad*$det->CostoMaterial}}</td>
+                                                    <td>{{$det->CostoPorMaterial}}</td>  
+                                                    <td>{{$det->Cantidad*$det->CostoPorMaterial}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

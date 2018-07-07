@@ -15,11 +15,10 @@ class Pedido extends Model
 
     protected $fillable =[ 
     	'IdCliente',
-        'Estatus',
+    	'EntregaPedido',
     	'DireccionEntrega',
         'FechaRealizado',
     	'FechaEntrega',
-        'Total',
     	'Comentario',
         'Condicion'
 

@@ -13,7 +13,7 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Nombre del cliente</th>
-					<th>Estatus del pedido</th>
+					<th>Entrega pedido</th>
 					<th>Direccion de entrega</th>
 					<th>Fecha</th>
 					<th>Fecha de Entrega</th>
@@ -24,7 +24,7 @@
                @foreach($pedidos as $ped)
 				<tr>  <!-- Aqui se establecen los datos  -->	<!-- que se mostraran estos deben  -->
 					<td>{{ $ped->Nombre}}</td>
-					<td>{{ $ped->Estatus}}</td>		<!-- de coincidir con el orden de arriba  -->
+					<td>{{ $ped->EntregaPedido}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $ped->DireccionEntrega}}</td>
 					<td>{{ $ped->FechaRealizado}}</td>
 					<td>{{ $ped->FechaEntrega}}</td>

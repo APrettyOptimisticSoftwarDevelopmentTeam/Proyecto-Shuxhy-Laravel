@@ -19,8 +19,7 @@ class DetallePedido extends Model
     	'IdProducto',
         'Cantidad',
     	'Subtotal',
-    	'PrecioProducto',
-        'PrecioCombo',
+    	'PrecioPorUnidad',
     	'Comentario'
 
     ];

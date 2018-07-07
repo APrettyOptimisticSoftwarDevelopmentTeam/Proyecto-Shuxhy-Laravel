@@ -23,8 +23,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Nombre">Nombre de la receta</label>
-                  <input type="text" name="Nombre" class="form-control" placeholder="Nombre de la receta...">
+                  <label for="NombreReceta">Nombre de la receta</label>
+                  <input type="text" name="NombreReceta" class="form-control" placeholder="Nombre de la receta...">
             </div>
                   </div>
 
@@ -132,8 +132,8 @@
                               <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 
                                     <div class="form-group">
-                                          <label for="CostoMaterial">Costo por material</label>
-                                          <input type="number" name="pcostomaterial" id="pcostomaterial" class="form-control" placeholder="Costo por material">
+                                          <label for="CostoPorMaterial">Costo por material</label>
+                                          <input type="number" name="pcostopormaterial" id="pcostopormaterial" class="form-control" placeholder="Costo por material">
                                           
                                     </div>
 
@@ -225,14 +225,14 @@
                               IdMaterial=$("#pidpmaterial").val();
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
-                              CostoMaterial=$("#pcostomaterial").val();
+                              CostoPorMaterial=$("#pcostopormaterial").val();
 
-                              if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
+                              if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoPorMaterial!="") 
                               {
-                                    subtotal[cont]=(Cantidad*CostoMaterial);
+                                    subtotal[cont]=(Cantidad*CostoPorMaterial);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoPorMaterial[]" value="'+CostoPorMaterial+'"></td><td></td>'+subtotal[cont]+'</tr>';
                                     cont++;
 
                                     limpiar();
@@ -255,7 +255,7 @@
                         function limpiar() //lista sin problemas
                         {
                               $("#mcantidad").val("");
-                              $("#mcostomaterial").val("");
+                              $("#mcostopormaterial").val("");
                         }
 
                         function evaluar() // funciona correctamente
