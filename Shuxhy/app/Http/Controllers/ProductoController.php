@@ -22,16 +22,44 @@ class ProductoController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $productos=DB::table('producto')->where('nombre','LIKE','%'.$query.'%')
-            ->where ('Condicion','=','1')
-            ->orderBy('IdProducto','desc')
+            $productos=DB::table('producto as p')
+            ->join('unidad as u', 'p.IdUnidad','=','u.IdUnidad')
+            ->join('forma as f', 'p.IdForma','=','f.IdForma')
+            ->join('sabor as s', 'p.IdSabor','=','s.IdSabor')
+            ->join('relleno as r', 'p.IdRelleno','=','r.IdRelleno')
+            ->join('topping as t', 'p.IdTopping','=','t.IdTopping')
+            ->select('p.IdProducto', 'p.Nombre', 'p.Descripcion', 'p.CostoProduccion', 'p.Imagen', 'p.Condicion', 'p.Precio', 'u.Abreviatura', 'u.NombreUnidad' , 'f.Nombre AS Forma' , 's.Nombre AS Sabor' , 'r.Nombre AS Relleno' , 't.Nombre AS Topping')
+            ->where('p.Nombre','LIKE','%'.$query.'%')
+            ->where ('p.Condicion','=','1') 
+            ->orderBy('p.IdProducto', 'desc')
             ->paginate(7);
             return view('almacen.producto.index',["productos"=>$productos,"searchText"=>$query]);
         }
     }
     public function create()
     {
-        return view("almacen.producto.create");
+
+        $unidades=DB::table('unidad')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $formas=DB::table('forma')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $rellenos=DB::table('relleno')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $sabores=DB::table('sabor')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $toppings=DB::table('topping')
+        ->where('Condicion','=','1')
+        ->get();
+
+        return view('almacen.producto.create',["unidades"=>$unidades, "formas"=>$formas, "rellenos"=>$rellenos, "sabores"=>$sabores, "toppings"=>$toppings]);
     }
     public function store (ProductoFormRequest $request)  // Funcion para crear 
     {
@@ -39,12 +67,12 @@ class ProductoController extends Controller
         $producto->Nombre=$request->get('Nombre');
         $producto->Descripcion=$request->get('Descripcion');
         $producto->Precio=$request->get('Precio');
-        $producto->Unidad=$request->get('Unidad');
+        $producto->IdUnidad=$request->get('IdUnidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
-        $producto->Forma=$request->get('Forma');
-        $producto->Relleno=$request->get('Relleno');
-        $producto->Sabor=$request->get('Sabor');
-        $producto->Topping=$request->get('Topping');
+        $producto->IdForma=$request->get('IdForma');
+        $producto->IdRelleno=$request->get('IdRelleno');
+        $producto->IdSabor=$request->get('IdSabor');
+        $producto->IdTopping=$request->get('IdTopping');
 
         if (Input::hasFile('Imagen')) 
         {
@@ -65,7 +93,32 @@ class ProductoController extends Controller
     }
     public function edit($id)
     {
-        return view("almacen.producto.edit",["producto"=>Producto::findOrFail($id)]);
+
+        $unidad=DB::table('unidad')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $forma=DB::table('forma')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $relleno=DB::table('relleno')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $sabor=DB::table('sabor')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $topping=DB::table('topping')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $producto=Producto::findOrFail($id);
+
+        return view('almacen.producto.create',["unidad"=>$unidad, "forma"=>$forma, "relleno"=>$relleno, "sabor"=>$sabor, "topping"=>$topping]);
+
+        
     }
     public function update(ProductoFormRequest $request,$id)  // funcion para editar
     {
@@ -73,12 +126,12 @@ class ProductoController extends Controller
         $producto->Nombre=$request->get('Nombre');
         $producto->Descripcion=$request->get('Descripcion');
         $producto->Precio=$request->get('Precio');
-        $producto->Unidad=$request->get('Unidad');
+        $producto->IdUnidad=$request->get('IdUnidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
-        $producto->Forma=$request->get('Forma');
-        $producto->Relleno=$request->get('Relleno');
-        $producto->Sabor=$request->get('Sabor');
-        $producto->Topping=$request->get('Topping');
+        $producto->IdForma=$request->get('IdForma');
+        $producto->IdRelleno=$request->get('IdRelleno');
+        $producto->IdSabor=$request->get('IdSabor');
+        $producto->IdTopping=$request->get('IdTopping');
 
         if (Input::hasFile('Imagen')) 
         {

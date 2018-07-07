@@ -25,7 +25,7 @@
 					<th>{{ $mat->Descripcion}}</th>			<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $mat->Costo}}</td>		
 			
-					<td>{{ $mat->Abreviatura}}</td>
+					<td>{{ $mat->NombreUnidad}}</td>
 
 					<td>
 						<img src="{{asset('imagenes/materiales/'.$mat->Imagen)}}" alt="{{ $mat->Nombre}}" height="100px" width="100px" class="img-thubnail">

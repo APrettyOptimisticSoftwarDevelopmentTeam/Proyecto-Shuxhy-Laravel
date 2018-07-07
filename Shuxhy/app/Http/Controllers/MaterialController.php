@@ -27,11 +27,10 @@ class MaterialController extends Controller
             $query=trim($request->get('searchText'));
             $materiales=DB::table('material as m')
             ->join('unidad as u', 'm.IdUnidad','=','u.IdUnidad')
-            ->select('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion', 'u.Abreviatura', 'u.Nombre as NombreUnidad')
+            ->select('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion', 'u.Abreviatura', 'u.NombreUnidad')
             ->where('m.Nombre','LIKE','%'.$query.'%')
             ->where ('m.Condicion','=','1') 
             ->orderBy('m.IdMaterial', 'desc')
-            ->groupBy('m.IdMaterial', 'm.Nombre', 'm.Descripcion', 'm.Costo', 'm.Imagen', 'm.Condicion',  'u.Abreviatura')
             ->paginate(7);
             return view('almacen.material.index',["materiales"=>$materiales,"searchText"=>$query]);
 

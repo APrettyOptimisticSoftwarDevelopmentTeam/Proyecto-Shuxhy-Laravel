@@ -14,7 +14,7 @@ class Unidad extends Model
 
 
     protected $fillable =[ 
-    	'Nombre',
+    	'NombreUnidad',
     	'Abreviatura',
     	'Condicion'
 

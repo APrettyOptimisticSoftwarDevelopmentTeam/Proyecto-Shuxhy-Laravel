@@ -21,7 +21,7 @@ class UnidadController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $unidades=DB::table('unidad')->where('nombre','LIKE','%'.$query.'%')
+            $unidades=DB::table('unidad')->where('NombreUnidad','LIKE','%'.$query.'%')
             ->where ('condicion','=','1')
             ->orderBy('IdUnidad','desc')
             ->paginate(7);
@@ -35,7 +35,7 @@ class UnidadController extends Controller
     public function store (UnidadFormRequest $request)  // Funcion para crear 
     {
         $unidad=new Unidad;
-        $unidad->nombre=$request->get('Nombre');
+        $unidad->NombreUnidad=$request->get('NombreUnidad');
         $unidad->abreviatura=$request->get('Abreviatura');
         $unidad->condicion='1';
         $unidad->save();
@@ -53,7 +53,7 @@ class UnidadController extends Controller
     public function update(UnidadFormRequest $request,$id)  // funcion para editar
     {
         $unidad=Unidad::findOrFail($id);
-        $unidad->nombre=$request->get('Nombre');
+        $unidad->NombreUnidad=$request->get('NombreUnidad');
         $unidad->abreviatura=$request->get('Abreviatura');
         $unidad->update();
         return Redirect::to('administracion/unidad');

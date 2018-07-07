@@ -18,7 +18,7 @@
 				</thead>
                @foreach ($unidades as $uni)
 				<tr>  <!-- Aqui se establecen los datos  -->
-					<td>{{ $uni->Nombre}}</td>		<!-- que se mostraran estos deben  -->
+					<td>{{ $uni->NombreUnidad}}</td>		<!-- que se mostraran estos deben  -->
 					<td>{{ $uni->Abreviatura}}</td>		<!-- de coincidir con el orden de arriba  -->
 										
 					<td>

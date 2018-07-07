@@ -30,7 +30,7 @@
 					<td>{{ $prod->CostoProduccion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Descripcion}}</td>
 					<td>{{ $prod->Precio}}</td>
-					<td>{{ $prod->Unidad}}</td>
+					<td>{{ $prod->NombreUnidad}}</td>
 					<td>{{ $prod->Forma}}</td>
 					<td>{{ $prod->Sabor}}</td>
 					<td>{{ $prod->Relleno}}</td>

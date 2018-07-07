@@ -65,19 +65,15 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label>Unidad</label>
-                  <select name="Unidad" class="form-control selectpicker" id="Unidad" data-live-search="true">
-                        <option value="Unidad">Unidad</option>
-                        <option value="Docena">Docena</option>
-                        <option value="Botella">Botella</option>
-                        <option value="Libra">Libra</option>
-                        <option value="Onza">Onza</option>
-                        <option value="Costal">Costal</option>
-                        <option value="Taza">Taza</option>
-                        <option value="Cucharada">Cucharada</option>
-                        <option value="Cucharadita">Cucharadita</option>
-                        <option value="Tarro">Tarro</option>
-                        <option value="Lata">Lata</option>
+                   <label>Unidad</label>
+                  <select name="IdUnidad" class="form-control selectpicker" id="IdUnidad" data-live-search="true">
+                        @foreach ($unidad as $uni)
+                        @if($uni->IdUnidad==$producto->IdUnidad)
+                        <option value="{{$uni->IdUnidad}}" selected>{{$uni->Abreviatura}}</option>
+                        @else
+                        <option value="{{$uni->IdUnidad}}">{{$uni->Abreviatura}}</option>
+                        @endif
+                        @endforeach
                   </select>
             </div>
 
@@ -93,14 +89,15 @@
                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label>Forma</label>
-                  <select name="Forma" class="form-control selectpicker" id="Forma" data-live-search="true">
-                        <option value="No aplica">No aplica</option>
-                        <option value="Circulo">Circulo</option>
-                        <option value="Cuadrado">Cuadrado</option>
-                        <option value="Triangulo">Triangulo</option>
-                        <option value="Estrella">Estrella</option>
-                        <option value="Letra">Letra</option>
+                   <label>Forma</label>
+                  <select name="IdForma" class="form-control selectpicker" id="IdForma" data-live-search="true">
+                        @foreach ($forma as $form)
+                        @if($form->IdForma==$producto->IdForma)
+                        <option value="{{$form->IdForma}}" selected>{{$form->Abreviatura}}</option>
+                        @else
+                        <option value="{{$form->IdForma}}">{{$form->Abreviatura}}</option>
+                        @endif
+                        @endforeach
                   </select>
             </div>
 
@@ -112,14 +109,15 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label>Relleno</label>
-                  <select name="Relleno" class="form-control selectpicker" id="Relleno" data-live-search="true">
-                        <option>No aplica</option>
-                        <option>Chocolate</option>
-                        <option>Dulce de leche</option>
-                        <option>Caramelo</option>
-                        <option>Fresa</option>
-                        <option>Hershey's</option>
+                   <label>Relleno</label>
+                  <select name="IdRelleno" class="form-control selectpicker" id="IdRelleno" data-live-search="true">
+                        @foreach ($relleno as $rell)
+                        @if($rell->IdRelleno==$producto->IdRelleno)
+                        <option value="{{$rell->IdRelleno}}" selected>{{$rell->Abreviatura}}</option>
+                        @else
+                        <option value="{{$rell->IdRelleno}}">{{$rell->Abreviatura}}</option>
+                        @endif
+                        @endforeach
                   </select>
             </div>
 
@@ -132,15 +130,16 @@
                         
             <div class="form-group">
                    <label>Sabor</label>
-                  <select name="Sabor" class="form-control selectpicker" id="Sabor" data-live-search="true">
-                        <option>No aplica</option>
-                        <option>Chocolate</option>
-                        <option>Limon</option>
-                        <option>Caramelo</option>
-                        <option>Fresa</option>
-                        <option>Chinola</option>
+                  <select name="IdSabor" class="form-control selectpicker" id="IdSabor" data-live-search="true">
+                        @foreach ($sabor as $sab)
+                        @if($sab->IdSabor==$producto->IdSabor)
+                        <option value="{{$sab->IdSabor}}" selected>{{$sab->Abreviatura}}</option>
+                        @else
+                        <option value="{{$sab->IdSabor}}">{{$sab->Abreviatura}}</option>
+                        @endif
+                        @endforeach
                   </select>
-</div>
+            </div>
 
                   </div>
 
@@ -149,14 +148,14 @@
                         
             <div class="form-group">
                    <label>Topping</label>
-                  <select name="Topping" class="form-control selectpicker" id="Topping" data-live-search="true">
-                        <option>No aplica</option>
-                        <option>M&M</option>
-                        <option>Oreo</option>
-                        <option>Fresas</option>
-                        <option>Hershey's</option>
-                        <option>Nutella</option>
-                        <option>Chocolate</option>
+                  <select name="IdTopping" class="form-control selectpicker" id="IdTopping" data-live-search="true">
+                        @foreach ($topping as $top)
+                        @if($top->IdTopping==$producto->IdTopping)
+                        <option value="{{$top->IdTopping}}" selected>{{$top->Abreviatura}}</option>
+                        @else
+                        <option value="{{$top->IdTopping}}">{{$top->Abreviatura}}</option>
+                        @endif
+                        @endforeach
                   </select>
             </div>
 
