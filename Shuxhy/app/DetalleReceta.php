@@ -17,8 +17,8 @@ class DetalleReceta extends Model
     	'IdReceta',
         'IdMaterial',
     	'Cantidad',
-        'Unidad',
-        'CostoPorMaterial'
+        'IdUnidad',
+        'CostoMaterial'
     	
     	
     ];

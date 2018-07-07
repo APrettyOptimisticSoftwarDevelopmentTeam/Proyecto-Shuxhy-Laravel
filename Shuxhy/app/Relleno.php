@@ -4,21 +4,18 @@ namespace Shuxhy;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Relleno extends Model
 {
-     protected $table='material';
+    protected $table='relleno';
 
-    protected $primaryKey='IdMaterial';
+    protected $primaryKey='IdRelleno';
 
     public $timestamps=false;
 
 
     protected $fillable =[
     	'Nombre',
-        'Descripcion',
-        'Costo',
-        'IdUnidad',
-        'Imagen',
+        'Abreviatura',
         'Condicion'
     	
     ];
