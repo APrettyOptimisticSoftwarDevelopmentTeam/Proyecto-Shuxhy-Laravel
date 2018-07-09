@@ -107,7 +107,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label>Material</label>
@@ -118,18 +118,9 @@
 
                                           </select>
                                     </div>
-
-                                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-
-                                    <div class="form-group">
-                                          <label for="Cantidad">Cantidad</label>
-                                          <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
-                                          
-                                    </div>
-
                               </div>
 
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <label for="CostoPorMaterial">Costo por material</label>
@@ -139,7 +130,19 @@
 
                               </div>
 
-                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                                    <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label for="Cantidad">Cantidad</label>
+                                          <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
+                                          
+                                    </div>
+
+                              </div>
+
+                              
+
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
                                           <button type="button" id="bt_add" class="btn btn-primary">Agregar</button>
@@ -155,8 +158,8 @@
                                           <thead style="background-color:pink">
                                                 <th>Opciones</th>
                                                 <th>Material</th>
-                                                <th>Cantidad</th>
                                                 <th>Costo por material</th>
+                                                <th>Cantidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -166,7 +169,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">S/ . 00</h4></th>
+                                                <th><h4 id="total">RD$/ . 00</h4></th>
                                                 
                                           </tfoot>
 
@@ -236,7 +239,7 @@
                                     cont++;
 
                                     limpiar();
-                                    $("#total").html("S/. " +total);
+                                    $("#total").html("RD$/. " +total);
                                     evaluar();
 
 
@@ -273,7 +276,7 @@
                         function eliminar(index) //funciona correctamente
                         {
                               total=total-subtotal[index];
-                              $("#total").html("S/. " +total);
+                              $("#total").html("RD$/. " +total);
                               $("#fila" + index).remove();
                               evaluar(); 
 

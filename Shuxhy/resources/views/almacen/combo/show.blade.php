@@ -44,8 +44,8 @@
                                           <thead style="background-color:pink">
                                                
                                                 <th>Producto</th>
-                                                <th>Cantidad</th>
                                                 <th>Precio de unidad</th>
+                                                <th>Cantidad</th>        
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -63,8 +63,8 @@
                                                 @foreach ($detallecombo as $det)
                                                 <tr>
                                                     <td>{{$det->producto}}</td>
+                                                     <td>{{$det->Precio}}</td>  
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->Precio}}</td>  
                                                     <td>{{$det->Cantidad*$det->Precio}}</td>
                                                 </tr>
                                                 @endforeach

@@ -37,7 +37,7 @@
                         
             <div class="form-group">
                    <label>Estado del pedido</label>
-                  <select name="EntregaPedido" class="form-control">
+                  <select name="Estatus" class="form-control selectpicker" id="IdCliente" data-live-search="true">
                         <option>En proceso</option>
                         <option>Entregado</option>
                         <option>Solicitado</option>
@@ -72,7 +72,7 @@
                         
             <div class="form-group">
                   <label for="FechaRealizado">Fecha Pedido</label>
-                  <input type="text" name="FechaRealizado" class="form-control" placeholder="Fecha Realizado...">
+                  <input type="date" name="FechaRealizado" class="form-control" placeholder="Fecha Realizado...">
             </div>  
 
                   </div>
@@ -82,7 +82,7 @@
                         
             <div class="form-group">
                   <label for="FechaEntrega">Fecha de Entrega</label>
-                  <input type="text" name="FechaEntrega" class="form-control" placeholder="Fecha de entrega...">
+                  <input type="date" name="FechaEntrega" class="form-control" placeholder="Fecha de entrega...">
             </div>  
 
                   </div>
@@ -152,8 +152,8 @@
                                           <thead style="background-color:pink">
                                                 <th>Opciones</th>
                                                 <th>Producto</th>
-                                                <th>Cantidad</th>
                                                 <th>Precio por unidad</th>
+                                                <th>Cantidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -163,7 +163,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">S/ . 00</h4></th>
+                                                <th><h4 id="total">RD$/ . 00</h4></th>
                                                 
                                           </tfoot>
 
@@ -233,7 +233,7 @@
                                     cont++;
 
                                     limpiar();
-                                    $("#total").html("S/. " +total);
+                                    $("#total").html("RD$/. " +total);
                                     evaluar();
 
 
@@ -270,7 +270,7 @@
                         function eliminar(index) //funciona correctamente
                         {
                               total=total-subtotal[index];
-                              $("#total").html("S/. " +total);
+                              $("#total").html("RD$/. " +total);
                               $("#fila" + index).remove();
                               evaluar(); 
 

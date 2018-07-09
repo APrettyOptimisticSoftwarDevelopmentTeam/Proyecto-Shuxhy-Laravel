@@ -28,11 +28,11 @@ class ComboController extends Controller
             $query=trim($request->get('searchText'));
              $combos=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Descuento', 'c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Descuento', 'c.Total','c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->where ('c.Condicion','=','1') 
             ->orderBy('c.IdCombo', 'desc')
-            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal','c.Descuento', 'c.Condicion')
+            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal','c.Descuento', 'c.Condicion', 'c.Total')
             ->paginate(7);
             return view('almacen.combo.index',["combos"=>$combos,"searchText"=>$query]);
         }
@@ -40,7 +40,7 @@ class ComboController extends Controller
     public function create() // No  creo que haya problemas en esta parte
     {
         $productos=DB::table('producto as prod')
-        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion, ", Topping: ", prod.Topping ) AS producto'),'prod.IdProducto')
+        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion, ", Topping: ", prod.IdTopping ) AS producto'),'prod.IdProducto')
         ->where('prod.Condicion','=','1')
         ->get();
 
