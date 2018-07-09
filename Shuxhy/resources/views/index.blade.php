@@ -25,20 +25,7 @@
   <body>
 
     <!-- Right Side Of Navbar -->
-    <div align="Right">
-      <ul class="nav navbar-nav navbar-right">
-
-                            <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a></li>
-                            </ul>
-                        </li>
-      </ul>
-    </div>
+   
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">Shuxhy</span>
@@ -60,20 +47,21 @@
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="menu">Menu</a>
+              <a class="nav-link text-uppercase text-expanded" href="/menu">Menu</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="almacen/cliente">Clientes</a>
+              <a class="nav-link text-uppercase text-expanded" href="">Sobre Nosotros</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="almacen/producto">Productos</a>
+              <a class="nav-link text-uppercase text-expanded" href="">Misión</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>
+              <a class="nav-link text-uppercase text-expanded" href="">Visión</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Reportes</a>
+              <a class="nav-link text-uppercase text-expanded" href="/login">Iniciar Sesión</a>
             </li>
+            
           </ul>
         </div>
       </div>

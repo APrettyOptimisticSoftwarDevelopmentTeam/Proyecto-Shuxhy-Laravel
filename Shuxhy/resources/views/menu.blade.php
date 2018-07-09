@@ -47,18 +47,18 @@
               <a class="nav-link text-uppercase text-expanded" href="menu">Menu</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="almacen/cliente">Clientes</a>
+              <a class="nav-link text-uppercase text-expanded" href="">Sobre Nosotros</a>
+            </li>
+          <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="">Misión</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="almacen/producto">Productos</a>
+              <a class="nav-link text-uppercase text-expanded" href="">Visión</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>
+              <a class="nav-link text-uppercase text-expanded" href="/login">Iniciar Sesión</a>
             </li>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Reportes</a>
-            </li>
-          </ul>
+            </ul>
         </div>
       </div>
     </nav>

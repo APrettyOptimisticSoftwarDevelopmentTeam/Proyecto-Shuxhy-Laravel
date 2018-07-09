@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('index');
 });
 
  // lo primero es el enlace que se usara para acceder que esta en view lo segundo es el controlador que usara esta ruta hay que hace uno para cada ruta
@@ -43,8 +43,6 @@ Route::resource('administracion/sabor','SaborController');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
-
 Route::get('/index', function () {
 	return view ('index');
 });
@@ -52,6 +50,15 @@ Route::get('/index', function () {
 Route::get('/menu', function () {
 	return view ('menu');
 });
+
+Route::get('/welcome', function () {
+	return view ('welcome');
+});
+
+Route::get('/menu1', function () {
+	return view ('menu1');
+});
+
 
 
 

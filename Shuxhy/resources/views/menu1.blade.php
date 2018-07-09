@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shuxhy Brownies personalizados</title>
+    <title>Menu Shuxhy</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,6 @@
 
   <body>
 
-    <!-- Right Side Of Navbar -->
 
      <div align="Right">
       <ul class="nav navbar-nav navbar-right">
@@ -40,13 +39,12 @@
                         </li>
       </ul>
     </div>
-   
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">Shuxhy</span>
-      <span class="site-heading-lower">Postres y desayunos</span>
+      <span class="site-heading-lower">Menu</span>
     </h1>
-    
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
       <div class="container">
@@ -56,7 +54,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item active px-lg-4">
+            <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="/welcome">Inicio
                 <span class="sr-only">(current)</span>
               </a>
@@ -68,45 +66,75 @@
               <a class="nav-link text-uppercase text-expanded" href="almacen/cliente">Clientes</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="almacen/pedido">Pedidos</a>  
-               </li>  
-                <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>  
-               </li>        
+              <a class="nav-link text-uppercase text-expanded" href="almacen/pedido">Pedidos</a> 
+              </li>
+               <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a> 
+              </li>
+
           </ul>
+            </ul>
         </div>
       </div>
     </nav>
 
-    <section class="page-section clearfix">
+    <section class="page-section">
       <div class="container">
-        <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="img/intro.jpg" alt="">
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Shuxhy</span>
-              <span class="section-heading-lower">Brownies</span>
-            </h2>
-            <p class="mb-3">Somos especialistas en la creacion de deliciosos brownies, una vez los pruebes no podras olvidarlos, pues le brindaran sabor a tu dia. Animate y ordena tus brownies hoy, pregunta tambien por nuestros combos y desayunos!
-            </p>
-            <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="almacen/pedido">Haz tu pedido aqui</a>
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Preparados a la perfeccion Brownies</span>
+                <span class="section-heading-lower">Chocolate &amp; sabores variados</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/brownie.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Aqui una muestra selecta de nuestros brownies mas solicitados por nuestros clientes.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="page-section cta">
+    <section class="page-section">
       <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <div class="cta-inner text-center rounded">
-              <h2 class="section-heading mb-4">
-                <span class="section-heading-upper"></span>
-                <span class="section-heading-lower">Desayunos Y Combos</span>
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex mr-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Ademas Somos especialistas</span>
+                <span class="section-heading-lower">Postres &amp; Galletas </span>
               </h2>
-              <p class="mb-0">Ademas de la venta de postres nos especializamos en la preparacion de desayunos personalizados. Hacemos entrega a domicilio!</p>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/postres.jpg" alt="">
+          <div class="product-item-description d-flex ml-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">No solo hacemos Brownies, tambien preparamos cualquier tipo de postre y galletas que desees, para cualquier tipo de evento o ocasion especial.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Por ultimo</span>
+                <span class="section-heading-lower">Tenemos los mejores desayunos</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/desayuno.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Por ultimo, pero no menos importante tenemos los mejores desayunos del mercado.</p>
             </div>
           </div>
         </div>
@@ -118,8 +146,7 @@
         <p class="m-0 small">Copyright &copy; Shuxhy 2018</p>
       </div>
     </footer>
-    
-@yield('content')
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

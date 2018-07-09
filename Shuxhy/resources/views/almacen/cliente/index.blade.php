@@ -2,7 +2,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de Clientes <a href="cliente/create"><button class="btn btn-success">Nuevo </button></a></h3>
+		<h3>Listado de Clientes <a href="cliente/create"><i class="fa fa-plus"></i></a></h3>
 		@include('almacen.cliente.search')
 	</div>
 </div>
@@ -31,8 +31,8 @@
 					<td>{{ $clien->Telefono}}</td>
 					<td>{{ $clien->UsuarioIG}}</td>
 					<td>
-						<a href="{{URL::action('ClienteController@edit',$clien->IdCliente)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$clien->IdCliente}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('ClienteController@edit',$clien->IdCliente)}}">  <i class="fa fa-edit"></i></a>
+                         <a href="" data-target="#modal-delete-{{$clien->IdCliente}}" data-toggle="modal"> <i class="fa fa-remove"></i> </a>
 					</td>
 				</tr>
 				@include('almacen.cliente.modal')

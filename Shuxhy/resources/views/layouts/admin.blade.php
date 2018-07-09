@@ -29,7 +29,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="/index" class="logo">
+        <a href="/welcome" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>Shu</b></span>
           <!-- logo for regular state and mobile devices -->
@@ -153,7 +153,7 @@
 
               <li class="treeview">
               <a href="#">
-                <i class="fa fa-archive"></i>
+                <i class="fa fa-cog"></i>
                 <span>Administración</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
