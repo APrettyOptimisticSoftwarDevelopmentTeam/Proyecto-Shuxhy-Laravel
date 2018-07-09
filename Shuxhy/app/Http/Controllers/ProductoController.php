@@ -116,7 +116,7 @@ class ProductoController extends Controller
 
         $producto=Producto::findOrFail($id);
 
-        return view('almacen.producto.create',["unidad"=>$unidad, "forma"=>$forma, "relleno"=>$relleno, "sabor"=>$sabor, "topping"=>$topping]);
+        return view('almacen.producto.edit',["unidad"=>$unidad, "forma"=>$forma, "relleno"=>$relleno, "sabor"=>$sabor, "topping"=>$topping, "producto"=>$producto]);
 
         
     }
