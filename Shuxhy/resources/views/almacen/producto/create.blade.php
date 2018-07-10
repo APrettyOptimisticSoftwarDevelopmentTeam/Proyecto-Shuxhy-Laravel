@@ -34,7 +34,7 @@
                         
             <div class="form-group">
                   <label for="CostoProduccion">Costo de produccion</label>
-                  <input type="number" name="CostoProduccion" class="form-control" placeholder="Costo de produccion...">
+                  <input type="number" name="CostoProduccion" class="form-control" placeholder="Costo de produccion RD$...">
             </div>
                   </div>
 
@@ -54,7 +54,7 @@
                         
             <div class="form-group">
                   <label for="Precio">Precio</label>
-                  <input type="number" name="Precio" class="form-control"  placeholder="Precio...">
+                  <input type="number" name="Precio" class="form-control"  placeholder="Precio RD$...">
             </div>
 
                   </div>
