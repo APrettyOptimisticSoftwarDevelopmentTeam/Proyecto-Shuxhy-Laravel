@@ -38,9 +38,8 @@
             <div class="form-group">
                    <label>Estado del pedido</label>
                   <select name="Estatus" class="form-control selectpicker" id="IdCliente" data-live-search="true">
-                        <option>En proceso</option>
+                        <option>Sin Entregar</option>
                         <option>Entregado</option>
-                        <option>Solicitado</option>
                   </select>
             </div>
                   </div>

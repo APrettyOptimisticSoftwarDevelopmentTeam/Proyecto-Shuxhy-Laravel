@@ -37,8 +37,8 @@
 					<td>{{ $rece->total}}</td>
 					
 					<td>
-						<a href="{{URL::action('RecetaController@show',$rece->IdReceta)}}"><button class="btn btn-info">Detalles</button></a>
-                         <a href="" data-target="#modal-delete-{{$rece->IdReceta}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
+						<a href="{{URL::action('RecetaController@show',$rece->IdReceta)}}"><i class="fa fa-eye" style="font-size:20px"></i></a>
+                         <a href="" data-target="#modal-delete-{{$rece->IdReceta}}" data-toggle="modal"><i class="fa fa-remove" style="font-size:20px; color:red"></i></a>
 					</td>
 				</tr>
 				@include('almacen.receta.modal')

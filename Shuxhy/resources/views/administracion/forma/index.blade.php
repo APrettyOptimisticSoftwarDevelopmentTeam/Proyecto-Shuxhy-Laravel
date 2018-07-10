@@ -22,8 +22,8 @@
 					<td>{{ $forma->Abreviatura}}</td>		<!-- de coincidir con el orden de arriba  -->
 										
 					<td>
-						<a href="{{URL::action('FormaController@edit',$forma->IdForma)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$forma->IdForma}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('FormaController@edit',$forma->IdForma)}}">  <i class="fa fa-edit" style="font-size:20px"></i></a>
+                         <a href="" data-target="#modal-delete-{{$forma->IdForma}}" data-toggle="modal"> <i class="fa fa-trash" style="font-size:18px;color:red"></i> </a>
 					</td>
 				</tr>
 				@include('administracion.forma.modal')

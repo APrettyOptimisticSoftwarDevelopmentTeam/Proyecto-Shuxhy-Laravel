@@ -40,8 +40,8 @@
 						<img src="{{asset('imagenes/productos/'.$prod->Imagen)}}" alt="{{ $prod->Nombre}}" height="100px" width="100px" class="img-thubnail">
 					</td>
 					<td>
-						<a href="{{URL::action('ProductoController@edit',$prod->IdProducto)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$prod->IdProducto}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('ProductoController@edit',$prod->IdProducto)}}">  <i class="fa fa-edit" style="font-size:20px"></i></a>
+                         <a href="" data-target="#modal-delete-{{$prod->IdProducto}}" data-toggle="modal"> <i class="fa fa-trash" style="font-size:18px;color:red"></i> </a>
 					</td>
 				</tr>
 				@include('almacen.producto.modal')

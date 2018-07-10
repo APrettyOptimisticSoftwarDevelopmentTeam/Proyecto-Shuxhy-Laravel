@@ -22,8 +22,8 @@
 					<td>{{ $uni->Abreviatura}}</td>		<!-- de coincidir con el orden de arriba  -->
 										
 					<td>
-						<a href="{{URL::action('UnidadController@edit',$uni->IdUnidad)}}"><button class="btn btn-info">Editar</button></a>
-                         <a href="" data-target="#modal-delete-{{$uni->IdUnidad}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+						<a href="{{URL::action('UnidadController@edit',$uni->IdUnidad)}}">  <i class="fa fa-edit" style="font-size:20px"></i></a>
+                         <a href="" data-target="#modal-delete-{{$uni->IdUnidad}}" data-toggle="modal"> <i class="fa fa-trash" style="font-size:18px;color:red"></i> </a>
 					</td>
 				</tr>
 				@include('administracion.unidad.modal')
