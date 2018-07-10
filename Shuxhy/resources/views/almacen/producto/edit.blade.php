@@ -35,7 +35,7 @@
                         
             <div class="form-group">
                   <label for="CostoProduccion">Costo de produccion</label>
-                  <input type="number" name="CostoProduccion" class="form-control" value="{{$producto->CostoProduccion}}" placeholder="Costo de produccion...">
+                  <input type="number" name="CostoProduccion" class="form-control" value="{{$producto->CostoProduccion}}" placeholder="Costo de produccion RD$...">
             </div>
                   </div>
 
@@ -55,7 +55,7 @@
                         
             <div class="form-group">
                   <label for="Precio">Precio</label>
-                  <input type="number" name="Precio" class="form-control" value="{{$producto->Precio}}" placeholder="Precio...">
+                  <input type="number" name="Precio" class="form-control" value="{{$producto->Precio}}" placeholder="Precio RD$...">
             </div>
 
                   </div>

@@ -40,7 +40,7 @@ class ComboController extends Controller
     public function create() // No  creo que haya problemas en esta parte
     {
         $productos=DB::table('producto as prod')
-        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion, ", Topping: ", prod.IdTopping ) AS producto'),'prod.IdProducto')
+        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion) AS producto'),'prod.IdProducto')
         ->where('prod.Condicion','=','1')
         ->get();
 

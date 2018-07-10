@@ -44,7 +44,7 @@
                         
             <div class="form-group">
                   <label for="Costo">Costo</label>
-                  <input type="number" name="Costo" class="form-control" value="{{$material->Costo}}" placeholder="Costo...">
+                  <input type="number" name="Costo" class="form-control" value="{{$material->Costo}}" placeholder="Costo RD$...">
             </div>
 
                   </div>
