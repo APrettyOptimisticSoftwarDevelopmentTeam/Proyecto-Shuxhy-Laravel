@@ -35,7 +35,7 @@
                         
             <div class="form-group">
                   <label for="CostoProduccion">Costo de produccion</label>
-                  <input type="text" name="CostoProduccion" class="form-control" value="{{$producto->CostoProduccion}}" placeholder="Costo de produccion...">
+                  <input type="number" name="CostoProduccion" class="form-control" value="{{$producto->CostoProduccion}}" placeholder="Costo de produccion...">
             </div>
                   </div>
 
@@ -55,7 +55,7 @@
                         
             <div class="form-group">
                   <label for="Precio">Precio</label>
-                  <input type="text" name="Precio" class="form-control" value="{{$producto->Precio}}" placeholder="Precio...">
+                  <input type="number" name="Precio" class="form-control" value="{{$producto->Precio}}" placeholder="Precio...">
             </div>
 
                   </div>
@@ -69,9 +69,9 @@
                   <select name="IdUnidad" class="form-control selectpicker" id="IdUnidad" data-live-search="true">
                         @foreach ($unidad as $uni)
                         @if($uni->IdUnidad==$producto->IdUnidad)
-                        <option value="{{$uni->IdUnidad}}" selected>{{$uni->Abreviatura}}</option>
+                        <option value="{{$uni->IdUnidad}}" selected>{{$uni->NombreUnidad}}</option>
                         @else
-                        <option value="{{$uni->IdUnidad}}">{{$uni->Abreviatura}}</option>
+                        <option value="{{$uni->IdUnidad}}">{{$uni->NombreUnidad}}</option>
                         @endif
                         @endforeach
                   </select>
@@ -93,9 +93,9 @@
                   <select name="IdForma" class="form-control selectpicker" id="IdForma" data-live-search="true">
                         @foreach ($forma as $form)
                         @if($form->IdForma==$producto->IdForma)
-                        <option value="{{$form->IdForma}}" selected>{{$form->Abreviatura}}</option>
+                        <option value="{{$form->IdForma}}" selected>{{$form->Nombre}}</option>
                         @else
-                        <option value="{{$form->IdForma}}">{{$form->Abreviatura}}</option>
+                        <option value="{{$form->IdForma}}">{{$form->Nombre}}</option>
                         @endif
                         @endforeach
                   </select>
@@ -113,9 +113,9 @@
                   <select name="IdRelleno" class="form-control selectpicker" id="IdRelleno" data-live-search="true">
                         @foreach ($relleno as $rell)
                         @if($rell->IdRelleno==$producto->IdRelleno)
-                        <option value="{{$rell->IdRelleno}}" selected>{{$rell->Abreviatura}}</option>
+                        <option value="{{$rell->IdRelleno}}" selected>{{$rell->Nombre}}</option>
                         @else
-                        <option value="{{$rell->IdRelleno}}">{{$rell->Abreviatura}}</option>
+                        <option value="{{$rell->IdRelleno}}">{{$rell->Nombre}}</option>
                         @endif
                         @endforeach
                   </select>
@@ -133,9 +133,9 @@
                   <select name="IdSabor" class="form-control selectpicker" id="IdSabor" data-live-search="true">
                         @foreach ($sabor as $sab)
                         @if($sab->IdSabor==$producto->IdSabor)
-                        <option value="{{$sab->IdSabor}}" selected>{{$sab->Abreviatura}}</option>
+                        <option value="{{$sab->IdSabor}}" selected>{{$sab->Nombre}}</option>
                         @else
-                        <option value="{{$sab->IdSabor}}">{{$sab->Abreviatura}}</option>
+                        <option value="{{$sab->IdSabor}}">{{$sab->Nombre}}</option>
                         @endif
                         @endforeach
                   </select>
@@ -151,9 +151,9 @@
                   <select name="IdTopping" class="form-control selectpicker" id="IdTopping" data-live-search="true">
                         @foreach ($topping as $top)
                         @if($top->IdTopping==$producto->IdTopping)
-                        <option value="{{$top->IdTopping}}" selected>{{$top->Abreviatura}}</option>
+                        <option value="{{$top->IdTopping}}" selected>{{$top->Nombre}}</option>
                         @else
-                        <option value="{{$top->IdTopping}}">{{$top->Abreviatura}}</option>
+                        <option value="{{$top->IdTopping}}">{{$top->Nombre}}</option>
                         @endif
                         @endforeach
                   </select>

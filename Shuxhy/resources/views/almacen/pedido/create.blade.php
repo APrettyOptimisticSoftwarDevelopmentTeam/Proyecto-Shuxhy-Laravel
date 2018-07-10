@@ -152,8 +152,8 @@
                                           <thead style="background-color:pink">
                                                 <th>Opciones</th>
                                                 <th>Producto</th>
-                                                <th>Precio por unidad</th>
                                                 <th>Cantidad</th>
+                                                <th>Precio por unidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>

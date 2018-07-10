@@ -34,7 +34,7 @@
                         
             <div class="form-group">
                   <label for="CostoProduccion">Costo de produccion</label>
-                  <input type="text" name="CostoProduccion" class="form-control" placeholder="Costo de produccion...">
+                  <input type="number" name="CostoProduccion" class="form-control" placeholder="Costo de produccion...">
             </div>
                   </div>
 
@@ -54,7 +54,7 @@
                         
             <div class="form-group">
                   <label for="Precio">Precio</label>
-                  <input type="text" name="Precio" class="form-control"  placeholder="Precio...">
+                  <input type="number" name="Precio" class="form-control"  placeholder="Precio...">
             </div>
 
                   </div>
@@ -67,7 +67,7 @@
                    <label>Unidad</label>
                   <select name="IdUnidad" class="form-control selectpicker" id="IdUnidad" data-live-search="true">
                         @foreach ($unidades as $unid)
-                        <option value="{{$unid->IdUnidad}}">{{$unid->Abreviatura}}</option>
+                        <option value="{{$unid->IdUnidad}}">{{$unid->NombreUnidad}}</option>
                         @endforeach
                   </select>
             </div>
@@ -85,7 +85,7 @@
                    <label>Forma</label>
                   <select name="IdForma" class="form-control selectpicker" id="IdForma" data-live-search="true">
                         @foreach ($formas as $forma)
-                        <option value="{{$forma->IdForma}}">{{$forma->Abreviatura}}</option>
+                        <option value="{{$forma->IdForma}}">{{$forma->Nombre}}</option>
                         @endforeach
                   </select>
             </div>
@@ -101,7 +101,7 @@
                    <label>Relleno</label>
                   <select name="IdRelleno" class="form-control selectpicker" id="IdRelleno" data-live-search="true">
                         @foreach ($rellenos as $relleno)
-                        <option value="{{$relleno->IdRelleno}}">{{$relleno->Abreviatura}}</option>
+                        <option value="{{$relleno->IdRelleno}}">{{$relleno->Nombre}}</option>
                         @endforeach
                   </select>
             </div>
@@ -117,7 +117,7 @@
                    <label>Sabor</label>
                   <select name="IdSabor" class="form-control selectpicker" id="IdSabor" data-live-search="true">
                         @foreach ($sabores as $sabor)
-                        <option value="{{$sabor->IdSabor}}">{{$sabor->Abreviatura}}</option>
+                        <option value="{{$sabor->IdSabor}}">{{$sabor->Nombre}}</option>
                         @endforeach
                   </select>
             </div>
@@ -131,7 +131,7 @@
                    <label>Topping</label>
                   <select name="IdTopping" class="form-control selectpicker" id="IdTopping" data-live-search="true">
                         @foreach ($toppings as $topping)
-                        <option value="{{$topping->IdTopping}}">{{$topping->Abreviatura}}</option>
+                        <option value="{{$topping->IdTopping}}">{{$topping->Nombre}}</option>
                         @endforeach
                   </select>
             </div>

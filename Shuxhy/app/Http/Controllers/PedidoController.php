@@ -54,10 +54,10 @@ class PedidoController extends Controller
     	->where('prod.Condicion','=','1')
     	->get();
 
-        $precios=DB::table('producto as prod')
+       $precios=DB::table('producto as prod')
         ->select('prod.Precio AS precio')
         ->where('prod.Condicion','=','1')
-        ->get();
+        ->get(); 
 
         return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos,"precios"=>$precios]);
 
@@ -77,6 +77,7 @@ class PedidoController extends Controller
         $pedido->FechaRealizado=$request->get('FechaRealizado');
         $pedido->FechaEntrega=$request->get('FechaEntrega');
         $pedido->Comentario=$request->get('Comentario');
+      //  $pedido->Total=$request->get('total');
         $pedido->Condicion='1';
         $pedido->save();
 
