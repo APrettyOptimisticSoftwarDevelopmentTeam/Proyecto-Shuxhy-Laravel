@@ -30,11 +30,11 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
-            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre',DB::raw('sum(dp.Cantidad*PrecioProducto) as total'))
+            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
             ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
             ->where ('p.Condicion','=','1') 
             ->orderBy('p.IdPedido', 'desc')
-            ->groupBy('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre')
+            ->groupBy('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
             ->paginate(7);
             return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
 
@@ -73,7 +73,7 @@ class PedidoController extends Controller
         $pedido->FechaRealizado=$request->get('FechaRealizado');
         $pedido->FechaEntrega=$request->get('FechaEntrega');
         $pedido->Comentario=$request->get('Comentario');
-      //  $pedido->Total=$request->get('total');
+        $pedido->Total=$request->get('Total');
         $pedido->Condicion='1';
         $pedido->save();
 
@@ -121,7 +121,7 @@ class PedidoController extends Controller
     	$pedido=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
-            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', DB::raw('sum(dp.Cantidad*PrecioProducto) as total'))
+            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
             ->where('p.IdPedido', '=', $id)
             ->first();
 

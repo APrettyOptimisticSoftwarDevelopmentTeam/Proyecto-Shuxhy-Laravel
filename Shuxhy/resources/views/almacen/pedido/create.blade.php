@@ -158,7 +158,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">RD$/ . 00</h4></th>
+                                                <th><h4 id="total">RD$/ . 00</h4><input type="hidden" name="Total" id="Total"></th>
                                                 
                                           </tfoot>
 
@@ -242,6 +242,7 @@
 
                                     limpiar();
                                     $("#total").html("RD$/. " +total);
+                                    $("#Total").val(total);
                                     evaluar();
 
 
@@ -279,6 +280,7 @@
                         {
                               total=total-subtotal[index];
                               $("#total").html("RD$/. " +total);
+                              $("#Total").val(total);
                               $("#fila" + index).remove();
                               evaluar(); 
 

@@ -85,7 +85,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">{{$pedido->total}}</h4></th>
+                                                <th><h4 id="total">{{$pedido->Total}}</h4></th>
                                                 
                                           </tfoot>
 
