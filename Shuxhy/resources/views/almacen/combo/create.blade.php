@@ -38,13 +38,7 @@
        </div>        
 
 
-       <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-           <div class="form-group">
-                  <label for="Descuento">Descuento</label>
-                  <input type="number" name="Descuento" class="form-control" placeholder="Descuento %...">
-            </div> 
-       </div>        
+       
                   
 
 
@@ -99,6 +93,15 @@
 
                               </div>
 
+
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+                        
+                              <div class="form-group">
+                                  <label for="Descuento">Descuento</label>
+                                  <input type="number" name="pdescuento" id="pdescuento" class="form-control" placeholder="Descuento%">
+                            </div> 
+                       </div>        
+
                              
 
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
@@ -119,6 +122,7 @@
                                                 <th>Producto</th>
                                                 <th>Precio</th>
                                                 <th>Cantidad</th>
+                                                <th>Descuento</th>
                                                 
 
                                           </thead>
@@ -127,7 +131,8 @@
                                                 <th>Total</th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">S/ . 00</h4></th>
+                                                <th></th>
+                                                <th><h4 id="total">S/ . 00</h4><input type="hidden" name="Total" id="Total"></th>
                                                 
                                           </tfoot>
 
@@ -198,17 +203,19 @@
                               Producto=$("#pidproducto option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               Precio=$("#pprecio").val();
+                              Descuento=$("#pdescuento").val();
 
-                              if (IdProducto!="" && Precio!="" && Precio>0 && Cantidad!="") 
+                              if (IdProducto!="" && Precio!="" && Precio>0 && Cantidad!="" && Cantidad>0 && Descuento!="") 
                               {
-                                    subtotal[cont]=(Cantidad*Precio);
+                                    subtotal[cont]=(Cantidad*Precio-Descuento);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="Precio[]" value="'+Precio+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="Precio[]" value="'+Precio+'"></td><td><input type="number" name="Descuento[]" value="'+Descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
                                     cont++;
 
                                     limpiar();
                                     $("#total").html("S/. " +total);
+                                    $("#Total").val(total);
                                     evaluar();
 
 
@@ -228,6 +235,7 @@
                         {
                               $("#pcantidad").val("");
                               $("#pprecio").val("");
+                              $("#pdescuento").val("");
                         }
 
                         function evaluar() // funciona correctamente
@@ -246,6 +254,7 @@
                         {
                               total=total-subtotal[index];
                               $("#total").html("S/. " +total);
+                              $("#Total").val(total);
                               $("#fila" + index).remove();
                               evaluar(); 
 

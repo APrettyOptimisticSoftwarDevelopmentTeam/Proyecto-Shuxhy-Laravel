@@ -124,7 +124,7 @@
 
                                     <div class="form-group">
                                           <label for="Costo">Precio</label>
-                                          <input type="number" disabled name="pcosto" id="pcosto" class="form-control" placeholder="Costo RD$">
+                                          <input type="number" disabled name="pcostomaterial" id="pcostomaterial" class="form-control" placeholder="Costo RD$">
                                           
                                     </div>
 
@@ -228,7 +228,7 @@
                          function mostrarValores() 
                          {
                               datosMateriales=document.getElementById('pidmaterial').value.split('_');
-                               $("#pcosto").val(datosMateriales[1]);
+                               $("#pcostomaterial").val(datosMateriales[1]);
                          }
 
 
@@ -241,7 +241,7 @@
                               IdMaterial=datosMateriales[0];
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
-                              CostoMaterial=$("#pcosto").val();
+                              CostoMaterial=$("#pcostomaterial").val();
 
                               if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
                               {
@@ -271,7 +271,7 @@
                         function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
-                              $("#pcosto").val("");
+                              $("#pcostomaterial").val("");
                         }
 
                         function evaluar() // funciona correctamente

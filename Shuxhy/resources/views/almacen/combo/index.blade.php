@@ -14,7 +14,6 @@
 				<thead>
 					<th>Nombre</th>
 					<th>Descripción</th>
-					<th>Descuento</th>
 					<th>Total</th>
 					<th>Imagen</th>
 					<th>Opciones</th>
@@ -23,8 +22,7 @@
 				<tr>  <!-- Aqui se establecen los datos  -->
 					<td>{{ $combo->Nombre}}</td>		<!-- que se mostraran estos deben  -->
 					<td>{{ $combo->Descripcion}}</td>		<!-- de coincidir con el orden de arriba  -->
-					<td>{{ $combo->Descuento}}</td>
-					<td>{{ $combo->total}}</td>
+					<td>{{ $combo->Total}}</td>
 					
 					<td>
 						<img src="{{asset('imagenes/combos/'.$combo->Imagen)}}" alt="{{$combo->Nombre}}" height="100px" width="100px" class="img-thubnail">

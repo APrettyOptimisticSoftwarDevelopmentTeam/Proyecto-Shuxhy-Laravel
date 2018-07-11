@@ -26,10 +26,6 @@
 
 
 
-
-
-
-
 </div>
 
 <div class="row">
@@ -45,7 +41,8 @@
                                                
                                                 <th>Producto</th>
                                                 <th>Precio de unidad</th>
-                                                <th>Cantidad</th>        
+                                                <th>Cantidad</th>  
+                                                <th>Descuento</th>      
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -55,7 +52,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">{{$combo->total}}</h4></th>
+                                                <th><h4 id="total">{{$combo->Total}}</h4></th>
                                                 
                                           </tfoot>
 
@@ -65,7 +62,8 @@
                                                     <td>{{$det->producto}}</td>
                                                      <td>{{$det->Precio}}</td>  
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->Cantidad*$det->Precio}}</td>
+                                                    <td>{{$det->Descuento}}</td>
+                                                    <td>{{$det->Cantidad*$det->Precio-$det->Descuento}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

@@ -28,11 +28,11 @@ class ComboController extends Controller
             $query=trim($request->get('searchText'));
              $combos=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Descuento', 'c.Total','c.Condicion',DB::raw('sum(dc.Precio*Cantidad) as total'))
+            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal', 'c.Condicion', 'c.Total')
             ->where('c.Nombre','LIKE','%'.$query.'%')
             ->where ('c.Condicion','=','1') 
             ->orderBy('c.IdCombo', 'desc')
-            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal','c.Descuento', 'c.Condicion', 'c.Total')
+            ->groupBy('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen', 'c.Subtotal', 'c.Condicion', 'c.Total')
             ->paginate(7);
             return view('almacen.combo.index',["combos"=>$combos,"searchText"=>$query]);
         }
@@ -57,8 +57,7 @@ class ComboController extends Controller
         $combo->Nombre=$request->get('Nombre');
         $combo->Descripcion=$request->get('Descripcion');
         //$combo->Subtotal=$request->get('Subtotal');
-        $combo->Descuento=$request->get('Descuento');
-       // $combo->Total=$request->get('Total');
+        $combo->Total=$request->get('Total');
         
         if (Input::hasFile('Imagen')) 
         {
@@ -72,6 +71,7 @@ class ComboController extends Controller
         $IdProducto = $request->get('IdProducto');
         $Cantidad = $request->get('Cantidad');
         $Precio = $request->get('Precio');
+        $Descuento = $request->get('Descuento');
 
         $cont=0;
 
@@ -82,6 +82,7 @@ class ComboController extends Controller
             $DetalleCombo->IdProducto=$IdProducto[$cont];
             $DetalleCombo->Cantidad=$Cantidad[$cont];
             $DetalleCombo->Precio=$Precio[$cont];
+            $DetalleCombo->Descuento=$Descuento[$cont];
             $DetalleCombo->save();
             $cont=$cont+1;
 
@@ -108,13 +109,13 @@ class ComboController extends Controller
     {
         $combo=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-            ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal','c.Descuento', 'c.Condicion', DB::raw('sum(dc.Precio*Cantidad) as total'))
+             ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion', 'c.Imagen','c.Subtotal', 'c.Condicion', 'c.Total')
             ->where('c.IdCombo', '=', $id)
             ->first();
 
             $detallecombo=DB::table('detallecombo as dc')
             ->join('producto as prod', 'dc.IdProducto','=','prod.IdProducto')
-            ->select('prod.Nombre as producto', 'dc.Cantidad', 'dc.Precio')
+            ->select('prod.Nombre as producto', 'dc.Cantidad', 'dc.Precio', 'dc.Descuento')
             ->where('dc.IdCombo', '=', $id)
             ->get();
 
