@@ -71,7 +71,7 @@
 
                                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
 
-                                          <thead style="background-color:#A9D0F5">
+                                          <thead style="background-color:pink">
                                                
                                                 <th>Producto</th>
                                                 <th>Precio de unidad</th>

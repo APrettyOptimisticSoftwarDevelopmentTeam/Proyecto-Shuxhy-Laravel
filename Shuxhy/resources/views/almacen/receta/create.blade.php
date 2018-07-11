@@ -23,8 +23,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="NombreReceta">Nombre de la receta</label>
-                  <input type="text" name="NombreReceta" class="form-control" placeholder="Nombre de la receta...">
+                  <label for="Nombre">Nombre de la receta</label>
+                  <input type="text" name="Nombre" class="form-control" placeholder="Nombre de la receta...">
             </div>
                   </div>
 
@@ -169,7 +169,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">RD$/ . 00</h4></th>
+                                                <th><h4 id="total">RD$/ .00</h4><input type="hidden" name="Total" id="Total"></th>
                                                 
                                           </tfoot>
 
@@ -252,7 +252,8 @@
                                     cont++;
 
                                     limpiar();
-                                    $("#total").html("RD$/. " +total);
+                                    $("#total").html("RD$/ " +total);
+                                    $("#Total").val(total);
                                     evaluar();
 
 
@@ -289,7 +290,8 @@
                         function eliminar(index) //funciona correctamente
                         {
                               total=total-subtotal[index];
-                              $("#total").html("RD$/. " +total);
+                              $("#total").html("RD$/ " +total);
+                              $("#Total").val(total);
                               $("#fila" + index).remove();
                               evaluar(); 
 

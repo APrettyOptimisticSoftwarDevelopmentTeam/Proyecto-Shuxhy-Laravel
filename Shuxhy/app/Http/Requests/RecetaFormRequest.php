@@ -24,7 +24,7 @@ class RecetaFormRequest extends Request
     public function rules()
     {
         return [
-            'NombreReceta'=>'required|max:25',
+            'Nombre'=>'required|max:25',
             'Descripcion'=>'max:150',
             'Equipo'=>'max:100',
             'TiempoPreparacion'=>'max:50',

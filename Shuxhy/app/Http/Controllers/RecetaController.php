@@ -29,11 +29,11 @@ class RecetaController extends Controller
             $query=trim($request->get('searchText'));
             $recetas=DB::table('receta as r')
             ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', DB::raw('sum(dr.Cantidad*CostoMaterial) as total'))
+            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', 'r.Total')
             ->where('r.Nombre','LIKE','%'.$query.'%')
             ->where ('r.Condicion','=','1') 
             ->orderBy('r.IdReceta', 'desc')
-            ->groupBy('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion', 'r.TiempoPreparacion')
+            ->groupBy('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion', 'r.TiempoPreparacion', 'r.Total')
             ->paginate(7);
             return view('almacen.receta.index',["recetas"=>$recetas,"searchText"=>$query]);
 
@@ -41,7 +41,7 @@ class RecetaController extends Controller
     }
 
 
-     public function create() // Lo que me falla debe de ser el script
+     public function create() 
     {
         
         $materiales=DB::table('material as mat')
@@ -71,7 +71,7 @@ class RecetaController extends Controller
         $receta->CostoDeReposicion=$request->get('CostoDeReposicion');
         $receta->CostoIndirecto=$request->get('CostoIndirecto');
         $receta->CostoManoDeObra=$request->get('CostoManoDeObra');
-        //$receta->SubTotal=$request->get('SubTotal');
+        $receta->Total=$request->get('Total');
         $receta->Condicion='1';
         $receta->save();
 
@@ -117,7 +117,7 @@ class RecetaController extends Controller
 
         $receta=DB::table('receta as r')
             ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion','r.TiempoPreparacion', DB::raw('sum(dr.Cantidad*CostoMaterial) as total'))
+            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', 'r.Total')
             ->where('r.IdReceta', '=', $id)
             ->first();
 

@@ -34,7 +34,7 @@
 					<td>{{ $rece->CostoDeReposicion}}</td>
 					<td>{{ $rece->CostoIndirecto}}</td>
 					<td>{{ $rece->CostoManoDeObra}}</td>
-					<td>{{ $rece->total}}</td>
+					<td>{{ $rece->Total}}</td>
 					
 					<td>
 						<a href="{{URL::action('RecetaController@show',$rece->IdReceta)}}"><i class="fa fa-eye" style="font-size:20px"></i></a>

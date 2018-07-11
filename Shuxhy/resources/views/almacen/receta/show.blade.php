@@ -9,7 +9,7 @@
                         
             <div class="form-group">
                    <label for="NombreReceta">Nombre</label>
-                   <p>{{$receta->NombreReceta}}</p>
+                   <p>{{$receta->Nombre}}</p>
             
             </div>
                   </div>
@@ -89,7 +89,7 @@
 
                                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
 
-                                          <thead style="background-color:#A9D0F5">
+                                          <thead style="background-color:pink">
                                                
                                                 <th>Material</th>
                                                 <th>Cantidad</th>
@@ -103,7 +103,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">{{$receta->total}}</h4></th>
+                                                <th><h4 id="total">{{$receta->Total}}</h4></th>
                                                 
                                           </tfoot>
 
@@ -112,8 +112,8 @@
                                                 <tr>
                                                     <td>{{$det->material}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->CostoPorMaterial}}</td>  
-                                                    <td>{{$det->Cantidad*$det->CostoPorMaterial}}</td>
+                                                    <td>{{$det->CostoMaterial}}</td>  
+                                                    <td>{{$det->Cantidad*$det->CostoMaterial}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>
