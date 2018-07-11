@@ -101,7 +101,7 @@
                                           <label>Producto</label>
                                           <select name="pidproducto" class="form-control selectpicker" id="pidproducto" data-live-search="true">
                                                 @foreach ($productos as $producto)
-                                                <option value="{{$producto->IdProducto}}">{{$producto->producto}}</option>
+                                                <option value="{{$producto->IdProducto}}_{{$producto->Precio}}">{{$producto->producto}}</option>
                                                 @endforeach
 
                                           </select>
@@ -112,13 +112,9 @@
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
-                                          <label>Precio</label>
-                                          <select name="pprecioproducto" class="form-control selectpicker" id="pprecioproducto" data-live-search="true">
-                                                @foreach ($precios as $precio)
-                                                <option value="{{$precio->precio}}">{{$precio->precio}}</option>
-                                                @endforeach
-
-                                          </select>
+                                          <label for="PrecioProducto">Precio</label>
+                                          <input type="number" disabled name="pprecioproducto" id="pprecioproducto" class="form-control" placeholder="Precio RD$">
+                                          
                                     </div>
 
                               </div>
@@ -216,9 +212,22 @@
                         subtotal=[];
                         $("#guardar").hide();
 
+                         $("#pidproducto").change(mostrarValores);
+
+                         function mostrarValores() 
+                         {
+                              datosProductos=document.getElementById('pidproducto').value.split('_');
+                               $("#pprecioproducto").val(datosProductos[1]);
+                         }
+
+
                         function agregar(argument) // funciona correctamente
                         {
-                              IdProducto=$("#pidproducto").val();
+
+                              datosProductos=document.getElementById('pidproducto').value.split('_');
+                               
+
+                              IdProducto=datosProductos[0];
                               Producto=$("#pidproducto option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               PrecioProducto=$("#pprecioproducto").val();

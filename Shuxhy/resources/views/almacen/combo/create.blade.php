@@ -72,7 +72,7 @@
                                           <label>Producto</label>
                                           <select name="pidproducto" class="form-control selectpicker" id="pidproducto" data-live-search="true">
                                                 @foreach ($productos as $producto)
-                                                <option value="{{$producto->IdProducto}}">{{$producto->producto}}</option>
+                                                <option value="{{$producto->IdProducto}}_{{$producto->Precio}}">{{$producto->producto}}</option>
                                                 @endforeach
 
                                           </select>
@@ -83,7 +83,7 @@
 
                                     <div class="form-group">
                                           <label for="Precio">Precio</label>
-                                          <input type="number" name="pprecio" id="pprecio" class="form-control" placeholder="Precio RD$">
+                                          <input type="number" disabled name="pprecio" id="pprecio" class="form-control" placeholder="Precio RD$">
                                           
                                     </div>
 
@@ -181,9 +181,20 @@
                         subtotal=[];
                         $("#guardar").hide();
 
+                         $("#pidproducto").change(mostrarValores);
+
+                         function mostrarValores() 
+                         {
+                              datosProductos=document.getElementById('pidproducto').value.split('_');
+                               $("#pprecio").val(datosProductos[1]);
+                         }
+
+
                         function agregar(argument) // funciona correctamente
                         {
-                              IdProducto=$("#pidproducto").val();
+
+                              datosProductos=document.getElementById('pidproducto').value.split('_');
+                              IdProducto=datosProductos[0];
                               Producto=$("#pidproducto option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               Precio=$("#pprecio").val();

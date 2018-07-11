@@ -50,16 +50,16 @@ class PedidoController extends Controller
         ->get();
 
     	$productos=DB::table('producto as prod')
-    	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto')
+    	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
     	->where('prod.Condicion','=','1')
     	->get();
 
-       $precios=DB::table('producto as prod')
+       /*$precios=DB::table('producto as prod')
         ->select('prod.Precio AS precio')
         ->where('prod.Condicion','=','1')
-        ->get(); 
+        ->get(); */
 
-        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos,"precios"=>$precios]);
+        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos]);
 
     }
 
