@@ -24,7 +24,8 @@ class FacturaFormRequest extends Request
     public function rules()
     {
         return [
-            //
+            'TotalFacturado'=>'required',
+            'FormaPago'=>'required',
         ];
     }
 }

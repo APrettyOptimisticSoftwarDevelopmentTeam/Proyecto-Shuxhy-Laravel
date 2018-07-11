@@ -71,7 +71,7 @@
               <a class="nav-link text-uppercase text-expanded" href="almacen/pedido">Pedidos</a>  
                </li>  
                 <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="">Facturacion</a>  
+              <a class="nav-link text-uppercase text-expanded" href="almacen/factura">Facturacion</a>  
                </li>        
           </ul>
         </div>

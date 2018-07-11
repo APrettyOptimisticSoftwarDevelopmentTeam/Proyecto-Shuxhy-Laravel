@@ -23,6 +23,8 @@ Route::resource('almacen/producto','ProductoController');
 
 Route::resource('almacen/pedido','PedidoController');
 
+Route::resource('almacen/factura','FacturaController');
+
 Route::resource('almacen/material','MaterialController');
 
 Route::resource('almacen/combo','ComboController');

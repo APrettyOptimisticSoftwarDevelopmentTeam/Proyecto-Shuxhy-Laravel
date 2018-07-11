@@ -18,9 +18,7 @@ class DetalleFactura extends Model
     	'Subtotal',
         'Cantidad',
         'Precio',
-        'Comentario'
-        
-    	
+        'Comentario'    	
     ];
 
     protected $guarded =[

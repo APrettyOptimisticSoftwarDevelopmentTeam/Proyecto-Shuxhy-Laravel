@@ -21,8 +21,6 @@ class Factura extends Model
     	'TotalFacturado',
         'FormaPago',
     	'Condicion'
-        
-        
     	
     ];
 
