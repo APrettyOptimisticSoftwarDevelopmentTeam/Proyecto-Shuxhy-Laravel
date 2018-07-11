@@ -113,7 +113,7 @@
                                           <label>Material</label>
                                           <select name="pidmaterial" class="form-control selectpicker" id="pidmaterial" data-live-search="true">
                                                 @foreach ($materiales as $material)
-                                                <option value="{{$material->IdMaterial}}">{{$material->material}}</option>
+                                                <option value="{{$material->IdMaterial}}_{{$material->Costo}}">{{$material->material}}</option>
                                                 @endforeach
 
                                           </select>
@@ -122,15 +122,12 @@
 
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
-                                     <div class="form-group">
-                                          <label>Precio</label>
-                                          <select name="pcostomaterial" class="form-control selectpicker" id="pcostomaterial" data-live-search="true">
-                                                @foreach ($precios as $precio)
-                                                <option value="{{$precio->precio}}">{{$precio->precio}}</option>
-                                                @endforeach
-
-                                          </select>
+                                    <div class="form-group">
+                                          <label for="Costo">Precio</label>
+                                          <input type="number" disabled name="pcosto" id="pcosto" class="form-control" placeholder="Costo RD$">
+                                          
                                     </div>
+
                               </div>
 
                                     <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
@@ -226,12 +223,25 @@
                         subtotal=[];
                         $("#guardar").hide();
 
+                        $("#pidmaterial").change(mostrarValores);
+
+                         function mostrarValores() 
+                         {
+                              datosMateriales=document.getElementById('pidmaterial').value.split('_');
+                               $("#pcosto").val(datosMateriales[1]);
+                         }
+
+
                         function agregar(argument) // funciona correctamente
                         {
-                              IdMaterial=$("#pidpmaterial").val();
+
+                              datosMateriales=document.getElementById('pidmaterial').value.split('_');
+                               
+                             
+                              IdMaterial=datosMateriales[0];
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
-                              CostoMaterial=$("#pcostomaterial").val();
+                              CostoMaterial=$("#pcosto").val();
 
                               if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
                               {
@@ -261,7 +271,7 @@
                         function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
-                              $("#pcostomaterial").val("");
+                              $("#pcosto").val("");
                         }
 
                         function evaluar() // funciona correctamente

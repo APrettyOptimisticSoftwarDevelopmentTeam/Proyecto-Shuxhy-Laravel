@@ -45,17 +45,14 @@ class RecetaController extends Controller
     {
         
         $materiales=DB::table('material as mat')
-        ->select(DB::raw('CONCAT(mat.Nombre, " ", mat.Descripcion ) AS material'),'mat.IdMaterial')
+        ->select(DB::raw('CONCAT(mat.Nombre, " ", mat.Descripcion ) AS material'),'mat.IdMaterial', 'mat.Costo')
         ->where('mat.Condicion','=','1')
         ->get();
 
 
-         $precios=DB::table('material as mat')
-        ->select('mat.Costo AS precio')
-        ->where('mat.Condicion','=','1')
-        ->get(); 
+         
 
-        return view('almacen.receta.create',["materiales"=>$materiales, "precios"=>$precios]);
+        return view('almacen.receta.create',["materiales"=>$materiales]);
     }
 
     public function store (RecetaFormRequest $request)  // Funcion para crear 
