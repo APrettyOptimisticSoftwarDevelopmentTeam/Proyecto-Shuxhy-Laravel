@@ -32,31 +32,7 @@
                   </select>
             </div>
                   </div>
-
-
-
-                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
-                        
-                       <div class="form-group">
-                  <label for="Fecha">Fecha</label>
-                  <input type="text" name="Fecha" class="form-control" placeholder=Fecha...>
-            </div> 
-                  </div>
-
-
-
-                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="TotalFacturado">Total</label>
-                  <input type="text" name="TotalFacturado" class="form-control"  placeholder="Total...">
-            </div>
-
-                  </div>
-
-
-
-                  
+                 
 
 </div>
 
@@ -151,7 +127,7 @@
             <div class="form-group">
                   <input  name="_token" value="{{ csrf_token() }}"  type="hidden"></input>
                   <button class="btn btn-primary" type="submit">Guardar</button>
-                  <button class="btn btn-danger"><a href="{{url('almacen/pedido')}}">Cancelar</a></button>
+                  <button class="btn btn-danger"><a href="{{url('almacen/factura')}}">Cancelar</a></button>
             </div>
                         
                   </div>

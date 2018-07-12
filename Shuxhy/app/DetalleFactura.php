@@ -15,10 +15,14 @@ class DetalleFactura extends Model
 
     protected $fillable =[
     	'IdFactura',
+        'IdPedido',
+        'IdProducto',
+        'IdCombo',
     	'Subtotal',
         'Cantidad',
-        'Precio',
-        'Comentario'    	
+        'PrecioProd', 
+        'PrecioComb',   
+        'PrecioPed',   	
     ];
 
     protected $guarded =[

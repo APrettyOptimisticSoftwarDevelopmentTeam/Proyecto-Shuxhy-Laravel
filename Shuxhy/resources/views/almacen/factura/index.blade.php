@@ -24,7 +24,7 @@
 					<td>{{ $fact->TotalFacturado}}</td>
 					<td>
 						<a href="{{URL::action('FacturaController@show',$fact->IdFactura)}}"><i class="fa fa-eye" style="font-size:20px"></i></a>
-                         <a href="" data-target="#modal-delete-{{$fact->IdFactura}}" data-toggle="modal"><i class="fa fa-remove" style="font-size:20px; color:red"></i></a>
+                         <a href="" data-target="#modal-delete-{{$fact->IdFactura}}" data-toggle="modal"><i class="fa fa-minus" style="font-size:20px; color:red"></i></a>
 					</td>
 				</tr>
 				@include('almacen.factura.modal')

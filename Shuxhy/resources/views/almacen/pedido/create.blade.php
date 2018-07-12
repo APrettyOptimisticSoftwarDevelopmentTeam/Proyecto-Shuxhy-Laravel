@@ -70,16 +70,6 @@
                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FechaRealizado">Fecha Pedido</label>
-                  <input type="date" name="FechaRealizado" class="form-control" placeholder="Fecha Realizado...">
-            </div>  
-
-                  </div>
-
-
-                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
-                        
-            <div class="form-group">
                   <label for="FechaEntrega">Fecha de Entrega</label>
                   <input type="date" name="FechaEntrega" class="form-control" placeholder="Fecha de entrega...">
             </div>  

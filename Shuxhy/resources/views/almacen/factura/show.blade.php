@@ -50,7 +50,7 @@
 
                                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
 
-                                          <thead style="background-color:#A9D0F5">
+                                          <thead style="background-color:pink">
                                                
                                                 <th>Producto</th>
                                                 <th>Precio de unidad</th>
@@ -72,9 +72,9 @@
                                                 @foreach ($DetalleFactura as $det)
                                                 <tr>
                                                     <td>{{$det->producto}}</td>
-                                                    <td>{{$det->Precio}}</td>
+                                                    <td>{{$det->PrecioProd}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->Cantidad*$det->Precio}}</td>
+                                                    <td>{{$det->Cantidad*$det->PrecioProd}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

@@ -87,7 +87,7 @@ class FacturaController extends Controller
 
         $IdProducto = $request->get('IdProducto');
         $Cantidad = $request->get('Cantidad');
-        $Precio = $request->get('Precio');
+        $PrecioProd = $request->get('Precio');
 
 
         //$IdCombo = $request->get('IdCombo');
@@ -102,7 +102,7 @@ class FacturaController extends Controller
         	$DetalleFactura->IdFactura=$factura->IdFactura;
         	$DetalleFactura->IdProducto=$IdProducto[$cont];
         	$DetalleFactura->Cantidad=$Cantidad[$cont];
-        	$DetalleFactura->Precio=$Precio[$cont];
+        	$DetalleFactura->PrecioProd=$PrecioProd[$cont];
         	$DetalleFactura->save();
         	$cont=$cont+1;
 
@@ -138,8 +138,8 @@ class FacturaController extends Controller
             ->first();
 
             $DetalleFactura=DB::table('DetalleFactura as df')
-            ->join('producto as prod', 'df.IdFactura','=','prod.IdProducto')
-            ->select('prod.Nombre as producto', 'df.Cantidad', 'df.Precio')
+            ->join('producto as prod', 'df.IdProducto','=','prod.IdProducto')
+            ->select('prod.Nombre as producto', 'df.Cantidad', 'df.PrecioProd')
             ->where('df.IdFactura', '=', $id)
             ->get();
 

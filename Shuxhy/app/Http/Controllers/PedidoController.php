@@ -12,6 +12,7 @@ use Shuxhy\Pedido;
 use Shuxhy\DetallePedido;
 use DB;
 
+use Carbon\Carbon;
 use Response; 
 use Illuminate\Support\Collection;
 
@@ -70,7 +71,9 @@ class PedidoController extends Controller
         $pedido->IdCliente=$request->get('IdCliente');
         $pedido->Estatus=$request->get('Estatus');
         $pedido->DireccionEntrega=$request->get('DireccionEntrega');
-        $pedido->FechaRealizado=$request->get('FechaRealizado');
+
+        $mytime=Carbon::now('America/Lima');
+        $pedido->FechaRealizado=$mytime->toDateTimeString();
         $pedido->FechaEntrega=$request->get('FechaEntrega');
         $pedido->Comentario=$request->get('Comentario');
         $pedido->Total=$request->get('Total');
