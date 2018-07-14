@@ -16,20 +16,20 @@ p{
     color:rgba(255,255,255,.3)
 }
 .site-heading{
-    margin-top:5rem;
-    margin-bottom:5rem;
+    margin-top:0px;
+    margin-bottom:20px;
     text-transform:uppercase;
     line-height:1;
     font-family:Raleway
 }
 .site-heading .site-heading-upper{
     display:block;
-    font-size:5rem;  /* Tamaño de letra shuxhy */
+    font-size:4rem;  /* Tamaño de letra shuxhy */
     font-weight:800
 
 }
 .site-heading .site-heading-lower{
-    font-size:4rem;  /* Tamaño de letra postres y desayunos*/
+    font-size:3rem;  /* Tamaño de letra postres y desayunos*/
     font-weight:100;
     line-height:4rem
 }
