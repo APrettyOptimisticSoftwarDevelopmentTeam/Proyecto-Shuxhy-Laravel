@@ -73,7 +73,7 @@
                         
             <div class="form-group">
                   <label for="CostoDeReposicion">Costo De Reposicion</label>
-                  <input type="number" name="CostoDeReposicion" class="form-control" placeholder="Costo De Reposicion RD$...">
+                  <input type="number" name="CostoDeReposicion" id="pcostoreposicion" class="form-control" placeholder="Costo De Reposicion RD$...">
             </div>  
 
                   </div>
@@ -219,11 +219,14 @@
                         });
 
                         var cont=0;
+                        auxCostoR=0;
                         total=0;
+                        total2=0;
                         subtotal=[];
                         $("#guardar").hide();
 
                         $("#pidmaterial").change(mostrarValores);
+                        calcular();
 
                          function mostrarValores() 
                          {
@@ -242,43 +245,62 @@
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               CostoMaterial=$("#pcostomaterial").val();
+                              CostoDeReposicion=$("#pcostoreposicion").val();
 
                               if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
+
                               {
                                     subtotal[cont]=(Cantidad*CostoMaterial);
+                                    //total2=total+subtotal[cont]; // todo bien hasta aqui
+                                    //auxCostoR=(total2*parseInt(CostoDeReposicion)/100);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
+
 
                                     var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td></td>'+subtotal[cont]+'</tr>';
                                     cont++;
 
+
                                     limpiar();
+
+
                                     $("#total").html("RD$/ " +total);
                                     $("#Total").val(total);
                                     evaluar();
-
-
                                     $("#detalles").append(fila);
 
-                              }
+                         }
+
+                           
 
                               else
                               {
                                     alert$("Error al ingresar el detalle del receta, revise los datos del material");
                               }
 
+                      
                         }
                         
+
+                        function calcular() //lista sin problemas
+                        {
+                                    auxCostoR=(total*parseInt(CostoDeReposicion)/100);
+                                    total=total+parseInt(auxCostoR);
+                        }
+
 
                         function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
                               $("#pcostomaterial").val("");
+                              //$("#pcostoreposicion").val("");
                         }
 
                         function evaluar() // funciona correctamente
                         {
+                              
                               if (total>0) 
                               {
+                                    
                                      $("#guardar").show();
                               }
                                else

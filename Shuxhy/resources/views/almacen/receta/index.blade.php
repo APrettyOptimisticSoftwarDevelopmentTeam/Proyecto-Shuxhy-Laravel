@@ -2,7 +2,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-		<h3>Listado de recetas <a href="receta/create"><button class="btn btn-success">Nueva</button></a></h3>
+		<h3>Listado de recetas <a href="receta/create"><icon class="fa fa-plus" style="font-size:20px; color:green"></i></a></h3>
 		@include('almacen.receta.search')
 	</div>
 </div>
