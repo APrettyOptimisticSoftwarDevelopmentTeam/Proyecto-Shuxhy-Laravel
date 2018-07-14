@@ -28,7 +28,7 @@ class ProductoController extends Controller
             ->join('sabor as s', 'p.IdSabor','=','s.IdSabor')
             ->join('relleno as r', 'p.IdRelleno','=','r.IdRelleno')
             ->join('topping as t', 'p.IdTopping','=','t.IdTopping')
-            ->select('p.IdProducto', 'p.Nombre', 'p.Descripcion', 'p.CostoProduccion', 'p.Imagen', 'p.Condicion', 'p.Precio', 'u.Abreviatura', 'u.NombreUnidad' , 'f.Nombre AS Forma' , 's.Nombre AS Sabor' , 'r.Nombre AS Relleno' , 't.Nombre AS Topping')
+            ->select('p.IdProducto', 'p.Nombre', 'p.Descripcion', 'p.CostoProduccion', 'p.Imagen', 'p.Condicion', 'p.Stock', 'p.Precio', 'u.Abreviatura', 'u.NombreUnidad' , 'f.Nombre AS Forma' , 's.Nombre AS Sabor' , 'r.Nombre AS Relleno' , 't.Nombre AS Topping')
             ->where('p.Nombre','LIKE','%'.$query.'%')
             ->where ('p.Condicion','=','1') 
             ->orderBy('p.IdProducto', 'desc')
@@ -67,6 +67,7 @@ class ProductoController extends Controller
         $producto->Nombre=$request->get('Nombre');
         $producto->Descripcion=$request->get('Descripcion');
         $producto->Precio=$request->get('Precio');
+        $producto->Stock=$request->get('Stock');
         $producto->IdUnidad=$request->get('IdUnidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
         $producto->IdForma=$request->get('IdForma');
@@ -126,6 +127,7 @@ class ProductoController extends Controller
         $producto->Nombre=$request->get('Nombre');
         $producto->Descripcion=$request->get('Descripcion');
         $producto->Precio=$request->get('Precio');
+        $producto->Stock=$request->get('Stock');
         $producto->IdUnidad=$request->get('IdUnidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
         $producto->IdForma=$request->get('IdForma');

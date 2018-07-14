@@ -13,9 +13,10 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>Nombre</th>
-					<th>Costo de produccion</th>
 					<th>Descripción</th>
+					<th>Costo de produccion</th>
 					<th>Precio</th>
+					<th>Stock</th>
 					<th>Unidad</th>
 					<th>Forma</th>
 					<th>Sabor</th>
@@ -27,9 +28,10 @@
                @foreach ($productos as $prod)
 				<tr>  <!-- Aqui se establecen los datos  -->
 					<td>{{ $prod->Nombre}}</td>		<!-- que se mostraran estos deben  -->
-					<td>{{ $prod->CostoProduccion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Descripcion}}</td>
+					<td>{{ $prod->CostoProduccion}}</td>		<!-- de coincidir con el orden de arriba  -->
 					<td>{{ $prod->Precio}}</td>
+					<td>{{ $prod->Stock}}</td>
 					<td>{{ $prod->NombreUnidad}}</td>
 					<td>{{ $prod->Forma}}</td>
 					<td>{{ $prod->Sabor}}</td>

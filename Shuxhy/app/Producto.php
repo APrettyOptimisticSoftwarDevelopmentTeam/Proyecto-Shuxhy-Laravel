@@ -18,6 +18,7 @@ class Producto extends Model
         'CostoProduccion',
     	'Descripcion',
         'Precio',
+        'Stock',
         'IdUnidad',
         'Imagen',
         'IdForma',

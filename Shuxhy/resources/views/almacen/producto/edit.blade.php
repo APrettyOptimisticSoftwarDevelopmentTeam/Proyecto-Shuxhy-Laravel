@@ -31,7 +31,15 @@
 
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+                       <div class="form-group">
+                  <label for="Descripcion">Descripción</label>
+                  <input type="text" name="Descripcion" class="form-control" value="{{$producto->Descripcion}}" placeholder="Descripción...">
+            </div> 
+                  </div>
+
+                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
                   <label for="CostoProduccion">Costo de produccion</label>
@@ -43,21 +51,19 @@
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
-                       <div class="form-group">
-                  <label for="Descripcion">Descripción</label>
-                  <input type="text" name="Descripcion" class="form-control" value="{{$producto->Descripcion}}" placeholder="Descripción...">
-            </div> 
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
             <div class="form-group">
                   <label for="Precio">Precio</label>
                   <input type="number" name="Precio" class="form-control" value="{{$producto->Precio}}" placeholder="Precio RD$...">
             </div>
 
+                  </div>
+
+                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Stock">Stock</label>
+                  <input type="number" name="Stock" class="form-control" value="{{$producto->Stock}}" placeholder="Stock">
+            </div>
                   </div>
 
 
@@ -79,11 +85,6 @@
 
 
                   </div>
-
-
-
-
-
 
 
                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
