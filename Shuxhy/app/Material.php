@@ -17,6 +17,7 @@ class Material extends Model
     	'Nombre',
         'Descripcion',
         'Costo',
+        'Stock',
         'IdUnidad',
         'Imagen',
         'Condicion'

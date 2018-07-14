@@ -40,7 +40,7 @@
 
             <div class="form-group">
                   <label for="Telefono">Telefono</label>
-                  <input type="text" name="Telefono" class="form-control" placeholder="Telefono...">
+                  <input type="number" name="Telefono" class="form-control" placeholder="Telefono...">
             </div>
 
 

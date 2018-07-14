@@ -25,7 +25,7 @@ class ClienteFormRequest extends Request
     {
         return [
             'Nombre'=>'required|max:15',
-            'Telefono'=>'required|numeric',
+            'Telefono'=>'required|tel',
             'Direccion'=>'max:150',
             'Comentario'=>'max:150',
             'UsuarioIG'=>'max:20',
