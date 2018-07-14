@@ -43,6 +43,7 @@
    
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
+      <img src ="img/huxhy.png" width=200 height=200 style="position:relative; top:0px; left:0px"/>
       <span class="site-heading-upper text-primary mb-3">Shuxhy</span>
       <span class="site-heading-lower">Postres y desayunos</span>
     </h1>
