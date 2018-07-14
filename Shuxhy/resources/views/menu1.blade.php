@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template -->
     <link href="css/business-casual.min.css" rel="stylesheet">
+  
+    <!-- Slideshow -->
+  <link href="css/slide.css" rel="stylesheet">
 
   </head>
 
@@ -41,6 +44,7 @@
     </div>
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
+  <img src ="img/huxhy.png" width=200 height=200 style="position:relative; top:0px; left:0px"/>
       <span class="site-heading-upper text-primary mb-3">Shuxhy</span>
       <span class="site-heading-lower">Menu</span>
     </h1>
@@ -89,11 +93,17 @@
               </h2>
             </div>
           </div>
-          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/brownie.jpg" alt="">
-          <div class="product-item-description d-flex mr-auto">
-            <div class="bg-faded p-5 rounded">
-              <p class="mb-0">Aqui una muestra selecta de nuestros brownies mas solicitados por nuestros clientes.</p>
-            </div>
+          <div id="slideshow">
+   <div>
+     <img src="img/brownie.jpg" width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+   <div>
+      <img src="img/limon.jpg"  width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+   <div>
+      <img src="img/brownie her.jpg"   width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+</div>
           </div>
         </div>
       </div>
@@ -110,16 +120,22 @@
               </h2>
             </div>
           </div>
-          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/postres.jpg" alt="">
-          <div class="product-item-description d-flex ml-auto">
-            <div class="bg-faded p-5 rounded">
-              <p class="mb-0">No solo hacemos Brownies, tambien preparamos cualquier tipo de postre y galletas que desees, para cualquier tipo de evento o ocasion especial.</p>
-            </div>
+           <div id="slideshow2">
+   <div>
+     <img src="img/Postres.jpg" width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+   <div>
+      <img src="img/galletas.jpg"  width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+   <div>
+      <img src="img/galletas2.jpg"   width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+</div>
           </div>
         </div>
       </div>
     </section>
-
+  
     <section class="page-section">
       <div class="container">
         <div class="product-item">
@@ -131,12 +147,17 @@
               </h2>
             </div>
           </div>
-          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/desayuno.jpg" alt="">
-          <div class="product-item-description d-flex mr-auto">
-            <div class="bg-faded p-5 rounded">
-              <p class="mb-0">Por ultimo, pero no menos importante tenemos los mejores desayunos del mercado.</p>
-            </div>
-          </div>
+         <div id="slideshow3">
+   <div>
+     <img src="img/desayuno.jpg" width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+   <div>
+      <img src="img/desayuno2.jpg"  width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+   <div>
+      <img src="img/desayuno3.jpg"   width=700 height=330 style="position:relative; top:-20px; left:-200px">
+   </div>
+</div>
         </div>
       </div>
     </section>
@@ -150,6 +171,7 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="vendor/jquery/slide.js"></script>
 
   </body>
 
