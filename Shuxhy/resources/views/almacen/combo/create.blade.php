@@ -123,12 +123,14 @@
                                                 <th>Precio</th>
                                                 <th>Cantidad</th>
                                                 <th>Descuento</th>
+                                                <th>Subtotal</th>
                                                 
 
                                           </thead>
 
                                           <tfoot>
                                                 <th>Total</th>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -205,7 +207,7 @@
                               Precio=$("#pprecio").val();
                               Descuento=$("#pdescuento").val();
 
-                              if (IdProducto!="" && Precio!="" && Precio>0 && Cantidad!="" && Cantidad>0 && Descuento!="") 
+                              if (IdProducto!="" && Precio!="" && Precio>0 && Cantidad!="" && Cantidad>0) 
                               {
                                     subtotal[cont]=(Cantidad*Precio-Descuento);
                                     total=total+subtotal[cont]; // todo bien hasta aqui

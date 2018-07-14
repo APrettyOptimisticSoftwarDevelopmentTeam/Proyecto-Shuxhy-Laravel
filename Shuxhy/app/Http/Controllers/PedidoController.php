@@ -31,6 +31,7 @@ class PedidoController extends Controller
             $pedidos=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
+           // ->join('combo as com', 'dp.IdCombo','=','com.IdCombo')
             ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
             ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
             ->where ('p.Condicion','=','1') 
@@ -55,8 +56,13 @@ class PedidoController extends Controller
     	->where('prod.Condicion','=','1')
     	->get();
 
+        $combos=DB::table('combo as com')
+        ->select(DB::raw('CONCAT(com.Nombre, " ", com.Descripcion ) AS combo'),'com.IdCombo', 'com.Total')
+        ->where('com.Condicion','=','1')
+        ->get();
+
       
-        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos]);
+        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos,"combos"=>$combos]);
 
     }
 
@@ -81,8 +87,10 @@ class PedidoController extends Controller
         $pedido->save();
 
         $IdProducto = $request->get('IdProducto');
+        $IdCombo = $request->get('IdCombo');
         $Cantidad = $request->get('Cantidad');
         $PrecioProducto = $request->get('PrecioProducto');
+        $PrecioCombo = $request->get('PrecioCombo');
 
         $cont=0;
 
@@ -91,8 +99,10 @@ class PedidoController extends Controller
         	$DetallePedido = new DetallePedido();
         	$DetallePedido->IdPedido=$pedido->IdPedido;
         	$DetallePedido->IdProducto=$IdProducto[$cont];
+            $DetallePedido->IdCombo=$IdCombo[$cont];
         	$DetallePedido->Cantidad=$Cantidad[$cont];
         	$DetallePedido->PrecioProducto=$PrecioProducto[$cont];
+            $DetallePedido->PrecioCombo=$PrecioCombo[$cont];
         	$DetallePedido->save();
         	$cont=$cont+1;
 
@@ -130,7 +140,8 @@ class PedidoController extends Controller
 
             $DetallePedido=DB::table('DetallePedido as dp')
             ->join('producto as prod', 'dp.IdProducto','=','prod.IdProducto')
-            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioProducto')
+            ->join('combo as com', 'dp.IdCombo','=','com.IdCombo')
+            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioProducto', 'dp.PrecioCombo', 'com.Nombre as combo')
             ->where('dp.IdPedido', '=', $id)
             ->get();
 

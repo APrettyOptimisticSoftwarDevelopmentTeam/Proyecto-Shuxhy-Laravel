@@ -74,14 +74,18 @@
                                           <thead style="background-color:pink">
                                                
                                                 <th>Producto</th>
-                                                <th>Precio de unidad</th>
-                                                <th>Cantidad</th>
+                                                <th>Precio del producto</th>
+                                                <th>Cantidad de productos</th>
+                                                <th>Combo</th>
+                                                <th>Precio del combo</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
 
                                           <tfoot>
                                                
+                                                <th></th>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -95,7 +99,9 @@
                                                     <td>{{$det->producto}}</td>
                                                     <td>{{$det->PrecioProducto}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->Cantidad*$det->PrecioProducto}}</td>
+                                                    <td>{{$det->combo}}</td>
+                                                    <td>{{$det->PrecioCombo}}</td>
+                                                    <td>{{$det->Cantidad*$det->PrecioProducto+$det->PrecioCombo}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

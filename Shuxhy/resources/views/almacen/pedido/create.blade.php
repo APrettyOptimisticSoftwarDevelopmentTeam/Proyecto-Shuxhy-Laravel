@@ -85,7 +85,7 @@
 
                   <div class="panel panel-primary">
                         <div class="panel-body">
-                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+                              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                                     <div class="form-group">
                                           <label>Producto</label>
@@ -99,17 +99,17 @@
                               </div>
 
 
-                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+                              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                                     <div class="form-group">
-                                          <label for="PrecioProducto">Precio</label>
-                                          <input type="number" disabled name="pprecioproducto" id="pprecioproducto" class="form-control" placeholder="Precio RD$">
+                                          <label for="PrecioProducto">Precio del producto</label>
+                                          <input type="number" disabled name="pprecioproducto" id="pprecioproducto" class="form-control" placeholder="Precio del producto RD$">
                                           
                                     </div>
 
                               </div>
 
-                                    <div class="col-lg-3 col-sm- col-md-6 col-xs-12">
+                                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                                     <div class="form-group">
                                           <label for="Cantidad">Cantidad</label>
@@ -118,6 +118,31 @@
                                     </div>
 
                               </div>
+
+                               <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label>Combo</label>
+                                          <select name="pidcombo" class="form-control selectpicker" id="pidcombo" data-live-search="true">
+                                                @foreach ($combos as $combo)
+                                                <option value="{{$combo->IdCombo}}_{{$combo->Total}}">{{$combo->combo}}</option>
+                                                @endforeach
+
+                                          </select>
+                                    </div>
+                              </div>
+
+
+                              <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label for="PrecioCombo">Precio del combo</label>
+                                          <input type="number" disabled name="ppreciocombo" id="ppreciocombo" class="form-control" placeholder="Precio del combo RD$">
+                                          
+                                    </div>
+
+                              </div>
+
 
                               
 
@@ -137,14 +162,18 @@
                                           <thead style="background-color:pink">
                                                 <th>Opciones</th>
                                                 <th>Producto</th>
-                                                <th>Cantidad</th>
-                                                <th>Precio por unidad</th>
+                                                <th>Cantidad de productos</th>
+                                                <th>Precio del producto</th>
+                                                <th>Combo</th>
+                                                <th>Precio del combo</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
 
                                           <tfoot>
                                                 <th>Total</th>
+                                                <th></th>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -200,9 +229,11 @@
                         var cont=0;
                         total=0;
                         subtotal=[];
+                        subtotal2=[];
                         $("#guardar").hide();
 
                          $("#pidproducto").change(mostrarValores);
+                         $("#pidcombo").change(mostrarValores2);
 
                          function mostrarValores() 
                          {
@@ -211,23 +242,75 @@
                          }
 
 
+                         function mostrarValores2() 
+                         {
+                              datosCombos=document.getElementById('pidcombo').value.split('_');
+                               $("#ppreciocombo").val(datosCombos[1]);
+                         }
+
+
                         function agregar(argument) // funciona correctamente
                         {
 
                               datosProductos=document.getElementById('pidproducto').value.split('_');
+                              datosCombos=document.getElementById('pidcombo').value.split('_');
                                
 
                               IdProducto=datosProductos[0];
+                              IdCombo=datosCombos[0];
                               Producto=$("#pidproducto option:selected").text();
+                              Combo=$("#pidcombo option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               PrecioProducto=$("#pprecioproducto").val();
+                              PrecioCombo=$("#ppreciocombo").val();
 
-                              if (IdProducto!="" && Cantidad!="" && Cantidad>0 && PrecioProducto!="") 
+                             /* if (Cantidad!="" && Cantidad>0 && PrecioProducto!="" && IdCombo!="" && PrecioCombo>0 && PrecioCombo!="" && PrecioProducto>0 ) 
                               {
-                                    subtotal[cont]=(Cantidad*PrecioProducto);
+                                    subtotal[cont]=(Cantidad*parseInt(PrecioProducto)+parseInt(PrecioCombo)); // error aqui no suma solo pega los 2 valores
+                                    subtotal2[cont]=(PrecioCombo);
+
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioProducto[]" value="'+PrecioProducto+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioProducto[]" value="'+PrecioProducto+'"></td><td><input type="hidden" name="IdCombo[]" value="'+IdCombo+'">'+Combo+'</td><td><input type="number" name="PrecioCombo[]" value="'+PrecioCombo+'"></td><td>'+subtotal[cont]+'</td></tr>';
+                                    cont++;
+
+                                    limpiar();
+                                    $("#total").html("RD$/. " +total);
+                                    $("#Total").val(total);
+                                    evaluar();
+
+
+                                    $("#detalles").append(fila);
+
+                              }*/
+
+
+                               if ( PrecioCombo>0 && PrecioCombo!="" && Cantidad!="" && PrecioProducto==0 && IdProducto!="") 
+                              {
+                                    subtotal[cont]=(Cantidad*parseInt(PrecioCombo)); 
+
+                                    total=total+subtotal[cont]; // todo bien hasta aqui
+
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioProducto[]" value="'+PrecioProducto+'"></td><td><input type="hidden" name="IdCombo[]" value="'+IdCombo+'">'+Combo+'</td><td><input type="number" name="PrecioCombo[]" value="'+PrecioCombo+'"></td><td>'+subtotal[cont]+'</td></tr>';
+                                    cont++;
+
+                                    limpiar();
+                                    $("#total").html("RD$/. " +total);
+                                    $("#Total").val(total);
+                                    evaluar();
+
+
+                                    $("#detalles").append(fila);
+
+                              }
+
+                              if (PrecioCombo==0 && Cantidad!="" && PrecioProducto>0 && IdCombo!="") 
+                              {
+                                    subtotal[cont]=(Cantidad*parseInt(PrecioProducto)); 
+
+                                    total=total+subtotal[cont]; // todo bien hasta aqui
+
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="PrecioProducto[]" value="'+PrecioProducto+'"></td><td><input type="hidden" name="IdCombo[]" value="'+IdCombo+'">'+Combo+'</td><td><input type="number" name="PrecioCombo[]" value="'+PrecioCombo+'"></td><td>'+subtotal[cont]+'</td></tr>';
                                     cont++;
 
                                     limpiar();
@@ -252,6 +335,7 @@
                         {
                               $("#pcantidad").val("");
                               $("#pprecioproducto").val("");
+                              $("#ppreciocombo").val("");
                         }
 
                         function evaluar() // funciona correctamente
