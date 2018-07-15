@@ -46,15 +46,15 @@ class PedidoController extends Controller
 
      public function create() // Lo que me falla debe de ser el script
     {
-    	$clientes=DB::table('cliente as client' )
+        $clientes=DB::table('cliente as client' )
         ->select(DB::raw('CONCAT(client.Nombre, " ", client.Apellido, " Tel: ", client.Telefono) AS cliente'),'client.IdCliente')
         ->where('client.Condicion','=','1')
         ->get();
 
-    	$productos=DB::table('producto as prod')
-    	->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
-    	->where('prod.Condicion','=','1')
-    	->get();
+        $productos=DB::table('producto as prod')
+        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
+        ->where('prod.Condicion','=','1')
+        ->get();
 
         $combos=DB::table('combo as com')
         ->select(DB::raw('CONCAT(com.Nombre, " ", com.Descripcion ) AS combo'),'com.IdCombo', 'com.Total')
@@ -69,15 +69,14 @@ class PedidoController extends Controller
     public function store (PedidoFormRequest $request)  // Funcion para crear 
     {
 
-    	try
-    	{
+        try
+        {
 
-    	DB::beginTransaction();
-    	$pedido=new Pedido;
+        DB::beginTransaction();
+        $pedido=new Pedido;
         $pedido->IdCliente=$request->get('IdCliente');
         $pedido->Estatus=$request->get('Estatus');
         $pedido->DireccionEntrega=$request->get('DireccionEntrega');
-
         $mytime=Carbon::now('America/Lima');
         $pedido->FechaRealizado=$mytime->toDateTimeString();
         $pedido->FechaEntrega=$request->get('FechaEntrega');
@@ -91,35 +90,37 @@ class PedidoController extends Controller
         $Cantidad = $request->get('Cantidad');
         $PrecioProducto = $request->get('PrecioProducto');
         $PrecioCombo = $request->get('PrecioCombo');
+        $CantidadCombo = $request->get('CantidadCombo');
 
         $cont=0;
 
         while ($cont < (count($IdProducto))) 
         {
-        	$DetallePedido = new DetallePedido();
-        	$DetallePedido->IdPedido=$pedido->IdPedido;
-        	$DetallePedido->IdProducto=$IdProducto[$cont];
+            $DetallePedido = new DetallePedido();
+            $DetallePedido->IdPedido=$pedido->IdPedido;
+            $DetallePedido->IdProducto=$IdProducto[$cont];
             $DetallePedido->IdCombo=$IdCombo[$cont];
-        	$DetallePedido->Cantidad=$Cantidad[$cont];
-        	$DetallePedido->PrecioProducto=$PrecioProducto[$cont];
+            $DetallePedido->Cantidad=$Cantidad[$cont];
+            $DetallePedido->PrecioProducto=$PrecioProducto[$cont];
             $DetallePedido->PrecioCombo=$PrecioCombo[$cont];
-        	$DetallePedido->save();
-        	$cont=$cont+1;
+            $DetallePedido->CantidadCombo=$CantidadCombo[$cont];
+            $DetallePedido->save();
+            $cont=$cont+1;
 
 
 
         }
 
 
-    		DB::commit();
+            DB::commit();
 
-    	}
+        }
         catch(\Exception $e)
-    	{
+        {
 
-    		DB::rollback();
+            DB::rollback();
 
-    	}
+        }
 
 
         
@@ -131,7 +132,7 @@ class PedidoController extends Controller
     public function show($id)
     {
 
-    	$pedido=DB::table('pedido as p')
+        $pedido=DB::table('pedido as p')
             ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
             ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
             ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
@@ -141,7 +142,7 @@ class PedidoController extends Controller
             $DetallePedido=DB::table('DetallePedido as dp')
             ->join('producto as prod', 'dp.IdProducto','=','prod.IdProducto')
             ->join('combo as com', 'dp.IdCombo','=','com.IdCombo')
-            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioProducto', 'dp.PrecioCombo', 'com.Nombre as combo')
+            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioProducto', 'dp.PrecioCombo','dp.CantidadCombo', 'com.Nombre as combo')
             ->where('dp.IdPedido', '=', $id)
             ->get();
 

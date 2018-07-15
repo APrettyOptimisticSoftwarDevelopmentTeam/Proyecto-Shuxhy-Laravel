@@ -78,12 +78,14 @@
                                                 <th>Cantidad de productos</th>
                                                 <th>Combo</th>
                                                 <th>Precio del combo</th>
+                                                <th>Cantidad de combos</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
 
                                           <tfoot>
                                                
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -101,6 +103,7 @@
                                                     <td>{{$det->Cantidad}}</td>
                                                     <td>{{$det->combo}}</td>
                                                     <td>{{$det->PrecioCombo}}</td>
+                                                    <td>{{$det->CantidadCombo}}</td>
                                                     <td>{{$det->Cantidad*$det->PrecioProducto+$det->PrecioCombo}}</td>
                                                 </tr>
                                                 @endforeach

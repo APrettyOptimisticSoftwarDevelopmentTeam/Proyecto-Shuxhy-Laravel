@@ -15,13 +15,14 @@ class DetallePedido extends Model
 
     protected $fillable =[ 
     	'IdPedido',
-    	'IdCombo',
-    	'IdProducto',
+        'IdCombo',
+        'IdProducto',
         'Cantidad',
-    	'Subtotal',
-    	'PrecioProducto',
+        'Subtotal',
+        'PrecioProducto',
         'PrecioCombo',
-    	'Comentario'
+        'CantidadCombo',
+        'Comentario'
 
     ];
 
