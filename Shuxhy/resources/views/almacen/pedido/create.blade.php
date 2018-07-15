@@ -37,7 +37,7 @@
                         
             <div class="form-group">
                    <label>Estado del pedido</label>
-                  <select name="Estatus" class="form-control selectpicker" id="IdCliente" data-live-search="true">
+                  <select name="Estatus" class="form-control selectpicker" id="IdEstatus" data-live-search="true">
                         <option>Sin Entregar</option>
                         <option>Entregado</option>
                   </select>

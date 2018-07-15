@@ -151,6 +151,21 @@ class PedidoController extends Controller
     }
 
 
+     public function edit($id)
+    {
+        return view("almacen.pedido.edit",["pedido"=>Pedido::findOrFail($id)]);
+    }
+    public function update(PedidoFormRequest $request,$id)  // funcion para editar
+    {
+        $pedido=Pedido::findOrFail($id);
+        $pedido->Estatus=$request->get('Estatus');
+        $pedido->FechaEntrega=$request->get('FechaEntrega');
+        
+        $pedido->update();
+        return Redirect::to('almacen/pedido');
+    }
+
+
     public function destroy($id)  // funcion para borrar
     {
         $pedido=Pedido::findOrFail($id);

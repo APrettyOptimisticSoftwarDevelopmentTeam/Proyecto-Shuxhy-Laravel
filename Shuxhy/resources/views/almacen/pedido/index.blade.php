@@ -32,6 +32,7 @@
 					<td>{{ $ped->Total}}</td>
 					<td>
 						<a href="{{URL::action('PedidoController@show',$ped->IdPedido)}}"><i class="fa fa-eye" style="font-size:20px"></i></a>
+						<a href="{{URL::action('PedidoController@edit',$ped->IdPedido)}}">  <i class="fa fa-edit" style="font-size:20px"></i></a>
                          <a href="" data-target="#modal-delete-{{$ped->IdPedido}}" data-toggle="modal"><i class="fa fa-remove" style="font-size:20px; color:red"></i></a>
 					</td>
 				</tr>
