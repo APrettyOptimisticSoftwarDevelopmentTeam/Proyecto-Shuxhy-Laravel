@@ -140,6 +140,20 @@
 
                               </div>
 
+                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label>Unidad</label>
+                                          <select name="pidunidad" class="form-control selectpicker" id="pidunidad" data-live-search="true">
+                                                @foreach ($unidades as $unidad)
+                                                <option value="{{$unidad->IdUnidad}}">{{$unidad->unidad}}</option>
+                                                @endforeach
+
+                                          </select>
+                                    </div>
+
+                              </div>
+
                               
 
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
@@ -160,12 +174,14 @@
                                                 <th>Material</th>
                                                 <th>Costo por material</th>
                                                 <th>Cantidad</th>
+                                                <th>Unidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
 
                                           <tfoot>
                                                 <th>Total</th>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -242,6 +258,8 @@
                                
                              
                               IdMaterial=datosMateriales[0];
+                              IdUnidad=$("#pidunidad").val();
+                              Unidad=$("#pidunidad option:selected").text();
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               CostoMaterial=$("#pcostomaterial").val();
@@ -256,7 +274,7 @@
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td></td>'+subtotal[cont]+'</tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td><input type="hidden" name="IdUnidad[]" value="'+IdUnidad+'">'+Unidad+'</td><td>'+subtotal[cont]+'</td></tr>';
                                     cont++;
 
 
@@ -292,6 +310,7 @@
                         {
                               $("#pcantidad").val("");
                               $("#pcostomaterial").val("");
+
                               //$("#pcostoreposicion").val("");
                         }
 

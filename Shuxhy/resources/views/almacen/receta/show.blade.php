@@ -93,6 +93,7 @@
                                                
                                                 <th>Material</th>
                                                 <th>Cantidad</th>
+                                                <th>Unidad</th>
                                                 <th>Precio de material</th>
                                                 <th>Subtotal</th>
 
@@ -100,6 +101,7 @@
 
                                           <tfoot>
                                                
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -112,6 +114,7 @@
                                                 <tr>
                                                     <td>{{$det->material}}</td>
                                                     <td>{{$det->Cantidad}}</td>
+                                                    <td>{{$det->NombreUnidad}}</td>
                                                     <td>{{$det->CostoMaterial}}</td>  
                                                     <td>{{$det->Cantidad*$det->CostoMaterial}}</td>
                                                 </tr>

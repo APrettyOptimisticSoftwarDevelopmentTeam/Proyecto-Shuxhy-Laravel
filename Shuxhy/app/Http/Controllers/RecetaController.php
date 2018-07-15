@@ -50,16 +50,25 @@ class RecetaController extends Controller
         ->get();
 
 
+        $unidades=DB::table('unidad as u')
+        ->select( 'u.IdUnidad', 'u.NombreUnidad as unidad')
+        ->where('Condicion','=','1')
+        ->get();
+
+
+
+
+
          
 
-        return view('almacen.receta.create',["materiales"=>$materiales]);
+        return view('almacen.receta.create',["materiales"=>$materiales,"unidades"=>$unidades]);
     }
 
     public function store (RecetaFormRequest $request)  // Funcion para crear 
     {
 
-        try
-        {
+      //  try
+       // {
 
         DB::beginTransaction();
         $receta=new Receta;
@@ -78,6 +87,7 @@ class RecetaController extends Controller
         $IdMaterial = $request->get('IdMaterial');
         $Cantidad = $request->get('Cantidad');
         $CostoMaterial = $request->get('CostoMaterial');
+        $IdUnidad = $request->get('IdUnidad');
 
         $cont=0;
 
@@ -88,6 +98,7 @@ class RecetaController extends Controller
             $DetalleReceta->IdMaterial=$IdMaterial[$cont];
             $DetalleReceta->Cantidad=$Cantidad[$cont];
             $DetalleReceta->CostoMaterial=$CostoMaterial[$cont];
+            $DetalleReceta->IdUnidad=$IdUnidad[$cont];
             $DetalleReceta->save();
             $cont=$cont+1;
 
@@ -98,12 +109,12 @@ class RecetaController extends Controller
 
             DB::commit();
 
-        }catch(\Exception $e)
-        {
+        //}catch(\Exception $e)
+        //{
 
-           DB::rollback();
+         //  DB::rollback();
 
-        }
+        //}
 
 
         
@@ -123,7 +134,8 @@ class RecetaController extends Controller
 
             $DetalleReceta=DB::table('detallereceta as dr')
             ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
-            ->select('mat.Nombre as material', 'dr.Cantidad', 'dr.CostoMaterial')
+            ->join('unidad as u', 'dr.IdUnidad','=','u.IdUnidad')
+            ->select('mat.Nombre as material', 'dr.Cantidad', 'dr.CostoMaterial', 'u.NombreUnidad')
             ->where('dr.IdReceta', '=', $id)
             ->get();
 
