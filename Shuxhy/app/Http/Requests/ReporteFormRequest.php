@@ -24,6 +24,9 @@ class ReporteFormRequest extends Request
     public function rules()
     {
         return [
+            'Desde'=>'required',
+            'Hasta'=>'required',
+            'Ordenar Por'=>'required',
             //
         ];
     }

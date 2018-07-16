@@ -43,6 +43,11 @@ Route::resource('administracion/topping','ToppingController');
 
 Route::resource('administracion/sabor','SaborController');
 
+Route::get('reportes/ventas','ReporteController@create');
+Route::post('reportes/ventas', 'ReporteController@displayReport');
+
+#Route::resource('reportes/ventas','ReporteController');
+
 Route::auth();
 
 Route::get('/index', function () {
