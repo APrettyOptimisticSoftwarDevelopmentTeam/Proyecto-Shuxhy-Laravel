@@ -5,6 +5,18 @@ namespace Shuxhy\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
+use Shuxhy\Http\Requests\ProduccionFormRequest;
+use Shuxhy\Produccion;
+use Shuxhy\DetalleProduccion;
+use DB;
+
+use Carbon\Carbon;
+use Response; 
+use Illuminate\Support\Collection;
+
+
 
 class ProduccionController extends Controller
 {
@@ -19,16 +31,15 @@ class ProduccionController extends Controller
         {
             $query=trim($request->get('searchText'));
             $producciones=DB::table('produccion as p')
-            ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
+            ->join('pedido as ped', 'p.IdPedido','=','ped.IdPedido')
             ->join('detalleproduccion as dp', 'p.IdProduccion','=','dp.IdProduccion')
-           // ->join('combo as com', 'dp.IdCombo','=','com.IdCombo')
-            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
-            ->where('p.DireccionEntrega','LIKE','%'.$query.'%')
+            ->select('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'p.Fecha', 'p.Comentario')
+            ->where('p.Fecha','LIKE','%'.$query.'%')
             ->where ('p.Condicion','=','1') 
-            ->orderBy('p.IdPedido', 'desc')
-            ->groupBy('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
+            ->orderBy('p.IdProduccion', 'desc')
+            ->groupBy('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'c.Fecha' , 'p.Comentario')
             ->paginate(7);
-            return view('almacen.pedido.index',["pedidos"=>$pedidos,"searchText"=>$query]);
+            return view('almacen.produccion.index',["producciones"=>$producciones,"searchText"=>$query]);
 
         }
     }
@@ -36,65 +47,57 @@ class ProduccionController extends Controller
 
      public function create() // Lo que me falla debe de ser el script
     {
-        $clientes=DB::table('cliente as client' )
-        ->select(DB::raw('CONCAT(client.Nombre, " ", client.Apellido, " Tel: ", client.Telefono) AS cliente'),'client.IdCliente')
-        ->where('client.Condicion','=','1')
+        
+        $pedidos=DB::table('pedido as ped')
+        ->select(DB::raw('CONCAT(ped.FechaEntrega, " ", ped.Estatus ) AS pedido'),'ped.IdPedido')
+        ->where('ped.Condicion','=','1')
         ->get();
 
-        $productos=DB::table('producto as prod')
-        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
-        ->where('prod.Condicion','=','1')
+        $recetas=DB::table('receta as r')
+        ->select(DB::raw('CONCAT(r.Nombre, " ", r.TiempoPreparacion ) AS receta'),'r.IdReceta', 'r.IdProducto', 'r.Porcion')
+        ->where('r.Condicion','=','1')
         ->get();
 
-        $combos=DB::table('combo as com')
-        ->select(DB::raw('CONCAT(com.Nombre, " ", com.Descripcion ) AS combo'),'com.IdCombo', 'com.Total')
-        ->where('com.Condicion','=','1')
-        ->get();
 
-      
-        return view('almacen.pedido.create',["clientes"=>$clientes,"productos"=>$productos,"combos"=>$combos]);
+              
+        return view('almacen.produccion.create',["pedidos"=>$pedidos, "recetas"=>$recetas]);
 
     }
-
-    public function store (PedidoFormRequest $request)  // Funcion para crear 
+    public function store (ProduccionFormRequest $request)  // Funcion para crear 
     {
 
         try
         {
 
         DB::beginTransaction();
-        $pedido=new Pedido;
-        $pedido->IdCliente=$request->get('IdCliente');
-        $pedido->Estatus=$request->get('Estatus');
-        $pedido->DireccionEntrega=$request->get('DireccionEntrega');
+        $produccion=new Produccion;
+        $produccion->IdPedido=$request->get('IdPedido');
+        $produccion->Estatus=$request->get('Estatus');
+        
         $mytime=Carbon::now('America/Lima');
-        $pedido->FechaRealizado=$mytime->toDateTimeString();
-        $pedido->FechaEntrega=$request->get('FechaEntrega');
-        $pedido->Comentario=$request->get('Comentario');
-        $pedido->Total=$request->get('Total');
-        $pedido->Condicion='1';
-        $pedido->save();
+       
+        $produccion->Fecha=$mytime->toDateTimeString();
+        
+        $produccion->Comentario=$request->get('Comentario');
+        $produccion->Condicion='1';
+        $produccion->save();
 
-        $IdProducto = $request->get('IdProducto');
-        $IdCombo = $request->get('IdCombo');
-        $Cantidad = $request->get('Cantidad');
-        $PrecioProducto = $request->get('PrecioProducto');
-        $PrecioCombo = $request->get('PrecioCombo');
-        $CantidadCombo = $request->get('CantidadCombo');
-
+        $IdReceta = $request->get('IdReceta');
+        $CantidadProducir = $request->get('CantidadProducir');
+        $CantidadProducida = $request->get('CantidadProducida');
+        $CantidadFaltante = $request->get('CantidadFaltante');
+        
         $cont=0;
 
-        while ($cont < (count($IdProducto))) 
+        while ($cont < (count($IdReceta))) 
         {
-            $DetallePedido = new DetallePedido();
-            $DetallePedido->IdPedido=$pedido->IdPedido;
-            $DetallePedido->IdProducto=$IdProducto[$cont];
-            $DetallePedido->IdCombo=$IdCombo[$cont];
-            $DetallePedido->Cantidad=$Cantidad[$cont];
-            $DetallePedido->PrecioProducto=$PrecioProducto[$cont];
-            $DetallePedido->PrecioCombo=$PrecioCombo[$cont];
-            $DetallePedido->CantidadCombo=$CantidadCombo[$cont];
-            $DetallePedido->save();
+            $DetalleProduccion = new DetalleProduccion();
+            $DetalleProduccion->IdProduccion=$produccion->IdProduccion;
+            $DetalleProduccion->IdReceta=$IdReceta[$cont];
+            $DetalleProduccion->CantidadProducir=$CantidadProducir[$cont];
+            $DetalleProduccion->CantidadProducida=$CantidadProducida[$cont];
+            $DetalleProduccion->CantidadFaltante=$CantidadFaltante[$cont];
+            $DetalleProduccion->save();
             $cont=$cont+1;
 
 
@@ -114,7 +117,7 @@ class ProduccionController extends Controller
 
 
         
-        return Redirect::to('almacen/pedido');
+        return Redirect::to('almacen/produccion');
 
     }
 
@@ -122,46 +125,45 @@ class ProduccionController extends Controller
     public function show($id)
     {
 
-        $pedido=DB::table('pedido as p')
-            ->join('cliente as c', 'p.IdCliente','=','c.IdCliente')
-            ->join('detallepedido as dp', 'p.IdPedido','=','dp.IdPedido')
-            ->select('p.IdPedido', 'p.Estatus', 'p.DireccionEntrega', 'p.FechaRealizado', 'p.FechaEntrega', 'p.Comentario', 'p.Condicion', 'c.Nombre', 'p.Total')
-            ->where('p.IdPedido', '=', $id)
+        $produccion=DB::table('produccion as p')
+            ->join('pedido as ped', 'p.IdPedido','=','ped.IdPedido')
+            ->join('detalleproduccion as dp', 'p.IdProduccion','=','dp.IdProduccion')
+            ->select('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'p.Fecha', 'p.Comentario')
+            ->where('p.IdProduccion', '=', $id)
             ->first();
 
-            $DetallePedido=DB::table('DetallePedido as dp')
-            ->join('producto as prod', 'dp.IdProducto','=','prod.IdProducto')
-            ->join('combo as com', 'dp.IdCombo','=','com.IdCombo')
-            ->select('prod.Nombre as producto', 'dp.Cantidad', 'dp.PrecioProducto', 'dp.PrecioCombo','dp.CantidadCombo', 'com.Nombre as combo')
-            ->where('dp.IdPedido', '=', $id)
+            $DetalleProduccion=DB::table('DetalleProduccion as dp')
+            ->join('receta as r', 'dp.IdReceta','=','r.IdReceta')
+            ->select('r.Nombre as receta', 'dp.CantidadProducir', 'dp.CantidadProducida', 'dp.CantidadFaltante')
+            ->where('dp.IdProduccion', '=', $id)
             ->get();
 
-        return view("almacen.pedido.show",["pedido"=>$pedido,"DetallePedido"=>$DetallePedido]
+        return view("almacen.produccion.show",["produccion"=>$produccion,"DetalleProduccion"=>$DetalleProduccion]
         );
     }
 
 
      public function edit($id)
     {
-        return view("almacen.pedido.edit",["pedido"=>Pedido::findOrFail($id)]);
+        return view("almacen.produccion.edit",["produccion"=>Produccion::findOrFail($id)]);
     }
-    public function update(PedidoFormRequest $request,$id)  // funcion para editar
+    public function update(ProduccionFormRequest $request,$id)  // funcion para editar
     {
-        $pedido=Pedido::findOrFail($id);
-        $pedido->Estatus=$request->get('Estatus');
-        $pedido->FechaEntrega=$request->get('FechaEntrega');
+        $produccion=Produccion::findOrFail($id);
+        $produccion->Estatus=$request->get('Estatus');
+        $produccion->Comentario=$request->get('Comentario');
         
         $pedido->update();
-        return Redirect::to('almacen/pedido');
+        return Redirect::to('almacen/produccion');
     }
 
 
     public function destroy($id)  // funcion para borrar
     {
-        $pedido=Pedido::findOrFail($id);
-        $pedido->Condicion='0';
-        $pedido->update();
-        return Redirect::to('almacen/pedido');
+        $produccion=Produccion::findOrFail($id);
+        $produccion->Condicion='0';
+        $produccion->update();
+        return Redirect::to('almacen/produccion');
     }
 
 }

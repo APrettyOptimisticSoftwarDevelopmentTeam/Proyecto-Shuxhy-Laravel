@@ -2,7 +2,7 @@
 @section ('contenido')
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<h3>Nueva Receta</h3>
+			<h3>Nueva Produccion</h3>
 			@if (count($errors)>0)
 			<div class="alert alert-danger">
 				<ul>
@@ -15,91 +15,47 @@
             </div>
       </div>
 
-			{!!Form::open(array('url'=>'almacen/receta','method'=>'POST','autocomplete'=>'off'))!!}
+			{!!Form::open(array('url'=>'almacen/produccion','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
 
-            <div class="row"> 
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+             <div class="row">
+      
+                  <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Nombre">Nombre de la receta</label>
-                  <input type="text" name="Nombre" class="form-control" placeholder="Nombre de la receta...">
+                   <label>Estado de la produccion</label>
+                  <select name="Estatus" class="form-control selectpicker" id="IdEstatus" data-live-search="true">
+                        <option>En Proceso</option>
+                        <option>Listo</option>
+                  </select>
             </div>
                   </div>
 
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                     <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
-                       <div class="form-group">
-                  <label for="Descripcion">Descripción</label>
-                  <input type="text" name="Descripcion" class="form-control" placeholder="Descripción...">
-            </div> 
-                  </div>
-
+            <div class="form-group">
+                   <label for="IdPedido">Pedido</label>
+                  <select name="IdPedido" class="form-control selectpicker" id="IdPedido" data-live-search="true">
+                        @foreach ($pedidos as $pedido)
+                        <option value="{{$pedido->IdPedido}}">{{$pedido->pedido}}</option>
+                        @endforeach
+                  </select>
+            </div>
+       </div>  
 
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Equipo">Equipos usados</label>
-                  <input type="text" name="Equipo" class="form-control"  placeholder="Equipos utilizados...">
+                  <label for="Comentario">Comentario</label>
+                  <input type="text" name="Comentario" class="form-control"  placeholder="Comentario...">
             </div>
 
                   </div>
 
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="TiempoPreparacion">Tiempo de preparacion</label>
-                  <input type="text" name="TiempoPreparacion" class="form-control" placeholder="Tiempo de preparacion...">
-            </div>  
-
-                  </div>
-
-                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="Porcion">Porcion</label>
-                  <input type="number" name="Porcion" class="form-control" placeholder="Porcion...">
-            </div>  
-
-                  </div>
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="CostoDeReposicion">Costo De Reposicion</label>
-                  <input type="number" name="CostoDeReposicion" id="pcostoreposicion" class="form-control" placeholder="Costo De Reposicion RD$...">
-            </div>  
-
-                  </div>
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="CostoIndirecto">Costo Indirecto</label>
-                  <input type="number" name="CostoIndirecto" class="form-control" placeholder="Costo Indirecto RD$...">
-            </div>  
-
-                  </div>
-
-            <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="CostoManoDeObra">Costo Mano De Obra</label>
-                  <input type="number" name="CostoManoDeObra" class="form-control" placeholder="Costo Mano De Obra RD$...">
-            </div>  
-
-                  </div>
-
+                   
 
   </div>
-
 
 
 
@@ -110,10 +66,10 @@
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
-                                          <label>Material</label>
-                                          <select name="pidmaterial" class="form-control selectpicker" id="pidmaterial" data-live-search="true">
-                                                @foreach ($materiales as $material)
-                                                <option value="{{$material->IdMaterial}}_{{$material->Costo}}">{{$material->material}}</option>
+                                          <label>Receta</label>
+                                          <select name="pidreceta" class="form-control selectpicker" id="pidreceta" data-live-search="true">
+                                                @foreach ($recetas as $receta)
+                                                <option value="{{$receta->IdReceta}}">{{$receta->receta}}</option>
                                                 @endforeach
 
                                           </select>
@@ -123,8 +79,8 @@
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
-                                          <label for="Costo">Precio</label>
-                                          <input type="number" disabled name="pcostomaterial" id="pcostomaterial" class="form-control" placeholder="Costo RD$">
+                                          <label for="CantidadProducir">Cantidad a Producir</label>
+                                          <input type="number" name="pcantidadproducir" id="pcantidadproducir" class="form-control" placeholder="Cantidad a Producir">
                                           
                                     </div>
 
@@ -133,29 +89,25 @@
                                     <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
-                                          <label for="Cantidad">Cantidad</label>
-                                          <input type="number" name="pcantidad" id="pcantidad" class="form-control" placeholder="Cantidad">
+                                          <label for="CantidadProducida">Cantidad Producida</label>
+                                          <input type="number" name="pcantidadproducida" id="pcantidadproducida" class="form-control" placeholder="Cantidad Producida">
                                           
                                     </div>
 
                               </div>
 
-                              <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
+
+                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
-                                          <label>Unidad</label>
-                                          <select name="pidunidad" class="form-control selectpicker" id="pidunidad" data-live-search="true">
-                                                @foreach ($unidades as $unidad)
-                                                <option value="{{$unidad->IdUnidad}}">{{$unidad->unidad}}</option>
-                                                @endforeach
-
-                                          </select>
+                                          <label for="CantidadFaltante">Cantidad Faltante</label>
+                                          <input type="number" name="pcantidadfaltante" id="pcantidadfaltante" class="form-control" placeholder="Cantidad Faltante">
+                                          
                                     </div>
 
                               </div>
 
-                              
-
+                            
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
                                     <div class="form-group">
@@ -171,23 +123,12 @@
 
                                           <thead style="background-color:pink">
                                                 <th>Opciones</th>
-                                                <th>Material</th>
-                                                <th>Costo por material</th>
-                                                <th>Cantidad</th>
-                                                <th>Unidad</th>
-                                                <th>Subtotal</th>
+                                                <th>Receta</th>
+                                                <th>Cantidad a Producir</th>
+                                                <th>Cantidad Producida</th>
+                                                <th>Cantidad Faltante</th>
 
                                           </thead>
-
-                                          <tfoot>
-                                                <th>Total</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th><h4 id="total">RD$/ .00</h4><input type="hidden" name="Total" id="Total"></th>
-                                                
-                                          </tfoot>
 
                                           <tbody>
                                                 
@@ -209,7 +150,7 @@
             <div class="form-group">
                   <input  name="_token" value="{{ csrf_token() }}"  type="hidden"></input>
                   <button class="btn btn-primary" type="submit">Guardar</button>
-                  <button class="btn btn-danger"><a href="{{url('almacen/receta')}}">Cancelar</a></button>
+                  <button class="btn btn-danger"><a href="{{url('almacen/produccion')}}">Cancelar</a></button>
             </div>
                         
                   </div>
@@ -235,54 +176,41 @@
                         });
 
                         var cont=0;
-                        auxCostoR=0;
-                        total=0;
-                        total2=0;
-                        subtotal=[];
+                       
                         $("#guardar").hide();
 
-                        $("#pidmaterial").change(mostrarValores);
-                        calcular();
-
+                        $("#pidreceta").change(mostrarValores);
+                        
                          function mostrarValores() 
                          {
-                              datosMateriales=document.getElementById('pidmaterial').value.split('_');
-                               $("#pcostomaterial").val(datosMateriales[1]);
+                              datosRecetas=document.getElementById('pidreceta').value.split('_');
+                               
                          }
 
 
                         function agregar(argument) // funciona correctamente
                         {
 
-                              datosMateriales=document.getElementById('pidmaterial').value.split('_');
+                              datosRecetas=document.getElementById('pidreceta').value.split('_');
                                
                              
-                              IdMaterial=datosMateriales[0];
-                              IdUnidad=$("#pidunidad").val();
-                              Unidad=$("#pidunidad option:selected").text();
-                              Material=$("#pidmaterial option:selected").text();
-                              Cantidad=$("#pcantidad").val();
-                              CostoMaterial=$("#pcostomaterial").val();
-                              CostoDeReposicion=$("#pcostoreposicion").val();
-
-                              if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
+                              IdReceta=datosRecetas[0];
+                              CantidadProducir=$("#pcantidadproducir").val();
+                              CantidadProducida=$("#pcantidadproducida").val();
+                              CantidadFaltante=$("#pcantidadfaltante").val();
+                             
+                              if (IdReceta!="" && CantidadProducir!="" && CantidadProducir>0 ) 
 
                               {
-                                    subtotal[cont]=(Cantidad*CostoMaterial);
-                                    //total2=total+subtotal[cont]; // todo bien hasta aqui
-                                    //auxCostoR=(total2*parseInt(CostoDeReposicion)/100);
-                                    total=total+subtotal[cont]; // todo bien hasta aqui
 
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td><input type="hidden" name="IdUnidad[]" value="'+IdUnidad+'">'+Unidad+'</td><td>'+subtotal[cont]+'</td></tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdReceta[]" value="'+IdReceta+'">'+Receta+'</td><td><input type="number" name="CantidadProducir[]" value="'+CantidadProducir+'"></td><td><input type="number" name="CantidadProducida[]" value="'+CantidadProducida+'"></td><td><input type="hidden" name="CantidadFaltante[]" value="'+CantidadFaltante+'"</td></tr>';
                                     cont++;
 
 
                                     limpiar();
 
 
-                                    $("#total").html("RD$/ " +total);
-                                    $("#Total").val(total);
                                     evaluar();
                                     $("#detalles").append(fila);
 
@@ -299,25 +227,18 @@
                         }
                         
 
-                        function calcular() //lista sin problemas
-                        {
-                                    auxCostoR=(total*parseInt(CostoDeReposicion)/100);
-                                    total=total+parseInt(auxCostoR);
-                        }
-
 
                         function limpiar() //lista sin problemas
                         {
-                              $("#pcantidad").val("");
-                              $("#pcostomaterial").val("");
-
-                              //$("#pcostoreposicion").val("");
+                              $("#pcantidadproducida").val("");
+                              $("#pcantidadproducir").val("");
+                              $("#pcantidadfaltante").val("");
                         }
 
                         function evaluar() // funciona correctamente
                         {
                               
-                              if (total>0) 
+                              if (CantidadProducir>0) 
                               {
                                     
                                      $("#guardar").show();
@@ -330,9 +251,7 @@
 
                         function eliminar(index) //funciona correctamente
                         {
-                              total=total-subtotal[index];
-                              $("#total").html("RD$/ " +total);
-                              $("#Total").val(total);
+                             
                               $("#fila" + index).remove();
                               evaluar(); 
 

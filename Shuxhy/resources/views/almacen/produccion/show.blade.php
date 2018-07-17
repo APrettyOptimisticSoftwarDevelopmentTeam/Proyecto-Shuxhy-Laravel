@@ -8,8 +8,8 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                   <label for="NombreReceta">Nombre</label>
-                   <p>{{$receta->Nombre}}</p>
+                   <label for="Fecha">Fecha</label>
+                   <p>{{$produccion->Fecha}}</p>
             
             </div>
                   </div>
@@ -19,7 +19,7 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
                        <div class="form-group">
-                   <label for="Descripcion">Descripcion</label>
+                   <label for="Estatus">Estatus</label>
                    <p>{{$receta->Descripcion}}</p>
             
             </div>
@@ -30,8 +30,8 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                  <label for="Porcion">Porcion</label>
-                  <p>{{$receta->Porcion}}</p>
+                  <label for="IdPedido">Pedido</label>
+                  <p>{{$produccion->IdPedido}}</p>
             </div>
 
                   </div>
@@ -41,42 +41,11 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                  <label for="TiempoPreparacion">Tiempo Preparacion</label>
-                  <p>{{$receta->TiempoPreparacion}}</p>
+                  <label for="Comentario">Comentario</label>
+                  <p>{{$producccion->Comentario}}</p>
             </div>  
 
                   </div>
-
-
-                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="CostoManoDeObra">Costo Mano De Obra</label>
-                  <p>{{$receta->CostoManoDeObra}}</p>
-            </div>  
-
-                  </div>
-
-                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="CostoIndirecto">Costo Indirecto</label>
-                  <p>{{$receta->CostoIndirecto}}</p>
-            </div>  
-
-                  </div>
-
-                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="CostoDeReposicion">Costo de Reposicion</label>
-                  <p>{{$receta->CostoDeReposicion}}</p>
-            </div>  
-
-                  </div>
-
-
-
 
 </div>
 
@@ -91,32 +60,22 @@
 
                                           <thead style="background-color:pink">
                                                
-                                                <th>Material</th>
-                                                <th>Cantidad</th>
-                                                <th>Unidad</th>
-                                                <th>Precio de material</th>
-                                                <th>Subtotal</th>
+                                                <th>Receta</th>
+                                                <th>Cantidad a Producir</th>
+                                                <th>Cantidad Producida</th>
+                                                <th>Cantidad Faltante</th>
 
                                           </thead>
 
-                                          <tfoot>
-                                               
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th><h4 id="total">{{$receta->Total}}</h4></th>
-                                                
-                                          </tfoot>
 
                                           <tbody>
-                                                @foreach ($DetalleReceta as $det)
+                                                @foreach ($DetalleProduccion as $det)
                                                 <tr>
-                                                    <td>{{$det->material}}</td>
-                                                    <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->NombreUnidad}}</td>
-                                                    <td>{{$det->CostoMaterial}}</td>  
-                                                    <td>{{$det->Cantidad*$det->CostoMaterial}}</td>
+                                                    <td>{{$det->receta}}</td>
+                                                    <td>{{$det->CantidadProducir}}</td>
+                                                    <td>{{$det->CantidadProducida}}</td>
+                                                    <td>{{$det->CantidadFaltante}}</td>  
+                                                    
                                                 </tr>
                                                 @endforeach
                                           </tbody>

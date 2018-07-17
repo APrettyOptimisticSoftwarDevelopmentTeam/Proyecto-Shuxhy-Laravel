@@ -44,6 +44,9 @@ Route::resource('administracion/topping','ToppingController');
 Route::resource('administracion/sabor','SaborController');
 
 Route::get('reportes/ventas','ReporteController@create');
+
+Route::get('almacen/produccion','ProduccionController@create');
+
 Route::post('reportes/ventas', 'ReporteController@displayReport');
 
 #Route::resource('reportes/ventas','ReporteController');

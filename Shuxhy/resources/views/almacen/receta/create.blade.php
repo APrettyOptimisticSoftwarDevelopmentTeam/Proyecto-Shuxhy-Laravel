@@ -49,17 +49,6 @@
 
                   </div>
 
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="TiempoPreparacion">Tiempo de preparacion</label>
-                  <input type="text" name="TiempoPreparacion" class="form-control" placeholder="Tiempo de preparacion...">
-            </div>  
-
-                  </div>
-
                    <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
@@ -73,14 +62,13 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                   <label for="IdProducto">Producto final</label>
-                  <select name="IdProducto" class="form-control selectpicker" id="IdProducto" data-live-search="true">
-                        @foreach ($productos as $producto)
-                        <option value="{{$producto->IdProducto}}">{{$producto->producto}}</option>
-                        @endforeach
-                  </select>
-            </div>
-       </div>        
+                  <label for="TiempoPreparacion">Tiempo de preparacion</label>
+                  <input type="text" name="TiempoPreparacion" class="form-control" placeholder="Tiempo de preparacion...">
+            </div>  
+
+                  </div>
+
+                     
 
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
@@ -111,8 +99,21 @@
                   </div>
 
 
-  </div>
+                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                   <label for="IdProducto">Producto final</label>
+                  <select name="IdProducto" class="form-control selectpicker" id="IdProducto" data-live-search="true">
+                        @foreach ($productos as $producto)
+                        <option value="{{$producto->IdProducto}}">{{$producto->producto}}</option>
+                        @endforeach
+                  </select>
+            </div>
+       </div>  
 
+
+
+  </div>
 
 
 
@@ -152,6 +153,8 @@
                                     </div>
 
                               </div>
+
+                            
 
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
 
