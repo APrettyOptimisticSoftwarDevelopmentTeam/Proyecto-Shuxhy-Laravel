@@ -17,6 +17,7 @@ class Receta extends Model
     	'Nombre',
         'Descripcion',
     	'Equipo',
+        'IdProducto',
         'TiempoPreparacion',
         'SubTotal',
         'CostoIndirecto',

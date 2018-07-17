@@ -47,22 +47,6 @@ class UsuarioController extends Controller
 
     }
 
-    public function edit($id)
-    {
-        return view("administracion.usuario.edit",["usuario"=>User::findOrFail($id)]);
-    }
-
-    public function update(UsuarioFormRequest $request,$id)  // funcion para editar
-    {
-        $Usuario=User::findOrFail($id);
-        $usuario->name=$request->get('name');
-        $usuario->email=$request->get('email');
-        $usuario->password=bcrypt($request->get('password'));
-        $usuario->update();
-        return Redirect::to('administracion/usuario');
-        
-    }
-
     public function destroy($id)  // funcion para borrar
     {
         $usuario = DB::table('users')->where('id', '=', $id)->delete();
