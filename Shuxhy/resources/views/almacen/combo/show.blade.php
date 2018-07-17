@@ -52,6 +52,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
+                                                <th></th>
                                                 <th><h4 id="total">{{$combo->Total}}</h4></th>
                                                 
                                           </tfoot>

@@ -29,11 +29,11 @@ class RecetaController extends Controller
             $query=trim($request->get('searchText'));
             $recetas=DB::table('receta as r')
             ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.IdProducto', 'r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', 'r.Total')
+            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', 'r.Total')
             ->where('r.Nombre','LIKE','%'.$query.'%')
             ->where ('r.Condicion','=','1') 
             ->orderBy('r.IdReceta', 'desc')
-            ->groupBy('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion','r.IdProducto', 'r.Nombre','r.Porcion', 'r.TiempoPreparacion', 'r.Total')
+            ->groupBy('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Condicion', 'r.Nombre','r.Porcion', 'r.TiempoPreparacion', 'r.Total')
             ->paginate(7);
             return view('almacen.receta.index',["recetas"=>$recetas,"searchText"=>$query]);
 
@@ -57,7 +57,7 @@ class RecetaController extends Controller
 
 
          $productos=DB::table('producto as pro')
-        ->select( 'pro.IdProducto', 'pro.Nombre as producto')
+        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS producto'),'pro.IdProducto')
         ->where('Condicion','=','1')
         ->get();
 
@@ -84,6 +84,7 @@ class RecetaController extends Controller
         $receta->CostoIndirecto=$request->get('CostoIndirecto');
         $receta->CostoManoDeObra=$request->get('CostoManoDeObra');
         $receta->Total=$request->get('Total');
+        $receta->IdProducto=$request->get('IdProducto');
         $receta->Condicion='1';
         $receta->save();
 
@@ -91,7 +92,6 @@ class RecetaController extends Controller
         $Cantidad = $request->get('Cantidad');
         $CostoMaterial = $request->get('CostoMaterial');
         $IdUnidad = $request->get('IdUnidad');
-        $IdProducto = $request->get('IdProducto');
 
         $cont=0;
 

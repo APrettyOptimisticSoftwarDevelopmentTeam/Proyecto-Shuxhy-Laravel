@@ -23,8 +23,8 @@
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
-                  <label for="NombreUnidad">NombreUnidad</label>
-                  <input type="text" name="NombreUnidad" class="form-control" placeholder="NombreUnidad...">
+                  <label for="NombreUnidad">Nombre</label>
+                  <input type="text" name="NombreUnidad" class="form-control" placeholder="Nombre...">
             </div>
                   </div>
 

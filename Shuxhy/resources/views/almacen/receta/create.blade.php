@@ -69,6 +69,19 @@
 
                   </div>
 
+
+                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                        
+            <div class="form-group">
+                   <label for="IdProducto">Producto final</label>
+                  <select name="IdProducto" class="form-control selectpicker" id="IdProducto" data-live-search="true">
+                        @foreach ($productos as $producto)
+                        <option value="{{$producto->IdProducto}}">{{$producto->producto}}</option>
+                        @endforeach
+                  </select>
+            </div>
+       </div>        
+
                   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
