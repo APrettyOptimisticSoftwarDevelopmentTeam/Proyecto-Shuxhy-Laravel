@@ -53,8 +53,11 @@
                                           <thead style="background-color:pink">
                                                
                                                 <th>Producto</th>
-                                                <th>Precio de unidad</th>
-                                                <th>Cantidad</th>
+                                                <th>Precio del producto</th>
+                                                <th>Cantidad de productos</th>
+                                                <th>Combo</th>
+                                                <th>Precio del combo</th>
+                                                <th>Cantidad de combos</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -64,7 +67,10 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="TotalFacturado">{{$factura->TotalFacturado}}</h4></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th><h4 id="total">{{$factura->TotalFacturado}}</h4></th>
                                                 
                                           </tfoot>
 
@@ -74,7 +80,10 @@
                                                     <td>{{$det->producto}}</td>
                                                     <td>{{$det->PrecioProd}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->Cantidad*$det->PrecioProd}}</td>
+                                                    <td>{{$det->combo}}</td>
+                                                    <td>{{$det->PrecioComb}}</td>
+                                                    <td>{{$det->CantidadCombo}}</td>
+                                                    <td>{{$det->Cantidad*$det->PrecioProd+$det->PrecioComb}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>
