@@ -57,8 +57,8 @@
                               <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
 
                                     <div class="form-group">
-                                          <label for="PrecioProd">Precio</label>
-                                          <input type="number" disable name="pprecioprod" id="pprecioprod" class="form-control" placeholder="Precio">
+                                          <label for="PrecioProd">Precio del producto</label>
+                                          <input type="number" disabled name="pprecioprod" id="pprecioprod" class="form-control" placeholder="Precio del producto RD$">
                                           
                                     </div>
 
@@ -111,6 +111,32 @@
 
                               </div>
 
+
+                               <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label>Pedido</label>
+                                          <select name="pidpedido" class="form-control selectpicker" id="pidpedido" data-live-search="true">
+                                                @foreach ($pedidos as $pedido)
+                                                <option value="{{$pedido->IdPedido}}_{{$pedido->Total}}">{{$pedido->pedido}}</option>
+                                                @endforeach
+
+                                          </select>
+                                    </div>
+                              </div>
+
+
+
+                              <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+
+                                    <div class="form-group">
+                                          <label for="PrecioPed">Precio del pedido</label>
+                                          <input type="number" disabled name="pprecioped" id="pprecioped" class="form-control" placeholder="Precio del pedido RD$">
+                                          
+                                    </div>
+
+                              </div>
+
                               
 
                               <div class="col-lg-3 col-sm-3 col-md-3 col-xs-12">
@@ -134,12 +160,16 @@
                                                 <th>Combo</th>
                                                 <th>Cantidad de combos</th>
                                                 <th>Precio del combo</th>
+                                                <th>Pedido</th>
+                                                <th>Precio del pedido</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
 
                                           <tfoot>
                                                 <th>Total</th>
+                                                <th></th>
+                                                <th></th>
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
@@ -201,6 +231,7 @@
                         $("#guardar").hide();
                         $("#pidproducto").change(mostrarValores);
                         $("#pidcombo").change(mostrarValores2);
+                        $("#pidpedido").change(mostrarValores3);
 
 
                         function mostrarValores()
@@ -216,6 +247,13 @@
                                $("#ppreciocomb").val(datosCombos[1]);
                          }
 
+
+                         function mostrarValores3() 
+                         {
+                              datosPedidos=document.getElementById('pidpedido').value.split('_');
+                               $("#pprecioped").val(datosPedidos[1]);
+                         }
+
                         function agregar(argument) // funciona correctamente
                         {
                              datosProducto=document.getElementById('pidproducto').value.split('_');
@@ -223,11 +261,14 @@
 
                               IdProducto=datosProducto[0];
                               IdCombo=datosCombos[0];
+                              IdPedido=datosPedidos[0];
                               Producto=$("#pidproducto option:selected").text();
                               Combo=$("#pidcombo option:selected").text();
+                              Pedido=$("#pidpedido option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               PrecioProd=$("#pprecioprod").val();
                               PrecioComb=$("#ppreciocomb").val();
+                              PrecioPed=$("#pprecioped").val();
                               CantidadCombo=$("#pcantidadcombo").val();
 
                              if (Cantidad!="" && Cantidad>0 && CantidadCombo!="" && CantidadCombo>0 &&  PrecioProd!="" && IdCombo!="" && PrecioComb>0 && PrecioComb!="" && PrecioProd>0) 
@@ -270,7 +311,7 @@
 
                               }
 
-                              if (Cantidad!="" /*&& PrecioProd>0 && PrecioProd!=""  && Cantidad>0 && CantidadCombo==""*/ ) 
+                              if (Cantidad!="" && PrecioProd>0 && PrecioProd!=""  && Cantidad>0 && CantidadCombo=="" ) //error en algunas condiciones
                               {
                                     subtotal[cont]=(Cantidad*parseInt(PrecioProd)); 
 
