@@ -1,6 +1,7 @@
+
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-delete-{{$com->IdCompra}}">
-	{{Form::Open(array('action'=>array('CompraController@destroy',$com->IdCompra),'method'=>'delete'))}}
+role="dialog" tabindex="-1" id="modal-delete-{{$sup->IdSuplidor}}">
+	{{Form::Open(array('action'=>array('SuplidorController@destroy',$sup->IdSuplidor),'method'=>'delete'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,10 +9,10 @@ role="dialog" tabindex="-1" id="modal-delete-{{$com->IdCompra}}">
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Anular Compra</h4>
+                <h4 class="modal-title">Eliminar Suplidor</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea anular esta Compra</p>
+				<p>Confirme si desea Eliminar el Suplidor</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

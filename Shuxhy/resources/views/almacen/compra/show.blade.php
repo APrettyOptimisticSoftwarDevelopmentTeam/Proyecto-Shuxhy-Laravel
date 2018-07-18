@@ -9,7 +9,7 @@
                         
                        <div class="form-group">
                    <label for="Fecha">Fecha</label>
-                   <p>{{$factura->Fecha}}</p>
+                   <p>{{$compra->Fecha}}</p>
             
             </div>
                   </div>
@@ -19,19 +19,26 @@
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                  <label for="FormaPago">Forma de Pago</label>
-                  <p>{{$factura->FormaPago}}</p>
+                  <label for="Suplidor">Suplidor</label>
+                  <p>{{$compra->Compania}}</p>
             </div>
 
                   </div>
 
+                    <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
+                        
+            <div class="form-group">
+                  <label for="Comentario">Comentario</label>
+                  <p>{{$compra->Comentario}}</p>
+            </div>
 
+                  </div>
 
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
                         
             <div class="form-group">
-                  <label for="TotalFacturado">Total</label>
-                  <p>{{$factura->TotalFacturado}}</p>
+                  <label for="Total">Total</label>
+                  <p>{{$compra->Total}}</p>
             </div>  
 
                   </div>
@@ -52,12 +59,9 @@
 
                                           <thead style="background-color:pink">
                                                
-                                                <th>Producto</th>
-                                                <th>Precio del producto</th>
-                                                <th>Cantidad de productos</th>
-                                                <th>Combo</th>
-                                                <th>Precio del combo</th>
-                                                <th>Cantidad de combos</th>
+                                                <th>Material</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -70,20 +74,17 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th><h4 id="total">{{$factura->TotalFacturado}}</h4></th>
+                                                <th><h4 id="total">{{$compra->Total}}</h4></th>
                                                 
                                           </tfoot>
 
                                           <tbody>
-                                                @foreach ($DetalleFactura as $det)
+                                                @foreach ($DetalleCompra as $det)
                                                 <tr>
-                                                    <td>{{$det->producto}}</td>
-                                                    <td>{{$det->PrecioProd}}</td>
+                                                    <td>{{$det->material}}</td>
+                                                    <td>{{$det->Precio}}</td>
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->combo}}</td>
-                                                    <td>{{$det->PrecioComb}}</td>
-                                                    <td>{{$det->CantidadCombo}}</td>
-                                                    <td>{{$det->Cantidad*$det->PrecioProd+$det->PrecioComb}}</td>
+                                                    <td>{{$det->Cantidad*$det->Precio}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

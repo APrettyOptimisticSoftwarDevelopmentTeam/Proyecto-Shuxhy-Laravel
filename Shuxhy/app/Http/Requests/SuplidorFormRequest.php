@@ -4,7 +4,7 @@ namespace Shuxhy\Http\Requests;
 
 use Shuxhy\Http\Requests\Request;
 
-class CompraFormRequest extends Request
+class SuplidorFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CompraFormRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class CompraFormRequest extends Request
     public function rules()
     {
         return [
-            'Total'=>'required',
+            'Compania'=>'required|max:25',
+            'Telefono'=>'required|numeric',
+            'Direccion'=>'max:150',
+            'Comentario'=>'max:150',
             
         ];
     }

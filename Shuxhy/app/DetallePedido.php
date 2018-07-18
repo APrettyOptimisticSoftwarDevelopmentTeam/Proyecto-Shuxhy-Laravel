@@ -22,7 +22,6 @@ class DetallePedido extends Model
         'PrecioProducto',
         'PrecioCombo',
         'CantidadCombo',
-        'Comentario'
 
     ];
 

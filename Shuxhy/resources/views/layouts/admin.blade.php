@@ -151,6 +151,23 @@
               </a>
               </li>
 
+                <li class="treeview">
+              <a href="{{ url('almacen/suplidor')}}">
+                <i class="fa fa-fax"></i>
+                <span>Suplidores</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+             
+            </li>
+
+
+              <li class="treeview">
+              <a href="{{ url('almacen/compra')}}">
+                <i class="fa fa-cart-arrow-down"></i>
+                <span>Compra</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+
 
               <li class="treeview">
               <a href="#">

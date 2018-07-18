@@ -19,11 +19,15 @@ Route::get('/', function () {
 
 Route::resource('almacen/cliente','ClienteController');
 
+Route::resource('almacen/suplidor','SuplidorController');
+
 Route::resource('almacen/producto','ProductoController');
 
 Route::resource('almacen/pedido','PedidoController');
 
 Route::resource('almacen/factura','FacturaController');
+
+Route::resource('almacen/compra','CompraController');
 
 Route::resource('almacen/material','MaterialController');
 
