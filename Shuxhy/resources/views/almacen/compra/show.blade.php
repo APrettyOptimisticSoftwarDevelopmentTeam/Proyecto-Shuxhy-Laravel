@@ -71,9 +71,6 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
                                                 <th><h4 id="total">{{$compra->Total}}</h4></th>
                                                 
                                           </tfoot>

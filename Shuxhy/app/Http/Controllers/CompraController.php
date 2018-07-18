@@ -119,14 +119,14 @@ class CompraController extends Controller
     {
 
         $compra=DB::table('compra as c')
-            ->join('DetalleCompra as dc', 'c.IdCompra','=','dc.IdCompra')
+            ->join('detallecompra as dc', 'c.IdCompra','=','dc.IdCompra')
+            ->join('suplidor as s', 'c.IdSuplidor','=','s.IdSuplidor')
             ->select('c.IdCompra', 'c.Fecha', 'c.Comentario', 'c.Condicion', 's.Compania', 'c.Total')
             ->where('c.IdCompra', '=', $id)
             ->first();
 
-            $DetalleCompra=DB::table('DetalleCompra as dc')
-            ->join('material as mat', 'dc.IdMaterial','=','mat.IdMaterial
-            	')
+            $DetalleCompra=DB::table('detallecompra as dc')
+            ->join('material as mat', 'dc.IdMaterial','=','mat.IdMaterial')
             ->select('mat.Nombre as material', 'dc.Cantidad', 'dc.Precio')
             ->where('dc.IdCompra', '=', $id)
             ->get();
