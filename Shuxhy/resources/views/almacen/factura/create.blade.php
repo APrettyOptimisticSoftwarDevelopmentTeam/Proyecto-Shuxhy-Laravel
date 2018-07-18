@@ -256,7 +256,8 @@
 
                         function agregar(argument) // funciona correctamente
                         {
-                             datosProducto=document.getElementById('pidproducto').value.split('_');
+                            
+                            datosProducto=document.getElementById('pidproducto').value.split('_');
                               
 
                               IdProducto=datosProducto[0];
@@ -271,7 +272,8 @@
                               PrecioPed=$("#pprecioped").val();
                               CantidadCombo=$("#pcantidadcombo").val();
 
-                             if (Cantidad!="" && Cantidad>0 && CantidadCombo!="" && CantidadCombo>0 &&  PrecioProd!="" && IdCombo!="" && PrecioComb>0 && PrecioComb!="" && PrecioProd>0) 
+
+                             if (Cantidad>0  && CantidadCombo>0 &&  IdCombo!="" &&  IdProducto!="" && PrecioComb>0  && PrecioProd>0) 
                               {
                                     subtotal[cont]=(Cantidad*parseInt(PrecioProd)+CantidadCombo*parseInt(PrecioComb)); 
                                     
@@ -311,7 +313,7 @@
 
                               }
 
-                              if (Cantidad!="" && PrecioProd>0 && PrecioProd!=""  && Cantidad>0 && CantidadCombo=="" ) //error en algunas condiciones
+                              if (PrecioProd>0  && Cantidad>0 && IdProducto!="") //error en algunas condiciones
                               {
                                     subtotal[cont]=(Cantidad*parseInt(PrecioProd)); 
 
@@ -333,7 +335,7 @@
                               else
                               {
                                     alert$("Error al ingresar el detalle del pedido, revise los datos del producto");
-                              }
+                              } 
 
                         }
                         
