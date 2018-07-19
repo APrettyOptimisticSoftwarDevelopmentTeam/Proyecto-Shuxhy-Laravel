@@ -164,7 +164,7 @@
               <li class="treeview">
               <a href="{{ url('almacen/compra')}}">
                 <i class="fa fa-cart-arrow-down"></i>
-                <span>Compra</span>
+                <span>Compras</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
 

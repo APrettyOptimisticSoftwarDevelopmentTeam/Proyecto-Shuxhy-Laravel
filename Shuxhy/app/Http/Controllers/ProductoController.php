@@ -67,7 +67,8 @@ class ProductoController extends Controller
         $producto->Nombre=$request->get('Nombre');
         $producto->Descripcion=$request->get('Descripcion');
         $producto->Precio=$request->get('Precio');
-        $producto->Stock=$request->get('Stock');
+        $producto->Stock='0';
+        //$producto->Stock=$request->get('Stock');
         $producto->IdUnidad=$request->get('IdUnidad');
         $producto->CostoProduccion=$request->get('CostoProduccion');
         $producto->IdForma=$request->get('IdForma');

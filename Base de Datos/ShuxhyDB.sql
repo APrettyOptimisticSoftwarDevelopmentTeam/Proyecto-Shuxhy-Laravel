@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Producto` (
   `IdRelleno` INT NOT NULL,
   `IdSabor` INT NOT NULL,
   `Condicion` TINYINT NULL DEFAULT NULL,
-  `Stock` INT NULL DEFAULT NULL,
+  `Stock` INT NOT NULL,
   `Imagen` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`IdProducto`),
   INDEX `fk_IdUnidad_Producto_idx` (`IdUnidad` ASC),
@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Material` (
   `IdUnidad` INT NOT NULL,
   `Costo` FLOAT NOT NULL,
   `Imagen` VARCHAR(50) NULL DEFAULT NULL,
-  `Stock` INT NULL DEFAULT NULL,
+  `Stock` INT NOT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdMaterial`),
   INDEX `fk_IdUnidad_material_idx` (`IdUnidad` ASC),
@@ -347,9 +347,9 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Receta` (
   `Descripcion` VARCHAR(200) NULL DEFAULT NULL,
   `Equipo` VARCHAR(100) NULL DEFAULT NULL,
   `SubTotal` FLOAT NULL DEFAULT NULL,
-  `CostoIndirecto` FLOAT NULL DEFAULT NULL,
-  `CostoManoDeObra` FLOAT NULL DEFAULT NULL,
-  `CostoDeReposicion` FLOAT NULL DEFAULT NULL,
+  `CostoIndirecto` FLOAT NOT NULL,
+  `CostoManoDeObra` FLOAT NOT NULL,
+  `CostoDeReposicion` FLOAT NOT NULL,
   `Total` FLOAT NULL DEFAULT NULL,
   `TiempoPreparacion` VARCHAR(45) NULL DEFAULT NULL,
   `Porcion` VARCHAR(45) NULL DEFAULT NULL,
@@ -405,6 +405,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Produccion` (
   `Fecha` DATETIME NULL DEFAULT NULL,
   `IdPedido` INT NULL DEFAULT NULL,
   `Estatus` VARCHAR(45) NULL DEFAULT NULL,
+  `Comentario` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`IdProduccion`),
   INDEX `fk_pedido_produccion_idx` (`IdPedido` ASC),
   CONSTRAINT `fk_pedido_produccion`
@@ -494,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleProduccion` (
   `IdReceta` INT NULL DEFAULT NULL,
   `CantidadProducir` INT NULL DEFAULT NULL,
   `CantidadProducida` INT NULL DEFAULT NULL,
-  `CantidadFaltante` INT NULL DEFAULT NULL,
+  `CantidadFaltante` INT NOT NULL,
   PRIMARY KEY (`IdDetalleProduccion`),
   INDEX `fk_receta_DetalleProduccion_idx` (`IdReceta` ASC),
   INDEX `fk_produccion_Detalleproduccion_idx` (`IdProduccion` ASC),
@@ -654,6 +655,19 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleCompra` (
 ENGINE = InnoDB;
 
 USE `ShuxhyDB` ;
+
+-- -----------------------------------------------------
+-- trigger updStockCompra
+-- -----------------------------------------------------
+
+DELIMITER //
+CREATE TRIGGER updStockCompra AFTER INSERT ON detallecompra
+FOR EACH ROW BEGIN 
+	UPDATE material SET Stock = Stock + new.Cantidad
+	WHERE material.IdMaterial = NEW.IdMaterial;
+END
+//
+DELIMITER ;
 
 -- -----------------------------------------------------
 -- procedure Preciounidaddetallecombo&pedido
