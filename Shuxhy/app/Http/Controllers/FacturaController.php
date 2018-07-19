@@ -144,8 +144,8 @@ class FacturaController extends Controller
             $DetalleFactura=DB::table('DetalleFactura as df')
             ->join('producto as prod', 'df.IdProducto','=','prod.IdProducto')
             ->join('combo as com', 'df.IdCombo','=','com.IdCombo')
-            //->join('pedido as ped', 'df.IdPedido','=','ped.IdPedido')
-            ->select('prod.Nombre as producto', 'df.Cantidad', 'df.CantidadCombo','df.PrecioProd', 'com.Nombre as combo', 'df.PrecioComb', 'df.PrecioPed')
+            ->join('pedido as ped', 'df.IdPedido','=','ped.IdPedido')
+            ->select('prod.Nombre as producto', 'df.Cantidad', 'df.CantidadCombo','df.PrecioProd', 'com.Nombre as combo', 'df.PrecioComb', 'df.PrecioPed', 'ped.FechaEntrega as pedido', 'ped.Total')
             ->where('df.IdFactura', '=', $id)
             ->get();
 
