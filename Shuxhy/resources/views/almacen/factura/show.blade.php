@@ -52,27 +52,14 @@
 
                                           <thead style="background-color:pink">
                                                
-                                                <th>Producto</th>
-                                                <th>Precio del producto</th>
-                                                <th>Cantidad de productos</th>
-                                                <th>Combo</th>
-                                                <th>Precio del combo</th>
-                                                <th>Cantidad de combos</th>
+                                        
                                                 <th>Pedido</th>
-                                                <th>Precio del pedido</th>
                                                 <th>Subtotal</th>
 
                                           </thead>
 
                                           <tfoot>
                                                
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
                                                 <th></th>
                                                 <th><h4 id="total">{{$factura->TotalFacturado}}</h4></th>
                                                 
@@ -81,15 +68,8 @@
                                           <tbody>
                                                 @foreach ($DetalleFactura as $det)
                                                 <tr>
-                                                    <td>{{$det->producto}}</td>
-                                                    <td>{{$det->PrecioProd}}</td>
-                                                    <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->combo}}</td>
-                                                    <td>{{$det->PrecioComb}}</td>
-                                                    <td>{{$det->CantidadCombo}}</td>
                                                     <td>{{$det->pedido}}</td>
                                                     <td>{{$det->PrecioPed}}</td>
-                                                    <td>{{$det->Cantidad*$det->PrecioProd+$det->PrecioComb+$det->PrecioPed}}</td>
                                                 </tr>
                                                 @endforeach
                                           </tbody>

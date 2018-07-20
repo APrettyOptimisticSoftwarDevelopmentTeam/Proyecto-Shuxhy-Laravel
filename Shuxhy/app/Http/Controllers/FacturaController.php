@@ -45,31 +45,23 @@ class FacturaController extends Controller
 
      public function create() // Lo que me falla debe de ser el script
     {
-        $productos=DB::table('producto as prod')
-        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
-        ->where('prod.Condicion','=','1')
-        ->get();
+        
 
         $pedidos=DB::table('pedido as ped')
         ->select(DB::raw('CONCAT(ped.DireccionEntrega, " ", ped.FechaEntrega) AS pedido'),'ped.IdPedido', 'ped.Total')
         ->where('ped.Condicion','=','1')
         ->get();
 
-        $combos=DB::table('combo as com')
-        ->select(DB::raw('CONCAT(com.Nombre, " ", com.Descripcion) AS combo'),'com.IdCombo', 'com.Total')
-        ->where('com.Condicion','=','1')
-        ->get();    
-
     
-        return view('almacen.factura.create',["productos"=>$productos,"pedidos"=>$pedidos,"combos"=>$combos]);
+        return view('almacen.factura.create',["pedidos"=>$pedidos]);
 
     }
 
     public function store (FacturaFormRequest $request)  // Funcion para crear 
     {
 
-        //try
-        //{
+        try
+        {
 
         DB::beginTransaction();
         $factura=new Factura;
@@ -81,31 +73,31 @@ class FacturaController extends Controller
         $factura->save();
 
         $IdPedido = $request->get('IdPedido');
-        $IdProducto = $request->get('IdProducto');
-        $IdCombo = $request->get('IdCombo');
+       // $IdProducto = $request->get('IdProducto');
+        //$IdCombo = $request->get('IdCombo');
 
 
-        $Cantidad = $request->get('Cantidad');
-        $CantidadCombo = $request->get('CantidadCombo');
+       // $Cantidad = $request->get('Cantidad');
+        //$CantidadCombo = $request->get('CantidadCombo');
 
-        $PrecioProd = $request->get('PrecioProd');
-        $PrecioComb = $request->get('PrecioComb');
+       // $PrecioProd = $request->get('PrecioProd');
+        //$PrecioComb = $request->get('PrecioComb');
         $PrecioPed = $request->get('PrecioPed');
 
 
         $cont=0;
 
-        while ($cont < (count($IdProducto))) 
+        while ($cont < (count($IdPedido))) 
         {
             $DetalleFactura = new DetalleFactura();
             $DetalleFactura->IdFactura=$factura->IdFactura;
-            $DetalleFactura->IdProducto=$IdProducto[$cont];
-            $DetalleFactura->IdCombo=$IdCombo[$cont];
+           // $DetalleFactura->IdProducto=$IdProducto[$cont];
+            //$DetalleFactura->IdCombo=$IdCombo[$cont];
             $DetalleFactura->IdPedido=$IdPedido[$cont];
-            $DetalleFactura->Cantidad=$Cantidad[$cont];
-            $DetalleFactura->CantidadCombo=$CantidadCombo[$cont];
-            $DetalleFactura->PrecioProd=$PrecioProd[$cont];
-            $DetalleFactura->PrecioComb=$PrecioComb[$cont];
+            //$DetalleFactura->Cantidad=$Cantidad[$cont];
+            //$DetalleFactura->CantidadCombo=$CantidadCombo[$cont];
+            //$DetalleFactura->PrecioProd=$PrecioProd[$cont];
+            //$DetalleFactura->PrecioComb=$PrecioComb[$cont];
             $DetalleFactura->PrecioPed=$PrecioPed[$cont];
             $DetalleFactura->save();
             $cont=$cont+1;
@@ -117,13 +109,13 @@ class FacturaController extends Controller
 
             DB::commit();
 
-        //}
-        //catch(\Exception $e)
-        //{
+        }
+        catch(\Exception $e)
+        {
 
-        //  DB::rollback();
+          DB::rollback();
 
-        //}
+        }
 
 
         
@@ -142,10 +134,8 @@ class FacturaController extends Controller
             ->first();
 
             $DetalleFactura=DB::table('DetalleFactura as df')
-            ->join('producto as prod', 'df.IdProducto','=','prod.IdProducto')
-            ->join('combo as com', 'df.IdCombo','=','com.IdCombo')
             ->join('pedido as ped', 'df.IdPedido','=','ped.IdPedido')
-            ->select('prod.Nombre as producto', 'df.Cantidad', 'df.CantidadCombo','df.PrecioProd', 'com.Nombre as combo', 'df.PrecioComb', 'df.PrecioPed', 'ped.FechaEntrega as pedido', 'ped.Total')
+            ->select('df.PrecioPed', 'ped.FechaEntrega as pedido')
             ->where('df.IdFactura', '=', $id)
             ->get();
 
