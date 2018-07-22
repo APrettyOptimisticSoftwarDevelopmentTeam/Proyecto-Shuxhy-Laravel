@@ -352,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Receta` (
   `CostoDeReposicion` FLOAT NOT NULL,
   `Total` FLOAT NULL DEFAULT NULL,
   `TiempoPreparacion` VARCHAR(45) NULL DEFAULT NULL,
-  `Porcion` VARCHAR(45) NULL DEFAULT NULL,
+  `Porcion` INT NULL DEFAULT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   `IdProducto` INT NULL,
   PRIMARY KEY (`IdReceta`),
@@ -403,201 +403,28 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Produccion` (
   `IdProduccion` INT NOT NULL AUTO_INCREMENT,
   `Fecha` DATETIME NULL DEFAULT NULL,
-  `IdPedido` INT NULL DEFAULT NULL,
+  `IdReceta` INT NULL DEFAULT NULL,
+  `IdProducto` INT NULL DEFAULT NULL,
+  `CantidadProducida` INT NULL DEFAULT NULL,
+  `CantidadProducir` INT NULL DEFAULT NULL,
+  `CantidadFaltante` INT NULL DEFAULT NULL,
   `Estatus` VARCHAR(45) NULL DEFAULT NULL,
   `Comentario` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`IdProduccion`),
-  INDEX `fk_pedido_produccion_idx` (`IdPedido` ASC),
-  CONSTRAINT `fk_pedido_produccion`
-    FOREIGN KEY (`IdPedido`)
-    REFERENCES `ShuxhyDB`.`Pedido` (`IdPedido`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`InventarioProd`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`InventarioProd` (
-  `IdInventarioProd` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `Cantidad` FLOAT NOT NULL,
-  `Unidad` VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`IdInventarioProd`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`ProdInventario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`ProdInventario` (
-  `IdProdInventario` INT NOT NULL AUTO_INCREMENT,
-  `IdProducto` INT NULL DEFAULT NULL,
-  `IdInventarioProd` INT NULL DEFAULT NULL,
-  INDEX `fk_Producto_prodInventario_idx` (`IdProducto` ASC),
-  INDEX `fk_InventarioProd_ProdInventario` (`IdInventarioProd` ASC),
-  PRIMARY KEY (`IdProdInventario`),
-  CONSTRAINT `fk_Producto_ProdInven`
-    FOREIGN KEY (`IdProducto`)
-    REFERENCES `ShuxhyDB`.`Producto` (`IdProducto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_InventarioProd_ProdInventario`
-    FOREIGN KEY (`IdInventarioProd`)
-    REFERENCES `ShuxhyDB`.`InventarioProd` (`IdInventarioProd`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`InventarioMat`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`InventarioMat` (
-  `IdInventarioMat` INT NOT NULL AUTO_INCREMENT,
-  `Nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `Cantidad` FLOAT NOT NULL,
-  `Unidad` VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`IdInventarioMat`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`MatInventario`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`MatInventario` (
-  `IdMatInventario` INT NOT NULL AUTO_INCREMENT,
-  `IdMaterial` INT NULL DEFAULT NULL,
-  `IdInventarioMat` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`IdMatInventario`),
-  INDEX `fk_Inventariomat_matinventario_idx` (`IdInventarioMat` ASC),
-  INDEX `fk_Material_MatInventario_idx` (`IdMaterial` ASC),
-  CONSTRAINT `fk_Material_MatInventario`
-    FOREIGN KEY (`IdMaterial`)
-    REFERENCES `ShuxhyDB`.`Material` (`IdMaterial`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Inventariomat_matinventario`
-    FOREIGN KEY (`IdInventarioMat`)
-    REFERENCES `ShuxhyDB`.`InventarioMat` (`IdInventarioMat`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`DetalleProduccion`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleProduccion` (
-  `IdDetalleProduccion` INT NOT NULL AUTO_INCREMENT,
-  `IdProduccion` INT NULL DEFAULT NULL,
-  `IdReceta` INT NULL DEFAULT NULL,
-  `CantidadProducir` INT NULL DEFAULT NULL,
-  `CantidadProducida` INT NULL DEFAULT NULL,
-  `CantidadFaltante` INT NOT NULL,
-  PRIMARY KEY (`IdDetalleProduccion`),
-  INDEX `fk_receta_DetalleProduccion_idx` (`IdReceta` ASC),
-  INDEX `fk_produccion_Detalleproduccion_idx` (`IdProduccion` ASC),
-  CONSTRAINT `fk_receta_DetalleProduccion`
+  INDEX `fk_producto_produccion_idx` (`IdProducto` ASC),
+  INDEX `fk_receta_produccion_idx` (`IdReceta` ASC),
+  CONSTRAINT `fk_receta_produccion`
     FOREIGN KEY (`IdReceta`)
     REFERENCES `ShuxhyDB`.`Receta` (`IdReceta`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_produccion_Detalleproduccion`
-    FOREIGN KEY (`IdProduccion`)
-    REFERENCES `ShuxhyDB`.`Produccion` (`IdProduccion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`MatProduccionUtilizado`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`MatProduccionUtilizado` (
-  `IdMatProduccionUtilizado` INT NOT NULL AUTO_INCREMENT,
-  `IdDetalleProduccion` INT NULL DEFAULT NULL,
-  `IdMaterial` INT NULL DEFAULT NULL,
-  `Cantidad` FLOAT NULL DEFAULT NULL,
-  `Unidad` VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`IdMatProduccionUtilizado`),
-  INDEX `fk_DetalleProduccion_idx` (`IdDetalleProduccion` ASC),
-  INDEX `fk_unidad_idx` (`Unidad` ASC),
-  INDEX `fk_material_idx` (`IdMaterial` ASC),
-  CONSTRAINT `fk_DetalleProduccion`
-    FOREIGN KEY (`IdDetalleProduccion`)
-    REFERENCES `ShuxhyDB`.`DetalleProduccion` (`IdDetalleProduccion`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_material`
-    FOREIGN KEY (`IdMaterial`)
-    REFERENCES `ShuxhyDB`.`Material` (`IdMaterial`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`MovInventarioProd`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`MovInventarioProd` (
-  `IdMovInventarioProducto` INT NOT NULL AUTO_INCREMENT,
-  `IdInventarioProd` INT NULL DEFAULT NULL,
-  `Fecha` DATETIME NULL DEFAULT NULL,
-  `TipoMov` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`IdMovInventarioProducto`),
-  INDEX `fk_InventarioProd_idx` (`IdInventarioProd` ASC),
-  CONSTRAINT `fk_InventarioProd`
-    FOREIGN KEY (`IdInventarioProd`)
-    REFERENCES `ShuxhyDB`.`InventarioProd` (`IdInventarioProd`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`DetalleMovInventarioProd`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleMovInventarioProd` (
-  `IdDetalleMovInventario` INT NOT NULL AUTO_INCREMENT,
-  `IdMovInventarioProd` INT NULL DEFAULT NULL,
-  `IdProducto` INT NULL DEFAULT NULL,
-  `Cantidad` FLOAT NULL DEFAULT NULL,
-  `Unidad` VARCHAR(20) NULL DEFAULT NULL,
-  PRIMARY KEY (`IdDetalleMovInventario`),
-  INDEX `fk_unidad_DetalleMovInv_idx` (`Unidad` ASC),
-  INDEX `fk_producto_DetalleMov_idx` (`IdProducto` ASC),
-  INDEX `fk_movInventarioproducto_idx` (`IdMovInventarioProd` ASC),
-  CONSTRAINT `fk_producto_DetalleMov`
+    CONSTRAINT `fk_producto_produccion`
     FOREIGN KEY (`IdProducto`)
     REFERENCES `ShuxhyDB`.`Producto` (`IdProducto`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_movinvprod_detalle`
-    FOREIGN KEY (`IdMovInventarioProd`)
-    REFERENCES `ShuxhyDB`.`MovInventarioProd` (`IdMovInventarioProducto`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `ShuxhyDB`.`MovInventarioMat`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`MovInventarioMat` (
-  `IdMovInventarioMat` INT NOT NULL AUTO_INCREMENT,
-  `IdInventarioMat` INT NULL DEFAULT NULL,
-  `Fecha` DATETIME NULL DEFAULT NULL,
-  `TipoMovimiento` VARCHAR(45) NULL DEFAULT NULL,
-  PRIMARY KEY (`IdMovInventarioMat`),
-  INDEX `fk_InventarioMat_MovInv_idx` (`IdInventarioMat` ASC),
-  CONSTRAINT `fk_InventarioMat_MovInv`
-    FOREIGN KEY (`IdInventarioMat`)
-    REFERENCES `ShuxhyDB`.`InventarioMat` (`IdInventarioMat`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
