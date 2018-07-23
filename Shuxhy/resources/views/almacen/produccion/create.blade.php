@@ -24,7 +24,7 @@
                         
             <div class="form-group">
                    <label>Estado de la produccion</label>
-                  <select name="Estatus" class="form-control selectpicker" id="IdEstatus" data-live-search="true">
+                  <select name="Estatus" class="form-control selectpicker" id="Estatus" data-live-search="true">
                         <option>En Proceso</option>
                         <option>Listo</option>
                   </select>
@@ -35,7 +35,7 @@
                         
             <div class="form-group">
                                <label>Receta</label>
-                       <select name="pidreceta" class="form-control selectpicker" id="pidreceta" data-live-search="true">
+                       <select name="IdReceta" class="form-control selectpicker" id="IdReceta" data-live-search="true">
                              @foreach ($recetas as $receta)
                            <option value="{{$receta->IdReceta}}_{{$receta->Porcion}}">{{$receta->receta}}</option>
                            @endforeach
@@ -49,7 +49,7 @@
 
                            <div class="form-group">
                               <label for="CantidadProducir">Cantidad a Producir</label>
-                                <input type="number" disabled name="pcantidadproducir" id="pcantidadproducir" class="form-control" placeholder="Cantidad producir">
+                                <input type="number" name="CantidadProducir" id="CantidadProducir" class="form-control" placeholder="Cantidad a producir">
                                           
                              </div>
 
@@ -63,7 +63,7 @@
 
                                     <div class="form-group">
                                           <label for="CantidadProducida">Cantidad Producida</label>
-                                          <input type="number" name="pcantidadproducida" id="pcantidadproducida" class="form-control" placeholder="Cantidad Producida">
+                                          <input type="number" name="CantidadProducida" id="CantidadProducida" class="form-control" placeholder="Cantidad Producida">
                                           
                                     </div>
 
@@ -74,11 +74,22 @@
 
                                     <div class="form-group">
                                           <label for="CantidadFaltante">Cantidad Faltante</label>
-                                          <input type="number" name="pcantidadfaltante" id="pcantidadfaltante" class="form-control" placeholder="Cantidad Faltante">
+                                          <input type="number" name="CantidadFaltante" id="CantidadFaltante" class="form-control" placeholder="Cantidad Faltante">
                                           
                                     </div>
 
                               </div>
+
+          <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">                    
+          <div class="form-group">
+                   <label>Producto a producir</label>
+                  <select name="IdProducto" class="form-control selectpicker" id="IdProducto" data-live-search="true">
+                        @foreach ($productos as $pro)
+                        <option value="{{$pro->IdProducto}}">{{$pro->producto}}</option>
+                        @endforeach
+                  </select>
+            </div>
+          </div>
 
 
 
@@ -124,12 +135,12 @@
                   <script>
                         
 
-                        $("#pidreceta").change(mostrarValores);
+                        $("#IdReceta").change(mostrarValores);
                         
                          function mostrarValores() 
                          {
-                              datosRecetas=document.getElementById('pidreceta').value.split('_');
-                               $("#pcantidadproducir").val(datosRecetas[1]);
+                              datosRecetas=document.getElementById('IdReceta').value.split('_');
+                               $("#CantidadProducir").val(datosRecetas[1]);
                          }
 
 

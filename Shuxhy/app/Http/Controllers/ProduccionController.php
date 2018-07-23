@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\ProduccionFormRequest;
 use Shuxhy\Produccion;
+use Shuxhy\Producto;
+use Shuxhy\Receta;
 use DB;
 
 use Carbon\Carbon;
@@ -29,12 +31,13 @@ class ProduccionController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $producciones=DB::table('produccion as p')
-            ->select('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'p.Fecha', 'p.Comentario', 'p.CantidadProducir', 'p.CantidadProducida', 'p.CantidadFaltante')
-            ->where('p.Fecha','LIKE','%'.$query.'%')
-            ->where ('p.Condicion','=','1') 
-            ->orderBy('p.IdProduccion', 'desc')
-            ->groupBy('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'c.Fecha' , 'p.Comentario', 'p.CantidadProducir', 'p.CantidadProducida', 'p.CantidadFaltante')
+            $producciones=DB::table('produccion as pro')
+             ->join('receta as r', 'pro.IdReceta','=','r.IdReceta')
+             ->join('producto as p', 'pro.IdProducto','=','p.IdProducto')
+            ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
+            ->where('pro.CantidadFaltante','LIKE','%'.$query.'%')
+            ->where ('pro.Condicion','=','1') 
+            ->orderBy('pro.IdProduccion', 'desc')
             ->paginate(7);
             return view('almacen.produccion.index',["producciones"=>$producciones,"searchText"=>$query]);
 
@@ -55,9 +58,15 @@ class ProduccionController extends Controller
         ->get();
 
 
+        $productos=DB::table('producto as prod')
+        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto')
+        ->where('prod.Condicion','=','1')
+        ->get();
+
+
 
               
-        return view('almacen.produccion.create',["recetas"=>$recetas]);
+        return view('almacen.produccion.create',["recetas"=>$recetas,"productos"=>$productos]);
 
     }
     public function store (ProduccionFormRequest $request)  // Funcion para crear 
@@ -67,6 +76,7 @@ class ProduccionController extends Controller
 
         $produccion=new Produccion;
         $produccion->IdReceta=$request->get('IdReceta');
+        $produccion->IdProducto=$request->get('IdProducto');
         $produccion->Estatus=$request->get('Estatus');
         $mytime=Carbon::now('America/Lima');
         $produccion->Fecha=$mytime->toDateTimeString();
@@ -77,10 +87,12 @@ class ProduccionController extends Controller
         $produccion->Condicion='1';
         $produccion->save();
         
-      // $producto=Producto::findOrFail($id);
-       //$producto->stock=$request->get('CantidadProducida');
-       //$producto->update();
-
+        
+       
+       $producto=Producto::findOrFail($produccion->IdProducto);
+       //$producto->stock=$request->get('Stock');
+       $producto->stock=$producto->stock+$produccion->CantidadProducida;
+       $producto->update();
         
         return Redirect::to('almacen/produccion');
 
@@ -105,28 +117,35 @@ class ProduccionController extends Controller
 
      public function edit($id)
     {
+
+        /* $produccion=DB::table('produccion as pro')
+             ->join('receta as r', 'pro.IdReceta','=','r.IdReceta')
+             ->join('producto as p', 'r.IdProducto','=','p.IdProducto')
+            ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
+            ->where('pro.IdProduccion', '=', $id)
+            ->first();*/
+
+
+
+
         return view("almacen.produccion.edit",["produccion"=>Produccion::findOrFail($id)]);
     }
     public function update(ProduccionFormRequest $request,$id)  // funcion para editar
     {
 
-        
 
-        $produccion=Produccion::findOrFail($id);
+        $produccion=Produccion::find($id);
         $produccion->IdReceta=$request->get('IdReceta');
         $produccion->Estatus=$request->get('Estatus');
-        $mytime=Carbon::now('America/Lima');
-        $produccion->Fecha=$mytime->toDateTimeString();
-        $produccion->CantidadFaltante=$request->get('CantidadFaltante');
-        $produccion->CantidadProducir=$request->get('CantidadProducir');
+        //$mytime=Carbon::now('America/Lima');
+        //$produccion->Fecha=$mytime->toDateTimeString();
+        //$produccion->CantidadFaltante=$request->get('CantidadFaltante');
+        //$produccion->CantidadProducir=$request->get('CantidadProducir');
         $produccion->CantidadProducida=$request->get('CantidadProducida');
-        $produccion->Comentario=$request->get('Comentario');
-        
-        $pedido->update();
+        //$produccion->Comentario=$request->get('Comentario');
+        $produccion->update();
 
-        $producto=Producto::findOrFail($id);
-        $producto->stock=$request->get('CantidadProducida');
-
+       
         
         return Redirect::to('almacen/produccion');
     }

@@ -16,6 +16,7 @@ class Produccion extends Model
     protected $fillable =[ 
     	'Fecha',
         'IdReceta',
+        'IdProducto',
         'CantidadProducida',
         'CantidadProducir',
         'CantidadFaltante',

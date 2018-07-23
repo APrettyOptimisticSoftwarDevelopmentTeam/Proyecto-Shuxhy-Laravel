@@ -49,7 +49,7 @@ Route::resource('administracion/sabor','SaborController');
 
 Route::get('reportes/ventas','ReporteController@create');
 
-Route::get('almacen/produccion','ProduccionController@create');
+Route::resource('almacen/produccion','ProduccionController');
 
 Route::post('reportes/ventas', 'ReporteController@displayReport');
 

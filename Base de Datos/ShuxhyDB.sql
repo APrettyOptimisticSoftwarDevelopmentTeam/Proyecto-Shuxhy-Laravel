@@ -404,16 +404,23 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Produccion` (
   `IdProduccion` INT NOT NULL AUTO_INCREMENT,
   `Fecha` DATETIME NULL DEFAULT NULL,
   `IdReceta` INT NULL DEFAULT NULL,
+  `IdProducto` INT NULL DEFAULT NULL,
   `CantidadProducida` INT NULL DEFAULT NULL,
   `CantidadProducir` INT NULL DEFAULT NULL,
   `CantidadFaltante` INT NULL DEFAULT NULL,
   `Estatus` VARCHAR(45) NULL DEFAULT NULL,
   `Comentario` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`IdProduccion`),
+  INDEX `fk_producto_produccion_idx` (`IdProducto` ASC),
   INDEX `fk_receta_produccion_idx` (`IdReceta` ASC),
   CONSTRAINT `fk_receta_produccion`
     FOREIGN KEY (`IdReceta`)
     REFERENCES `ShuxhyDB`.`Receta` (`IdReceta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+    CONSTRAINT `fk_producto_produccion`
+    FOREIGN KEY (`IdProducto`)
+    REFERENCES `ShuxhyDB`.`Producto` (`IdProducto`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
