@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\ProduccionFormRequest;
 use Shuxhy\Produccion;
-use Shuxhy\DetalleProduccion;
+use Shuxhy\Producto;
+use Shuxhy\Receta;
 use DB;
 
 use Carbon\Carbon;
@@ -30,14 +31,13 @@ class ProduccionController extends Controller
         if ($request)
         {
             $query=trim($request->get('searchText'));
-            $producciones=DB::table('produccion as p')
-            ->join('pedido as ped', 'p.IdPedido','=','ped.IdPedido')
-            ->join('detalleproduccion as dp', 'p.IdProduccion','=','dp.IdProduccion')
-            ->select('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'p.Fecha', 'p.Comentario')
-            ->where('p.Fecha','LIKE','%'.$query.'%')
-            ->where ('p.Condicion','=','1') 
-            ->orderBy('p.IdProduccion', 'desc')
-            ->groupBy('p.IdProduccion', 'p.Estatus',  'p.Condicion', 'c.Fecha' , 'p.Comentario')
+            $producciones=DB::table('produccion as pro')
+             ->join('receta as r', 'pro.IdReceta','=','r.IdReceta')
+             ->join('producto as p', 'pro.IdProducto','=','p.IdProducto')
+            ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
+            ->where('pro.CantidadFaltante','LIKE','%'.$query.'%')
+            ->where ('pro.Condicion','=','1') 
+            ->orderBy('pro.IdProduccion', 'desc')
             ->paginate(7);
             return view('almacen.produccion.index',["producciones"=>$producciones,"searchText"=>$query]);
 
@@ -48,74 +48,51 @@ class ProduccionController extends Controller
      public function create() // Lo que me falla debe de ser el script
     {
         
-        $pedidos=DB::table('pedido as ped')
-        ->select(DB::raw('CONCAT(ped.FechaEntrega, " ", ped.Estatus ) AS pedido'),'ped.IdPedido')
-        ->where('ped.Condicion','=','1')
-        ->get();
 
         $recetas=DB::table('receta as r')
-        ->select(DB::raw('CONCAT(r.Nombre, " ", r.TiempoPreparacion ) AS receta'),'r.IdReceta', 'r.IdProducto', 'r.Porcion')
+        ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
+        ->join('producto as p', 'r.IdProducto','=','p.IdProducto')
+        ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
+        ->select(DB::raw('CONCAT(r.Nombre, " ", r.Descripcion ) AS receta'),'r.IdReceta', 'r.Porcion', 'p.stock', 'mat.stock')
         ->where('r.Condicion','=','1')
         ->get();
 
 
+        $productos=DB::table('producto as prod')
+        ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto')
+        ->where('prod.Condicion','=','1')
+        ->get();
+
+
+
               
-        return view('almacen.produccion.create',["pedidos"=>$pedidos, "recetas"=>$recetas]);
+        return view('almacen.produccion.create',["recetas"=>$recetas,"productos"=>$productos]);
 
     }
     public function store (ProduccionFormRequest $request)  // Funcion para crear 
     {
 
-        try
-        {
 
-        DB::beginTransaction();
+
         $produccion=new Produccion;
-        $produccion->IdPedido=$request->get('IdPedido');
+        $produccion->IdReceta=$request->get('IdReceta');
+        $produccion->IdProducto=$request->get('IdProducto');
         $produccion->Estatus=$request->get('Estatus');
-        
         $mytime=Carbon::now('America/Lima');
-       
         $produccion->Fecha=$mytime->toDateTimeString();
-        
+        $produccion->CantidadFaltante=$request->get('CantidadFaltante');
+        $produccion->CantidadProducir=$request->get('CantidadProducir');
+        $produccion->CantidadProducida=$request->get('CantidadProducida');
         $produccion->Comentario=$request->get('Comentario');
         $produccion->Condicion='1';
         $produccion->save();
-
-        $IdReceta = $request->get('IdReceta');
-        $CantidadProducir = $request->get('CantidadProducir');
-        $CantidadProducida = $request->get('CantidadProducida');
-        $CantidadFaltante = $request->get('CantidadFaltante');
         
-        $cont=0;
-
-        while ($cont < (count($IdReceta))) 
-        {
-            $DetalleProduccion = new DetalleProduccion();
-            $DetalleProduccion->IdProduccion=$produccion->IdProduccion;
-            $DetalleProduccion->IdReceta=$IdReceta[$cont];
-            $DetalleProduccion->CantidadProducir=$CantidadProducir[$cont];
-            $DetalleProduccion->CantidadProducida=$CantidadProducida[$cont];
-            $DetalleProduccion->CantidadFaltante=$CantidadFaltante[$cont];
-            $DetalleProduccion->save();
-            $cont=$cont+1;
-
-
-
-        }
-
-
-            DB::commit();
-
-        }
-        catch(\Exception $e)
-        {
-
-            DB::rollback();
-
-        }
-
-
+        
+       
+       $producto=Producto::findOrFail($produccion->IdProducto);
+       //$producto->stock=$request->get('Stock');
+       $producto->stock=$producto->stock+$produccion->CantidadProducida;
+       $producto->update();
         
         return Redirect::to('almacen/produccion');
 
@@ -132,28 +109,44 @@ class ProduccionController extends Controller
             ->where('p.IdProduccion', '=', $id)
             ->first();
 
-            $DetalleProduccion=DB::table('DetalleProduccion as dp')
-            ->join('receta as r', 'dp.IdReceta','=','r.IdReceta')
-            ->select('r.Nombre as receta', 'dp.CantidadProducir', 'dp.CantidadProducida', 'dp.CantidadFaltante')
-            ->where('dp.IdProduccion', '=', $id)
-            ->get();
 
-        return view("almacen.produccion.show",["produccion"=>$produccion,"DetalleProduccion"=>$DetalleProduccion]
+        return view("almacen.produccion.show",["produccion"=>$produccion]
         );
     }
 
 
      public function edit($id)
     {
+
+        /* $produccion=DB::table('produccion as pro')
+             ->join('receta as r', 'pro.IdReceta','=','r.IdReceta')
+             ->join('producto as p', 'r.IdProducto','=','p.IdProducto')
+            ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
+            ->where('pro.IdProduccion', '=', $id)
+            ->first();*/
+
+
+
+
         return view("almacen.produccion.edit",["produccion"=>Produccion::findOrFail($id)]);
     }
     public function update(ProduccionFormRequest $request,$id)  // funcion para editar
     {
-        $produccion=Produccion::findOrFail($id);
+
+
+        $produccion=Produccion::find($id);
+        $produccion->IdReceta=$request->get('IdReceta');
         $produccion->Estatus=$request->get('Estatus');
-        $produccion->Comentario=$request->get('Comentario');
+        //$mytime=Carbon::now('America/Lima');
+        //$produccion->Fecha=$mytime->toDateTimeString();
+        //$produccion->CantidadFaltante=$request->get('CantidadFaltante');
+        //$produccion->CantidadProducir=$request->get('CantidadProducir');
+        $produccion->CantidadProducida=$request->get('CantidadProducida');
+        //$produccion->Comentario=$request->get('Comentario');
+        $produccion->update();
+
+       
         
-        $pedido->update();
         return Redirect::to('almacen/produccion');
     }
 

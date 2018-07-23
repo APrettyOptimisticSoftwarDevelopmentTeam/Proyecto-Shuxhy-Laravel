@@ -12,25 +12,32 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Fecha</th>
+					<th>Id del producto</th>
+					<th>Descripcion del producto</th>
 					<th>Estatus</th>
-					<th>Pedido</th>
+					<th>Cantidad a producir</th>
+					<th>Cantidad producida</th>
+					<th>Cantidad que falta</th>
 					<th>Comentario</th>
 					<th>Opciones</th>
 				</thead>
-               @foreach ($producciones as $prod)
-				<tr>  <!-- Aqui se establecen los datos  -->
-					<td>{{ $prod->Fecha}}</td>		<!-- que se mostraran estos deben  -->
-							<!-- de coincidir con el orden de arriba  -->
-					<td>{{ $prod->Estatus}}</td>
-					<td>{{ $prod->Equipo}}</td>
-					<td>{{ $prod->Pedido}}</td>
-					<td>{{ $prod->Comentario}}</td>
+               @foreach ($producciones as $produc)
+				<tr> 
+					<td>{{ $produc->IdProducto}}</td>
+					<td>{{ $produc->Descripcion}}</td>
+					<td>{{ $produc->Estatus}}</td>
+				 <!-- Aqui se establecen los datos  -->
+					<td>{{ $produc->CantidadProducir}}</td>		<!-- que se mostraran estos deben  -->
+					<th>{{ $produc->CantidadProducida}}</th>			<!-- de coincidir con el orden de arriba  -->
+					<td>{{ $produc->CantidadFaltante}}</td>
+					<td>{{ $produc->Comentario}}</td>		
+			
 					
-					
+
+
 					<td>
-						<a href="{{URL::action('ProduccionController@show',$prod->IdProduccion)}}"><i class="fa fa-eye" style="font-size:20px"></i></a>
-                         <a href="" data-target="#modal-delete-{{$prod->IdProduccion}}" data-toggle="modal"><i class="fa fa-remove" style="font-size:20px; color:red"></i></a>
+						<a href="{{URL::action('ProduccionController@edit',$produc->IdProduccion)}}">  <i class="fa fa-edit" style="font-size:20px"></i></a>
+                         <a href="" data-target="#modal-delete-{{$produc->IdProduccion}}" data-toggle="modal"> <i class="fa fa-trash" style="font-size:18px;color:red"></i> </a>
 					</td>
 				</tr>
 				@include('almacen.produccion.modal')

@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
-role="dialog" tabindex="-1" id="modal-delete-{{$prod->IdProduccion}}">
-	{{Form::Open(array('action'=>array('ProduccionController@destroy',$prod->IdProduccion),'method'=>'delete'))}}
+role="dialog" tabindex="-1" id="modal-delete-{{$produc->IdProduccion}}">
+	{{Form::Open(array('action'=>array('ProduccionController@destroy',$produc->IdProduccion),'method'=>'delete'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -8,10 +8,10 @@ role="dialog" tabindex="-1" id="modal-delete-{{$prod->IdProduccion}}">
 				aria-label="Close">
                      <span aria-hidden="true">×</span>
                 </button>
-                <h4 class="modal-title">Eliminar Produccion</h4>
+                <h4 class="modal-title">Eliminar produccion</h4>
 			</div>
 			<div class="modal-body">
-				<p>Confirme si desea Eliminar la Produccion</p>
+				<p>Confirme si desea eliminar la produccion</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

@@ -55,7 +55,6 @@ class MaterialController extends Controller
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Stock='0';
-        //$material->Stock=$request->get('Stock');
         $material->Costo=$request->get('Costo');
      
 

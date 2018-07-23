@@ -27,15 +27,6 @@
 
 
 
-                  <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-                        
-            <div class="form-group">
-                  <label for="IdPedido">Pedido</label>
-                  <p>{{$produccion->IdPedido}}</p>
-            </div>
-
-                  </div>
-
 
 
                   <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
