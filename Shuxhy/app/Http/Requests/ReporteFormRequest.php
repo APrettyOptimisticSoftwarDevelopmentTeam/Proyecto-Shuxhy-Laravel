@@ -26,7 +26,6 @@ class ReporteFormRequest extends Request
         return [
             'Desde'=>'required',
             'Hasta'=>'required',
-            'Ordenar Por'=>'required',
             //
         ];
     }

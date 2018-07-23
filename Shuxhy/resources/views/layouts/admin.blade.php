@@ -193,9 +193,8 @@
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{ url('reportes/ventas')}}"><i class="fa fa-circle-o"></i>Ventas</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i>Ganancias</a>
-                <li><a href=""><i class="fa fa-circle-o"></i>Produccion</a>
-                </li>
+                 <li><a href="{{ url('reportes/ganancias')}}"><i class="fa fa-circle-o"></i>Ganancias</a></li>
+                  <li><a href="{{ url('reportes/produccion')}}"><i class="fa fa-circle-o"></i>Produccion</a></li>
                 
               </ul>
             </li>

@@ -53,6 +53,13 @@ Route::resource('almacen/produccion','ProduccionController');
 
 Route::post('reportes/ventas', 'ReporteController@displayReport');
 
+Route::get('reportes/produccion','ReporteProdController@create');
+
+Route::post('reportes/produccion', 'ReporteProdController@displayReport');
+
+Route::get('reportes/ganancias','ReporteGanController@create');
+
+Route::post('reportes/ganancias', 'ReporteGanController@displayReport');
 #Route::resource('reportes/ventas','ReporteController');
 
 Route::auth();
