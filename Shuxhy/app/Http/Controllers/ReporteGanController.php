@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
-use Shuxhy\Factura;
+use Shuxhy\Pedido;
 use PdfReport;
 use PDF;
 use DB;
@@ -20,7 +20,7 @@ class ReporteGanController extends Controller
     $toDate = $request->input('Hasta');
 
     // Report title
-    $title = 'Facturas Generadas'; 
+    $title = 'Pedidos Realizados'; 
 
     // For displaying filters description on header
     $meta = [
@@ -28,13 +28,13 @@ class ReporteGanController extends Controller
     ];
 
  
-    $queryBuilder = Factura::select('FormaPago', 'TotalFacturado', 'Fecha')
-                    ->whereBetween('Fecha', [$fromDate, $toDate]);
+    $queryBuilder = Pedido::select('IdCliente', 'Total', 'FechaEntrega')
+                    ->whereBetween('FechaEntrega', [$fromDate, $toDate]);
                
     $columns = [
-        'FormaPago' => 'FormaPago', 
-        'Fecha' =>'Fecha',
-        'TotalFacturado' => 'TotalFacturado'
+        'IdCliente' => 'IdCliente', 
+        'FechaEntrega' =>'FechaEntrega',
+        'Total' => 'Total'
       
     ];
 
@@ -43,21 +43,21 @@ class ReporteGanController extends Controller
   
 
 return PdfReport::of($title, $meta, $queryBuilder, $columns)
-                ->editColumn('Fecha', [
+                ->editColumn('FechaEntrega', [
                     'displayAs' => function($result) {
-                        return  $result->Fecha;
+                        return  $result->FechaEntrega;
                     }
                 ])
-                ->editColumn('TotalFacturado', [
+                ->editColumn('Total', [
                     'displayAs' => function($result) {
-                        return  $result->TotalFacturado;
+                        return  $result->Total;
                     }
                 ])
-                ->editColumns(['TotalFacturado'], [
+                ->editColumns(['Total'], [
                     'class' => 'right bold'
                 ])
                 ->showTotal([
-                    'TotalFacturado' => '$' // if you want to show dollar sign ($) then use 'Total Balance' => '$'
+                    'Total' => '$' // if you want to show dollar sign ($) then use 'Total Balance' => '$'
                 ])
                 ->limit(20)
                 ->stream('prueba'); // or download('filename here..') to download pdf    */

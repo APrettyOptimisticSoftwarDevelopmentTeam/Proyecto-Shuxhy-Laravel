@@ -5,6 +5,11 @@
 			{!!Form::open(array('url'=>'reportes/produccion','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
 
+<div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <h3>Reporte de Produccion </h3>
+      </div>
+</div>
             <div class="row">
 
 
@@ -22,7 +27,7 @@
                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
 
                   <div class="col-lg-5 col-sm-5 col-md-5 col-xs-12">
-
+                 
                   <div class="form-group">
                   <label for="Desde">Desde</label>
                   <input type="date" name="Desde" class="form-control" placeholder="Desde...">
@@ -32,8 +37,7 @@
                   <label for="Hasta">Hasta</label>
                   <input type="date" name="Hasta" class="form-control" placeholder="Hasta...">
                   </div>  
-
-
+   
                   </div>
 
 

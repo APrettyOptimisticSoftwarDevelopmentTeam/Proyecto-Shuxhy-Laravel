@@ -88,7 +88,6 @@ class ProduccionController extends Controller
         $produccion->save();
         
         
-       
        $producto=Producto::findOrFail($produccion->IdProducto);
        //$producto->stock=$request->get('Stock');
        $producto->stock=$producto->stock+$produccion->CantidadProducida;
