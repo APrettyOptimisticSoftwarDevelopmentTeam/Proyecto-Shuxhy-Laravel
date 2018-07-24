@@ -25,8 +25,8 @@ class ProductoFormRequest extends Request
     {
         return [
             'Nombre'=>'required|max:50',
-            'Precio'=>'required|numeric',
-            'CostoProduccion'=>'required|numeric',
+            'Precio'=>'required|numeric|min:1',
+            'CostoProduccion'=>'required|numeric|min:1',
             'Descripcion'=>'max:256'
         ];
     }
