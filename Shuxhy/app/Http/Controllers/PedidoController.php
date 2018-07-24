@@ -77,7 +77,7 @@ class PedidoController extends Controller
         $pedido->IdCliente=$request->get('IdCliente');
         $pedido->Estatus=$request->get('Estatus');
         $pedido->DireccionEntrega=$request->get('DireccionEntrega');
-        $mytime=Carbon::now('America/Lima');
+        $mytime=Carbon::now('America/Santo_Domingo');
         $pedido->FechaRealizado=$mytime->toDateTimeString();
         $pedido->FechaEntrega=$request->get('FechaEntrega');
         $pedido->Comentario=$request->get('Comentario');

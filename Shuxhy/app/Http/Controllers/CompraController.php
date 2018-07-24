@@ -70,7 +70,7 @@ class CompraController extends Controller
         DB::beginTransaction();
         $compra=new Compra;
         $compra->IdSuplidor=$request->get('IdSuplidor');
-        $mytime=Carbon::now('America/Lima');
+        $mytime=Carbon::now('America/Santo_Domingo');
         $compra->Fecha=$mytime->toDateTimeString();
         $compra->Comentario=$request->get('Comentario');
         $compra->Total=$request->get('Total');

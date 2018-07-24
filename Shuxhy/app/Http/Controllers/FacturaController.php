@@ -66,7 +66,7 @@ class FacturaController extends Controller
         DB::beginTransaction();
         $factura=new Factura;
         $factura->TotalFacturado=$request->get('TotalFacturado');
-        $mytime=Carbon::now('America/Lima');
+        $mytime=Carbon::now('America/Santo_Domingo');
         $factura->Fecha=$mytime->toDateTimeString();
         $factura->FormaPago=$request->get('FormaPago');
         $factura->Condicion='1';

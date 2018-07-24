@@ -78,7 +78,7 @@ class ProduccionController extends Controller
         $produccion->IdReceta=$request->get('IdReceta');
         $produccion->IdProducto=$request->get('IdProducto');
         $produccion->Estatus=$request->get('Estatus');
-        $mytime=Carbon::now('America/Lima');
+        $mytime=Carbon::now('America/Santo_Domingo');
         $produccion->Fecha=$mytime->toDateTimeString();
         $produccion->CantidadFaltante=$request->get('CantidadFaltante');
         $produccion->CantidadProducir=$request->get('CantidadProducir');
