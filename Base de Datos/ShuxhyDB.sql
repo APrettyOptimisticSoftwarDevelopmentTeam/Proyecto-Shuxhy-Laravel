@@ -497,6 +497,18 @@ END
 //
 DELIMITER ;
 
+-- -----------------------------------------------------
+-- trigger updCostoProduccionProducto
+-- -----------------------------------------------------
+
+DELIMITER //
+CREATE TRIGGER updCostoProduccionProducto AFTER INSERT ON receta
+FOR EACH ROW BEGIN 
+	UPDATE producto SET CostoProduccion = CostoProduccion + new.Total
+	WHERE producto.IdProducto = NEW.IdProducto;
+END
+//
+DELIMITER ;
 
 -- -----------------------------------------------------
 -- trigger updStockProductoProduccion
