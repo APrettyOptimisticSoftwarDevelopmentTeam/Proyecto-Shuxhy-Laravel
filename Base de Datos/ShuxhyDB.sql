@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Producto` (
   `IdRelleno` INT NOT NULL,
   `IdSabor` INT NOT NULL,
   `Condicion` TINYINT NULL DEFAULT NULL,
-  `Stock` INT NOT NULL,
+  `Stock` FLOAT NOT NULL,
   `Imagen` VARCHAR(50) NULL DEFAULT NULL,
   PRIMARY KEY (`IdProducto`),
   INDEX `fk_IdUnidad_Producto_idx` (`IdUnidad` ASC),
@@ -410,6 +410,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Produccion` (
   `CantidadFaltante` INT NULL DEFAULT NULL,
   `Estatus` VARCHAR(45) NULL DEFAULT NULL,
   `Comentario` VARCHAR(45) NULL DEFAULT NULL,
+  `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdProduccion`),
   INDEX `fk_producto_produccion_idx` (`IdProducto` ASC),
   INDEX `fk_receta_produccion_idx` (`IdReceta` ASC),
@@ -496,131 +497,21 @@ END
 //
 DELIMITER ;
 
+
 -- -----------------------------------------------------
--- procedure Preciounidaddetallecombo&pedido
+-- trigger updStockProductoProduccion
 -- -----------------------------------------------------
 
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `Preciounidaddetallecombo&pedido` ()
-BEGIN
-UPDATE DetallePedido
-Set PrecioPorUnidad= (Select Precio, Total
-       from Producto, Combo
-	Where ((DetallePedido.IdProducto = Producto.IdProducto) or (DetallePedido.IdCombo = Combo.IdCombo))); 
-    
-UPDATE DetalleCombo
-Set Precio= (Select Precio
-       from Producto 
-	Where Producto.IdProducto = DetalleCombo.IdProducto); 
-END$$
-
+DELIMITER //
+CREATE TRIGGER updStockProduccion AFTER INSERT ON produccion
+FOR EACH ROW BEGIN 
+	UPDATE producto SET Stock = Stock + new.CantidadProducida
+	WHERE producto.IdProducto = NEW.IdProducto;
+END
+//
 DELIMITER ;
 
--- -----------------------------------------------------
--- procedure DetallePedidoSubtotal
--- -----------------------------------------------------
 
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `DetallePedidoSubtotal` ()
-BEGIN
-UPDATE DetallePedido
-SET Subtotal = PrecioPorUnidad*Cantidad;
-END$$
-
-DELIMITER ;
-
--- -----------------------------------------------------
--- procedure ComboSubtotal&Total
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `ComboSubtotal&Total` ()
-BEGIN
-UPDATE Combo
-SET Subtotal = ( select Sum(Subtotal)
-					from DetalleCombo
-				   where DetalleCombo.IdCombo=Combo.IdCombo
-				 );
-UPDATE Combo
-SET Total = Descuento*Subtotal;
-				
-                 
-END$$
-
-DELIMITER ;
-
--- -----------------------------------------------------
--- procedure DetalleComboSubtotal
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `DetalleComboSubtotal` ()
-BEGIN
-Update DetalleCombo
-SET Subtotal = Precio*Cantidad;
-END$$
-
-DELIMITER ;
-
--- -----------------------------------------------------
--- procedure FacturalSubtotal
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `FacturalSubtotal` ()
-BEGIN
-UPDATE Factura
-SET TotalFactura = ( select Sum(Subtotal)
-					from DetallePedido
-				    where (DetallePedido.IdPedido=Pedido.IdPedido 
-                    and Factura.IdPedido=Pedido.IdPedido)
-				 );
-END$$
-
-DELIMITER ;
-
--- -----------------------------------------------------
--- procedure InventarioPesoTotal
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `InventarioPesoTotal` ()
-BEGIN
-
-UPDATE Inventario
-SET PesoTotal = PesoPorUnidad*Cantidad;
-
-END$$
-
-DELIMITER ;
-
--- -----------------------------------------------------
--- procedure InventarioPesoPorUnidad
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `InventarioPesoPorUnidad` ()
-BEGIN
-UPDATE Inventario
-SET PesoPorUnidad = (select(Peso,Peso) from Material,Producto 
-					where 
-                    ((Inventario.IdMaterial=Material.IdMaterial) 
-                    or 
-                    (Inventario.IdProducto=Producto.IdProducto)))
-
-
-;
-
-END$$
-
-DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
