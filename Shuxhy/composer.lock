@@ -368,16 +368,16 @@
         },
         {
             "name": "jimmyjs/laravel-report-generator",
-            "version": "1.0.18",
+            "version": "1.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jimmy-JS/laravel-report-generator.git",
-                "reference": "3be9545f2eb1659f2f4a77b8882fd6de115fc2e4"
+                "reference": "8f20ef81fe1253439e6e489efb3dec9cf3236248"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jimmy-JS/laravel-report-generator/zipball/3be9545f2eb1659f2f4a77b8882fd6de115fc2e4",
-                "reference": "3be9545f2eb1659f2f4a77b8882fd6de115fc2e4",
+                "url": "https://api.github.com/repos/Jimmy-JS/laravel-report-generator/zipball/8f20ef81fe1253439e6e489efb3dec9cf3236248",
+                "reference": "8f20ef81fe1253439e6e489efb3dec9cf3236248",
                 "shasum": ""
             },
             "require": {
@@ -417,7 +417,7 @@
                 "pdf report",
                 "report"
             ],
-            "time": "2018-06-12T02:50:56+00:00"
+            "time": "2018-07-23T10:56:08+00:00"
         },
         {
             "name": "knplabs/knp-snappy",
@@ -1510,7 +1510,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.4.12",
+            "version": "v3.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
