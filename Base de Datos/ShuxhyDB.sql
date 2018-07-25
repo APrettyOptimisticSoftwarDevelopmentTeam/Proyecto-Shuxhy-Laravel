@@ -326,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Material` (
   `IdUnidad` INT NOT NULL,
   `Costo` FLOAT NOT NULL,
   `Imagen` VARCHAR(50) NULL DEFAULT NULL,
-  `Stock` INT NOT NULL,
+  `Stock` FLOAT NOT NULL,
   `Condicion` TINYINT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`IdMaterial`),
   INDEX `fk_IdUnidad_material_idx` (`IdUnidad` ASC),
@@ -471,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleCompra` (
   `IdDetalleCompra` INT NOT NULL AUTO_INCREMENT,
   `IdMaterial` INT NULL,
   `IdCompra` INT NULL DEFAULT NULL,
-  `Cantidad` INT NULL DEFAULT NULL,
+  `Cantidad` FLOAT NULL DEFAULT NULL,
   `Precio` FLOAT NULL DEFAULT NULL,
   PRIMARY KEY (`IdDetalleCompra`),
   INDEX `Fk_Factura_detallefact_idx` (`IdCompra` ASC),
@@ -481,6 +481,59 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`DetalleCompra` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `ShuxhyDB`.`MaterialUtilizado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`MaterialUtilizado` (
+  `IdMaterialUtilizado` INT NOT NULL AUTO_INCREMENT,
+  `IdReceta` INT NULL,
+  `IdProduccion` INT NULL,
+  `IdDetalleReceta` INT NULL,
+  `IdMaterial` INT NOT NULL,
+  `CantidadMat` FLOAT NOT NULL,
+  PRIMARY KEY (`IdMaterialUtilizado`),
+  INDEX `fkdet_idx` (`IdDetalleReceta` ASC),
+  INDEX `fkpro_idx` (`IdProduccion` ASC),
+  CONSTRAINT `fkdet`
+    FOREIGN KEY (`IdDetalleReceta`)
+    REFERENCES `ShuxhyDB`.`DetalleReceta` (`IdDetalleReceta`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkpro`
+    FOREIGN KEY (`IdProduccion`)
+    REFERENCES `ShuxhyDB`.`Produccion` (`IdProduccion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- procedure matutilizados
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `ShuxhyDB`$$
+CREATE PROCEDURE `matutilizados` ()
+
+BEGIN
+DELETE from MaterialUtilizado;
+Insert INTO MaterialUtilizado (IdProduccion, IdReceta) select MAX(r.IdProduccion), r.IdReceta from Produccion r 
+Inner join Produccion on r.IdProduccion=produccion.IdProduccion;
+
+Update materialutilizado
+SET IdReceta =(select  produccion.IdReceta from produccion where produccion.IdProduccion=materialutilizado.IdProduccion);
+
+Insert INTO MaterialUtilizado (IdDetalleReceta, IdMaterial, CantidadMat) select detallereceta.IdDetalleReceta, detallereceta.IdMaterial,Cantidad from detallereceta 
+inner join MaterialUtilizado on materialutilizado.IdReceta=detallereceta.IdReceta;
+
+update MaterialUtilizado
+set IdMaterial=-1 where IdMaterial=0;
+
+END$$
+
+DELIMITER ;
 
 USE `ShuxhyDB` ;
 
@@ -492,6 +545,33 @@ DELIMITER //
 CREATE TRIGGER updStockCompra AFTER INSERT ON detallecompra
 FOR EACH ROW BEGIN 
 	UPDATE material SET Stock = Stock + new.Cantidad
+	WHERE material.IdMaterial = NEW.IdMaterial;
+END
+//
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- trigger updStockProductoProduccion
+-- -----------------------------------------------------
+
+DELIMITER //
+CREATE TRIGGER updStockProduccion AFTER INSERT ON produccion
+FOR EACH ROW BEGIN 
+	UPDATE producto SET Stock = Stock + new.CantidadProducida
+	WHERE producto.IdProducto = NEW.IdProducto;
+END
+//
+DELIMITER ;
+
+
+-- -----------------------------------------------------
+-- trigger updStockMaterialesProduccion
+-- -----------------------------------------------------
+
+DELIMITER //
+CREATE TRIGGER updStockMateriales AFTER INSERT ON materialutilizado
+FOR EACH ROW BEGIN 
+	UPDATE material SET Stock = Stock - new.CantidadMat
 	WHERE material.IdMaterial = NEW.IdMaterial;
 END
 //
@@ -510,18 +590,6 @@ END
 //
 DELIMITER ;
 
--- -----------------------------------------------------
--- trigger updStockProductoProduccion
--- -----------------------------------------------------
-
-DELIMITER //
-CREATE TRIGGER updStockProduccion AFTER INSERT ON produccion
-FOR EACH ROW BEGIN 
-	UPDATE producto SET Stock = Stock + new.CantidadProducida
-	WHERE producto.IdProducto = NEW.IdProducto;
-END
-//
-DELIMITER ;
 
 
 

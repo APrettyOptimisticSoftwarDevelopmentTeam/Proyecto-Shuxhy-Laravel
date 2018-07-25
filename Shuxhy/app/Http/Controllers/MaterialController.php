@@ -89,7 +89,6 @@ class MaterialController extends Controller
         $material->IdUnidad=$request->get('IdUnidad');
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
-        //$material->Stock=$request->get('Stock');
         $material->Costo=$request->get('Costo');
 
 

@@ -87,12 +87,9 @@ class ProduccionController extends Controller
         $produccion->Condicion='1';
         $produccion->save();
         
-        
-       //$producto=Producto::findOrFail($produccion->IdProducto);
-       //$producto->stock=$request->get('Stock');
-       //$producto->stock=$producto->stock+$produccion->CantidadProducida;
-       //$producto->update();
-        
+        DB::select("call matutilizados");
+
+                 
         return Redirect::to('almacen/produccion');
 
     }
