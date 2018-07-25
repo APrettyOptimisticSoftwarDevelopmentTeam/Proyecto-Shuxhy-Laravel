@@ -12,7 +12,7 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>Id del producto</th>
+					<th>Fecha</th>
 					<th>Descripcion del producto</th>
 					<th>Estatus</th>
 					<th>Cantidad a producir</th>
@@ -23,7 +23,7 @@
 				</thead>
                @foreach ($producciones as $produc)
 				<tr> 
-					<td>{{ $produc->IdProducto}}</td>
+					<td>{{ $produc->Fecha}}</td>
 					<td>{{ $produc->Descripcion}}</td>
 					<td>{{ $produc->Estatus}}</td>
 				 <!-- Aqui se establecen los datos  -->

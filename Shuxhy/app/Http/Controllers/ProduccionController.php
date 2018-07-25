@@ -34,7 +34,7 @@ class ProduccionController extends Controller
             $producciones=DB::table('produccion as pro')
              ->join('receta as r', 'pro.IdReceta','=','r.IdReceta')
              ->join('producto as p', 'pro.IdProducto','=','p.IdProducto')
-            ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
+            ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion','pro.Fecha', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
             ->where('pro.CantidadFaltante','LIKE','%'.$query.'%')
             ->where ('pro.Condicion','=','1') 
             ->orderBy('pro.IdProduccion', 'desc')
