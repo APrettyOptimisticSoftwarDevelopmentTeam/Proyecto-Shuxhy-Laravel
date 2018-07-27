@@ -14,13 +14,11 @@ class Inventario extends Model
 
 
     protected $fillable =[ 
-    	'IdProducto',
-    	'IdMaterial',
-    	'Cantidad',
-        'IdUnidad',
-    	'PesoPorUnidad',
-    	'PesoTotal',
-        'Condicion'
+    	
+        'Nombre',
+    	'CantidadProducto',
+        'CantidadMaterial',
+       
 
     ];
 

@@ -51,6 +51,8 @@ Route::get('reportes/ventas','ReporteController@create');
 
 Route::resource('almacen/produccion','ProduccionController');
 
+Route::resource('almacen/inventario','InventarioController');
+
 Route::post('reportes/ventas', 'ReporteController@displayReport');
 
 Route::get('reportes/produccion','ReporteProdController@create');
