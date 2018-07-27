@@ -28,6 +28,7 @@ class RecetaFormRequest extends Request
             'Descripcion'=>'max:150',
             'Equipo'=>'max:100',
             'TiempoPreparacion'=>'max:50',
+            'IdProducto' => 'required|unique:receta',
         ];
     }
 }

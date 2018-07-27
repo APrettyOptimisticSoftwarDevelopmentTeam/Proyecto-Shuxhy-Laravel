@@ -51,7 +51,6 @@ class ProduccionController extends Controller
 
         $recetas=DB::table('receta as r')
         ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-        ->join('producto as p', 'r.IdProducto','=','p.IdProducto')
         ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
         ->select(DB::raw('CONCAT(r.Nombre, " ", r.Descripcion ) AS receta'),'r.IdReceta', 'r.Porcion', 'p.stock', 'mat.stock')
         ->where('r.Condicion','=','1')

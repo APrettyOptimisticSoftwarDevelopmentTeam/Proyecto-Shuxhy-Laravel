@@ -590,7 +590,18 @@ END
 //
 DELIMITER ;
 
+-- -----------------------------------------------------
+-- trigger updTotalReceta
+-- -----------------------------------------------------
 
+DELIMITER //
+CREATE TRIGGER updTotalReceta AFTER INSERT ON receta
+FOR EACH ROW BEGIN 
+	UPDATE receta SET CostoIndirecto = (CostoIndirecto/100) * new.Total, Total = CostoIndirecto + new.Total
+	WHERE receta.IdReceta = NEW.IdReceta;
+END
+//
+DELIMITER ;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
