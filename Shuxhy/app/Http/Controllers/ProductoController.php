@@ -143,11 +143,11 @@ class ProductoController extends Controller
         $producto->update();
         return Redirect::to('almacen/producto');
     }
-    public function destroy($id)  // funcion para borrar
+   /* public function destroy($id)  // funcion para borrar
     {
         $producto=Producto::findOrFail($id);
         $producto->condicion='0';
         $producto->update();
         return Redirect::to('almacen/producto');
-    }
+    }*/
 }
