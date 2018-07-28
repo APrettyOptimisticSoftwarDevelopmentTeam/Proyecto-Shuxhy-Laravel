@@ -37,7 +37,6 @@
 
 					<td>
 						<a href="{{URL::action('ProduccionController@edit',$produc->IdProduccion)}}">  <i class="fa fa-edit" style="font-size:20px"></i></a>
-                         <a href="" data-target="#modal-delete-{{$produc->IdProduccion}}" data-toggle="modal"> <i class="fa fa-trash" style="font-size:18px;color:red"></i> </a>
 					</td>
 				</tr>
 				@include('almacen.produccion.modal')

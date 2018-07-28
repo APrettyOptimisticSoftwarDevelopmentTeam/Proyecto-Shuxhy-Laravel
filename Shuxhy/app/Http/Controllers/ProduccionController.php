@@ -50,9 +50,9 @@ class ProduccionController extends Controller
         
 
         $recetas=DB::table('receta as r')
-        ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-        ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
-        ->select(DB::raw('CONCAT(r.Nombre, " ", r.Descripcion ) AS receta'),'r.IdReceta', 'r.Porcion', 'p.stock', 'mat.stock')
+       // ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
+      //  ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
+        ->select(DB::raw('CONCAT(r.Nombre, " ", r.Descripcion ) AS receta'),'r.IdReceta', 'r.Porcion')
         ->where('r.Condicion','=','1')
         ->get();
 
@@ -130,7 +130,7 @@ class ProduccionController extends Controller
 
 
         $produccion=Produccion::find($id);
-        $produccion->IdReceta=$request->get('IdReceta');
+       // $produccion->IdReceta=$request->get('IdReceta');
         $produccion->Estatus=$request->get('Estatus');
         //$mytime=Carbon::now('America/Lima');
         //$produccion->Fecha=$mytime->toDateTimeString();
