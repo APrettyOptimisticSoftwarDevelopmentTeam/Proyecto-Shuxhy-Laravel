@@ -463,6 +463,33 @@ CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Compra` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `ShuxhyDB`.`Inventario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `ShuxhyDB`.`Inventario` (
+  `IdInventario` INT NOT NULL AUTO_INCREMENT,
+  `IdProducto` INT NULL,
+  `Fecha` DATETIME NULL DEFAULT NULL,
+  `CantProducto` FLOAT NOT NULL,
+  `PrecioProducto` FLOAT NOT NULL,
+  `IdMaterial` INT NULL,
+  `CantMaterial` FLOAT NOT NULL,
+  `PrecioMaterial` FLOAT NOT NULL,
+  `Condicion` TINYINT NULL DEFAULT NULL,
+  PRIMARY KEY (`IdInventario`),
+  INDEX `fk_Producto_Inventario_idx` (`IdProducto` ASC),
+  CONSTRAINT `fk_Producto_Inventario`
+    FOREIGN KEY (`IdProducto`)
+    REFERENCES `ShuxhyDB`.`Producto` (`IdProducto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+	INDEX `fk_Material_Inventario_idx` (`IdMaterial` ASC),
+    CONSTRAINT `fk_Material_Inventario`
+    FOREIGN KEY (`IdMaterial`)
+    REFERENCES `ShuxhyDB`.`Material` (`IdMaterial`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `ShuxhyDB`.`DetalleCompra`
@@ -586,19 +613,6 @@ CREATE TRIGGER updCostoProduccionProducto AFTER INSERT ON receta
 FOR EACH ROW BEGIN 
 	UPDATE producto SET CostoProduccion = CostoProduccion + new.Total
 	WHERE producto.IdProducto = NEW.IdProducto;
-END
-//
-DELIMITER ;
-
--- -----------------------------------------------------
--- trigger updTotalReceta
--- -----------------------------------------------------
-
-DELIMITER //
-CREATE TRIGGER updTotalReceta AFTER INSERT ON receta
-FOR EACH ROW BEGIN 
-	UPDATE receta SET CostoIndirecto = (CostoIndirecto/100) * new.Total, Total = CostoIndirecto + new.Total
-	WHERE receta.IdReceta = NEW.IdReceta;
 END
 //
 DELIMITER ;
