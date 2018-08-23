@@ -292,7 +292,7 @@
 
                                     var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td><input type="hidden" name="IdUnidad[]" value="'+IdUnidad+'">'+Unidad+'</td><td>'+subtotal[cont]+'</td></tr>';
                                     cont++;
-
+                                    
 
                                     limpiar();
 

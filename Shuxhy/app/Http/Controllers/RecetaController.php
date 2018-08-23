@@ -109,7 +109,7 @@ class RecetaController extends Controller
 
 
         }
-
+           DB::select("call total");
 
             DB::commit();
 

@@ -41,7 +41,6 @@ class ComboController extends Controller
     {
         $productos=DB::table('producto as prod')
         ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
-        ->where('prod.Condicion','=','1')
         ->get();
 
 
@@ -57,7 +56,7 @@ class ComboController extends Controller
         $combo->Nombre=$request->get('Nombre');
         $combo->Descripcion=$request->get('Descripcion');
         //$combo->Subtotal=$request->get('Subtotal');
-        $combo->Total=$request->get('Total');
+        $combo->Subtotal=$request->get('Total');
         
         if (Input::hasFile('Imagen')) 
         {
@@ -89,7 +88,7 @@ class ComboController extends Controller
 
 
         }
-
+            
             DB::commit();
 
         }
@@ -100,7 +99,7 @@ class ComboController extends Controller
 
         }
 
-
+DB::select("call combosub");
         
         return Redirect::to('almacen/combo');
 

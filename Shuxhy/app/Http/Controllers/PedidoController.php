@@ -53,7 +53,6 @@ class PedidoController extends Controller
 
         $productos=DB::table('producto as prod')
         ->select(DB::raw('CONCAT(prod.Nombre, " ", prod.Descripcion ) AS producto'),'prod.IdProducto', 'prod.Precio')
-        ->where('prod.Condicion','=','1')
         ->get();
 
         $combos=DB::table('combo as com')
