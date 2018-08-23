@@ -87,7 +87,7 @@ class ProduccionController extends Controller
         $produccion->save();
         
         DB::select("call matutilizados");
-
+        DB::select("call cantfantante");
                  
         return Redirect::to('almacen/produccion');
 

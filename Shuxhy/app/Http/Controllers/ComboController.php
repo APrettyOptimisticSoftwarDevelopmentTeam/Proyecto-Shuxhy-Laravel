@@ -99,7 +99,7 @@ class ComboController extends Controller
 
         }
 
-DB::select("call combosub");
+        DB::select("call combosub");
         
         return Redirect::to('almacen/combo');
 
