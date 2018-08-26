@@ -33,6 +33,7 @@ class ProduccionController extends Controller
             $query=trim($request->get('searchText'));
             $producciones=DB::table('produccion as pro')
              ->join('receta as r', 'pro.IdReceta','=','r.IdReceta')
+             ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
              ->join('producto as p', 'pro.IdProducto','=','p.IdProducto')
             ->select('pro.IdProduccion', 'pro.CantidadFaltante', 'pro.CantidadProducir', 'pro.CantidadProducida','pro.Comentario', 'pro.Condicion','pro.Fecha', 'pro.Estatus', 'p.Nombre', 'p.Descripcion', 'p.IdProducto')
             ->where('pro.CantidadFaltante','LIKE','%'.$query.'%')
@@ -50,8 +51,8 @@ class ProduccionController extends Controller
         
 
         $recetas=DB::table('receta as r')
-       // ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-      //  ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
+       ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
+       ->join('material as mat', 'dr.IdMaterial','=','mat.IdMaterial')
         ->select(DB::raw('CONCAT(r.Nombre, " ", r.Descripcion ) AS receta'),'r.IdReceta', 'r.Porcion')
         ->where('r.Condicion','=','1')
         ->get();
@@ -130,14 +131,8 @@ class ProduccionController extends Controller
 
 
         $produccion=Produccion::find($id);
-       // $produccion->IdReceta=$request->get('IdReceta');
         $produccion->Estatus=$request->get('Estatus');
-        //$mytime=Carbon::now('America/Lima');
-        //$produccion->Fecha=$mytime->toDateTimeString();
-        //$produccion->CantidadFaltante=$request->get('CantidadFaltante');
-        //$produccion->CantidadProducir=$request->get('CantidadProducir');
-        $produccion->CantidadProducida=$request->get('CantidadProducida');
-        //$produccion->Comentario=$request->get('Comentario');
+        $produccion->Comentario=$request->get('Comentario');
         $produccion->update();
 
        

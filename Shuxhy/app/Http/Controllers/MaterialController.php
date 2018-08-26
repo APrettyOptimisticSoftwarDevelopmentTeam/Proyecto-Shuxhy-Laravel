@@ -55,7 +55,7 @@ class MaterialController extends Controller
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
         $material->Stock='0';
-        $material->Costo=$request->get('Costo');
+        $material->Costo='0';
      
 
 
@@ -89,7 +89,6 @@ class MaterialController extends Controller
         $material->IdUnidad=$request->get('IdUnidad');
         $material->Nombre=$request->get('Nombre');
         $material->Descripcion=$request->get('Descripcion');
-        $material->Costo=$request->get('Costo');
 
 
          if (Input::hasFile('Imagen')) 

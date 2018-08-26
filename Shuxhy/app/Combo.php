@@ -16,6 +16,7 @@ class Combo extends Model
     protected $fillable =[
     	'Nombre',
     	'Descripcion',
+        'Descuento',
         'Subtotal',
         'Total',
         'Imagen',

@@ -45,7 +45,7 @@ class RecetaController extends Controller
     {
         
         $materiales=DB::table('material as mat')
-        ->select(DB::raw('CONCAT(mat.Nombre, " ", mat.Descripcion ) AS material'),'mat.IdMaterial', 'mat.Costo' ,'mat.IdUnidad')
+        ->select(DB::raw('CONCAT(mat.Nombre, " ", mat.Descripcion ) AS material'),'mat.IdMaterial', 'mat.Costo' , 'mat.Stock', 'mat.IdUnidad')
         ->where('mat.Condicion','=','1')
         ->get();
 

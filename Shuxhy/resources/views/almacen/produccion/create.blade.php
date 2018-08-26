@@ -70,16 +70,7 @@
                               </div>
 
 
-                               <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">
-
-                                    <div class="form-group">
-                                          <label for="CantidadFaltante">Cantidad Faltante</label>
-                                          <input type="number" name="CantidadFaltante" id="CantidadFaltante" class="form-control" placeholder="Cantidad Faltante">
-                                          
-                                    </div>
-
-                              </div>
-
+                               
           <div class="col-lg-4 col-sm-4 col-md-4 col-xs-12">                    
           <div class="form-group">
                    <label>Producto a producir</label>

@@ -41,8 +41,7 @@
                                                
                                                 <th>Producto</th>
                                                 <th>Precio de unidad</th>
-                                                <th>Cantidad</th>  
-                                                <th>Descuento</th>      
+                                                <th>Cantidad</th>        
                                                 <th>Subtotal</th>
 
                                           </thead>
@@ -63,7 +62,6 @@
                                                     <td>{{$det->producto}}</td>
                                                      <td>{{$det->Precio}}</td>  
                                                     <td>{{$det->Cantidad}}</td>
-                                                    <td>{{$det->Descuento}}</td>
                                                     <td>{{$det->Cantidad*$det->Precio-$det->Descuento}}</td>
                                                 </tr>
                                                 @endforeach

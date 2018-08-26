@@ -56,7 +56,7 @@
                                           <label>Material</label>
                                           <select name="pidmaterial" class="form-control selectpicker" id="pidmaterial" data-live-search="true">
                                                 @foreach ($materiales as $material)
-                                                <option value="{{$material->IdMaterial}}_{{$material->Costo}}">{{$material->material}}</option>
+                                                <option value="{{$material->IdMaterial}}">{{$material->material}}</option>
                                                 @endforeach
 
                                           </select>
@@ -68,7 +68,7 @@
 
                                     <div class="form-group">
                                           <label for="Precio">Precio</label>
-                                          <input type="number" disabled name="pprecio" id="pprecio" class="form-control" placeholder="Precio RD$">
+                                          <input type="number" name="pprecio" id="pprecio" class="form-control" placeholder="Precio RD$">
                                           
                                     </div>
 
@@ -175,7 +175,6 @@
                         function mostrarValores()
                         {
                               datosMaterial=document.getElementById('pidmaterial').value.split('_');
-                              $("#pprecio").val(datosMaterial[1]);
                         }
 
 
@@ -192,7 +191,7 @@
 
                              if (Cantidad!="" && Cantidad>0 && Precio!="" && Precio>0) 
                               {
-                                    subtotal[cont]=(Cantidad*parseInt(Precio)); 
+                                    subtotal[cont]=(Cantidad*Precio); 
                                     
 
                                     total=total+subtotal[cont]; // todo bien hasta aqui

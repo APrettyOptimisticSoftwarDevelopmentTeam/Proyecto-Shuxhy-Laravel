@@ -26,7 +26,8 @@ class ComboFormRequest extends Request
         return [
             
             'Nombre'=>'required|max:60',
-            'Descripcion'=>'max:150'
+            'Descripcion'=>'max:150',
+            'Descuento'=>'required|max:60'
             
 
         ];

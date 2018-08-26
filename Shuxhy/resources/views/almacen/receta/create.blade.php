@@ -251,9 +251,7 @@
                         });
 
                         var cont=0;
-                        auxCostoR=0;
                         total=0;
-                        total2=0;
                         subtotal=[];
                         $("#guardar").hide();
 
@@ -278,21 +276,23 @@
                               Unidad=$("#pidunidad option:selected").text();
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
+                              Stock=$("#pstock").val();
                               CostoMaterial=$("#pcostomaterial").val();
+                              CostoIndirecto=$("#pcostoindirecto").val();
+                              CostoManoDeObra=$("#pcostomanodeobra").val();
                               CostoDeReposicion=$("#pcostoreposicion").val();
 
                               if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
 
                               {
+
                                     subtotal[cont]=(Cantidad*CostoMaterial);
-                                    //total2=total+subtotal[cont]; // todo bien hasta aqui
-                                    //auxCostoR=(total2*parseInt(CostoDeReposicion)/100);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
 
                                     var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdMaterial[]" value="'+IdMaterial+'">'+Material+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="CostoMaterial[]" value="'+CostoMaterial+'"></td><td><input type="hidden" name="IdUnidad[]" value="'+IdUnidad+'">'+Unidad+'</td><td>'+subtotal[cont]+'</td></tr>';
                                     cont++;
-                                    
+
 
                                     limpiar();
 
@@ -315,19 +315,13 @@
                         }
                         
 
-                        function calcular() //lista sin problemas
-                        {
-                                    auxCostoR=(total*parseInt(CostoDeReposicion)/100);
-                                    total=total+parseInt(auxCostoR);
-                        }
-
+                        
 
                         function limpiar() //lista sin problemas
                         {
                               $("#pcantidad").val("");
                               $("#pcostomaterial").val("");
 
-                              //$("#pcostoreposicion").val("");
                         }
 
                         function evaluar() // funciona correctamente
