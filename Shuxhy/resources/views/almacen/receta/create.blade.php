@@ -74,7 +74,7 @@
                         
             <div class="form-group">
                   <label for="CostoDeReposicion">Costo De Reposicion</label>
-                  <input type="number" name="CostoDeReposicion" id="pcostoreposicion" class="form-control" placeholder="Costo De Reposicion RD$...">
+                  <input type="number" name="CostoDeReposicion" id="pcostoreposicion" class="form-control" placeholder="Costo De Reposicion %...">
             </div>  
 
                   </div>
@@ -84,7 +84,7 @@
                         
             <div class="form-group">
                   <label for="CostoIndirecto">Costo Indirecto</label>
-                  <input type="number" name="CostoIndirecto" class="form-control" placeholder="Costo Indirecto RD$...">
+                  <input type="number" name="CostoIndirecto" class="form-control" placeholder="Costo Indirecto %...">
             </div>  
 
                   </div>
@@ -93,7 +93,7 @@
                         
             <div class="form-group">
                   <label for="CostoManoDeObra">Costo Mano De Obra</label>
-                  <input type="number" name="CostoManoDeObra" class="form-control" placeholder="Costo Mano De Obra RD$...">
+                  <input type="number" name="CostoManoDeObra" class="form-control" placeholder="Costo Mano De Obra %...">
             </div>  
 
                   </div>
