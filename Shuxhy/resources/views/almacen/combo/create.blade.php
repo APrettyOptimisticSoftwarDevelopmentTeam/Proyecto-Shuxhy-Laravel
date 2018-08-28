@@ -42,7 +42,7 @@
                         
                               <div class="form-group">
                                   <label for="Descuento">Descuento</label>
-                                  <input type="text" name="Descuento" class="form-control" placeholder=""Descuento%">
+                                  <input type="text" name="Descuento" class="form-control" placeholder="Descuento%">
                             </div> 
                        </div>        
 

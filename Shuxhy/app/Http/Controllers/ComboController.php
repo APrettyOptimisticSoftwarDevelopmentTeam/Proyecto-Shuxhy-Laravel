@@ -85,9 +85,9 @@ class ComboController extends Controller
             $DetalleCombo->save();
             $cont=$cont+1;
 
+       }
 
-
-        }
+        //DB::select("call combosub");
 
             DB::commit();
 
@@ -108,7 +108,7 @@ class ComboController extends Controller
     {
         $combo=DB::table('combo as c')
             ->join('detallecombo as dc', 'c.IdCombo','=','dc.IdCombo')
-             ->select('c.IdCombo', 'c.Nombre','c.Descuento', 'c.Descripcion', 'c.Imagen','c.Subtotal', 'c.Condicion', 'c.Total')
+             ->select('c.IdCombo', 'c.Nombre', 'c.Descripcion','c.Descuento', 'c.Imagen','c.Subtotal', 'c.Condicion', 'c.Total')
             ->where('c.IdCombo', '=', $id)
             ->first();
 
