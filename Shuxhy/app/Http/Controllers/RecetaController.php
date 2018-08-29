@@ -126,6 +126,18 @@ class RecetaController extends Controller
 
     }
 
+     public function edit($id)
+    {
+         $producto=DB::table('producto as pro')
+        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS producto'),'pro.IdProducto')
+        ->where('Condicion','=','1')
+        ->get();
+
+        $receta=Receta::findOrFail($id);
+
+        return view('almacen.receta.edit',["receta"=>$receta, "producto"=>$producto]);
+    }
+
 
     public function show($id) 
     {
