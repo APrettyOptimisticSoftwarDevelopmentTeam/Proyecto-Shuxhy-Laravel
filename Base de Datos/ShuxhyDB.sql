@@ -680,6 +680,19 @@ end;
 //
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER valiStockProductofact before INSERT ON factura 
+FOR EACH ROW BEGIN 
+  
+  if ((select detallepedido.Cantidad from detallepedido inner join detallefactura on detallefactura.IdPedido=detallepedido.IdProducto inner join producto on producto.IdProducto=detallepedido.IdProducto where new.IdDetalleFactura=detallefactura.IdFactura) > (SELECT producto.Stock from producto INNER join detallepedido ON detallepedido.IdProducto = producto.IdProducto inner join detallefactura ON detallefactura.IdPedido=detallepedido.IdPedido where detallefactura.IdFactura=New.IdFactura)) THEN
+
+SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'No tiene la cantidad suficiente de Productos para facturar este Pedido, favor actualialice su stock';
+          END IF; 
+end;
+//
+DELIMITER ;
+
 DELIMITER $$
 USE `ShuxhyDB`$$
 CREATE TRIGGER updStockCompra AFTER UPDATE ON detallecompra

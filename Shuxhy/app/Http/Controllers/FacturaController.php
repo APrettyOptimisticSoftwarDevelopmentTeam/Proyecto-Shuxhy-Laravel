@@ -50,7 +50,7 @@ class FacturaController extends Controller
         
 
         $pedidos=DB::table('pedido as ped')
-        ->select(DB::raw('CONCAT(ped.DireccionEntrega, " ", ped.FechaEntrega) AS pedido'),'ped.IdPedido', 'ped.Total')
+        ->select(DB::raw('CONCAT(ped.DireccionEntrega," ", ped.Estatus," ", ped.FechaEntrega) AS pedido'),'ped.IdPedido', 'ped.Total')
         ->where('ped.Condicion','=','1')
         ->get();
 
