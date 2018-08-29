@@ -16,7 +16,7 @@
             </div>
       </div>
 
-			{!!Form::model($receta,['method'=>'PATCH','route'=>['almacen.receta.update',$receta->Idreceta],'files'=>'true'])!!}
+			{!!Form::model($receta,['method'=>'PATCH','route'=>['almacen.receta.update',$receta->IdReceta],'files'=>'true'])!!}
             {{Form::token()}}
 
             <div class="row"> 
