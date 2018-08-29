@@ -24,7 +24,8 @@ class UsuarioFormRequest extends Request
     public function rules()
     {
         return ['name' => 'required|max:255',
-                'email' => 'required|email|max:255|unique:users',
+                //'email' => 'required|email|max:255|unique:users',
+                'email' => 'required|unique:users,email,'.$this->id,
                 'password' => 'required|min:6|confirmed',
         ];
     }

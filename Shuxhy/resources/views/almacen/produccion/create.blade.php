@@ -125,8 +125,9 @@
                                $("#CantidadProducir").val(datosRecetas[1]);
                          }
 
-
-                      
+                         @if(Session::has('flash_message'))
+{{Session::get('flash_message')}}
+@endif
 
                     
                       

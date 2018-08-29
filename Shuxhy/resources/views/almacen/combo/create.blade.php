@@ -199,15 +199,16 @@
                               datosProductos=document.getElementById('pidproducto').value.split('_');
                               IdProducto=datosProductos[0];
                               Producto=$("#pidproducto option:selected").text();
-                              Cantidad=$("#pcantidad").val();
                               Precio=$("#pprecio").val();
+                              Cantidad=$("#pcantidad").val();
+                              
 
                               if (IdProducto!="" && Precio!="" && Precio>0 && Cantidad!="" && Cantidad>0) 
                               {
                                     subtotal[cont]=(Cantidad*Precio);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
-                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td><input type="number" name="Precio[]" value="'+Precio+'"></td><td>'+subtotal[cont]+'</td></tr>';
+                                    var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="IdProducto[]" value="'+IdProducto+'">'+Producto+'</td><td><input type="number" name="Precio[]" value="'+Precio+'"></td><td><input type="number" name="Cantidad[]" value="'+Cantidad+'"></td><td>'+subtotal[cont]+'</td></tr>';
                                     cont++;
 
                                     limpiar();

@@ -122,7 +122,6 @@
                 <li><a href="{{ url('almacen/producto')}}"><i class="fa fa-circle-o"></i>Productos</a></li>
                 <li><a href="{{ url('almacen/material')}}"><i class="fa fa-circle-o"></i>Materiales</a></li>
                 <li><a href="{{ url('almacen/combo')}}"><i class="fa fa-circle-o"></i>Combos</a></li>
-                <li><a href="{{ url('almacen/inventario')}}"><i class="fa fa-circle-o"></i>Inventario</a></li>
               </ul>
             </li>
             

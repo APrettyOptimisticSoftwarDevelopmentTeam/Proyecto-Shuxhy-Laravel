@@ -35,6 +35,22 @@ class UsuarioController extends Controller
         return view("administracion.usuario.create");
     }
 
+    public function edit($id)
+    {
+        return view("administracion.usuario.edit",["usuario"=>User::findOrFail($id)]);
+    }
+
+    public function update(UsuarioFormRequest $request,$id)  // funcion para editar
+    {
+        $Usuario=User::findOrFail($id);
+        $usuario->name=$request->get('name');
+        $usuario->email=$request->get('email');
+        $usuario->password=bcrypt($request->get('password'));
+        $usuario->update();
+        return Redirect::to('administracion/usuario');
+        
+    }
+
 
     public function store (UsuarioFormRequest $request)  // Funcion para crear 
     {

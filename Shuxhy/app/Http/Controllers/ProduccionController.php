@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Shuxhy\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Input; // Para poder subir archivos e imagenes
 use Shuxhy\Http\Requests\ProduccionFormRequest;
 use Shuxhy\Produccion;
@@ -72,8 +73,9 @@ class ProduccionController extends Controller
     public function store (ProduccionFormRequest $request)  // Funcion para crear 
     {
 
-
-
+        try 
+        {
+       
         $produccion=new Produccion;
         $produccion->IdReceta=$request->get('IdReceta');
         $produccion->IdProducto=$request->get('IdProducto');
@@ -89,8 +91,21 @@ class ProduccionController extends Controller
         
         DB::select("call matutilizados");
         DB::select("call cantfantante");
+
+
+    }
+
+    catch (\Illuminate\Database\QueryException $e)
+        {
+
+              return '
+                    ----------------------------
+                       NO TIENE LA CANTIDAD SUFICIENTE DE MATERIALES PARA ESTA PRODUCCION, FAVOR PULSE RETROCEDER (←) Y ACTUALICE SU STOCK
+                    ---------------------------';
+
+        }
                  
-        return Redirect::to('almacen/produccion');
+                return Redirect::to('almacen/produccion');
 
     }
 

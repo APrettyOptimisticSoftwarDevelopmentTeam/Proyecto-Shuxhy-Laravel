@@ -123,71 +123,7 @@
                   </div>
 
 
-                <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Forma</label>
-                  <select name="IdForma" class="form-control selectpicker" id="IdForma" data-live-search="true">
-                        @foreach ($forma as $form)
-                        @if($form->IdForma==$receta->IdForma)
-                        <option value="{{$form->IdForma}}" selected>{{$form->Nombre}}</option>
-                        @else
-                        <option value="{{$form->IdForma}}">{{$form->Nombre}}</option>
-                        @endif
-                        @endforeach
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Relleno</label>
-                  <select name="IdRelleno" class="form-control selectpicker" id="IdRelleno" data-live-search="true">
-                        @foreach ($relleno as $rell)
-                        @if($rell->IdRelleno==$receta->IdRelleno)
-                        <option value="{{$rell->IdRelleno}}" selected>{{$rell->Nombre}}</option>
-                        @else
-                        <option value="{{$rell->IdRelleno}}">{{$rell->Nombre}}</option>
-                        @endif
-                        @endforeach
-                  </select>
-            </div>
-
-
-                  </div>
-
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Sabor</label>
-                  <select name="IdSabor" class="form-control selectpicker" id="IdSabor" data-live-search="true">
-                        @foreach ($sabor as $sab)
-                        @if($sab->IdSabor==$receta->IdSabor)
-                        <option value="{{$sab->IdSabor}}" selected>{{$sab->Nombre}}</option>
-                        @else
-                        <option value="{{$sab->IdSabor}}">{{$sab->Nombre}}</option>
-                        @endif
-                        @endforeach
-                  </select>
-            </div>
-
-                  </div>
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-
-                  </div>
-
-
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
+                 <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
                   <button class="btn btn-primary" type="submit">Guardar</button>
