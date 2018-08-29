@@ -56,15 +56,15 @@ class RecetaController extends Controller
         ->get();
 
 
-         $productos=DB::table('producto as pro')
-        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS producto'),'pro.IdProducto')
+         $recetas=DB::table('receta as pro')
+        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS receta'),'pro.Idreceta')
         ->where('Condicion','=','1')
         ->get();
 
 
          
 
-        return view('almacen.receta.create',["materiales"=>$materiales,"unidades"=>$unidades, "productos"=>$productos]);
+        return view('almacen.receta.create',["materiales"=>$materiales,"unidades"=>$unidades, "recetas"=>$recetas]);
     }
 
     public function store (RecetaFormRequest $request)  // Funcion para crear 
@@ -84,7 +84,7 @@ class RecetaController extends Controller
         $receta->CostoIndirecto=$request->get('CostoIndirecto');
         $receta->CostoManoDeObra=$request->get('CostoManoDeObra');
         $receta->Total=$request->get('Total');
-        $receta->IdProducto=$request->get('IdProducto');
+        $receta->Idreceta=$request->get('IdReceta');
         $receta->Condicion='1';
         $receta->save();
 
@@ -128,14 +128,34 @@ class RecetaController extends Controller
 
      public function edit($id)
     {
-         $producto=DB::table('producto as pro')
-        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS producto'),'pro.IdProducto')
+         $receta=DB::table('receta as pro')
+        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS receta'),'pro.Idreceta')
         ->where('Condicion','=','1')
         ->get();
 
         $receta=Receta::findOrFail($id);
 
-        return view('almacen.receta.edit',["receta"=>$receta, "producto"=>$producto]);
+        return view('almacen.receta.edit',["receta"=>$receta, "receta"=>$receta]);
+    }
+
+
+     public function update(RecetaFormRequest $request,$id)  // funcion para editar
+    {
+        $receta=Receta::findOrFail($id);
+        $receta->Idreceta=$request->get('IdReceta');
+        $receta->Nombre=$request->get('Nombre');
+        $receta->Descripcion=$request->get('Descripcion');
+        $receta->Equipo=$request->get('Equipo');
+        $receta->Porcion=$request->get('Porcion');
+        $receta->TiempoPreparacion=$request->get('TiempoPreparacion');
+        $receta->CostoDeReposicion=$request->get('CostoDeReposicion');
+        $receta->CostoIndirecto=$request->get('CostoIndirecto');
+        $receta->CostoManoDeObra=$request->get('CostoManoDeObra');
+
+        
+        
+        $receta->update();
+        return Redirect::to('almacen/receta');
     }
 
 
@@ -144,7 +164,7 @@ class RecetaController extends Controller
 
         $receta=DB::table('receta as r')
             ->join('detallereceta as dr', 'r.IdReceta','=','dr.IdReceta')
-            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.IdProducto','r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', 'r.Total')
+            ->select('r.IdReceta', 'r.CostoDeReposicion', 'r.CostoIndirecto', 'r.CostoManoDeObra', 'r.Descripcion', 'r.Equipo', 'r.Idreceta','r.Condicion', 'r.Nombre','r.Porcion',  'r.TiempoPreparacion', 'r.Total')
             ->where('r.IdReceta', '=', $id)
             ->first();
 
