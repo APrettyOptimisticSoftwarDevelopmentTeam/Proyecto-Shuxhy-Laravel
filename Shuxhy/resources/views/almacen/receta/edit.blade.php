@@ -104,25 +104,6 @@
                    
 
 
-                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
-                        
-            <div class="form-group">
-                   <label>Producto final</label>
-                  <select name="IdProducto" class="form-control selectpicker" id="IdProducto" data-live-search="true">
-                        @foreach ($producto as $pro)
-                        @if($pro->IdProducto==$receta->IdProducto)
-                        <option value="{{$pro->IdProducto}}" selected>{{$pro->producto}}</option>
-                        @else
-                        <option value="{{$pro->IdProducto}}">{{$pro->producto}}</option>
-                        @endif
-                        @endforeach
-                  </select>
-            </div>
-
-
-                  </div>
-
-
                  <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
                         
             <div class="form-group">
