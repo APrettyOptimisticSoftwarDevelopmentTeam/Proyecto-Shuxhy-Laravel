@@ -212,6 +212,7 @@
 
                                     limpiar();
                                     $("#total").html("S/. " +total);
+                                    $("#Subtotal").val(subtotal[cont]);
                                     $("#Total").val(total);
                                     evaluar();
 

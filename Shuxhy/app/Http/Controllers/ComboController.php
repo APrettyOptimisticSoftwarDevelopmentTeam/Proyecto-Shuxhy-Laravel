@@ -87,8 +87,6 @@ class ComboController extends Controller
 
        }
 
-        //DB::select("call combosub");
-
             DB::commit();
 
         }

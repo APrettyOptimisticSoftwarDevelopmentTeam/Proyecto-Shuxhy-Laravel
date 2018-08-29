@@ -580,16 +580,22 @@ UPDATE DetalleReceta
 
 END$$
 
-DELIMITER $$
-USE `ShuxhyDB`$$
-CREATE PROCEDURE `combosub` ()
-BEGIN
 
-UPDATE combo 
-    SET Total =combo.Subtotal-((combo.Descuento/100) * combo.Subtotal);
+DELIMITER //
+CREATE TRIGGER combosub AFTER INSERT ON detallecombo
+FOR EACH ROW BEGIN 
+  BEGIN 
+UPDATE combo
+set Subtotal=(select Sum(new.Cantidad*new.Precio) from detallecombo where detallecombo.IdCombo=combo.IdCombo) where combo.IdCombo=new.IdCombo;
+
+Update combo
+set Total = Subtotal -((Descuento/100)*Subtotal)
+ where combo.IdCombo=new.IdCombo;
 
 
-END$$
+end
+
+
 
 DELIMITER $$
 USE `ShuxhyDB`$$
@@ -610,6 +616,21 @@ If OLD.Costo <> NEW.Costo THEN
     SET CostoMaterial=New.Costo, SubT = New.Costo * detallereceta.Cantidad
 	WHERE Detallereceta.IdMaterial = NEW.IdMaterial;
     End IF;
+END$$
+
+DELIMITER $$
+USE `ShuxhyDB`$$
+CREATE TRIGGER valistock BEFORE INSERT ON produccion
+FOR EACH ROW BEGIN
+
+if (select Cantidad from detallereceta where new.IdReceta = detallereceta.IdReceta ) > (SELECT Stock from material INNER join detallereceta ON detallereceta.IdMaterial = material.IdMaterial where detallereceta.IdReceta=New.IdReceta)
+                                                                           
+ THEN
+
+SIGNAL SQLSTATE '45000'
+                    SET MESSAGE_TEXT = 'No tiene la cantidad suficiente de Material para esta produccion, favor actualialice su stock';
+          END IF; 
+
 END$$
 
 DELIMITER $$

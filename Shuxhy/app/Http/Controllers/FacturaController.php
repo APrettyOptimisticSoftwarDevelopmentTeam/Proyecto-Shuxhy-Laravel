@@ -31,8 +31,8 @@ class FacturaController extends Controller
             $query=trim($request->get('searchText'));
             $facturas=DB::table('factura as f')
             ->join('detallefactura as df', 'f.IdFactura','=','df.IdFactura')
-            ->join('pedido as ped', 'f.IdPedido','=','ped.IdPedido')
-            ->join('detalledetallepedido as dp', 'ped.IdPedido','=','dp.IdPedido')
+            ->join('pedido as ped', 'df.IdPedido','=','ped.IdPedido')
+            ->join('detallepedido as dp', 'ped.IdPedido','=','dp.IdPedido')
             ->select('f.IdFactura', 'f.Fecha', 'f.FormaPago', 'f.Condicion','f.TotalFacturado')
             ->where('f.IdFactura','LIKE','%'.$query.'%')
             ->where ('f.Condicion','=','1') 

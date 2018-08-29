@@ -127,7 +127,7 @@
                                           <label>Material</label>
                                           <select name="pidmaterial" class="form-control selectpicker" id="pidmaterial" data-live-search="true">
                                                 @foreach ($materiales as $material)
-                                                <option value="{{$material->IdMaterial}}_{{$material->Costo}}">{{$material->material}}</option>
+                                                <option value="{{$material->IdMaterial}}_{{$material->Costo}}_{{$material->IdUnidad}}">{{$material->material}}</option>
                                                 @endforeach
 
                                           </select>
@@ -262,6 +262,7 @@
                          {
                               datosMateriales=document.getElementById('pidmaterial').value.split('_');
                                $("#pcostomaterial").val(datosMateriales[1]);
+                               $("#punidad").val(datosMateriales[2]);
                          }
 
 
@@ -273,7 +274,7 @@
                              
                               IdMaterial=datosMateriales[0];
                               IdUnidad=$("#pidunidad").val();
-                              Unidad=$("#pidunidad option:selected").text();
+                              Unidad=$("#punidad option:selected").text();
                               Material=$("#pidmaterial option:selected").text();
                               Cantidad=$("#pcantidad").val();
                               Stock=$("#pstock").val();
@@ -285,7 +286,7 @@
                               if (IdMaterial!="" && Cantidad!="" && Cantidad>0 && CostoMaterial!="") 
 
                               {
-
+                                    
                                     subtotal[cont]=(Cantidad*CostoMaterial);
                                     total=total+subtotal[cont]; // todo bien hasta aqui
 
