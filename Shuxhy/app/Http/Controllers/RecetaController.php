@@ -56,15 +56,21 @@ class RecetaController extends Controller
         ->get();
 
 
-         $recetas=DB::table('receta as pro')
-        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS receta'),'pro.Idreceta')
+         $recetas=DB::table('receta as rec')
+        ->select(DB::raw('CONCAT(rec.Nombre, " ", rec.Descripcion ) AS receta'),'rec.Idreceta')
+        ->where('Condicion','=','1')
+        ->get();
+
+            $productos=DB::table('producto as pro')
+        ->select(DB::raw('CONCAT(pro.Nombre, " ", pro.Descripcion ) AS producto'),'pro.IdProducto')
         ->where('Condicion','=','1')
         ->get();
 
 
+
          
 
-        return view('almacen.receta.create',["materiales"=>$materiales,"unidades"=>$unidades, "recetas"=>$recetas]);
+        return view('almacen.receta.create',["materiales"=>$materiales, "productos"=>$productos,"unidades"=>$unidades, "recetas"=>$recetas]);
     }
 
     public function store (RecetaFormRequest $request)  // Funcion para crear 
